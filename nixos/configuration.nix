@@ -102,6 +102,7 @@
     gcc
     zip
     home-manager
+    pkgs.gnome3.gnome-tweaks
   ];
 
   fonts.fonts = with pkgs; [
