@@ -71,7 +71,6 @@
     password = "1712";
     extraGroups = [ "media" "audio" "video" "networkmanager" "wheel" ];
   };  
-  users.defaultUserShell = pkgs.zsh;
 
   # Sound setup  
   sound.enable = true;
@@ -89,9 +88,11 @@
     enable = true;
   };
 
-  # Packages
-  environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
+  //users.defaultUserShell = pkgs.zsh;
+
+  # Packages
   environment.systemPackages = with pkgs; [
     git
     nodejs
@@ -99,10 +100,8 @@
     python3
     rustc
     cargo
-    gcc
     zip
     home-manager
-    pkgs.gnome3.gnome-tweaks
   ];
 
   fonts.fonts = with pkgs; [
