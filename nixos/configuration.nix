@@ -90,7 +90,7 @@
 
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
-  //users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   # Packages
   environment.systemPackages = with pkgs; [
