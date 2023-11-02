@@ -98,10 +98,10 @@
     nodejs
     nodePackages.pnpm
     python3
-    rustc
     cargo
     zip
     home-manager
+    gcc
   ];
 
   fonts.fonts = with pkgs; [

@@ -17,6 +17,7 @@
   nixpkgs = {
     overlays = [
       outputs.overlays.unstable-packages
+      outputs.overlays.additions
     ];
     config = {
       allowUnfree = true;
@@ -33,18 +34,22 @@
     whatsapp-for-linux
     telegram-desktop
     discord
+    deltachat-desktop
     steam
 
     gnomeExtensions.pop-shell
     gnomeExtensions.appindicator
     gnome.gnome-software
-    
+
     unstable.google-chrome
     unstable.obsidian
     inkscape
     insomnia
     evince
+    libreoffice
     agda
+
+    inputs.dc-times.packages.x86_64-linux.dc-times
   ];
 
   programs = {
@@ -97,7 +102,7 @@
     };
     vscode = {
       enable = true;
-      package = pkgs.unstable.vscode.fhsWithPackages(ps: with ps; [rustup zlib openssl.dev pkg-config]);  
+      package = pkgs.unstable.vscode;
     };
     direnv.enable = true;
   };
