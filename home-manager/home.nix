@@ -29,7 +29,6 @@
     telegram-desktop
     discord
     deltachat-desktop
-    steam
 
     gnomeExtensions.pop-shell
     gnomeExtensions.appindicator
@@ -42,8 +41,6 @@
     evince
     libreoffice
     agda
-
-    inputs.dc-times.packages.x86_64-linux.dc-times
   ];
 
   programs = {
