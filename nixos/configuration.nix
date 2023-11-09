@@ -6,19 +6,8 @@
   pkgs,
   ...
 }: {
-  imports = [
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    ./hardware-configuration.nix
-    ./desktop.nix
-    #./laptop.nix
-  ];
-
+  imports = [];
   nixpkgs = {
-    overlays = [
-      outputs.overlays.unstable-packages
-    ];
     config.allowUnfree = true;
   };
 
@@ -31,13 +20,18 @@
     # Making legacy nix commands consistent as well, awesome!
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 1w";
+    };
+
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
     };
   };
 
-  networking.hostName = "nixos-desktop";
   networking.networkmanager.enable = true;
   
   boot.loader.systemd-boot.enable = true;
@@ -77,6 +71,7 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
 
+  # Desktop environment
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.enable = true;

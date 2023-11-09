@@ -1,5 +1,8 @@
 { config, ... }:
 {
+  imports = [ ./hardware-configuration.nix ];
+
+  networking.hostName = "nixos-desktop";
 
   hardware.opengl = {
     enable = true;
