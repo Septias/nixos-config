@@ -53,7 +53,7 @@
 
     # 'home-manager --flake .username@hostname'
     homeConfigurations = {
-      "septias@nixos-desktop" = home-manager.lib.homeManagerConfiguration {
+      septias = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./home-manager/home.nix];
