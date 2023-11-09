@@ -59,7 +59,7 @@
 
   users.users.septias = {
     isNormalUser = true;
-    password = "1712";
+    initialPassword = "1712";
     extraGroups = [ "media" "audio" "video" "networkmanager" "wheel" ];
   };  
 
