@@ -91,14 +91,15 @@
 
   # Packages
   environment.systemPackages = with pkgs; [
+    home-manager
+
     git
     nodejs
     nodePackages.pnpm
     python311
     python311Packages.pip
-    cargo
+
     zip
-    home-manager
     gcc
   ];
 
