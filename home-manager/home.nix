@@ -25,7 +25,7 @@
   };
 
   home.packages = with pkgs; [
-    whatsapp-for-linux
+    unstable.whatsapp-for-linux
     telegram-desktop
     discord
 

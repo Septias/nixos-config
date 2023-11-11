@@ -16,11 +16,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1699535778,
-        "narHash": "sha256-Cw2ohffmHrwZ51wrcXlaTluTbZwfiO6coNTmcjYrkok=",
+        "lastModified": 1699648447,
+        "narHash": "sha256-8xQjMwkzvKGMZlFqir/5VZDJ6WPsE4ujN/wfafhcIjk=",
         "owner": "septias",
         "repo": "dc-times",
-        "rev": "45e32c56cb4da766393dc98fccf2638c1f985014",
+        "rev": "5a5f4ca8ba9b756f6eaea7f27325882ecc991ab7",
         "type": "github"
       },
       "original": {
