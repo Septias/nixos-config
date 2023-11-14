@@ -29,8 +29,6 @@
     telegram-desktop
     discord
 
-    gnomeExtensions.pop-shell
-    gnomeExtensions.appindicator
     gnome.gnome-software
 
     unstable.google-chrome
@@ -68,6 +66,7 @@
       ];
       shellAliases = {
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
+        nd = "nix develop";
       };
     };
     helix = {
