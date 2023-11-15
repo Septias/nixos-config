@@ -106,6 +106,8 @@
 
     zip
     gcc
+    
+    nvd
   ];
 
   fonts.fonts = with pkgs; [
