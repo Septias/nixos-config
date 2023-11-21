@@ -112,6 +112,7 @@
     };
     "org/gnome/desktop/interface" = {
       enable-hot-corners = false;
+      color-scheme= "prefer-dark";
     };
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = false;
@@ -128,6 +129,23 @@
       dynamic-workspaces = true;
       edge-tiling = true;
       workspaces-only-on-primary = true;
+    };
+    "org/gnome/evince" = {
+      document-directory= "@ms file:///home/septias/OneDrive/Life/Ressources/books";
+    };
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled=true;
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/" = {
+      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Shift><Super>Return";
+      command = "gnome-terminal";
+      name = "console";
+    };
+    "org/gnome/terminal/legacy" = {
+      theme-variant="dark";
     };
   };
 

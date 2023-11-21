@@ -90,6 +90,7 @@
 
   programs.zsh.enable = true;
   programs.steam.enable = true;
+  programs.gnome-terminal.enable = true;
   environment.shells = with pkgs; [ zsh ];
   environment.variables = {
     DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
