@@ -25,12 +25,11 @@
   };
 
   home.packages = with pkgs; [
-    whatsapp-for-linux
+    unstable.whatsapp-for-linux
+    unstable.deltachat-desktop
     telegram-desktop
     discord
 
-    gnomeExtensions.pop-shell
-    gnomeExtensions.appindicator
     gnome.gnome-software
 
     unstable.google-chrome
@@ -68,6 +67,9 @@
       ];
       shellAliases = {
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
+        nd = "nix develop";
+        gro = "git reset HEAD~1";
+        c = "code .";
       };
     };
     helix = {
@@ -94,7 +96,7 @@
     };
     vscode = {
       enable = true;
-      package = pkgs.unstable.vscode;
+      package = pkgs.unstable.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl pkg-config ]);
     };
     direnv.enable = true;
   };

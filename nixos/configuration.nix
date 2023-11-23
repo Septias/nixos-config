@@ -66,8 +66,15 @@
 
   # Sound setup  
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    audio.enable = true;
+  };
   
   # Bluetooth
   hardware.bluetooth.enable = true;
@@ -82,21 +89,24 @@
   };
 
   programs.zsh.enable = true;
+  programs.steam.enable = true;
   environment.shells = with pkgs; [ zsh ];
+  environment.variables = {
+    DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
+  };
   users.defaultUserShell = pkgs.zsh;
 
   # Packages
   environment.systemPackages = with pkgs; [
     home-manager
-
     git
     nodejs
     nodePackages.pnpm
     python311
     python311Packages.pip
-
     zip
     gcc
+    nvd
   ];
 
   fonts.fonts = with pkgs; [
