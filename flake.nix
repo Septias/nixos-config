@@ -10,6 +10,9 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Nix-hardware
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # Custom
     dc-times.url = "github:septias/dc-times";
   };
@@ -47,7 +50,11 @@
 
       nixos-laptop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/configuration.nix ./hosts/laptop];
+        modules = [
+          ./nixos/configuration.nix 
+          ./hosts/laptop
+          inputs.nixos-hardware.nixosModules.dell-xps-13-9310
+        ];
       };
     };
 
