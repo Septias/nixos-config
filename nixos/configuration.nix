@@ -79,9 +79,9 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
 
-  # Desktop environment
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
+  services.printing.enable = true;
   services.xserver.enable = true;
   services.onedrive.enable = true;
   services.openssh = {
@@ -94,6 +94,7 @@
   environment.shells = with pkgs; [ zsh ];
   environment.variables = {
     DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
+    RUST_LOG = "info";
   };
   users.defaultUserShell = pkgs.zsh;
 
