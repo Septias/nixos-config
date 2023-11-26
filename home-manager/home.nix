@@ -48,6 +48,9 @@
       enable = true;
       userName = "Sebastian Klähn";
       userEmail = "scoreplayer2000@gmail.com";
+      extraConfig = {
+        pull.rebase = true
+      }
     };
     zsh = {
       enable = true;
