@@ -27,13 +27,13 @@
   home.packages = with pkgs; [
     unstable.whatsapp-for-linux
     unstable.deltachat-desktop
-    telegram-desktop
-    discord
-
-    gnome.gnome-software
-
     unstable.google-chrome
     unstable.obsidian
+
+    gnome.gnome-software
+    
+    telegram-desktop
+    discord
     inkscape
     insomnia
     evince
@@ -49,8 +49,8 @@
       userName = "Sebastian Klähn";
       userEmail = "scoreplayer2000@gmail.com";
       extraConfig = {
-        pull.rebase = true
-      }
+        pull.rebase = true;
+      };
     };
     zsh = {
       enable = true;
@@ -99,7 +99,7 @@
     };
     vscode = {
       enable = true;
-      package = pkgs.unstable.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl pkg-config ]);
+      package = pkgs.vscode;
     };
     direnv.enable = true;
   };
@@ -139,8 +139,8 @@
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled=true;
     };
-    "org/gnome/settings-daemon/plugins/media-keys/" = {
-      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = ["org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Shift><Super>Return";
