@@ -40,6 +40,8 @@
     libreoffice
     agda
 
+    nil
+
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
 

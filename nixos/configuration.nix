@@ -104,10 +104,11 @@
     git
     nodejs
     nodePackages.pnpm
-    python311
-    python311Packages.pip
+    python312
     zip
     gcc
+
+    # nix tools
     nvd
   ];
 
