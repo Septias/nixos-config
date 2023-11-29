@@ -104,6 +104,7 @@
     git
     nodejs
     nodePackages.pnpm
+    yarn
     python312
     zip
     gcc
