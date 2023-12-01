@@ -58,6 +58,7 @@
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
+      initExtra = "cd coding";
       plugins = [
       {
         name = "powerlevel10k";
