@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  config,
   pkgs,
   outputs,
   ...
@@ -41,6 +40,8 @@
     agda
 
     nil
+    scc
+    fd
 
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
@@ -53,6 +54,11 @@
       extraConfig = {
         pull.rebase = true;
       };
+      checkout.defaultRemote = "origin";
+      pull.rebase = true;
+      pull.ff = "only";
+      push.default = "current";
+      init.defaultBranch = "main";
     };
     zsh = {
       enable = true;
