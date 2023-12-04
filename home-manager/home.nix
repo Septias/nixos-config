@@ -53,12 +53,11 @@
       userEmail = "scoreplayer2000@gmail.com";
       extraConfig = {
         pull.rebase = true;
+        checkout.defaultRemote = "origin";
+        pull.ff = "only";
+        push.default = "current";
+        init.defaultBranch = "main";
       };
-      checkout.defaultRemote = "origin";
-      pull.rebase = true;
-      pull.ff = "only";
-      push.default = "current";
-      init.defaultBranch = "main";
     };
     zsh = {
       enable = true;
