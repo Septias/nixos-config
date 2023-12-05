@@ -59,6 +59,7 @@
   console.keyMap = "neo";
 
   users.users.septias = {
+    hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
     isNormalUser = true;
     initialPassword = "1712";
     extraGroups = [ "media" "audio" "video" "networkmanager" "wheel" ];
