@@ -35,6 +35,7 @@
     discord
     inkscape
     insomnia
+    gitkraken
     evince
     libreoffice
     agda
