@@ -30,6 +30,7 @@
     #unstable.obsidian
 
     gnome.gnome-software
+    wl-clipboard
     
     telegram-desktop
     discord
@@ -165,6 +166,16 @@
         src = lib.cleanSource ./p10k-config;
         file = "p10k.zsh";
       }
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.7.0";
+          sha256 = "149zh2rm59blr2q458a5irkfh82y3dwdich60s9670kl3cl5h2m1";
+        };
+      }
       ];
       shellAliases = {
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
@@ -186,7 +197,11 @@
       enable = true;
       package = pkgs.unstable.vscode;
     };
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
   };
 
   dconf.settings = {
