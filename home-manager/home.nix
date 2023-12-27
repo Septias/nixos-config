@@ -27,7 +27,7 @@
     unstable.whatsapp-for-linux
     unstable.deltachat-desktop
     unstable.google-chrome
-    unstable.obsidian
+    #unstable.obsidian
 
     gnome.gnome-software
     
@@ -44,6 +44,8 @@
     scc
     fd
 
+    rust-analyzer
+
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
 
@@ -59,6 +61,9 @@
         push.default = "current";
         init.defaultBranch = "main";
       };
+    };
+    alacritty = {
+      enable = true;
     };
     zsh = {
       enable = true;
@@ -140,8 +145,8 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Shift><Super>Return";
-      command = "gnome-terminal";
-      name = "Gnome Terminal";
+      command = "alacritty";
+      name = "Terminal";
     };
     "org/gnome/terminal/legacy" = {
       theme-variant="dark";
