@@ -43,7 +43,7 @@
     nil
     scc
     fd
-    rust-analyzer
+    #rust-analyzer
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
 
@@ -70,7 +70,7 @@
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
-      initExtra = "cd coding";
+      initExtra = "cd coding && clear";
       plugins = [
       {
         name = "powerlevel10k";
