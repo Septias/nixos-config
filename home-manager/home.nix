@@ -64,6 +64,10 @@
       enable = true;
       settings = {
         colors = (import ./alacritty-theme.nix);
+        font = {
+          normal = {family = "JetBrains Mono"; style="Regular";};
+          size = 15.0;
+        };
       };
     };
     zsh = {
@@ -96,8 +100,9 @@
       shellAliases = {
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
         nd = "nix develop";
+        nb = "nix build";
         gro = "git reset HEAD~1";
-        c = "code .";
+        hms = pkgs.lib.strings.concatStrings ["home-manager switch --flake + " ./.];
       };
     };
     helix = {
