@@ -45,6 +45,7 @@
     fd
     #rust-analyzer
     inputs.dc-times.packages.x86_64-linux.dc-times
+    inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
   ];
 
   programs = {
@@ -65,7 +66,7 @@
       settings = {
         colors = (import ./alacritty-theme.nix);
         font = {
-          normal = {family = "JetBrains Mono"; style="Regular";};
+          normal = { family = "JetBrains Mono"; style="Regular"; };
           size = 15.0;
         };
       };
@@ -102,7 +103,7 @@
         nd = "nix develop";
         nb = "nix build";
         gro = "git reset HEAD~1";
-        hms = pkgs.lib.strings.concatStrings ["home-manager switch --flake + " ./.];
+        hms = pkgs.lib.strings.concatStrings ["home-manager switch --flake " ./.];
       };
     };
     helix = {
@@ -111,6 +112,9 @@
         theme = "catppuccin_frappe";
         editor.lsp = {
           display-inlay-hints = true;
+        };
+        keys.insert = {
+          "C-s" = ":w";
         };
       };
     };

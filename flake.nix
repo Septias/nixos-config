@@ -15,6 +15,7 @@
 
     # Custom
     dc-times.url = "github:septias/dc-times";
+    reddit-wallpapers.url = "git+file:///home/septias/coding/reddit-wallpapers";
   };
 
   outputs = {
@@ -34,7 +35,6 @@
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
-    
     # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);

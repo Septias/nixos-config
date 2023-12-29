@@ -35,6 +35,7 @@
   networking.networkmanager.enable = true;
   
   boot.loader.systemd-boot.enable = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = [ "ntfs" ];  
 
@@ -85,6 +86,7 @@
   services.printing.enable = true;
   services.xserver.enable = true;
   services.onedrive.enable = true;
+  services.fwupd.enable = true;
   services.openssh = {
     enable = true;
   };
