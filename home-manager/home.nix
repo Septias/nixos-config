@@ -27,7 +27,7 @@
     unstable.whatsapp-for-linux
     unstable.deltachat-desktop
     unstable.google-chrome
-    #unstable.obsidian
+    unstable.obsidian
 
     gnome.gnome-software
     wl-clipboard
@@ -61,21 +61,23 @@
         init.defaultBranch = "main";
       };
     };
-    alacritty = {
+    kitty = {
       enable = true;
+      font = { package = pkgs.jetbrains-mono; name="JetBrains Mono"; size = 15;};
+      theme = "Catppuccin-Frappe";
       settings = {
-        colors = (import ./alacritty-theme.nix);
-        font = {
-          normal = { family = "JetBrains Mono"; style="Regular"; };
-          size = 15.0;
-        };
+        remember_window_size =  true;
+        initial_window_width =  640;
+        initial_window_height = 400;
+        hide_window_decorations = true;
+        tab_bar_style = "powerline";
       };
+      shellIntegration.enableZshIntegration = true;
     };
     zsh = {
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
-      initExtra = "cd coding && clear";
       plugins = [
       {
         name = "powerlevel10k";
@@ -103,7 +105,7 @@
         nd = "nix develop";
         nb = "nix build";
         gro = "git reset HEAD~1";
-        hms = pkgs.lib.strings.concatStrings ["home-manager switch --flake " ./.];
+        hms = "home-manager switch --flake ${./..}";
       };
     };
     helix = {
@@ -169,7 +171,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Shift><Super>Return";
-      command = "alacritty";
+      command = "kitty ~/coding";
       name = "Terminal";
     };
     "org/gnome/terminal/legacy" = {
