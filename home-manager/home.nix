@@ -45,7 +45,6 @@
     fd
     #rust-analyzer
     inputs.dc-times.packages.x86_64-linux.dc-times
-    inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
   ];
 
   programs = {

@@ -61,7 +61,6 @@
   users.users.septias = {
     hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
     isNormalUser = true;
-    initialPassword = "1712";
     extraGroups = [ "media" "audio" "video" "networkmanager" "wheel" ];
   };  
 
@@ -80,18 +79,19 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
 
+  services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
-  services.printing.enable = true;
-  services.xserver.enable = true;
-  services.onedrive.enable = true;
   services.fwupd.enable = true;
+  services.printing.enable = true;
+  services.onedrive.enable = true;
   services.openssh = {
     enable = true;
   };
 
   programs.zsh.enable = true;
   programs.steam.enable = true;
+
   environment.shells = with pkgs; [ zsh ];
   environment.variables = {
     DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
@@ -99,7 +99,6 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
-  # Packages
   environment.systemPackages = with pkgs; [
     home-manager
     git
@@ -109,8 +108,6 @@
     python312
     zip
     gcc
-
-    # nix tools
     nvd
   ];
 
