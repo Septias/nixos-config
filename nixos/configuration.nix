@@ -32,11 +32,11 @@
   };
 
   networking.networkmanager.enable = true;
-  
+
   boot.loader.systemd-boot.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = [ "ntfs" ];  
+  boot.supportedFilesystems = ["ntfs"];
 
   # Configure Language
   time.timeZone = "Europe/Berlin";
@@ -61,10 +61,10 @@
   users.users.septias = {
     hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
     isNormalUser = true;
-    extraGroups = [ "media" "audio" "video" "networkmanager" "wheel" ];
-  };  
+    extraGroups = ["media" "audio" "video" "networkmanager" "wheel"];
+  };
 
-  # Sound setup  
+  # Sound setup
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -75,7 +75,7 @@
     pulse.enable = true;
     audio.enable = true;
   };
-  
+
   # Bluetooth
   hardware.bluetooth.enable = true;
 
@@ -92,7 +92,7 @@
   programs.zsh.enable = true;
   programs.steam.enable = true;
 
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   environment.variables = {
     DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
     RUST_LOG = "info";
@@ -113,7 +113,7 @@
 
   fonts.packages = with pkgs; [
     jetbrains-mono
-  ]; 
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.autoUpgrade.enable = true;

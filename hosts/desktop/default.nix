@@ -1,6 +1,5 @@
-{ config, ... }:
-{
-  imports = [ ./hardware-configuration.nix ];
+{config, ...}: {
+  imports = [./hardware-configuration.nix];
 
   networking.hostName = "nixos-desktop";
 
@@ -25,8 +24,8 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Do not disable this unless your GPU is unsupported or if you have a good reason to.

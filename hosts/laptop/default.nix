@@ -1,6 +1,7 @@
-
-{ config, pkgs, ... }:
 {
+  pkgs,
+  ...
+}: {
   imports = [./hardware-configuration.nix];
   networking.hostName = "nixos-laptop";
   powerManagement.enable = true;

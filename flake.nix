@@ -1,4 +1,5 @@
 {
+  # https://github.com/Misterio77/nix-starter-configs
   description = "Septias' nixos config";
 
   inputs = {
@@ -38,7 +39,6 @@
     # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
     overlays = import ./overlays {inherit inputs;};
 
     # 'nixos-rebuild --flake .#hostname'
@@ -51,7 +51,7 @@
       nixos-laptop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./nixos/configuration.nix 
+          ./nixos/configuration.nix
           ./hosts/laptop
           inputs.nixos-hardware.nixosModules.dell-xps-13-9310
         ];
