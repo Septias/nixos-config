@@ -21,8 +21,8 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 1w";
+      dates = "daily";
+      options = "--delete-generations +5";
     };
 
     settings = {
@@ -33,10 +33,17 @@
 
   networking.networkmanager.enable = true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = ["ntfs"];
+  boot = {
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader.efi.canTouchEfiVariables = true;
+    supportedFilesystems = ["ntfs"];
+    bootspec.enable = true;
+  };
 
   # Configure Language
   time.timeZone = "Europe/Berlin";

@@ -14,6 +14,9 @@
     # Nix-hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # Lanzaboot
+    lanzaboote.url = "github:nix-community/lanzaboote";
+    
     # Custom
     dc-times.url = "github:septias/dc-times";
   };
@@ -22,6 +25,7 @@
     self,
     nixpkgs,
     home-manager,
+    lanzaboote,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -44,7 +48,11 @@
     nixosConfigurations = {
       nixos-desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/configuration.nix ./hosts/desktop];
+        modules = [
+        lanzaboote.nixosModules.lanzaboote
+        ./nixos/configuration.nix
+        ./hosts/desktop
+        ];
       };
 
       nixos-laptop = nixpkgs.lib.nixosSystem {
