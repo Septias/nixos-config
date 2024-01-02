@@ -16,7 +16,7 @@
 
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
-    
+
     # Custom
     dc-times.url = "github:septias/dc-times";
   };
@@ -49,9 +49,9 @@
       nixos-desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-        lanzaboote.nixosModules.lanzaboote
-        ./nixos/configuration.nix
-        ./hosts/desktop
+          lanzaboote.nixosModules.lanzaboote
+          ./nixos/configuration.nix
+          ./hosts/desktop
         ];
       };
 
