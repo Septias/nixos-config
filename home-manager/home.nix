@@ -39,11 +39,11 @@
     gitkraken
     evince
     libreoffice
-    agda
+
     nil
     scc
     fd
-    #rust-analyzer
+
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
 
