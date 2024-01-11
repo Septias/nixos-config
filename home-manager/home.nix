@@ -69,6 +69,7 @@
       };
       theme = "Catppuccin-Frappe";
       settings = {
+        confirm_os_window_close = 0;
         remember_window_size = true;
         initial_window_width = 640;
         initial_window_height = 400;
