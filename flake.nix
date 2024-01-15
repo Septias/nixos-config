@@ -60,6 +60,7 @@
         modules = [
           ./nixos/configuration.nix
           ./hosts/laptop
+          lanzaboote.nixosModules.lanzaboote
           inputs.nixos-hardware.nixosModules.dell-xps-13-9310
         ];
       };

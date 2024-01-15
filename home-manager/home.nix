@@ -15,6 +15,9 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
+      permittedInsecurePackages = [
+        "electron-25.9.0"
+      ];
     };
   };
 
@@ -39,10 +42,12 @@
     gitkraken
     evince
     libreoffice
+    thunderbird
 
-    nil
-    scc
-    fd
+    nil # language server
+    scc # loc counter
+    fd  # find 
+    sequoia # gpg decrypt
 
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];

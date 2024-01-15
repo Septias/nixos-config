@@ -33,6 +33,9 @@
 
   networking.networkmanager.enable = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
   boot = {
     loader.systemd-boot.enable = lib.mkForce false;
     lanzaboote = {
