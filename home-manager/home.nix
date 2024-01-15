@@ -15,9 +15,6 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
-      permittedInsecurePackages = [
-        "electron-25.9.0"
-      ];
     };
   };
 
@@ -63,6 +60,7 @@
         pull.ff = "only";
         push.default = "current";
         init.defaultBranch = "main";
+        core.editor = "hx";
       };
     };
     kitty = {
