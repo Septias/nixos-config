@@ -43,7 +43,7 @@
 
     nil # language server
     scc # loc counter
-    fd  # find 
+    fd # find
     sequoia # gpg decrypt
 
     inputs.dc-times.packages.x86_64-linux.dc-times
@@ -75,9 +75,15 @@
         confirm_os_window_close = 0;
         remember_window_size = true;
         initial_window_width = 640;
-        initial_window_height = 400;
+        initial_window_height = 1080;
         hide_window_decorations = true;
         tab_bar_style = "powerline";
+        enabled_layouts = "horizontal,tall,stack";
+      };
+      keybindings = {
+        "ctrl+t" = "launch --cwd=/home/septias/coding";
+        "ctrl+shift+n" = "next_window";
+        "ctrl+q" = "close_window";
       };
       shellIntegration.enableZshIntegration = true;
     };
@@ -112,8 +118,12 @@
         CHATMAIL_DOMAIN = "nine.testrun.org";
         nd = "nix develop";
         nb = "nix build";
+        nc = "hx /home/septias/coding/nixos-config";
+        nf = "nix fmt";
+        ns = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
+        hms = "home-manager switch --flake /home/septias/coding/nixos-config";
         gro = "git reset HEAD~1";
-        hms = "home-manager switch --flake ${./..}";
+        gc = "git commit -am";
       };
     };
     helix = {
