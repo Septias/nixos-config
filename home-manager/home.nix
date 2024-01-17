@@ -122,6 +122,9 @@
         nf = "nix fmt";
         ns = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
         hms = "home-manager switch --flake /home/septias/coding/nixos-config";
+        dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
+        cfmt = "cargo fmt";
+        cclippy = "cargo clippy --fix --allow-staged";
         gro = "git reset HEAD~1";
         gc = "git commit -am";
       };
