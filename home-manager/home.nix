@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [];
-
   nixpkgs = {
     overlays = [
       outputs.overlays.unstable-packages
@@ -40,15 +39,16 @@
     evince
     libreoffice
     thunderbird
-
+    gimp
+    
     nil # language server
     scc # loc counter
     fd # find
     sequoia # gpg decrypt
+    
 
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
-
   programs = {
     git = {
       enable = true;
@@ -127,6 +127,7 @@
         cclippy = "cargo clippy --fix --allow-staged";
         gro = "git reset HEAD~1";
         gc = "git commit -am";
+        gpf = "git push --force-with-lease";
       };
     };
     helix = {

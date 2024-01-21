@@ -11,7 +11,6 @@
       flake-utils.lib.eachDefaultSystem (
         system: let
           name = "rust-project";
-
           pkgs = import nixpkgs {
             overlays = [(import rust-overlay)];
             inherit system;
