@@ -119,6 +119,7 @@
     zip
     gcc
     nvd
+    unzip
   ];
 
   fonts.packages = with pkgs; [

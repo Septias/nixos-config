@@ -30,6 +30,8 @@
 
     gnome.gnome-software
     wl-clipboard
+    gparted
+    woeusb-ng
 
     telegram-desktop
     discord
