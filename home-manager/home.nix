@@ -42,6 +42,8 @@
     libreoffice
     thunderbird
     gimp
+    sqlitebrowser
+    gthumb
     
     nil # language server
     scc # loc counter
@@ -118,18 +120,19 @@
       shellAliases = {
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
         CHATMAIL_DOMAIN = "nine.testrun.org";
+        coder = "dr && code";
         nd = "nix develop";
         nb = "nix build";
         nc = "hx /home/septias/coding/nixos-config";
         nf = "nix fmt";
-        ns = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
+        nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
         hms = "home-manager switch --flake /home/septias/coding/nixos-config";
         dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
         cfmt = "cargo fmt";
         cclippy = "cargo clippy --fix --allow-staged";
         gro = "git reset HEAD~1";
         gc = "git commit -am";
-        gpf = "git push --force-with-lease";
+        gp = "git push --force-with-lease";
       };
     };
     helix = {
