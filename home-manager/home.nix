@@ -31,7 +31,6 @@
     gnome.gnome-software
     wl-clipboard
     gparted
-    woeusb-ng
 
     telegram-desktop
     discord
@@ -49,7 +48,10 @@
     scc # loc counter
     fd # find
     sequoia # gpg decrypt
-    
+    alejandra
+    unzip
+    firebase-tools
+
 
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
@@ -127,6 +129,7 @@
         nf = "nix fmt";
         nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
         hms = "home-manager switch --flake /home/septias/coding/nixos-config";
+        pkg = "nix-shell -p";
         dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
         cfmt = "cargo fmt";
         cclippy = "cargo clippy --fix --allow-staged";

@@ -3,11 +3,16 @@
   lib,
   config,
   pkgs,
+  outputs,
   ...
 }: {
   imports = [];
   nixpkgs = {
     config.allowUnfree = true;
+
+    overlays = [
+      outputs.overlays.unstable-packages
+    ];
   };
 
   nix = {
@@ -42,7 +47,7 @@
       enable = true;
       pkiBundle = "/etc/secureboot";
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.unstable.linuxPackages;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
     bootspec.enable = true;
