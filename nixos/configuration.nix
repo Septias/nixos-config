@@ -42,15 +42,8 @@
     "electron-25.9.0"
   ];
   boot = {
-    loader.systemd-boot.enable = lib.mkForce false;
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
-    kernelPackages = pkgs.unstable.linuxPackages;
+    loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    supportedFilesystems = ["ntfs"];
-    bootspec.enable = true;
   };
 
   # Configure Language

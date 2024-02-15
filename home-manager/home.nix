@@ -22,6 +22,8 @@
     homeDirectory = "/home/septias";
   };
 
+  xsession.windowManager.bspwm.enable = true;
+
   home.packages = with pkgs; [
     unstable.whatsapp-for-linux
     unstable.deltachat-desktop
@@ -43,7 +45,6 @@
     gimp
     sqlitebrowser
     gthumb
-    
     nil # language server
     scc # loc counter
     fd # find
@@ -51,7 +52,7 @@
     alejandra
     unzip
     firebase-tools
-
+    gnomeExtensions.pop-shell
 
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
@@ -90,6 +91,7 @@
         "ctrl+t" = "launch --cwd=/home/septias/coding";
         "ctrl+shift+n" = "next_window";
         "ctrl+q" = "close_window";
+        "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
       };
       shellIntegration.enableZshIntegration = true;
     };
@@ -136,6 +138,7 @@
         gro = "git reset HEAD~1";
         gc = "git commit -am";
         gp = "git push --force-with-lease";
+        sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
       };
     };
     helix = {
@@ -197,12 +200,20 @@
       night-light-enabled = true;
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Shift><Super>Return";
       command = "kitty /home/septias/coding";
       name = "Terminal";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Shift><Super>g";
+      command = "rofi -show run";
+      name = "Rofi";
     };
     "org/gnome/terminal/legacy" = {
       theme-variant = "dark";

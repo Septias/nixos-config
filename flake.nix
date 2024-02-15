@@ -19,6 +19,10 @@
 
     # Custom
     dc-times.url = "github:septias/dc-times";
+     onagre = {
+      type = "path";
+      path = "/home/septias/coding/tmp/onagre";
+    };
   };
 
   outputs = {
@@ -40,7 +44,7 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     # Custom packages
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     overlays = import ./overlays {inherit inputs;};
 
