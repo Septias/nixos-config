@@ -63,11 +63,11 @@
       userEmail = "scoreplayer2000@gmail.com";
       extraConfig = {
         pull.rebase = true;
-        checkout.defaultRemote = "origin";
         pull.ff = "only";
         push.default = "current";
         init.defaultBranch = "main";
         core.editor = "hx";
+        checkout.defaultRemote = "origin";
       };
     };
     kitty = {
