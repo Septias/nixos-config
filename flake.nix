@@ -19,10 +19,6 @@
 
     # Custom
     dc-times.url = "github:septias/dc-times";
-     onagre = {
-      type = "path";
-      path = "/home/septias/coding/tmp/onagre";
-    };
   };
 
   outputs = {

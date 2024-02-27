@@ -53,6 +53,7 @@
     unzip
     firebase-tools
     gnomeExtensions.pop-shell
+    lazygit
 
     inputs.dc-times.packages.x86_64-linux.dc-times
   ];
@@ -63,7 +64,6 @@
       userEmail = "scoreplayer2000@gmail.com";
       extraConfig = {
         pull.rebase = true;
-        pull.ff = "only";
         push.default = "current";
         init.defaultBranch = "main";
         core.editor = "hx";
@@ -139,6 +139,9 @@
         gc = "git commit -am";
         gp = "git push --force-with-lease";
         sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
+        lg = "lazygit";
+        life = "hx /home/septias/OneDrive/Life";
+        todo = "hx /home/septias/OneDrive/Life/Projets/TODOS.md";
       };
     };
     helix = {
