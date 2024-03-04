@@ -430,11 +430,11 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1709494502,
-        "narHash": "sha256-cpaTxrUEVfW2zk4gCs+zV5X5hKX3lcLvfaGoZol5tLA=",
+        "lastModified": 1709538962,
+        "narHash": "sha256-twaiuP045VX7pVA4PG4Y5jNmmWMvpBBXM+1U/rqPhYI=",
         "owner": "septias",
         "repo": "reddit-wallpapers",
-        "rev": "64301ede8f42084bfe257bd79ed3637ef8aed4dd",
+        "rev": "69d2d9ce7337b07aa9a848f2268ab5ec860cb38b",
         "type": "github"
       },
       "original": {
