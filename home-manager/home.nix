@@ -54,8 +54,11 @@
     firebase-tools
     gnomeExtensions.pop-shell
     lazygit
+    zoom-us
 
     inputs.dc-times.packages.x86_64-linux.dc-times
+    inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
+
   ];
   programs = {
     git = {

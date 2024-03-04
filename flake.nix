@@ -19,6 +19,7 @@
 
     # Custom
     dc-times.url = "github:septias/dc-times";
+    reddit-wallpapers.url ="github:septias/reddit-wallpapers";
   };
 
   outputs = {
