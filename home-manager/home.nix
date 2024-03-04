@@ -22,8 +22,6 @@
     homeDirectory = "/home/septias";
   };
 
-  xsession.windowManager.bspwm.enable = true;
-
   home.packages = with pkgs; [
     unstable.whatsapp-for-linux
     unstable.deltachat-desktop
@@ -31,9 +29,8 @@
     unstable.obsidian
 
     gnome.gnome-software
-    wl-clipboard
-    gparted
 
+    ## Office
     telegram-desktop
     discord
     inkscape
@@ -45,20 +42,23 @@
     gimp
     sqlitebrowser
     gthumb
+    zoom-us
+    gparted
+
+    
+    ## Tooling
     nil # language server
     scc # loc counter
     fd # find
     sequoia # gpg decrypt
-    alejandra
-    unzip
+    alejandra # formatter
     firebase-tools
-    gnomeExtensions.pop-shell
     lazygit
-    zoom-us
+    wl-clipboard
 
+    ## Custom
     inputs.dc-times.packages.x86_64-linux.dc-times
     inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
-
   ];
   programs = {
     git = {

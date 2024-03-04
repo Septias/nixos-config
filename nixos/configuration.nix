@@ -9,7 +9,6 @@
   imports = [];
   nixpkgs = {
     config.allowUnfree = true;
-
     overlays = [
       outputs.overlays.unstable-packages
     ];
@@ -84,6 +83,8 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
 
+  xsession.windowManager.bspwm.enable = true;
+
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -112,7 +113,6 @@
     yarn
     python312
     zip
-    gcc
     nvd
     unzip
   ];
