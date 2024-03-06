@@ -30,27 +30,19 @@
         NIXOS_OZONE_WL = "1";
 
         # TODO: Temporary until Flutter Background Bar has a config file
-        FB_DESKTOP_BACKGROUND = theme.wallpaper;
+        #FB_DESKTOP_BACKGROUND = theme.wallpaper;
         FB_OS_LOGO = ./icon.png;
-        FB_DESKTOP_BACKGROUND_TOP = theme.wallpaperTop;
+        #FB_DESKTOP_BACKGROUND_TOP = theme.wallpaperTop;
       };
       layerrule = [
         "noanim, ^(selection)$"
         "blur,^(anyrun)$"
-        "ignorealpha ${toString (theme.popupBackgroundColor.toNormA - 0.01)},^(anyrun)$"
+        #"ignorealpha ${toString (theme.popupBackgroundColor.toNormA - 0.01)},^(anyrun)$"
       ];
-      monitor = cfg.monitors;
-      plugins = {
-        # hyprlens = {
-        #   background = toString theme.wallpaperBlurred;
-        #   nearest = 0;
-        #   tiled = 0;
-        # };
-      };
       misc = {
         vfr = true;
         enable_swallow = true;
-        swallow_regex = "^(foot)$";
+        swallow_regex = "^(kitty)$";
         animate_manual_resizes = false;
         force_default_wallpaper = 0;
       };
@@ -64,9 +56,8 @@
           natural_scroll = false;
         };
 
-        # kb_layout = us,il
-        # kb_options = grp:sclk_toggle
-        kb_file = toString ./keyboard.xkb;
+        ## TODO: add keyboard
+        # kb_file = toString ./keyboard.xkb;
       };
       general = {
         sensitivity = 0.2;

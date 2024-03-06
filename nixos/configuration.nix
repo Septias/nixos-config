@@ -98,6 +98,9 @@
     enable = true;
   };
 
+  xdg.portal.enable = true;
+  programs.hyprland.enable = true;
+
   programs.zsh.enable = true;
   programs.steam.enable = true;
 

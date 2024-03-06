@@ -45,7 +45,6 @@
     zoom-us
     gparted
 
-    
     ## Tooling
     nil # language server
     scc # loc counter
