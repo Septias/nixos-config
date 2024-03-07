@@ -51,9 +51,15 @@
     fd # find
     sequoia # gpg decrypt
     alejandra # formatter
-    firebase-tools
-    lazygit
-    wl-clipboard
+    firebase-tools 
+    lazygit # tui git
+    difftastic # diff files
+    tlrc # tldr written in rust
+    powertop # tui power usage analysis
+    btop # tui resource monitor
+
+    ## Utils
+    wl-clipboard # wayland clipboard utils
 
     ## Custom
     inputs.dc-times.packages.x86_64-linux.dc-times
@@ -169,6 +175,14 @@
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
     };
   };
 
