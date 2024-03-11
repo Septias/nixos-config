@@ -22,6 +22,8 @@
     homeDirectory = "/home/septias";
   };
 
+  wayland.windowManager.hyprland = (import ./hyprland.nix) {inherit pkgs;};
+
   home.packages = with pkgs; [
     unstable.whatsapp-for-linux
     unstable.deltachat-desktop

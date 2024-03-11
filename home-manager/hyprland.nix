@@ -1,11 +1,10 @@
-{}: {
-  wayland.windowManager.hyprland = {
+{pkgs}: {
     enable = true;
     xwayland.enable = true;
     settings = let
       playerctl = "${pkgs.playerctl}/bin/playerctl";
       pactl = "${pkgs.pulseaudio}/bin/pactl";
-      pamixer = "${pkgs.pamixer}/bin/pamixer";
+      pamixer = "${ pkgs.pamixer}/bin/pamixer";
     in {
       bezier = [
         "mycurve,.32,.97,.53,.98"
@@ -13,7 +12,7 @@
         "overshot,.32,.97,.37,1.16"
         "easeInOut,.5,0,.5,1"
       ];
-      env = mapAttrsToList (name: value: "${name},${toString value}") {
+      env = pkgs.lib.mapAttrsToList (name: value: "${name},${toString value}") {
         WLR_NO_HARDWARE_CURSORS = 1; # For Sunshine... Let's see if I notice anything...
         SDL_VIDEODRIVER = "wayland";
         _JAVA_AWT_WM_NONREPARENTING = 1;
@@ -69,8 +68,8 @@
 
         layout = "dwindle";
         # col.active_border=rgb(aaff00) rgba(ffaa00ff) rgba(ffaa00ff) rgba(ffaa00ff) rgb(aaff00) 45deg
-        "col.active_border" = "rgba(${theme.borderColor.active.toHexRGBA})";
-        "col.inactive_border" = "rgba(${theme.borderColor.inactive.toHexRGBA})";
+        #"col.active_border" = "rgba(${theme.borderColor.active.toHexRGBA})";
+        #"col.inactive_border" = "rgba(${theme.borderColor.inactive.toHexRGBA})";
       };
       binds = {
         workspace_back_and_forth = 0;
@@ -122,37 +121,23 @@
       };
       exec-once = [
         "${pkgs.mako}/bin/mako"
-        "${pkgs.foot}/bin/foot --server"
+        #"${pkgs.foot}/bin/foot --server"
         # "${elib.flPkgs inputs.flutter_background_bar}/bin/flutter_background_bar"
         "hyprctl setcursor Bibata-Modern-Ice 24"
-
-        (mkIf cfg.sunshine.enable (pkgs.writeShellScript "sunshine-launcher" ''
-          while true; do
-            "${cfg.sunshine.package}/bin/sunshine" || true
-            sleep 1
-          done
-        ''))
-
-        (mkIf cfg.headlessXorg.enable "${pkgs.xorg.xorgserver}/bin/Xvfb :${toString cfg.headlessXorg.num} -screen 0 1024x768x24")
-
+        
         "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store #Stores only text data"
         "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store #Stores only image data"
-        "${pkgs.swaybg}/bin/swaybg --image ${theme.wallpaper} --mode fill"
+        "${pkgs.swaybg}/bin/swaybg --image ${./wp.jpeg} --mode fill"
         # "[workspace special] firefox"
       ];
       bind = [
         '',Print,exec,${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png''
         "ALT,S,fullscreen"
-        "ALT,F,exec,${pkgs.foot}/bin/foot"
-        "ALT,V,exec,${pkgs.foot}/bin/footclient --app-id sideterm"
-        "ALT,BACKSPACE,exec,${pkgs.foot}/bin/footclient --app-id middleterm"
-        "ALT,D,killactive,"
+        "CTRL,Q,killactive,"
         "ALT,G,togglefloating,"
         ",Menu,exec,hyprctl switchxkblayout kmonad-kb-laptop next && hyprctl switchxkblayout kmonad-kb-hyperx next"
 
-        ",XF86PowerOff,exec,${powerButtonScript}"
-
-        "ALT,SEMICOLON,exec,anyrun"
+        #",XF86PowerOff,exec,${powerButtonScript}"
 
         "SHIFTALT,SEMICOLON,exit,"
         "ALT,A,togglesplit,"
@@ -229,5 +214,4 @@
         ++ (rulesForWindow "floating:1" ["rounding 5"])
         ++ (rulesForWindow "floating:0" ["noshadow"]);
     };
-  };
 }
