@@ -62,6 +62,7 @@
     niv # nix package manager
     nix-tree
     isabelle
+    bat
 
     ## Utils
     wl-clipboard # wayland clipboard utils
