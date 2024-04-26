@@ -5,7 +5,6 @@
   outputs,
   ...
 }: {
-  imports = [];
   nixpkgs = {
     overlays = [
       outputs.overlays.unstable-packages
@@ -37,7 +36,7 @@
     discord
     inkscape
     insomnia
-    gitkraken
+    #gitkraken
     evince
     libreoffice
     thunderbird
@@ -46,6 +45,7 @@
     gthumb
     zoom-us
     gparted
+    blender
 
     ## Tooling
     nil # language server
@@ -59,6 +59,9 @@
     tlrc # tldr written in rust
     powertop # tui power usage analysis
     btop # tui resource monitor
+    niv # nix package manager
+    nix-tree
+    isabelle
 
     ## Utils
     wl-clipboard # wayland clipboard utils
