@@ -70,7 +70,23 @@
 
   # Sound setup
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio = {
+    enable = false;
+    # more codecs
+    package = pkgs.pulsaudioFull;
+    # global pulseaudio installation
+    configFile = pkgs.writeText "default.pa" ''
+    load-module module-bluetooth-policy
+    load-module module-bluetooth-discovery
+    '';
+  };
+  # media buttons support
+  systemd.user.services.mpris-proxy = {
+    description = "Mpris proxy";
+    after = [ "network.target" "sound.target" ];
+    wantedBy = [ "default.target" ];
+    serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -81,7 +97,16 @@
   };
 
   # Bluetooth
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    # Enable A2DP
+    settings.General = {
+      Enable = "Source,Sink,Media,Socket";
+      # Needed to show bluetooth headphone charge
+      Experimental = true;
+    };
+  };
+
   hardware.opengl = {
     enable = true;
     driSupport = true;
