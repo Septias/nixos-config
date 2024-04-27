@@ -141,24 +141,29 @@
       shellAliases = {
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
         CHATMAIL_DOMAIN = "nine.testrun.org";
-        coder = "dr && code";
         nd = "nix develop";
         nb = "nix build";
         nc = "hx /home/septias/coding/nixos-config";
-        nf = "nix fmt";
+        nh = "hx /home/septias/coding/nixos-config/home-manager/home.nix";
         nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
         hms = "home-manager switch --flake /home/septias/coding/nixos-config";
+        _ = "sudo ";
+        "..." = "../..";
+        "...." = "../../..";
+        "....." = "../../../..";
+        "......" = "../../../../..";
         pkg = "nix-shell -p";
         dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
-        cfmt = "cargo fmt";
-        cclippy = "cargo clippy --fix --allow-staged";
+        c-fmt = "cargo fmt";
+        c-fix = "cargo clippy --fix --allow-staged";
         gro = "git reset HEAD~1";
         gc = "git commit -am";
         gp = "git push --force-with-lease";
+        gps = "git stash && git pull --ff && git stash pop";
         sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
         lg = "lazygit";
         life = "hx /home/septias/OneDrive/Life";
-        todo = "hx /home/septias/OneDrive/Life/Projets/TODOS.md";
+        todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
       };
     };
     helix = {
