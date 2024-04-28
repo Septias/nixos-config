@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "berkeley-mono": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713384223,
+        "narHash": "sha256-JIAi5aJQFOu6RL0SxYAX5NyIpzRll+Ydxx3CMxI8SRo=",
+        "owner": "redyf",
+        "repo": "test",
+        "rev": "f25e5d36872d314e4cfd6736a3909f163e6fadca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "redyf",
+        "repo": "test",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -208,6 +224,22 @@
         "type": "github"
       }
     },
+    "monolisa-script": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709742524,
+        "narHash": "sha256-mkw+WhtLw7498iNI4jTdeTq2eteJsfgxN0o8hs0q2l8=",
+        "owner": "redyf",
+        "repo": "test2",
+        "rev": "c234fad704153e0244f160e1e293f35c4b2ff26e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "redyf",
+        "repo": "test2",
+        "type": "github"
+      }
+    },
     "naersk": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -412,13 +444,16 @@
     },
     "root": {
       "inputs": {
+        "berkeley-mono": "berkeley-mono",
         "dc-times": "dc-times",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
+        "monolisa-script": "monolisa-script",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "reddit-wallpapers": "reddit-wallpapers"
+        "reddit-wallpapers": "reddit-wallpapers",
+        "sf-mono-liga-src": "sf-mono-liga-src"
       }
     },
     "rust-overlay": {
@@ -481,6 +516,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sf-mono-liga-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1688258025,
+        "narHash": "sha256-AYjKrVLISsJWXN6Cj74wXmbJtREkFDYOCRw1t2nVH2w=",
+        "owner": "shaunsingh",
+        "repo": "SFMono-Nerd-Font-Ligaturized",
+        "rev": "dc5a3e6fcc2e16ad476b7be3c3c17c2273b260ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "shaunsingh",
+        "repo": "SFMono-Nerd-Font-Ligaturized",
         "type": "github"
       }
     },

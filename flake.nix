@@ -20,6 +20,21 @@
     # Custom
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
+
+    sf-mono-liga-src = {
+      url ="github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+      flake = false;
+    };
+
+    berkeley-mono = {
+      url = "github:redyf/test";
+      flake = false;
+    };
+
+    monolisa-script = {
+      url = "github:redyf/test2";
+      flake = false;
+    };
   };
 
   outputs = {

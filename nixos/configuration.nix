@@ -38,8 +38,25 @@
   networking.networkmanager.enable = true;
 
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      /* grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+        configurationLimit = 8;
+        theme =
+          pkgs.fetchFromGitHub
+          {
+            owner = "Lxtharia";
+            repo = "minegrub-theme";
+            rev = "193b3a7c3d432f8c6af10adfb465b781091f56b3";
+            sha256 = "1bvkfmjzbk7pfisvmyw5gjmcqj9dab7gwd5nmvi8gs4vk72bl2ap";
+          };
+      }; */
+    };
   };
 
   # Configure Language

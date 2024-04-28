@@ -16,12 +16,14 @@
     };
   };
 
+  imports = [
+    ./hyprland
+  ];
+
   home = {
     username = "septias";
     homeDirectory = "/home/septias";
   };
-
-  wayland.windowManager.hyprland = (import ./hyprland.nix) {inherit pkgs;};
 
   home.packages = with pkgs; [
     unstable.whatsapp-for-linux
@@ -36,7 +38,6 @@
     discord
     inkscape
     insomnia
-    #gitkraken
     evince
     libreoffice
     thunderbird
@@ -46,6 +47,7 @@
     zoom-us
     gparted
     blender
+    ani-cli # animey
 
     ## Tooling
     nil # language server
@@ -60,9 +62,11 @@
     powertop # tui power usage analysis
     btop # tui resource monitor
     niv # nix package manager
-    nix-tree
-    isabelle
-    bat
+    nix-tree 
+    isabelle #isabelle proof assistant
+    bat # cat with wings
+    dmenu
+    dunst
 
     ## Utils
     wl-clipboard # wayland clipboard utils
