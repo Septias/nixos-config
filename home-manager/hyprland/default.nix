@@ -355,6 +355,7 @@ in {
         "opacity 1.0 1.0,class:^(wofi)$"
       ];
     };
+    systemd.enable = true;
 
     # Submaps
     # extraConfig = [
