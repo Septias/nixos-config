@@ -48,6 +48,7 @@
     gparted
     blender
     ani-cli # animey
+    vlc
 
     ## Tooling
     nil # language server
