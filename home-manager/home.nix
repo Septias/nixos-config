@@ -163,8 +163,9 @@
         c-fix = "cargo clippy --fix --allow-staged";
         gro = "git reset HEAD~1";
         gc = "git commit -am";
-        gp = "git push --force-with-lease";
-        gps = "git stash && git pull --ff && git stash pop";
+        gu = "git push --force-with-lease";
+        gd = "git pull";
+        gds = "git stash && git pull --ff && git stash pop";
         sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
         lg = "lazygit";
         life = "hx /home/septias/OneDrive/Life";
