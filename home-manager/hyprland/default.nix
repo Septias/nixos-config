@@ -66,7 +66,7 @@ in {
     grim # Grab images from a Wayland compositor
     slurp # Select a region in a Wayland compositor
     swappy # A Wayland native snapshot editing tool, inspired by Snappy on macOS
-    # catppuccin-cursors.frappeSky
+    catppuccin-cursors.frappeSky
     easyeffects
 
     ## Fonts
@@ -136,7 +136,8 @@ in {
     settings = {
       "$mainMod" = "SUPER";
       monitor = [
-        ",preferred,auto,1"
+        "DP-2,1920x1080@144,0x0,1"
+        "DP-1,1920x1080@60,1920x0, 1"
       ];
 
       xwayland = {
@@ -241,19 +242,14 @@ in {
         "SUPER,Q,killactive,"
         "SUPER,S,togglefloating,"
         "SUPER,g,togglegroup"
-        # "SUPER,tab,changegroupactive"
-        # "SUPER,P,pseudo,"
-
-        # Vim binds
-        "SUPER,s,movefocus,l"
-        "SUPER,d,movefocus,r"
-        #"SUPER,r,movefocus,u"
-        #"SUPER,n,movefocus,d"
-
+        
+        # Move focus
+        "SUPER,t,movefocus,r"
+        "SUPER,r,movefocus,l"
         "SUPER,left,movefocus,l"
-        "SUPER,down,movefocus,r"
+        "SUPER,down,movefocus,d"
         "SUPER,up,movefocus,u"
-        "SUPER,right,movefocus,d"
+        "SUPER,right,movefocus,r"
 
         "SUPER,1,workspace,1"
         "SUPER,2,workspace,2"
@@ -264,11 +260,9 @@ in {
         "SUPER,7,workspace,7"
         "SUPER,8,workspace,8"
 
-        ################################## Move ###########################################
-        "SUPER, T, movewindow, l"
-        "SUPER SHIFT, R, movewindow, r"
-        #"SUPER SHIFT, K, movewindow, u"
-        #"SUPER SHIFT, J, movewindow, d"
+        # Move window
+        "SUPER ALT, t, movewindow, l"
+        "SUPER ALT, r, movewindow, r"
         "SUPER SHIFT, left, movewindow, l"
         "SUPER SHIFT, right, movewindow, r"
         "SUPER SHIFT, up, movewindow, u"
