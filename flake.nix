@@ -21,6 +21,14 @@
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
 
+    # hyprland
+    hyprland = {
+      type = "github";
+      owner = "hyprwm";
+      repo = "Hyprland";
+      ref = "v0.40.0";
+    };
+
     sf-mono-liga-src = {
       url ="github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;

@@ -13,7 +13,7 @@
     modesetting.enable = true;
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = false;
@@ -27,7 +27,7 @@
     # Do not disable this unless your GPU is unsupported or if you have a good reason to.
     open = false;
 
-    forceFullCompositionPipeline = true;
+    # forceFullCompositionPipeline = true;
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;

@@ -60,6 +60,10 @@ in {
     ];
   };
 
+  home.sessionVariables = {
+    NIXOS_OZONE_WL = 1;
+  };
+  
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
@@ -111,7 +115,7 @@ in {
       # hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
 
       # Others
-      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+      #dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
     '')
 
     (writeShellScriptBin "importGsettings" ''
@@ -129,7 +133,7 @@ in {
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland; # hyprlandFlake or pkgs.hyprland
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland = {
       enable = true;
     };
@@ -139,9 +143,9 @@ in {
         "DP-2,1920x1080@144,0x0,1"
         "DP-1,1920x1080@60,1920x0, 1"
       ];
-
-      xwayland = {
-        force_zero_scaling = true;
+      
+      cursor = {
+        no_hardware_cursors = true; 
       };
 
       input = {
@@ -261,8 +265,8 @@ in {
         "SUPER,8,workspace,8"
 
         # Move window
-        "SUPER ALT, t, movewindow, l"
-        "SUPER ALT, r, movewindow, r"
+        "SUPER ALT, t, movewindow, r"
+        "SUPER ALT, r, movewindow, l"
         "SUPER SHIFT, left, movewindow, l"
         "SUPER SHIFT, right, movewindow, r"
         "SUPER SHIFT, up, movewindow, u"
@@ -349,7 +353,6 @@ in {
         "opacity 1.0 1.0,class:^(wofi)$"
       ];
     };
-    systemd.enable = true;
 
     # Submaps
     # extraConfig = [

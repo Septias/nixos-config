@@ -166,6 +166,7 @@
         gu = "git push --force-with-lease";
         gd = "git pull";
         gds = "git stash && git pull --ff && git stash pop";
+        nix-clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d";
         sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
         lg = "lazygit";
         life = "hx /home/septias/OneDrive/Life";
