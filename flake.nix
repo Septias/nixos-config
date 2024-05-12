@@ -30,7 +30,7 @@
     };
 
     sf-mono-liga-src = {
-      url ="github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
       flake = false;
     };
 

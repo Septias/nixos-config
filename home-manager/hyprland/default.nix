@@ -11,7 +11,6 @@
   gsettings = "${pkgs.glib}/bin/gsettings";
   gnomeSchema = "org.gnome.desktop.interface";
 in {
-
   imports = [
     ./gtk
     ./swww
@@ -63,7 +62,7 @@ in {
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
   };
-  
+
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
@@ -110,12 +109,9 @@ in {
       dunst &
 
       # Cursor
-      # gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Frappe-Sky-Cursors"
-      # gsettings set org.gnome.desktop.interface cursor-size 30
-      # hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
-
-      # Others
-      #dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+      gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Frappe-Sky-Cursors"
+      gsettings set org.gnome.desktop.interface cursor-size 30
+      hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
     '')
 
     (writeShellScriptBin "importGsettings" ''
@@ -143,9 +139,9 @@ in {
         "DP-2,1920x1080@144,0x0,1"
         "DP-1,1920x1080@60,1920x0, 1"
       ];
-      
+
       cursor = {
-        no_hardware_cursors = true; 
+        # no_hardware_cursors = true;
       };
 
       input = {
@@ -219,7 +215,6 @@ in {
       misc = {
         vfr = true; # misc:no_vfr -> misc:vfr. bool, heavily recommended to leave at default on. Saves on CPU usage.
         vrr = 0; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
-        
       };
 
       dwindle = {
@@ -246,7 +241,7 @@ in {
         "SUPER,Q,killactive,"
         "SUPER,S,togglefloating,"
         "SUPER,g,togglegroup"
-        
+
         # Move focus
         "SUPER,t,movefocus,r"
         "SUPER,r,movefocus,l"

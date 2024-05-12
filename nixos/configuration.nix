@@ -41,7 +41,8 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      /* grub = {
+      /*
+         grub = {
         enable = true;
         device = "nodev";
         efiSupport = true;
@@ -55,7 +56,8 @@
             rev = "193b3a7c3d432f8c6af10adfb465b781091f56b3";
             sha256 = "1bvkfmjzbk7pfisvmyw5gjmcqj9dab7gwd5nmvi8gs4vk72bl2ap";
           };
-      }; */
+      };
+      */
     };
   };
 
@@ -93,15 +95,15 @@
     package = pkgs.pulsaudioFull;
     # global pulseaudio installation
     configFile = pkgs.writeText "default.pa" ''
-    load-module module-bluetooth-policy
-    load-module module-bluetooth-discovery
+      load-module module-bluetooth-policy
+      load-module module-bluetooth-discovery
     '';
   };
   # media buttons support
   systemd.user.services.mpris-proxy = {
     description = "Mpris proxy";
-    after = [ "network.target" "sound.target" ];
-    wantedBy = [ "default.target" ];
+    after = ["network.target" "sound.target"];
+    wantedBy = ["default.target"];
     serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
   };
   security.rtkit.enable = true;
@@ -136,9 +138,8 @@
   services.fwupd.enable = true;
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplip];
+    drivers = [pkgs.hplip];
   };
-
 
   services.avahi = {
     enable = true;
@@ -157,10 +158,13 @@
   programs.zsh.enable = true;
   programs.steam.enable = true;
 
-  environment.shells = with pkgs; [zsh];
-  environment.variables = {
-    DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
-    RUST_LOG = "info";
+  environment = {
+    shells = with pkgs; [zsh];
+    variables = {
+      DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
+      RUST_LOG = "info";
+    };
+    sessionVariables.NIXOS_OZONE_WL = "1";
   };
   users.defaultUserShell = pkgs.zsh;
 

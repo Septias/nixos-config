@@ -56,14 +56,14 @@
     fd # find
     sequoia # gpg decrypt
     alejandra # formatter
-    firebase-tools 
+    firebase-tools
     lazygit # tui git
     difftastic # diff files
     tlrc # tldr written in rust
     powertop # tui power usage analysis
     btop # tui resource monitor
     niv # nix package manager
-    nix-tree 
+    nix-tree
     isabelle #isabelle proof assistant
     bat # cat with wings
     dmenu
