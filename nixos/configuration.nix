@@ -115,6 +115,12 @@
     audio.enable = true;
   };
 
+  services.minecraft-server = {
+    enable = true;
+    eula = true;
+    openFirewall = true;
+  };
+
   # Bluetooth
   hardware.bluetooth = {
     enable = true;

@@ -33,6 +33,8 @@
 
     gnome.gnome-software
 
+    prismlauncher 
+    
     ## Office
     telegram-desktop
     discord
