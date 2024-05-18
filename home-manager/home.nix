@@ -23,6 +23,7 @@
   home = {
     username = "septias";
     homeDirectory = "/home/septias";
+    file.".icons/default".source = "${pkgs.vanilla-dmz}/share/icons/Vanilla-DMZ";
   };
 
   home.packages = with pkgs; [
