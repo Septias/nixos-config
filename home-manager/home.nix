@@ -68,7 +68,7 @@
     niv # nix package manager
     nix-tree
     isabelle #isabelle proof assistant
-    bat # cat with wings
+    glxinfo # OpenGL info
     dmenu
     dunst
     devenv
@@ -81,6 +81,7 @@
     inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
   ];
   programs = {
+    bat.enable = true;
     git = {
       enable = true;
       userName = "Sebastian Klähn";

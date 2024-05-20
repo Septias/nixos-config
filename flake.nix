@@ -20,26 +20,12 @@
     # Custom
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
-
-    sf-mono-liga-src = {
-      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
-      flake = false;
-    };
-
-    berkeley-mono = {
-      url = "github:redyf/test";
-      flake = false;
-    };
-
-    monolisa-script = {
-      url = "github:redyf/test2";
-      flake = false;
-    };
   };
 
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     lanzaboote,
     ...
@@ -56,7 +42,7 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     # Custom packages
-    #packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     overlays = import ./overlays {inherit inputs;};
 
@@ -71,7 +57,7 @@
         ];
       };
 
-      nixos-laptop = nixpkgs.lib.nixosSystem {
+      nixos-laptop = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
@@ -84,7 +70,13 @@
 
     # 'home-manager --flake .username@hostname'
     homeConfigurations = {
-      septias = home-manager.lib.homeManagerConfiguration {
+      "septias@nixos-laptop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./home-manager/home.nix];
+      };
+
+      "septias@nixos-desktop" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./home-manager/home.nix];

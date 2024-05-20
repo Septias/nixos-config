@@ -17,11 +17,11 @@
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
+    #registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    #nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     gc = {
       automatic = true;
@@ -99,6 +99,7 @@
       load-module module-bluetooth-discovery
     '';
   };
+  
   # media buttons support
   systemd.user.services.mpris-proxy = {
     description = "Mpris proxy";
@@ -106,7 +107,7 @@
     wantedBy = ["default.target"];
     serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
   };
-  security.rtkit.enable = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -115,8 +116,11 @@
     audio.enable = true;
   };
 
+  # realtime scheduling for user processes
+  security.rtkit.enable = true;  
+
   services.minecraft-server = {
-    enable = true;
+    enable = false;
     eula = true;
     openFirewall = true;
   };
@@ -141,12 +145,17 @@
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.gdm.enable = true;
+
+  # update firmeware
   services.fwupd.enable = true;
+
+  # TODO: add printer
   services.printing = {
     enable = true;
     drivers = [pkgs.hplip];
   };
 
+  # local network communication
   services.avahi = {
     enable = true;
     nssmdns = true;
@@ -159,7 +168,6 @@
   };
 
   xdg.portal.enable = true;
-  programs.hyprland.enable = true;
 
   programs.zsh.enable = true;
   programs.steam.enable = true;
@@ -170,7 +178,6 @@
       DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
       RUST_LOG = "info";
     };
-    sessionVariables.NIXOS_OZONE_WL = "1";
   };
   users.defaultUserShell = pkgs.zsh;
 
@@ -179,7 +186,6 @@
     git
     nodejs_20
     nodePackages.pnpm
-    yarn
     python312
     zip
     nvd
