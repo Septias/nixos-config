@@ -177,7 +177,7 @@
   environment.systemPackages = with pkgs; [
     home-manager
     git
-    nodejs
+    nodejs_20
     nodePackages.pnpm
     yarn
     python312

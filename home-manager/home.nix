@@ -71,6 +71,7 @@
     bat # cat with wings
     dmenu
     dunst
+    devenv
 
     ## Utils
     wl-clipboard # wayland clipboard utils
