@@ -185,7 +185,6 @@
     home-manager
     git
     nodejs_20
-    nodePackages.pnpm
     python312
     zip
     nvd

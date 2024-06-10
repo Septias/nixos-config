@@ -31,7 +31,7 @@
     unstable.deltachat-desktop
     unstable.google-chrome
     unstable.obsidian
-
+    unstable.nodePackages.pnpm
     gnome.gnome-software
 
     prismlauncher 
@@ -69,7 +69,6 @@
     nix-tree # show nix store
     isabelle #isabelle proof assistant
     glxinfo # OpenGL info
-    devenv
     fzf # fuzzy finder
 
     ## Utils
