@@ -17,7 +17,7 @@
   };
 
   imports = [
-    ./hyprland
+    #./hyprland
   ];
 
   home = {
@@ -72,6 +72,7 @@
     dmenu
     dunst
     devenv
+    anki
 
     ## Utils
     wl-clipboard # wayland clipboard utils
@@ -176,6 +177,7 @@
         lg = "lazygit";
         life = "hx /home/septias/OneDrive/Life";
         todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
+        o = "xdg-open";
       };
     };
     helix = {
