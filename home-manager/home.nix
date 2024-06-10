@@ -52,6 +52,7 @@
     blender
     ani-cli # animey
     vlc
+    anki
 
     ## Tooling
     nil # language server
@@ -65,14 +66,11 @@
     tlrc # tldr written in rust
     powertop # tui power usage analysis
     btop # tui resource monitor
-    niv # nix package manager
-    nix-tree
+    nix-tree # show nix store
     isabelle #isabelle proof assistant
     glxinfo # OpenGL info
-    dmenu
-    dunst
     devenv
-    anki
+    fzf # fuzzy finder
 
     ## Utils
     wl-clipboard # wayland clipboard utils
@@ -126,7 +124,7 @@
     zsh = {
       enable = true;
       enableCompletion = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       plugins = [
         {
           name = "powerlevel10k";

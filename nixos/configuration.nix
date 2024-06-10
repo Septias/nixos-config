@@ -75,9 +75,9 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "de";
-    xkbVariant = "neo";
+    variant = "neo";
   };
   console.keyMap = "neo";
 
@@ -158,7 +158,7 @@
   # local network communication
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     openFirewall = true;
   };
 
