@@ -114,8 +114,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     audio.enable = true;
+    jack.enable = true;
   };
-
   # realtime scheduling for user processes
   security.rtkit.enable = true;  
 
