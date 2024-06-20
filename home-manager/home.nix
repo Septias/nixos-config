@@ -70,6 +70,7 @@
     isabelle #isabelle proof assistant
     glxinfo # OpenGL info
     fzf # fuzzy finder
+    sl
 
     ## Utils
     wl-clipboard # wayland clipboard utils
