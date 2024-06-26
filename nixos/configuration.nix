@@ -149,12 +149,24 @@
   # update firmeware
   services.fwupd.enable = true;
 
-  # TODO: add printer
   services.printing = {
     enable = true;
     drivers = [pkgs.hplip];
+    openFirewall = true;
   };
 
+  hardware.printers = {
+    ensurePrinters = [{
+      name = "Officejet-4620";
+      location = "Home";
+      deviceUri = "dnssd://Officejet%204620%20series%20%5BA6BBCE%5D._pdl-datastream._tcp.local/?uuid=1c852a4d-b800-1f08-abcd-c8cbb8a6bbce";
+      model = "drv:///hp/hpcups.drv/hp-officejet_4620_series.ppd";
+      ppdOptions = {
+        PageSize = "A4";
+      };
+    }];
+  };
+  
   # local network communication
   services.avahi = {
     enable = true;
