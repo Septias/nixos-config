@@ -177,6 +177,7 @@
         life = "hx /home/septias/OneDrive/Life";
         todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
         o = "xdg-open";
+        fu = "nix flake update";
       };
     };
     helix = {
