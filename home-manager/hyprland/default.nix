@@ -270,19 +270,6 @@ in {
         #---------------------------------------------------------------#
         # Move active window to a workspace with mainMod + ctrl + [0-9] #
         #---------------------------------------------------------------#
-        # "SUPER $mainMod CTRL, 1, movetoworkspace, 1"
-        # "SUPER $mainMod CTRL, 2, movetoworkspace, 2"
-        # "SUPER $mainMod CTRL, 3, movetoworkspace, 3"
-        # "SUPER $mainMod CTRL, 4, movetoworkspace, 4"
-        # "SUPER $mainMod CTRL, 5, movetoworkspace, 5"
-        # "SUPER $mainMod CTRL, 6, movetoworkspace, 6"
-        # "SUPER $mainMod CTRL, 7, movetoworkspace, 7"
-        # "SUPER $mainMod CTRL, 8, movetoworkspace, 8"
-        # "SUPER $mainMod CTRL, 9, movetoworkspace, 9"
-        # "SUPER $mainMod CTRL, 0, movetoworkspace, 10"
-        # "SUPER $mainMod CTRL, left, movetoworkspace, -1"
-        # "SUPER $mainMod CTRL, right, movetoworkspace, +1"
-        # same as above, but doesnt switch to the workspace
         "SUPER $mainMod SHIFT, 1, movetoworkspacesilent, 1"
         "SUPER $mainMod SHIFT, 2, movetoworkspacesilent, 2"
         "SUPER $mainMod SHIFT, 3, movetoworkspacesilent, 3"
@@ -324,14 +311,11 @@ in {
         # Window rules
         "tile,title:^(kitty)$"
         "float,title:^(fly_is_kitty)$"
-        "tile,^(Spotify)$"
         "tile,^(wps)$"
       ];
 
       windowrulev2 = [
-        "opacity ${opacity} ${opacity},class:^(thunar)$"
         "opacity ${opacity} ${opacity},class:^(discord)$"
-        "opacity ${opacity} ${opacity},class:^(st-256color)$"
         "float,class:^(pavucontrol)$"
         "float,class:^(file_progress)$"
         "float,class:^(confirm)$"

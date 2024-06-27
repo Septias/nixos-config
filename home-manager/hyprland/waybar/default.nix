@@ -15,14 +15,14 @@
   # waybar_config = import ./tokyonight/config.nix {inherit osConfig config lib pkgs;};
   # waybar_style = import ./tokyonight/style.nix {inherit (config) colorscheme;};
   # Catppuccin
-  # waybar_config = import ./catppuccin/config.nix { inherit osConfig config lib pkgs; };
-  # waybar_style = import ./catppuccin/style.nix { inherit (config) colorscheme; };
+  waybar_config = import ./catppuccin/config.nix { inherit osConfig config lib pkgs; };
+  waybar_style = import ./catppuccin/style.nix { inherit (config) colorscheme; };
   # New bar
   # waybar_config = import ./default/config.nix { inherit osConfig config lib pkgs; };
   # waybar_style = import ./default/style.nix { inherit (config) colorscheme; };
   # Simple bar
-  waybar_config = import ./simple/config.nix {inherit osConfig config lib pkgs;};
-  waybar_style = import ./simple/style.nix {inherit (config) colorscheme;};
+  #waybar_config = import ./simple/config.nix {inherit osConfig config lib pkgs;};
+  # waybar_style = import ./simple/style.nix {inherit (config) colorscheme;};
 in {
   programs.waybar = {
     enable = true;
