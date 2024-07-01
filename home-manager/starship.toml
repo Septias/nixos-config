@@ -36,7 +36,6 @@ crust = "#232634"
 [directory]
 style = "bold blue"
 truncate_to_repo = true
-truncation_symbol = '…/'
 
 [line_break]
 disabled = true
@@ -44,8 +43,9 @@ disabled = true
 [nix_shell]
 format = "❄️  "
 
-[time]
-format = "$time"
-
 [cmd_duration]
 format = "[$duration](style) "
+
+[git_status]
+format = "$conflicted$behind$ahead$diverged"
+conflicted = "[✖](bold red)"
