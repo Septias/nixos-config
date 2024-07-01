@@ -70,7 +70,8 @@
     isabelle #isabelle proof assistant
     glxinfo # OpenGL info
     fzf # fuzzy finder
-    sl
+    sl # funny trai
+    taplo # toml language server
 
     ## Utils
     wl-clipboard # wayland clipboard utils
@@ -117,11 +118,48 @@
         "ctrl+q" = "close_window";
         "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
       };
-      shellIntegration.enableZshIntegration = true;
+      # shellIntegration.enableZshIntegration = true;
     };
     nushell = {
       enable = true;
+      configFile.source = ./config.nu;
+      shellAliases = {
+        dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
+        CHATMAIL_DOMAIN = "nine.testrun.org";
+        nd = "nix develop";
+        nb = "nix build";
+        nc = "hx /home/septias/coding/nixos-config";
+        nh = "hx /home/septias/coding/nixos-config/home-manager/home.nix";
+        nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
+        hms = "home-manager switch --flake /home/septias/coding/nixos-config";
+        _ = "sudo ";
+        "..." = "../..";
+        "...." = "../../..";
+        "....." = "../../../..";
+        "......" = "../../../../..";
+        pkg = "nix-shell -p";
+        dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
+        c-fmt = "cargo fmt";
+        c-fix = "cargo clippy --fix --allow-staged";
+        gro = "git reset HEAD~1";
+        gc = "git commit -am";
+        gu = "git push --force-with-lease";
+        gd = "git pull";
+        gds = "git stash and git pull --ff and git stash pop";
+        nix-clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old and nix-collect-garbage -d";
+        #sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
+        lg = "lazygit";
+        life = "hx /home/septias/OneDrive/Life";
+        todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
+        o = "xdg-open";
+        fu = "nix flake update";
+      };
     };
+    starship = {
+      enable = true;
+      settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+    };
+    # unused
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -148,37 +186,6 @@
           };
         }
       ];
-      shellAliases = {
-        dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
-        CHATMAIL_DOMAIN = "nine.testrun.org";
-        nd = "nix develop";
-        nb = "nix build";
-        nc = "hx /home/septias/coding/nixos-config";
-        nh = "hx /home/septias/coding/nixos-config/home-manager/home.nix";
-        nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
-        hms = "home-manager switch --flake /home/septias/coding/nixos-config";
-        _ = "sudo ";
-        "..." = "../..";
-        "...." = "../../..";
-        "....." = "../../../..";
-        "......" = "../../../../..";
-        pkg = "nix-shell -p";
-        dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
-        c-fmt = "cargo fmt";
-        c-fix = "cargo clippy --fix --allow-staged";
-        gro = "git reset HEAD~1";
-        gc = "git commit -am";
-        gu = "git push --force-with-lease";
-        gd = "git pull";
-        gds = "git stash && git pull --ff && git stash pop";
-        nix-clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d";
-        sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
-        lg = "lazygit";
-        life = "hx /home/septias/OneDrive/Life";
-        todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
-        o = "xdg-open";
-        fu = "nix flake update";
-      };
     };
     helix = {
       enable = true;
@@ -203,11 +210,9 @@
     };
     zoxide = {
       enable = true;
-      enableZshIntegration = true;
     };
     atuin = {
       enable = true;
-      enableZshIntegration = false;
     };
   };
 

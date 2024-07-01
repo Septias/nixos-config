@@ -21,7 +21,7 @@
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
-    #nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    # nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     gc = {
       automatic = true;
@@ -185,13 +185,13 @@
   programs.steam.enable = true;
 
   environment = {
-    shells = with pkgs; [zsh];
+    shells = with pkgs; [ nushell zsh ];
     variables = {
       DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
       RUST_LOG = "info";
     };
   };
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.nushell;
 
   environment.systemPackages = with pkgs; [
     home-manager
