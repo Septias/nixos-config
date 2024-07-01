@@ -212,7 +212,13 @@
       enable = true;
     };
     atuin = {
-      enable = true;
+      enable = false;
+      settings = {
+        auto_sync = true;
+        style = "compact";
+        inline_height = 20;
+        enter_accept = true;
+      };
     };
   };
 
