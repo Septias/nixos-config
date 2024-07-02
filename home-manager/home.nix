@@ -276,6 +276,9 @@
     "org/gnome/terminal/legacy" = {
       theme-variant = "dark";
     };
+    "org/gnome/gnome-session" = {
+      logout-prompt = false;
+    };
   };
 
   # Nicely reload system units when changing configs
