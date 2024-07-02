@@ -41,7 +41,7 @@ truncate_to_repo = true
 disabled = true
 
 [nix_shell]
-format = "❄️  "
+format = "✵ "
 
 [cmd_duration]
 format = "[$duration](style) "

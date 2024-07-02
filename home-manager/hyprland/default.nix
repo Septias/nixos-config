@@ -3,13 +3,7 @@
   inputs,
   ...
 }: let
-  oxocarbon_background = "161616";
-  background = "rgba(11111B00)";
-  catppuccin_border = "rgba(b4befeee)";
-  opacity = "0.95";
-  transparent_gray = "rgba(666666AA)";
   gsettings = "${pkgs.glib}/bin/gsettings";
-  gnomeSchema = "org.gnome.desktop.interface";
 in {
   imports = [
     ./gtk
@@ -17,72 +11,17 @@ in {
     ./waybar
     ./wofi
   ];
-  nixpkgs = {
-    overlays = with inputs; [
-      # neovim-nightly-overlay.overlay
-      (
-        final: prev: {
-          sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation {
-            pname = "sf-mono-liga-bin";
-            version = "dev";
-            src = sf-mono-liga-src;
-            dontConfigure = true;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              cp -R $src/*.otf $out/share/fonts/opentype/
-            '';
-          };
-
-          monolisa-script = prev.stdenvNoCC.mkDerivation {
-            pname = "monolisa";
-            version = "dev";
-            src = monolisa-script;
-            dontConfigure = true;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              cp -R $src/*.ttf $out/share/fonts/opentype/
-            '';
-          };
-
-          berkeley = prev.stdenvNoCC.mkDerivation {
-            pname = "berkeley";
-            version = "dev";
-            src = berkeley-mono;
-            dontConfigure = true;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              cp -R $src/*.otf $out/share/fonts/opentype/
-            '';
-          };
-        }
-      )
-    ];
-  };
-
+ 
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
   };
-
-  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     grim # Grab images from a Wayland compositor
     slurp # Select a region in a Wayland compositor
     swappy # A Wayland native snapshot editing tool, inspired by Snappy on macOS
-    catppuccin-cursors.frappeSky
     easyeffects
 
-    ## Fonts
-    dejavu_fonts
-    font-awesome
-    fira-code-symbols
-    material-design-icons
-    (nerdfonts.override {fonts = ["FiraMono" "JetBrainsMono"];})
-    noto-fonts
-    powerline-symbols
-    monolisa-script
-    sf-mono-liga-bin
-    berkeley
 
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
@@ -97,8 +36,7 @@ in {
 
       # Waybar
       pkill waybar
-      $scripts/launch_waybar &
-      # $scripts/tools/dynamic &
+      $scripts/launch_waybar
 
       # Wallpaper
       swww kill
@@ -109,27 +47,15 @@ in {
       dunst &
 
       # Cursor
-      gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Frappe-Sky-Cursors"
-      gsettings set org.gnome.desktop.interface cursor-size 30
-      hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
+      # gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Frappe-Sky-Cursors"
+      # gsettings set org.gnome.desktop.interface cursor-size 30
+      # hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
     '')
 
-    (writeShellScriptBin "importGsettings" ''
-      config="/home/redyf/.config/gtk-3.0/settings.ini"
-      if [ ! -f "$config" ]; then exit 1; fi
-      gtk_theme="$(grep 'gtk-theme-name' "$config" | sed 's/.*\s*=\s*//')"
-      icon_theme="$(grep 'gtk-icon-theme-name' "$config" | sed 's/.*\s*=\s*//')"
-      cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | sed 's/.*\s*=\s*//')"
-      font_name="$(grep 'gtk-font-name' "$config" | sed 's/.*\s*=\s*//')"
-      ${gsettings} set ${gnomeSchema} gtk-theme "$gtk_theme"
-      ${gsettings} set ${gnomeSchema} icon-theme "$icon_theme"
-      ${gsettings} set ${gnomeSchema} cursor-theme "$cursor_theme"
-      ${gsettings} set ${gnomeSchema} font-name "$font_name"
-    '')
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.unstable.hyprland;
+    systemd.enable = true;
     xwayland = {
       enable = true;
     };
@@ -166,8 +92,6 @@ in {
         gaps_in = 1;
         gaps_out = 2;
         border_size = 3;
-        "col.active_border" = "${catppuccin_border}";
-        "col.inactive_border" = "${transparent_gray}";
         layout = "dwindle";
         apply_sens_to_raw = 1; # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
       };
@@ -178,8 +102,6 @@ in {
         drop_shadow = true;
         shadow_range = 20;
         shadow_render_power = 3;
-        "col.shadow" = "rgb(${oxocarbon_background})";
-        "col.shadow_inactive" = "${background}";
         blur = {
           enabled = true;
           size = 4;
@@ -234,7 +156,6 @@ in {
       exec-once = [
         "autostart"
         "easyeffects --gapplication-service" # Starts easyeffects in the background
-        # "importGsettings"
       ];
 
       bind = [
@@ -267,9 +188,6 @@ in {
         "SUPER SHIFT, up, movewindow, u"
         "SUPER SHIFT, down, movewindow, d"
 
-        #---------------------------------------------------------------#
-        # Move active window to a workspace with mainMod + ctrl + [0-9] #
-        #---------------------------------------------------------------#
         "SUPER $mainMod SHIFT, 1, movetoworkspacesilent, 1"
         "SUPER $mainMod SHIFT, 2, movetoworkspacesilent, 2"
         "SUPER $mainMod SHIFT, 3, movetoworkspacesilent, 3"
@@ -289,11 +207,9 @@ in {
       ];
 
       bindm = [
-        # Mouse binds
         "SUPER,mouse:272,movewindow"
         "SUPER,mouse:273,resizewindow"
       ];
-
       # bindle = [
       #     # Backlight Keys
       #     ",XF86MonBrightnessUp,exec,light -A 5"
@@ -302,68 +218,20 @@ in {
       #     ",XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%  "
       #     ",XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%  "
       # ];
-      # bindl = [
-      #     ",switch:on:Lid Switch, exec, swaylock -f -i ~/photos/wallpapers/wallpaper.png"
-      #     ",switch:off:Lid Switch, exec, swaylock -f -i ~/photos/wallpapers/wallpaper.png"
-      # ];
-
-      windowrule = [
-        # Window rules
+     
+       windowrule = [
         "tile,title:^(kitty)$"
         "float,title:^(fly_is_kitty)$"
-        "tile,^(wps)$"
-      ];
-
-      windowrulev2 = [
-        "opacity ${opacity} ${opacity},class:^(discord)$"
-        "float,class:^(pavucontrol)$"
-        "float,class:^(file_progress)$"
-        "float,class:^(confirm)$"
-        "float,class:^(dialog)$"
-        "float,class:^(download)$"
-        "float,class:^(notification)$"
-        "float,class:^(error)$"
-        "float,class:^(confirmreset)$"
-        "float,title:^(Open File)$"
-        "float,title:^(branchdialog)$"
-        "float,title:^(Confirm to replace files)$"
-        "float,title:^(File Operation Progress)$"
-        "float,title:^(mpv)$"
-        "opacity 1.0 1.0,class:^(wofi)$"
       ];
     };
-
-    # Submaps
     # extraConfig = [
-    # "gsettings set org.gnome.desktop.interface cursor-theme macOS-BigSur"
-    #        source = ~/.config/hypr/themes/catppuccin-macchiato.conf
-    #        source = ~/.config/hypr/themes/oxocarbon.conf
     #        env = GBM_BACKEND,nvidia-drm
     #        env = LIBVA_DRIVER_NAME,nvidia
     #        env = XDG_SESSION_TYPE,wayland
     #        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
     #        env = WLR_NO_HARDWARE_CURSORS,1
-    #        # will switch to a submap called resize
-    #        bind=$mainMod,R,submap,resize
-    #
-    #        # will start a submap called "resize"
-    #        submap=resize
-    #
-    #        # sets repeatable binds for resizing the active window
-    #        binde=,L,resizeactive,15 0
-    #        binde=,H,resizeactive,-15 0
-    #        binde=,K,resizeactive,0 -15
-    #        binde=,J,resizeactive,0 15
-    #
-    #        # use reset to go back to the global submap
-    #        bind=,escape,submap,reset
-    #        bind=$mainMod,R,submap,reset
-    #
-    #        # will reset the submap, meaning end the current one and return to the global one
-    #        submap=reset
     # ];
   };
-
   # Hyprland configuration files
   xdg.configFile = {
     "hypr/store/dynamic_out.txt".source = ./store/dynamic_out.txt;

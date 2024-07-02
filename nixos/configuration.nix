@@ -181,9 +181,10 @@
 
   xdg.portal.enable = true;
 
-  programs.zsh.enable = true;
+  #programs.zsh.enable = true;
   programs.steam.enable = true;
-
+  programs.hyprland.enable = true;
+  
   environment = {
     shells = with pkgs; [ nushell zsh ];
     variables = {

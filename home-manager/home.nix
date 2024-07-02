@@ -17,7 +17,7 @@
   };
 
   imports = [
-    #./hyprland
+    ./hyprland
   ];
 
   home = {

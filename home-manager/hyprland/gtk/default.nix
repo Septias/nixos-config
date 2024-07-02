@@ -10,8 +10,8 @@
         variant = "macchiato";
       };
     };
-    cursorTheme = {
-      name = "Catppuccin-Frappe-Sky-Cursors";
-    };
+    # cursorTheme = {
+    #   name = "Catppuccin-Frappe-Sky-Cursors";
+    # };
   };
 }
