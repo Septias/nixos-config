@@ -11,7 +11,7 @@ in {
     ./waybar
     ./wofi
   ];
- 
+
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
   };
@@ -21,7 +21,6 @@ in {
     slurp # Select a region in a Wayland compositor
     swappy # A Wayland native snapshot editing tool, inspired by Snappy on macOS
     easyeffects
-
 
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
@@ -51,7 +50,6 @@ in {
       # gsettings set org.gnome.desktop.interface cursor-size 30
       # hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
     '')
-
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -218,8 +216,8 @@ in {
       #     ",XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%  "
       #     ",XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%  "
       # ];
-     
-       windowrule = [
+
+      windowrule = [
         "tile,title:^(kitty)$"
         "float,title:^(fly_is_kitty)$"
       ];

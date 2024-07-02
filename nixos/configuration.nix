@@ -99,7 +99,7 @@
       load-module module-bluetooth-discovery
     '';
   };
-  
+
   # media buttons support
   systemd.user.services.mpris-proxy = {
     description = "Mpris proxy";
@@ -117,7 +117,7 @@
     jack.enable = true;
   };
   # realtime scheduling for user processes
-  security.rtkit.enable = true;  
+  security.rtkit.enable = true;
 
   services.minecraft-server = {
     enable = false;
@@ -156,17 +156,19 @@
   };
 
   hardware.printers = {
-    ensurePrinters = [{
-      name = "Officejet-4620";
-      location = "Home";
-      deviceUri = "dnssd://Officejet%204620%20series%20%5BA6BBCE%5D._pdl-datastream._tcp.local/?uuid=1c852a4d-b800-1f08-abcd-c8cbb8a6bbce";
-      model = "drv:///hp/hpcups.drv/hp-officejet_4620_series.ppd";
-      ppdOptions = {
-        PageSize = "A4";
-      };
-    }];
+    ensurePrinters = [
+      {
+        name = "Officejet-4620";
+        location = "Home";
+        deviceUri = "dnssd://Officejet%204620%20series%20%5BA6BBCE%5D._pdl-datastream._tcp.local/?uuid=1c852a4d-b800-1f08-abcd-c8cbb8a6bbce";
+        model = "drv:///hp/hpcups.drv/hp-officejet_4620_series.ppd";
+        ppdOptions = {
+          PageSize = "A4";
+        };
+      }
+    ];
   };
-  
+
   # local network communication
   services.avahi = {
     enable = true;
@@ -184,9 +186,9 @@
   #programs.zsh.enable = true;
   programs.steam.enable = true;
   programs.hyprland.enable = true;
-  
+
   environment = {
-    shells = with pkgs; [ nushell zsh ];
+    shells = with pkgs; [nushell zsh];
     variables = {
       DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
       RUST_LOG = "info";

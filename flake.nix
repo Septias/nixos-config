@@ -75,7 +75,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home-manager/home.nix 
+          ./home-manager/home.nix
           # {
           #   wayland.windowManager.hyprland.settings.monitor = builtins.mkOverride 10 [
           #     "DP-2,1920x1080@144,0x0,1"

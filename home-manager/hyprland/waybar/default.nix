@@ -5,8 +5,8 @@
   pkgs,
   ...
 }: let
-  waybar_config = import ./catppuccin/config.nix { inherit osConfig config lib pkgs; };
-  waybar_style = import ./catppuccin/style.nix { inherit (config) colorscheme; };
+  waybar_config = import ./catppuccin/config.nix {inherit osConfig config lib pkgs;};
+  waybar_style = import ./catppuccin/style.nix {inherit (config) colorscheme;};
 in {
   programs.waybar = {
     enable = true;

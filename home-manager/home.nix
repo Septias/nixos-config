@@ -34,8 +34,8 @@
     unstable.nodePackages.pnpm
     gnome.gnome-software
 
-    prismlauncher 
-    
+    prismlauncher
+
     ## Office
     telegram-desktop
     discord
