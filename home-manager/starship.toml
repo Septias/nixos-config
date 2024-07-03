@@ -36,6 +36,7 @@ crust = "#232634"
 [directory]
 style = "bold blue"
 truncate_to_repo = true
+truncation_symbol = "-"
 
 [line_break]
 disabled = true
@@ -45,6 +46,9 @@ format = "✵ "
 
 [cmd_duration]
 format = "[$duration](style) "
+
+[git_branch]
+format ="[@$branch(:$remote_branch)]($style) "
 
 [git_status]
 format = "$conflicted$behind$ahead$diverged"
