@@ -53,3 +53,9 @@ format ="[@$branch(:$remote_branch)]($style) "
 [git_status]
 format = "$conflicted$behind$ahead$diverged"
 conflicted = "[✖](bold red)"
+
+[package]
+disabled = true
+
+[rust]
+format ="[$symbol($version )]($style)"
