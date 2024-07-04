@@ -1,10 +1,8 @@
 {
   pkgs,
-  inputs,
   ...
-}: let
-  gsettings = "${pkgs.glib}/bin/gsettings";
-in {
+}: {
+  #gsettings = "${pkgs.glib}/bin/gsettings";{
   imports = [
     ./gtk
     ./swww
@@ -59,15 +57,7 @@ in {
     };
     settings = {
       "$mainMod" = "SUPER";
-      monitor = [
-        "DP-2,1920x1080@144,0x0,1"
-        "DP-1,1920x1080@60,1920x0, 1"
-      ];
-
-      cursor = {
-        # no_hardware_cursors = true;
-      };
-
+      
       input = {
         kb_layout = "de";
         kb_variant = "neo";
@@ -76,8 +66,8 @@ in {
         kb_rules = "";
 
         follow_mouse = 1;
-        repeat_delay = 140;
-        repeat_rate = 30;
+        repeat_delay = 400;
+        repeat_rate = 25;
         accel_profile = "flat";
         sensitivity = 0;
         force_no_accel = 1;
