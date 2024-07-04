@@ -88,7 +88,14 @@
       "septias@nixos-desktop" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home-manager/home.nix];
+        modules = [
+          ./home-manager/home.nix
+          {
+            wayland.windowManager.hyprland.settings.monitor = builtins.mkOverride 10 [
+              "eDP-1,1920x1080@60,0x0,1"           
+            ];
+          }
+        ];
       };
     };
   };
