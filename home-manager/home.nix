@@ -32,6 +32,7 @@
     unstable.google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
+    unstable.isabelle
     gnome.gnome-software
 
     prismlauncher
@@ -67,7 +68,6 @@
     powertop # tui power usage analysis
     btop # tui resource monitor
     nix-tree # show nix store
-    isabelle #isabelle proof assistant
     glxinfo # OpenGL info
     fzf # fuzzy finder
     sl # funny trai
@@ -133,10 +133,6 @@
         nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
         hms = "home-manager switch --flake /home/septias/coding/nixos-config";
         _ = "sudo ";
-        "..." = "../..";
-        "...." = "../../..";
-        "....." = "../../../..";
-        "......" = "../../../../..";
         pkg = "nix-shell -p";
         dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
         c-fmt = "cargo fmt";
