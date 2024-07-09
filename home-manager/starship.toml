@@ -36,13 +36,13 @@ crust = "#232634"
 [directory]
 style = "bold blue"
 truncate_to_repo = true
-truncation_symbol = "»"
+truncation_symbol = "» "
 
 [line_break]
 disabled = true
 
 [nix_shell]
-format = "✵ "
+format = "[󱄅](bold blue) "
 
 [cmd_duration]
 format = "[$duration](style) "
@@ -59,3 +59,9 @@ disabled = true
 
 [rust]
 format ="[$symbol($version )]($style)"
+
+[nodejs]
+format ="[$symbol($version )]($style)"
+
+[cmake]
+disabled = true
