@@ -35,7 +35,7 @@
     unstable.isabelle
     gnome.gnome-software
 
-    prismlauncher
+    #prismlauncher
 
     ## Office
     telegram-desktop
