@@ -17,6 +17,9 @@
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
 
+    # Emacs
+    emacs.url = "github:nix-community/emacs-overlay";
+    
     # Custom
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
@@ -45,7 +48,7 @@
     # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    overlays = import ./overlays {inherit inputs;};
+    overlays = (import ./overlays {inherit inputs;}) // { emacs = inputs.emacs; };
 
     # 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
@@ -90,12 +93,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
-          {
-            wayland.windowManager.hyprland.settings.monitor = builtins.mkOverride 10 [
-              "eDP-1,1920x1080@60,0x0,1"           
-            ];
-          }
-        ];
+       ];
       };
     };
   };
