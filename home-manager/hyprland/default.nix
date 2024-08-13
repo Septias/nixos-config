@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
-  #gsettings = "${pkgs.glib}/bin/gsettings";{
+{pkgs, ...}: {
   imports = [
     ./gtk
     ./swww
@@ -11,7 +7,7 @@
   ];
 
   home.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
+    NIXOS_OZONE_WL = "1";
   };
 
   home.packages = with pkgs; [
@@ -57,7 +53,7 @@
     };
     settings = {
       "$mainMod" = "SUPER";
-      
+
       input = {
         kb_layout = "de";
         kb_variant = "neo";
@@ -133,7 +129,6 @@
       };
 
       master = {
-        new_is_master = true;
         no_gaps_when_only = false;
       };
 
@@ -213,11 +208,11 @@
       ];
     };
     # extraConfig = [
-    #        env = GBM_BACKEND,nvidia-drm
-    #        env = LIBVA_DRIVER_NAME,nvidia
-    #        env = XDG_SESSION_TYPE,wayland
-    #        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-    #        env = WLR_NO_HARDWARE_CURSORS,1
+    # env = GBM_BACKEND,nvidia-drm
+    # env = LIBVA_DRIVER_NAME,nvidia
+    # env = XDG_SESSION_TYPE,wayland
+    # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+    # env = WLR_NO_HARDWARE_CURSORS,1
     # ];
   };
   # Hyprland configuration files
