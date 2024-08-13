@@ -37,26 +37,11 @@
 (use-package isar-mode
   :ensure t
   :mode "\\.thy\\'"
-  :quelpa (isar-mode :fetcher github
-		     :repo "m-fleury/isar-mode"
-		     :files ("*.el")
-		     :upgrade t)
   )
 
-(use-package isar-goal-mode
-  :ensure t
-  :quelpa (isar-goal-mode :fetcher github
-			  :repo "m-fleury/simp-isar-mode"
-		     :files ("*.el")
-		     :upgrade t))
 
 (use-package lsp-isar
 	     :ensure t
-	     :quelpa ((lsp-isar :fetcher github
-				:repo "m-fleury/isabelle-emacs"
-				:branch "Isabelle2023-vsce"
-				:files ("src/Tools/emacs-lsp/lsp-isar/*.el"))
-				:upgrade t)
   :after lsp-mode
   :commands lsp-isar-define-client-and-start
   :defer t

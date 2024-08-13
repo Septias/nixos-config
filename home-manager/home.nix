@@ -9,6 +9,7 @@
     overlays = [
       outputs.overlays.unstable-packages
       outputs.overlays.additions
+      outputs.overlays.emacs.overlay
     ];
     config = {
       allowUnfree = true;
@@ -18,7 +19,6 @@
 
   imports = [
     ./hyprland
-    ./emacs.nix
   ];
 
   home = {
@@ -34,7 +34,7 @@
     unstable.nodePackages.pnpm
     unstable.isabelle
     gnome.gnome-software
-
+    (import ./emacs.nix {inherit pkgs;})
     #prismlauncher
 
     ## Office
@@ -59,7 +59,7 @@
     nil # language server
     scc # loc counter
     fd # find
-    sequoia # gpg decrypt
+    # sequoia # gpg decrypt
     alejandra # formatter
     firebase-tools
     lazygit # tui git
