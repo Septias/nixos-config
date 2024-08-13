@@ -7,6 +7,7 @@
   services.xserver.videoDrivers = ["nvidia"];
   boot.initrd.kernelModules = ["nvidia"];
   boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
+  boot.kernelParams = ["nvidia-drm.fbdev=1"];
 
   hardware.nvidia = {
     # Modesetting is required.
