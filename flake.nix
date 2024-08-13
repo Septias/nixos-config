@@ -19,7 +19,7 @@
 
     # Emacs
     emacs.url = "github:nix-community/emacs-overlay";
-    
+
     # Custom
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
@@ -48,7 +48,7 @@
     # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    overlays = (import ./overlays {inherit inputs;}) // { emacs = inputs.emacs; };
+    overlays = (import ./overlays {inherit inputs;}) // {emacs = inputs.emacs;};
 
     # 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
@@ -93,7 +93,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
-       ];
+        ];
       };
     };
   };
