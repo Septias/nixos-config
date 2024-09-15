@@ -178,6 +178,8 @@
   services.openssh = {
     enable = true;
   };
+  # for daemon mode
+  services.emacs.enable = true;
 
   xdg.portal.enable = true;
 

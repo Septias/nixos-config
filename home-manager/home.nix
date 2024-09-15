@@ -110,7 +110,7 @@
         initial_window_height = 1080;
         hide_window_decorations = true;
         tab_bar_style = "powerline";
-        enabled_layouts = "horizontal,tall,stack";
+        enabled_layouts = "horizontal,stack";
       };
       keybindings = {
         "ctrl+t" = "launch --cwd=/home/septias/coding";
@@ -118,7 +118,7 @@
         "ctrl+q" = "close_window";
         "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
       };
-      # shellIntegration.enableZshIntegration = true;
+      shellIntegration.enableZshIntegration = false;
     };
     nushell = {
       enable = true;
@@ -134,6 +134,7 @@
         hms = "home-manager switch --flake /home/septias/coding/nixos-config";
         _ = "sudo ";
         pkg = "nix-shell -p";
+        pkg-s = "nix search nixpkgs";
         dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
         c-fmt = "cargo fmt";
         c-fix = "cargo clippy --fix --allow-staged";

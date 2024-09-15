@@ -2,15 +2,14 @@
 pkgs.emacsWithPackagesFromUsePackage {
   package = pkgs.emacs; # replace with pkgs.emacsPgtk, or another version if desired.
   config = ./emacs.el;
-  # config = path/to/your/config.org; # Org-Babel configs also supported
 
   # Optionally provide extra packages not in the configuration file.
-  # extraEmacsPackages = epkgs: with epkgs; [
-  #   lsp-mode
-  #   session-async
-  # ];
-
-  # Optionally override derivations.
+  extraEmacsPackages = epkgs: with epkgs; [
+    # magit
+    avy
+    meow
+  ];
+  defaultInitFile = true;
   override = epkgs:
     epkgs // {
       isar-mode = pkgs.unstable.emacs.pkgs.melpaBuild {
