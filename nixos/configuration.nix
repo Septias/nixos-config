@@ -88,7 +88,6 @@
   };
 
   # Sound setup
-  sound.enable = true;
   hardware.pulseaudio = {
     enable = false;
     # more codecs
@@ -138,7 +137,6 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
   };
 

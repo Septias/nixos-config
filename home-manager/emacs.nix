@@ -1,6 +1,6 @@
 {pkgs, ...}:
 pkgs.emacsWithPackagesFromUsePackage {
-  package = pkgs.emacs-git; # replace with pkgs.emacsPgtk, or another version if desired.
+  package = pkgs.emacs; # replace with pkgs.emacsPgtk, or another version if desired.
   config = ./emacs.el;
   # config = path/to/your/config.org; # Org-Babel configs also supported
 

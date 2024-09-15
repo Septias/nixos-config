@@ -61,7 +61,7 @@
         ];
       };
 
-      nixos-laptop = nixpkgs.lib.nixosSystem {
+      nixos-laptop = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
