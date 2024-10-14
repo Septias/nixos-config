@@ -79,12 +79,11 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
-          # {
-          #   wayland.windowManager.hyprland.settings.monitor = builtins.mkOverride 10 [
-          #     "DP-2,1920x1080@144,0x0,1"
-          #     "DP-1,1920x1080@60,1920x0,1"
-          #   ];
-          # }
+          {
+            wayland.windowManager.hyprland.settings.monitor = [
+              "eDP-1,1920x1200,0x0,1"
+            ];
+          }
         ];
       };
 

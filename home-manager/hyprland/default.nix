@@ -6,10 +6,6 @@
     ./wofi
   ];
 
-  home.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-
   home.packages = with pkgs; [
     grim # Grab images from a Wayland compositor
     slurp # Select a region in a Wayland compositor
@@ -73,30 +69,11 @@
       };
 
       general = {
-        gaps_in = 1;
-        gaps_out = 2;
-        border_size = 3;
         layout = "dwindle";
-        apply_sens_to_raw = 1; # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
       };
 
       decoration = {
         rounding = 12;
-        shadow_ignore_window = true;
-        drop_shadow = true;
-        shadow_range = 20;
-        shadow_render_power = 3;
-        blur = {
-          enabled = true;
-          size = 4;
-          passes = 2;
-          new_optimizations = true;
-          ignore_opacity = true;
-          noise = 0.0117;
-          contrast = 1.3;
-          brightness = 1;
-          xray = true;
-        };
       };
 
       animations = {
@@ -203,17 +180,18 @@
       # ];
 
       windowrule = [
-        "tile,title:^(kitty)$"
-        "float,title:^(fly_is_kitty)$"
       ];
     };
-    # extraConfig = [
+    extraConfig = ''
+    env = XDG_SESSION_TYPE,wayland
+    env = WLR_NO_HARDWARE_CURSORS,1
+    env = NIXOS_OZONE_WL,1
+    '';   
+
+     
     # env = GBM_BACKEND,nvidia-drm
     # env = LIBVA_DRIVER_NAME,nvidia
-    # env = XDG_SESSION_TYPE,wayland
     # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-    # env = WLR_NO_HARDWARE_CURSORS,1
-    # ];
   };
   # Hyprland configuration files
   xdg.configFile = {
@@ -227,4 +205,5 @@
     "hypr/scripts/tools/notif".source = ./scripts/tools/notif;
     "hypr/scripts/tools/start_dyn".source = ./scripts/tools/start_dyn;
   };
+  
 }
