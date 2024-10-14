@@ -34,8 +34,10 @@
     unstable.nodePackages.pnpm
     unstable.isabelle
     gnome.gnome-software
-    # (import ./emacs.nix {inherit pkgs;})
-    #prismlauncher
+    (import ./emacs.nix {inherit pkgs;})
+
+    ## coding
+    agda
 
     ## Office
     telegram-desktop
