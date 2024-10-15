@@ -56,6 +56,7 @@
     ani-cli # animey
     vlc
     anki
+    sioyek
 
     ## Tooling
     nil # language server
