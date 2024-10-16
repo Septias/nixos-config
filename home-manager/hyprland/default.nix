@@ -11,6 +11,9 @@
     slurp # Select a region in a Wayland compositor
     swappy # A Wayland native snapshot editing tool, inspired by Snappy on macOS
     easyeffects
+    pamixer
+    playerctl
+    pavucontrol
 
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
@@ -170,14 +173,19 @@
         "SUPER,mouse:272,movewindow"
         "SUPER,mouse:273,resizewindow"
       ];
-      # bindle = [
-      #     # Backlight Keys
-      #     ",XF86MonBrightnessUp,exec,light -A 5"
-      #     ",XF86MonBrightnessDown,exec,light -U 5"
-      #     # Volume Keys
-      #     ",XF86AudioRaiseVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ +5%  "
-      #     ",XF86AudioLowerVolume,exec,pactl set-sink-volume @DEFAULT_SINK@ -5%  "
-      # ];
+      bindle = [
+           # Backlight Keys
+          ",XF86MonBrightnessUp,exec,light -A 5"
+          ",XF86MonBrightnessDown,exec,light -U 5"
+          # Volume Keys
+          ",XF86AudioRaiseVolume,exec, pamixer -i 5"
+          ",XF86AudioLowerVolume,exec, pamixer -d 5"
+          ", XF86AudioMute, exec, pamixer -t"
+          ", XF86AudioPlay, exec, playerctl play-pause"
+          ", XF86AudioPause, exec, playerctl play-pause"
+          ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
+          ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
+      ];
 
       windowrule = [
       ];
