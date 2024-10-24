@@ -127,8 +127,8 @@
         "SUPER,g,togglegroup"
 
         # Move focus
-        "SUPER,t,movefocus,r"
-        "SUPER,r,movefocus,l"
+        "SUPER,t,workspace,+1"
+        "SUPER,r,workspace,-1"
         "SUPER,left,movefocus,l"
         "SUPER,down,movefocus,d"
         "SUPER,up,movefocus,u"
