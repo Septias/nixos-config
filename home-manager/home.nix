@@ -34,7 +34,7 @@
     unstable.nodePackages.pnpm
     unstable.isabelle
     gnome.gnome-software
-    (import ./emacs.nix {inherit pkgs;})
+    #(import ./emacs.nix {inherit pkgs;})
 
     ## coding
     agda
