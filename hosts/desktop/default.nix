@@ -7,10 +7,12 @@
   services.xserver.videoDrivers = ["nvidia"];
   # in case you have problem with booting to text mode
   boot.initrd.kernelModules = ["nvidia"];
-  boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
-  # boot.kernelParams = ["nvidia-drm.fbdev=1"];
+  #boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
+  boot.kernelParams = ["nvidia-drm.fbdev=1"];
 
   hardware.nvidia = {
+    forceFullCompositionPipeline = true;
+  
     # Modesetting is required.
     modesetting.enable = true;
 

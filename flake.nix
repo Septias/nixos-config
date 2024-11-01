@@ -52,7 +52,7 @@
 
     # 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
-      nixos-desktop = nixpkgs.lib.nixosSystem {
+      nixos-desktop = nixpkgs-unstable.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           lanzaboote.nixosModules.lanzaboote

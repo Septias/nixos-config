@@ -127,7 +127,7 @@
       enable = true;
       configFile.source = ./config.nu;
       environmentVariables = {
-        CHATMAIL_DOMAIN = "nine.testrun.org";
+        CHATMAIL_DOMAIN = "\"nine.testrun.org\"";
       };
       shellAliases = {
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";

@@ -1,20 +1,10 @@
 {pkgs, ...}: {
 
-
+  imports = [
+    ./waybar
+    ./rofi
+  ];
   home.packages = with pkgs; [
-    /*
-    easyeffects
-    pamixer
-    playerctl
-    pavucontrol */
-
-    # pipewire
-    # wireplumber
-    # playerctl 
-    # brightnessctl 
-    # networkmanager
-    # wlogout
-    # rofi-wayland
     
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
@@ -25,9 +15,6 @@
     (writeShellScriptBin "autostart" ''
       # Variables
       config=$HOME/.config/hypr
-
-      # Waybar
-      pkill waybar
 
       # Wallpaper
       swww kill
@@ -40,7 +27,8 @@
       # Cursor
       # gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Frappe-Sky-Cursors"
       # gsettings set org.gnome.desktop.interface cursor-size 30
-      # hyprctl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
+      # hyprtl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
+      gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
     '')
   ];
   wayland.windowManager.hyprland = {
@@ -164,8 +152,8 @@
         "SUPER,Print,exec,screenshot-edit"
         "SUPER,o,exec,obsidian"
         "SUPER SHIFT,C,exec,wallpaper"
-        "SUPER,z,exec,waybar"
-        "SUPER,space,exec,wofi --show drun -I -s ~/.config/wofi/style.css DP-3"
+        "Super, d, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        "SUPER,space,exec,rofi -show run"
       ];
 
       bindm = [
@@ -179,11 +167,9 @@
         # Volume Keys
         ",XF86AudioRaiseVolume,exec, pamixer -i 5"
         ",XF86AudioLowerVolume,exec, pamixer -d 5"
-        ", XF86AudioMute, exec, pamixer -t"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPause, exec, playerctl play-pause"
-        ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
-        ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
+        ",XF86AudioMute, exec, pamixer -t"
+        ",XF86AudioPlay, exec, playerctl play-pause"
+        ",XF86AudioPause, exec, playerctl play-pause"
       ];
 
       windowrule = [
@@ -195,10 +181,6 @@
       env = WLR_NO_HARDWARE_CURSORS,1
       env = NIXOS_OZONE_WL,1
     '';
-
-    # env = GBM_BACKEND,nvidia-drm
-    # env = LIBVA_DRIVER_NAME,nvidia
-    # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
   };
   # Hyprland configuration files
   xdg.configFile = {
