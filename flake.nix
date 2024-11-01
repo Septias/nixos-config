@@ -93,7 +93,7 @@
         modules = [
           ./home-manager/home.nix
           ./hosts/desktop/home-manager.nix
-       ];
+        ];
       };
     };
   };

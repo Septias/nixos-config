@@ -1,11 +1,9 @@
 {pkgs, ...}: {
-
   imports = [
     ./waybar
     ./rofi
   ];
   home.packages = with pkgs; [
-    
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
     '')
