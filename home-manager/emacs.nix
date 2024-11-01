@@ -4,14 +4,16 @@ pkgs.emacsWithPackagesFromUsePackage {
   config = ./emacs.el;
 
   # Optionally provide extra packages not in the configuration file.
-  extraEmacsPackages = epkgs: with epkgs; [
-    # magit
-    avy
-    meow
-  ];
+  extraEmacsPackages = epkgs:
+    with epkgs; [
+      # magit
+      avy
+      meow
+    ];
   defaultInitFile = true;
   override = epkgs:
-    epkgs // {
+    epkgs
+    // {
       isar-mode = pkgs.unstable.emacs.pkgs.melpaBuild {
         pname = "isar-mode";
         version = "0.1";

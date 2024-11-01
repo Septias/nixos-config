@@ -1,10 +1,5 @@
 {pkgs, ...}: {
-  imports = [
-    ./gtk
-    ./swww
-    ./waybar
-    ./wofi
-  ];
+
 
   home.packages = with pkgs; [
     grim # Grab images from a Wayland compositor
@@ -182,29 +177,29 @@
         "SUPER,mouse:273,resizewindow"
       ];
       bindle = [
-           # Backlight Keys
-          ",XF86MonBrightnessUp,exec,light -A 5"
-          ",XF86MonBrightnessDown,exec,light -U 5"
-          # Volume Keys
-          ",XF86AudioRaiseVolume,exec, pamixer -i 5"
-          ",XF86AudioLowerVolume,exec, pamixer -d 5"
-          ", XF86AudioMute, exec, pamixer -t"
-          ", XF86AudioPlay, exec, playerctl play-pause"
-          ", XF86AudioPause, exec, playerctl play-pause"
-          ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
-          ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
+        # Backlight Keys
+        ",XF86MonBrightnessUp,exec,light -A 5"
+        ",XF86MonBrightnessDown,exec,light -U 5"
+        # Volume Keys
+        ",XF86AudioRaiseVolume,exec, pamixer -i 5"
+        ",XF86AudioLowerVolume,exec, pamixer -d 5"
+        ", XF86AudioMute, exec, pamixer -t"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPause, exec, playerctl play-pause"
+        ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
+        ",pactl set-sink-volume @DEFAULT_SINK@ -5% d "
       ];
 
       windowrule = [
       ];
     };
-    extraConfig = ''
-    env = XDG_SESSION_TYPE,wayland
-    env = WLR_NO_HARDWARE_CURSORS,1
-    env = NIXOS_OZONE_WL,1
-    '';   
 
-     
+    extraConfig = ''
+      env = XDG_SESSION_TYPE,wayland
+      env = WLR_NO_HARDWARE_CURSORS,1
+      env = NIXOS_OZONE_WL,1
+    '';
+
     # env = GBM_BACKEND,nvidia-drm
     # env = LIBVA_DRIVER_NAME,nvidia
     # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
@@ -221,5 +216,4 @@
     "hypr/scripts/tools/notif".source = ./scripts/tools/notif;
     "hypr/scripts/tools/start_dyn".source = ./scripts/tools/start_dyn;
   };
-  
 }

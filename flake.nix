@@ -80,7 +80,7 @@
         modules = [
           ./home-manager/home.nix
           {
-            wayland.windowManager.hyprland.settings.monitor = [
+            wayland.windowManager.hyprland.settings.monitor = nixpkgs.lib.mkOverride [
               "eDP-1,1920x1200,0x0,1"
             ];
           }
@@ -92,7 +92,8 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
-        ];
+          ./hosts/desktop/home-manager.nix
+       ];
       };
     };
   };
