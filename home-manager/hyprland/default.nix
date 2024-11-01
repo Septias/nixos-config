@@ -2,13 +2,11 @@
 
 
   home.packages = with pkgs; [
-    grim # Grab images from a Wayland compositor
-    slurp # Select a region in a Wayland compositor
-    swappy # A Wayland native snapshot editing tool, inspired by Snappy on macOS
+    /*
     easyeffects
     pamixer
     playerctl
-    pavucontrol
+    pavucontrol */
 
     # pipewire
     # wireplumber

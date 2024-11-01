@@ -115,6 +115,7 @@
     audio.enable = true;
     jack.enable = true;
   };
+
   # realtime scheduling for user processes
   security.rtkit.enable = true;
 
@@ -178,6 +179,7 @@
   services.openssh = {
     enable = true;
   };
+
   # for daemon mode
   services.emacs.enable = true;
 
@@ -190,7 +192,6 @@
   environment = {
     shells = with pkgs; [nushell zsh];
     variables = {
-      DCC_NEW_TMP_EMAIL = "https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek";
       RUST_LOG = "info";
     };
   };
@@ -200,9 +201,8 @@
     home-manager
     git
     nodejs_20
-    python312
+    python3
     zip
-    nvd
     unzip
   ];
 
