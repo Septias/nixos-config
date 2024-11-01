@@ -19,6 +19,10 @@
     # wireplumber
     # playerctl 
     # brightnessctl 
+    # networkmanager
+    # wlogout
+    # rofi-wayland
+    
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
     '')
