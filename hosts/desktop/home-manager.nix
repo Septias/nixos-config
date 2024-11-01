@@ -8,7 +8,7 @@
   wayland.windowManager.hyprland.settings.monitor = [
     "eDP-1,1920x1200,0x0,1"
   ];
-  extraConfig = lib.mkOverride 10 ''
+  wayland.windowManager.hyprland.extraConfig = lib.mkOverride 10 ''
       env = XDG_SESSION_TYPE,wayland
       env = WLR_NO_HARDWARE_CURSORS,1
       env = NIXOS_OZONE_WL,1

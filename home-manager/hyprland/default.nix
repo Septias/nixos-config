@@ -27,11 +27,9 @@
     (writeShellScriptBin "autostart" ''
       # Variables
       config=$HOME/.config/hypr
-      scripts=$config/scripts
 
       # Waybar
       pkill waybar
-      $scripts/launch_waybar
 
       # Wallpaper
       swww kill
@@ -206,14 +204,5 @@
   };
   # Hyprland configuration files
   xdg.configFile = {
-    "hypr/store/dynamic_out.txt".source = ./store/dynamic_out.txt;
-    "hypr/store/prev.txt".source = ./store/prev.txt;
-    "hypr/store/latest_notif".source = ./store/latest_notif;
-    "hypr/scripts/wall".source = ./scripts/wall;
-    "hypr/scripts/launch_waybar".source = ./scripts/launch_waybar;
-    "hypr/scripts/tools/dynamic".source = ./scripts/tools/dynamic;
-    "hypr/scripts/tools/expand".source = ./scripts/tools/expand;
-    "hypr/scripts/tools/notif".source = ./scripts/tools/notif;
-    "hypr/scripts/tools/start_dyn".source = ./scripts/tools/start_dyn;
   };
 }
