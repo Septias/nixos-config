@@ -15,6 +15,10 @@
     playerctl
     pavucontrol
 
+    # pipewire
+    # wireplumber
+    # playerctl 
+    # brightnessctl 
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
     '')
