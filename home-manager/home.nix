@@ -196,8 +196,44 @@
         editor.lsp = {
           display-inlay-hints = true;
         };
+        # https://docs.helix-editor.com/keymap.html
         keys.insert = {
           "C-s" = ":w";
+          "C-r" = "insert_register";
+          "C-x" = "completion";
+        };
+        keys.normal = {
+          "C-s" = ":w";
+          "C-h" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
+          "C-m" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
+          "C-i" = "jump_forward";
+          "C-o" = "jump_backward";
+          "C-j" = "save_selection";
+          # Changes
+          "R" = "replace_with_yanked";
+          "=" = "format_selection";
+          "Alt-d" ="delete_selection_noyank";
+          "Q" = "record_macro";
+          "q" = "replay_macro";
+          # Selection manipulation
+          "s" = "select_regex";
+          "S" = "split_selection";
+          "&" = "align_selections";
+          "_" = "trim_selections";
+          "C" = "copey_selection_on_next_line";
+          "Alt-f" = "expand_selection";
+          "Alt-g" = "shrink_selection";
+          "Alt-q" = "select_prev_sibling";
+          "Alt-b" = "select_next_sibling";
+          # Search
+          "*" = "search_selection";
+        };
+        keys.goto = {
+          "s" = "goto_first_nonwhitespace";
+          "f" = "goto_file";
+          "a" = "goto_last_accessed_file";
+          "." = "goto_last_modification";
+          "w" = "goto_word";
         };
       };
     };
