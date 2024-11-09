@@ -203,16 +203,16 @@
           "C-x" = "completion";
         };
         keys.normal = {
-          "C-s" = ":w";
-          "C-h" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
-          "C-m" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
+          "C-m" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
+          "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
           "C-i" = "jump_forward";
           "C-o" = "jump_backward";
-          "C-j" = "save_selection";
+          "C-s" = "save_selection";
+          "C-b" = "goto_previous_buffer";
           # Changes
           "R" = "replace_with_yanked";
-          "=" = "format_selection";
-          "Alt-d" ="delete_selection_noyank";
+          "=" = "format_selections";
+          "A-d" ="delete_selection_noyank";
           "Q" = "record_macro";
           "q" = "replay_macro";
           # Selection manipulation
@@ -220,21 +220,21 @@
           "S" = "split_selection";
           "&" = "align_selections";
           "_" = "trim_selections";
-          "C" = "copey_selection_on_next_line";
-          "Alt-f" = "expand_selection";
-          "Alt-g" = "shrink_selection";
-          "Alt-q" = "select_prev_sibling";
-          "Alt-b" = "select_next_sibling";
+          "C" = "copy_selection_on_next_line";
+          "A-f" = "expand_selection";
+          "A-g" = "shrink_selection";
+          "A-q" = "select_prev_sibling";
+          "A-b" = "select_next_sibling";
           # Search
           "*" = "search_selection";
         };
-        keys.goto = {
-          "s" = "goto_first_nonwhitespace";
-          "f" = "goto_file";
-          "a" = "goto_last_accessed_file";
-          "." = "goto_last_modification";
-          "w" = "goto_word";
-        };
+        # keys.goto = {
+        #   "s" = "goto_first_nonwhitespace";
+        #   "f" = "goto_file";
+        #   "a" = "goto_last_accessed_file";
+        #   "." = "goto_last_modification";
+        #   "w" = "goto_word";
+        # };
       };
     };
     vscode = {
