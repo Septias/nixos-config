@@ -8,7 +8,7 @@
     enable = true;
     systemd.enable = true;
     style = ''
-      ${builtins.readFile "${pkgs.waybar}/etc/xdg/waybar/style.css"}
+      ${builtins.readFile ./style.css }
 
       window#waybar {
         background: transparent;
@@ -20,10 +20,10 @@
       {
         height = 30;
         layer = "top";
-        position = "top";
+        mode = "doc";
         tray = {spacing = 10;};
-        modules-center = ["sway/window"];
         modules-left = ["sway/workspaces" "sway/mode"];
+        modules-center = ["sway/window"];
         modules-right =
           [
             "pulseaudio"
@@ -91,5 +91,8 @@
         };
       }
     ];
+  };
+  xdg.configFile = {
+    "waybar/theme.css".source = ./theme.css;
   };
 }
