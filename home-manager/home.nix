@@ -57,6 +57,7 @@
     vlc
     anki
     sioyek
+    ranger
 
     ## Tooling
     nil # language server
@@ -73,7 +74,7 @@
     nix-tree # show nix store
     glxinfo # OpenGL info
     fzf # fuzzy finder
-    sl # funny trai
+    sl # funny train
     taplo # toml language server
 
     ## Utils
@@ -191,10 +192,20 @@
     };
     helix = {
       enable = true;
+      package = pkgs.unstable.helix;
       settings = {
         theme = "catppuccin_frappe";
-        editor.lsp = {
-          display-inlay-hints = true;
+
+        editor = {
+          lsp = {
+            display-inlay-hints = true;
+            display-messages = true;
+          };
+          line-number = "relative";
+          completion-timeout = 100;
+          completion-replace = true;
+          statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers"];
+          auto-save.focus-lost = true;
         };
         # https://docs.helix-editor.com/keymap.html
         keys.insert = {
@@ -209,10 +220,11 @@
           "C-o" = "jump_backward";
           "C-s" = "save_selection";
           "C-b" = "goto_previous_buffer";
+          "C-e" = "goto_file_end";
           # Changes
           "R" = "replace_with_yanked";
           "=" = "format_selections";
-          "A-d" ="delete_selection_noyank";
+          "A-d" = "delete_selection_noyank";
           "Q" = "record_macro";
           "q" = "replay_macro";
           # Selection manipulation
