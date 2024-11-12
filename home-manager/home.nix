@@ -120,7 +120,7 @@
         "ctrl+t" = "launch --cwd=/home/septias/coding";
         "ctrl+shift+n" = "next_window";
         "ctrl+q" = "close_window";
-        "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
+        # "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
       };
       shellIntegration.enableZshIntegration = false;
     };
@@ -216,11 +216,12 @@
         keys.normal = {
           "C-m" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
           "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
-          "C-i" = "jump_forward";
-          "C-o" = "jump_backward";
+          "C-f" = "jump_forward";
+          "C-g" = "jump_backward";
           "C-s" = "save_selection";
           "C-b" = "goto_previous_buffer";
           "C-e" = "goto_file_end";
+          "C-l" = "last_picker";
           # Changes
           "R" = "replace_with_yanked";
           "=" = "format_selections";
@@ -235,8 +236,8 @@
           "C" = "copy_selection_on_next_line";
           "A-f" = "expand_selection";
           "A-g" = "shrink_selection";
-          "A-q" = "select_prev_sibling";
-          "A-b" = "select_next_sibling";
+          "A-n" = "select_next_sibling";
+          "A-b" = "select_prev_sibling";
           # Search
           "*" = "search_selection";
         };
@@ -331,7 +332,7 @@
     };
   };
 
-  home.file.".Xcompose".source = ./Xcompose;
+  home.file.".XCompose".source = ./Xcompose;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
