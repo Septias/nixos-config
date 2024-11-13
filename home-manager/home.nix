@@ -9,7 +9,6 @@
     overlays = [
       outputs.overlays.unstable-packages
       outputs.overlays.additions
-      outputs.overlays.emacs.overlay
     ];
     config = {
       allowUnfree = true;
@@ -34,7 +33,6 @@
     unstable.nodePackages.pnpm
     unstable.isabelle
     gnome.gnome-software
-    #(import ./emacs.nix {inherit pkgs;})
 
     ## coding
     agda
