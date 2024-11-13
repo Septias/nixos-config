@@ -212,6 +212,8 @@
           "C-s" = ":w";
           "C-r" = "insert_register";
           "C-x" = "completion";
+          "C-u" = "kill_to_line_start";
+          "C-k" = "kill_to_line_end";
         };
         keys.normal = {
           "C-m" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
