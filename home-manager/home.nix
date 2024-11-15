@@ -133,7 +133,7 @@
         nd = "nix develop";
         nb = "nix build";
         nc = "hx /home/septias/coding/nixos-config";
-        nh = "hx /home/septias/coding/nixos-config/home-manager/home.nix";
+        nh = "hx -w /home/septias/coding/nixos-config /home/septias/coding/nixos-config/home-manager/home.nix";
         nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
         hms = "home-manager switch --flake /home/septias/coding/nixos-config";
         _ = "sudo ";
@@ -199,7 +199,7 @@
             display-inlay-hints = true;
             display-messages = true;
           };
-          line-number = "relative";
+          #line-number = "relative";
           completion-timeout = 100;
           completion-replace = true;
           statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers"];
@@ -311,18 +311,12 @@
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
       ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Shift><Super>Return";
       command = "kitty /home/septias/coding";
       name = "Terminal";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = "<Shift><Super>g";
-      command = "rofi -show run";
-      name = "Rofi";
     };
     "org/gnome/terminal/legacy" = {
       theme-variant = "dark";
