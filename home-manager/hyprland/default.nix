@@ -23,12 +23,17 @@
       dunst &
 
       # Cursor
-      # gsettings set org.gnome.desktop.interface cursor-theme "Catppuccin-Frappe-Sky-Cursors"
-      # gsettings set org.gnome.desktop.interface cursor-size 30
-      # hyprtl setcursor "Catppuccin-Mocha-Mauve-Cursors" 30
+      gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Original-Ice"
+      gsettings set org.gnome.desktop.interface cursor-size 20
+      hyprtl setcursor "Bibata-Original-Ice" 30
       gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+      
     '')
   ];
+  gtk.cursorTheme = {
+    name = "Bibata-Original-Ice";
+    package = pkgs.bibata-cursors;
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -57,7 +62,7 @@
       };
 
       general = {
-        layout = "dwindle";
+        layout = "master";
       };
 
       decoration = {
@@ -108,16 +113,22 @@
 
       bind = [
         "SUPER,Q,killactive,"
-        "SUPER,S,togglefloating,"
+        "SUPER,f,togglefloating,"
         "SUPER,g,togglegroup"
+        "SUPER,m,fullscreen"
+        "SUPER,p,pin"
+        "SUPER,c,centerwindow"
 
         # Move focus
-        "SUPER,t,workspace,+1"
-        "SUPER,r,workspace,-1"
+        "SUPER,n,workspace,+1"
+        "SUPER,d,workspace,-1"
+        "SUPER,r,movefocus,l"
+        "SUPER,t,movefocus,r"
+
         "SUPER,left,movefocus,l"
-        "SUPER,down,movefocus,d"
-        "SUPER,up,movefocus,u"
         "SUPER,right,movefocus,r"
+        "SUPER,up,movefocus,u"
+        "SUPER,down,movefocus,d"
 
         "SUPER,1,workspace,1"
         "SUPER,2,workspace,2"
@@ -145,19 +156,19 @@
         "SUPER $mainMod SHIFT, 7, movetoworkspacesilent, 7"
         "SUPER $mainMod SHIFT, 8, movetoworkspacesilent, 8"
 
-        "SUPER,RETURN,exec,kitty"
-        ",Print,exec,screenshot"
-        "SUPER,Print,exec,screenshot-edit"
-        "SUPER,o,exec,obsidian"
-        "SUPER SHIFT,C,exec,wallpaper"
-        "Super, d, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "SUPER,space,exec,rofi -show run"
+        # Start programs
+        "SUPER,RETURN, exec, kitty"
+        ",Print, exec, screenshot"
+        "SUPER, Print, exec, screenshot-edit"
+        "SUPER, o, exec, obsidian"
+        "SUPER SHIFT, c, exec, wallpaper"
+        "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        "SUPER,space, exec,rofi -show run"
+
+        # Focus windows
+        "SUPER, s, focuswindow, chrome"
       ];
 
-      bindm = [
-        "SUPER,mouse:272,movewindow"
-        "SUPER,mouse:273,resizewindow"
-      ];
       bindle = [
         # Backlight Keys
         ",XF86MonBrightnessUp,exec,light -A 5"
@@ -178,6 +189,7 @@
       env = XDG_SESSION_TYPE,wayland
       env = WLR_NO_HARDWARE_CURSORS,1
       env = NIXOS_OZONE_WL,1
+      env = QT_QPA_PLATFORMTHEME,qt6ct
     '';
   };
 }

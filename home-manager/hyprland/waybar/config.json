@@ -9,8 +9,6 @@
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 
-  
-
   "modules-left": [
     "custom/ws",            
     "custom/left1",
@@ -62,12 +60,10 @@
 
     "custom/left8",
     "battery",              
-
     "custom/leftin2",
     "custom/power"          
   ],
 
-  
 
   "custom/ws": {
     "format": "  ",
@@ -99,30 +95,19 @@
     "min-length": 5,
     "max-length": 45,
 
-    
-
     "rewrite": {
-      
-
       "": 
         "<span foreground='#89b4fa'> </span> Hyprland",
-
-      
-
       "~": "  Terminal",
       "zsh": "  Terminal",
       "kitty": "  Terminal",
       "sejjy@archlinux:(.*)": "  Terminal",
-      "(.*)sejjy@archlinux:~": "  Terminal",
-
-      
+      "(.*)sejjy@archlinux:~": "  Terminal",      
 
       "(.*) — Mozilla Firefox": 
         "<span foreground='#f38ba8'>󰈹 </span> $1",
       "(.*)Mozilla Firefox": 
         "<span foreground='#f38ba8'>󰈹 </span> Firefox",
-
-      
 
       "(.*) - Visual Studio Code": 
         "<span foreground='#89b4fa'>󰨞 </span> $1",
@@ -135,8 +120,6 @@
         "<span foreground='#89b4fa'> </span> $1",
       "(.*) - Godot Engine": 
         "<span foreground='#89b4fa'> </span> $1",
-
-      
 
       "(.*)Spotify": 
         "<span foreground='#a6e3a1'> </span> Spotify",
@@ -160,16 +143,12 @@
       "(.*).png": "  $1.png",
       "(.*).svg": "  $1.svg",
 
-      
-
       "vesktop": 
         "<span foreground='#89b4fa'> </span> Discord",
 
       "• Discord(.*)": "Discord$1",
       "(.*)Discord(.*)": 
         "<span foreground='#89b4fa'> </span> $1Discord$2",
-
-      
 
       "ONLYOFFICE Desktop Editors": 
         "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
@@ -184,8 +163,6 @@
         "<span foreground='#f38ba8'> </span> $1.pdf",
 
       "/": "  File Manager",
-
-      
 
       "Timeshift-gtk": 
         "<span foreground='#a6e3a1'> </span> Timeshift",
@@ -229,7 +206,7 @@
   },
 
   "idle_inhibitor": {
-    "format": " ",
+    "format": "󱄅",
     "tooltip": true,
     "tooltip-format-activated": "Presentation Mode",
     "tooltip-format-deactivated": "Idle Mode",
@@ -263,10 +240,7 @@
 
   "custom/wifi": {
     "exec": "~/.config/waybar/scripts/wifiinfo.sh",
-    "return-type": "json",
-
-    
-    
+    "return-type": "json",  
     "format": "{}",
     "tooltip": true,
     "on-click": "~/.config/waybar/scripts/wifimenu.sh",
@@ -374,21 +348,15 @@
     "on-click-right": "~/.local/share/bin/logoutlaunch.sh 1"
   },
 
-  
-
   "custom/paddw": {
     "format": " ",
     "tooltip": false
   },
-
-  
   
   "custom/paddc": {
     "format": " ",
     "tooltip": false
-  },
-
-  
+  },  
 
   "custom/left1": {
     "format": "",
@@ -423,8 +391,6 @@
     "tooltip": false
   },
 
-  
-
   "custom/right1": {
     "format": "",
     "tooltip": false
@@ -446,8 +412,6 @@
     "tooltip": false
   },
 
-  
-
   "custom/leftin1": {
     "format": "",
     "tooltip": false
@@ -456,9 +420,7 @@
     "format": "",
     "tooltip": false
   },
-
   
-
   "custom/rightin1": {
     "format": "",
     "tooltip": false
