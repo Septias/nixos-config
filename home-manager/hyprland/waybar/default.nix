@@ -4,6 +4,44 @@
   lib,
   ...
 }: {
+  # TODO: script this
+  home.packages = [
+    pkgs.writeShellApplication {
+      name = "cpuusage.sh";
+      text = builtins.readFile ./scripts/cpuusage.sh;
+    }
+    pkgs.writeShellApplication {
+      name = "brighthnesscontorl.sh";
+i      runtimeInputs = pkgs.brigthnessctl;
+      text = builtins.readFile ./scripts/brighthnesscontorl.sh;
+    }
+    pkgs.writeShellApplication {
+      name = "cpuinfo.sh";
+      text = builtins.readFile ./scripts/cpuinfo.sh;
+    }
+    pkgs.writeShellApplication {
+      name = "logoutlaunch.sh";
+      runtimeInputs = with pkgs; [ wlogout ];
+      text = builtins.readFile ./scripts/logoutlaunch.sh;
+    }
+    pkgs.writeShellApplication {
+      name = "mediaplayer.sh";
+      text = builtins.readFile ./scripts/mediaplayer.sh;
+    }
+    pkgs.writeShellApplication {
+      name = "volumecontrol.sh";
+      text = builtins.readFile ./scripts/volumecontrol.sh;
+    }
+    pkgs.writeShellApplication {
+      name = "wifiinfo.sh";
+      text = builtins.readFile ./scripts/wifiinfo.sh;
+    }
+    pkgs.writeShellApplication {
+      name = "wifimenu.sh";
+      text = builtins.readFile ./scripts/wifimenu.sh;
+    }
+  ];
+
   programs.waybar = {
     enable = true;
     systemd.enable = true;
