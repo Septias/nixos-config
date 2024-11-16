@@ -146,7 +146,7 @@
         gc = "git commit -am";
         gu = "git push --force-with-lease";
         gd = "git pull";
-        gds = "git stash and git pull --ff and git stash pop";
+        gds = "git stash and git pull and git stash pop";
         nix-clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old and nix-collect-garbage -d";
         #sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
         lg = "lazygit";
