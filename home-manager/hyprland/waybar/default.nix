@@ -3,45 +3,40 @@
   pkgs,
   lib,
   ...
-}: {
-  # TODO: script this
-  home.packages = [
-    pkgs.writeShellApplication {
-      name = "cpuusage.sh";
-      text = builtins.readFile ./scripts/cpuusage.sh;
-    }
-    pkgs.writeShellApplication {
-      name = "brighthnesscontorl.sh";
-i      runtimeInputs = pkgs.brigthnessctl;
+}: let
+  scripts = {
+    brightnesscontrol = pkgs.writeShellApplication {
+      name = "brighthnesscontrol.sh";
+      runtimeInputs = pkgs.brigthnessctl;
       text = builtins.readFile ./scripts/brighthnesscontorl.sh;
-    }
-    pkgs.writeShellApplication {
+    };
+    cpuinfo = pkgs.writeShellApplication {
       name = "cpuinfo.sh";
       text = builtins.readFile ./scripts/cpuinfo.sh;
-    }
-    pkgs.writeShellApplication {
+    };
+    logoutlaunch = pkgs.writeShellApplication {
       name = "logoutlaunch.sh";
-      runtimeInputs = with pkgs; [ wlogout ];
+      runtimeInputs = with pkgs; [wlogout];
       text = builtins.readFile ./scripts/logoutlaunch.sh;
-    }
-    pkgs.writeShellApplication {
+    };
+    mediaplayer = pkgs.writeShellApplication {
       name = "mediaplayer.sh";
       text = builtins.readFile ./scripts/mediaplayer.sh;
-    }
-    pkgs.writeShellApplication {
+    };
+    volumecontrol = pkgs.writeShellApplication {
       name = "volumecontrol.sh";
       text = builtins.readFile ./scripts/volumecontrol.sh;
-    }
-    pkgs.writeShellApplication {
+    };
+    wifiinfo = pkgs.writeShellApplication {
       name = "wifiinfo.sh";
       text = builtins.readFile ./scripts/wifiinfo.sh;
-    }
-    pkgs.writeShellApplication {
+    };
+    wifimenu = pkgs.writeShellApplication {
       name = "wifimenu.sh";
       text = builtins.readFile ./scripts/wifimenu.sh;
-    }
-  ];
-
+    };
+  };
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -102,7 +97,7 @@ i      runtimeInputs = pkgs.brigthnessctl;
           tooltip-format = "12-hour Format: {:%I:%M %p}";
         };
         "custom/backlight" = {
-          exec = "~/.local/share/bin/brightnesscontrol.sh";
+          exec = scripts.brightnesscontrol;
           format = "{}";
           interval = 1;
           max-length = 6;
@@ -113,7 +108,7 @@ i      runtimeInputs = pkgs.brigthnessctl;
           tooltip = true;
         };
         "custom/cpu" = {
-          exec = "~/.config/waybar/scripts/cpuusage.sh";
+          exec = scripts.cpuusage;
           interval = 5;
           max-length = 6;
           min-length = 6;
@@ -121,7 +116,7 @@ i      runtimeInputs = pkgs.brigthnessctl;
           tooltip = true;
         };
         "custom/cpuinfo" = {
-          exec = "~/.config/waybar/scripts/cpuinfo.sh";
+          exec = scripts.cpuinfo;
           format = "{}";
           interval = 5;
           max-length = 8;
@@ -170,7 +165,7 @@ i      runtimeInputs = pkgs.brigthnessctl;
           tooltip = false;
         };
         "custom/media" = {
-          exec = "~/.config/waybar/scripts/mediaplayer.py";
+          exec = scripts.mediaplayer;
           format = "{}";
           max-length = 35;
           min-length = 5;
@@ -228,12 +223,12 @@ i      runtimeInputs = pkgs.brigthnessctl;
           tooltip = true;
         };
         "custom/wifi" = {
-          exec = "~/.config/waybar/scripts/wifiinfo.sh";
+          exec = scripts.wifiinfo;
           format = "{}";
           interval = 1;
           max-length = 1;
           min-length = 1;
-          on-click = "~/.config/waybar/scripts/wifimenu.sh";
+          on-click = scripts.wifimenu;
           on-click-right = "kitty bash -c nmtui";
           return-type = "json";
           tooltip = true;
