@@ -96,13 +96,12 @@
     "max-length": 45,
 
     "rewrite": {
-      "": 
-        "<span foreground='#89b4fa'> </span> Hyprland",
+      "": "<span foreground='#89b4fa'> </span> Hyprland",
       "~": "  Terminal",
       "zsh": "  Terminal",
       "kitty": "  Terminal",
-      "sejjy@archlinux:(.*)": "  Terminal",
-      "(.*)sejjy@archlinux:~": "  Terminal",      
+      "septias@desktop:(.*)": "  Terminal",
+      "(.*)septias@desktop:~": "  Terminal",      
 
       "(.*) — Mozilla Firefox": 
         "<span foreground='#f38ba8'>󰈹 </span> $1",
@@ -114,21 +113,11 @@
       "(.*)Visual Studio Code": 
         "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
 
-      "Godot": 
-        "<span foreground='#89b4fa'> </span> Godot Engine",
-      "Godot Engine - (.*)": 
-        "<span foreground='#89b4fa'> </span> $1",
-      "(.*) - Godot Engine": 
-        "<span foreground='#89b4fa'> </span> $1",
-
       "(.*)Spotify": 
         "<span foreground='#a6e3a1'> </span> Spotify",
       "(.*)Spotify Premium": 
         "<span foreground='#a6e3a1'> </span> Spotify Premium",
-
-      "OBS(.*)": 
-        "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
-
+        
       "VLC media player": 
         "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
       "(.*) - VLC media player": 
@@ -143,15 +132,10 @@
       "(.*).png": "  $1.png",
       "(.*).svg": "  $1.svg",
 
-      "vesktop": 
-        "<span foreground='#89b4fa'> </span> Discord",
+      "vesktop": "<span foreground='#89b4fa'> </span> Discord",
 
       "• Discord(.*)": "Discord$1",
-      "(.*)Discord(.*)": 
-        "<span foreground='#89b4fa'> </span> $1Discord$2",
-
-      "ONLYOFFICE Desktop Editors": 
-        "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+      "(.*)Discord(.*)": "<span foreground='#89b4fa'> </span> $1Discord$2",
 
       "(.*).docx": 
         "<span foreground='#89b4fa'> </span> $1.docx",
@@ -163,11 +147,6 @@
         "<span foreground='#f38ba8'> </span> $1.pdf",
 
       "/": "  File Manager",
-
-      "Timeshift-gtk": 
-        "<span foreground='#a6e3a1'> </span> Timeshift",
-
-      "Authenticate": "  Authenticate"
     }
   },
 
