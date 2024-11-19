@@ -27,7 +27,7 @@
       gsettings set org.gnome.desktop.interface cursor-size 20
       hyprtl setcursor "Bibata-Original-Ice" 30
       gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-      
+
     '')
   ];
   gtk.cursorTheme = {
