@@ -35,7 +35,9 @@
     gnome.gnome-software
 
     ## coding
-    agda
+    helix-gpt
+    nil # language server
+    taplo # toml language server
 
     ## Office
     telegram-desktop
@@ -50,30 +52,24 @@
     gthumb
     zoom-us
     gparted
-    blender
-    ani-cli # animey
     vlc
     anki
     sioyek
     ranger
 
     ## Tooling
-    nil # language server
     scc # loc counter
     fd # find
-    # sequoia # gpg decrypt
     alejandra # formatter
     firebase-tools
     lazygit # tui git
     difftastic # diff files
-    tlrc # tldr written in rust
     powertop # tui power usage analysis
     btop # tui resource monitor
     nix-tree # show nix store
     glxinfo # OpenGL info
     fzf # fuzzy finder
     sl # funny train
-    taplo # toml language server
 
     ## Utils
     wl-clipboard # wayland clipboard utils
@@ -193,7 +189,6 @@
       package = pkgs.unstable.helix;
       settings = {
         theme = "catppuccin_frappe";
-
         editor = {
           lsp = {
             display-inlay-hints = true;
@@ -205,49 +200,51 @@
           statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers"];
           auto-save.focus-lost = true;
         };
-        # https://docs.helix-editor.com/keymap.html
-        keys.insert = {
-          "C-s" = ":w";
-          "C-r" = "insert_register";
-          "C-x" = "completion";
-          "C-u" = "kill_to_line_start";
-          "C-k" = "kill_to_line_end";
+        keys = {
+          # https://docs.helix-editor.com/keymap.html
+          insert = {
+            "C-s" = ":w";
+            "C-r" = "insert_register";
+            "C-x" = "completion";
+            "C-u" = "kill_to_line_start";
+            "C-k" = "kill_to_line_end";
+          };
+          normal = {
+            "C-m" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
+            "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
+            "C-f" = "jump_forward";
+            "C-g" = "jump_backward";
+            "C-s" = "save_selection";
+            "C-b" = "goto_previous_buffer";
+            "C-e" = "goto_file_end";
+            "C-l" = "last_picker";
+            # Changes
+            "R" = "replace_with_yanked";
+            "=" = "format_selections";
+            "A-d" = "delete_selection_noyank";
+            "Q" = "record_macro";
+            "q" = "replay_macro";
+            # Selection manipulation
+            "s" = "select_regex";
+            "S" = "split_selection";
+            "&" = "align_selections";
+            "_" = "trim_selections";
+            "C" = "copy_selection_on_next_line";
+            "A-f" = "expand_selection";
+            "A-g" = "shrink_selection";
+            "A-n" = "select_next_sibling";
+            "A-b" = "select_prev_sibling";
+            # Search
+            "*" = "search_selection";
+          };
         };
-        keys.normal = {
-          "C-m" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
-          "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
-          "C-f" = "jump_forward";
-          "C-g" = "jump_backward";
-          "C-s" = "save_selection";
-          "C-b" = "goto_previous_buffer";
-          "C-e" = "goto_file_end";
-          "C-l" = "last_picker";
-          # Changes
-          "R" = "replace_with_yanked";
-          "=" = "format_selections";
-          "A-d" = "delete_selection_noyank";
-          "Q" = "record_macro";
-          "q" = "replay_macro";
-          # Selection manipulation
-          "s" = "select_regex";
-          "S" = "split_selection";
-          "&" = "align_selections";
-          "_" = "trim_selections";
-          "C" = "copy_selection_on_next_line";
-          "A-f" = "expand_selection";
-          "A-g" = "shrink_selection";
-          "A-n" = "select_next_sibling";
-          "A-b" = "select_prev_sibling";
-          # Search
-          "*" = "search_selection";
-        };
-        # keys.goto = {
-        #   "s" = "goto_first_nonwhitespace";
-        #   "f" = "goto_file";
-        #   "a" = "goto_last_accessed_file";
-        #   "." = "goto_last_modification";
-        #   "w" = "goto_word";
-        # };
+      };
+      languages = {
+        language-server.gpt.command = "helix-gpt --handler copilot --copilotApiKey secret";
+        language = [{
+          name = "rust";
+          language-servers = ["rust-analyzer" "helix-gpt"];
+        }];
       };
     };
     vscode = {
