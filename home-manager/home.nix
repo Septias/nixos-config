@@ -27,7 +27,7 @@
 
   home.packages = with pkgs; [
     unstable.whatsapp-for-linux
-    deltachat-desktop
+    unstable.deltachat-desktop
     unstable.google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
@@ -195,7 +195,7 @@
             display-messages = true;
           };
           #line-number = "relative";
-          completion-timeout = 100;
+          completion-timeout = 20;
           completion-replace = true;
           statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers"];
           auto-save.focus-lost = true;
@@ -203,7 +203,7 @@
         keys = {
           # https://docs.helix-editor.com/keymap.html
           insert = {
-            "C-s" = ":w";
+            "C-s" = [":w" "normal_mode"];
             "C-r" = "insert_register";
             "C-x" = "completion";
             "C-u" = "kill_to_line_start";
