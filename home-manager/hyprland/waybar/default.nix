@@ -7,7 +7,6 @@
   scripts = {
     brightnesscontrol = pkgs.writeShellApplication {
       name = "brighthnesscontrol.sh";
-      runtimeInputs = pkgs.brigthnessctl;
       text = builtins.readFile ./scripts/brighthnesscontorl.sh;
     };
     cpuinfo = pkgs.writeShellApplication {
@@ -97,7 +96,7 @@ in {
           tooltip-format = "12-hour Format: {:%I:%M %p}";
         };
         "custom/backlight" = {
-          exec = scripts.brightnesscontrol;
+          # exec = scripts.brightnesscontrol;
           format = "{}";
           interval = 1;
           max-length = 6;
@@ -108,7 +107,7 @@ in {
           tooltip = true;
         };
         "custom/cpu" = {
-          exec = scripts.cpuusage;
+          # exec = scripts.cpuusage;
           interval = 5;
           max-length = 6;
           min-length = 6;
@@ -116,7 +115,7 @@ in {
           tooltip = true;
         };
         "custom/cpuinfo" = {
-          exec = scripts.cpuinfo;
+          # exec = scripts.cpuinfo;
           format = "{}";
           interval = 5;
           max-length = 8;
@@ -165,7 +164,7 @@ in {
           tooltip = false;
         };
         "custom/media" = {
-          exec = scripts.mediaplayer;
+          # exec = scripts.mediaplayer;
           format = "{}";
           max-length = 35;
           min-length = 5;
@@ -223,12 +222,12 @@ in {
           tooltip = true;
         };
         "custom/wifi" = {
-          exec = scripts.wifiinfo;
+          # exec = scripts.wifiinfo;
           format = "{}";
           interval = 1;
           max-length = 1;
           min-length = 1;
-          on-click = scripts.wifimenu;
+          # on-click = scripts.wifimenu;
           on-click-right = "kitty bash -c nmtui";
           return-type = "json";
           tooltip = true;
