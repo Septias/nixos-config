@@ -111,7 +111,8 @@
         enabled_layouts = "horizontal,stack";
       };
       keybindings = {
-        "ctrl+t" = "launch --cwd=/home/septias/coding";
+        "ctrl+t" = "launch --cwd=current";
+        "ctrl+shift+t" = "launch --type=tab --cwd=current";
         "ctrl+shift+n" = "next_window";
         "ctrl+q" = "close_window";
         # "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
