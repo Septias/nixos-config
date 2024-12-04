@@ -140,6 +140,7 @@
         dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
         c-fmt = "cargo fmt";
         c-fix = "cargo clippy --fix --allow-staged";
+        gaa = "git add *";
         gro = "git reset HEAD~1";
         gc = "git commit -am";
         gu = "git push --force-with-lease";
