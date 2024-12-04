@@ -30,10 +30,6 @@
 
     '')
   ];
-  gtk.cursorTheme = {
-    name = "Bibata-Original-Ice";
-    package = pkgs.bibata-cursors;
-  };
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
