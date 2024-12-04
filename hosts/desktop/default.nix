@@ -31,7 +31,6 @@
     # Do not disable this unless your GPU is unsupported or if you have a good reason to.
     open = false;
 
-    # forceFullCompositionPipeline = true;
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;

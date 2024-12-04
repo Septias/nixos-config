@@ -33,7 +33,7 @@
     unstable.obsidian
     unstable.nodePackages.pnpm
     unstable.isabelle
-    gnome.gnome-software
+    gnome-software
 
     ## coding
     helix-gpt # language server
@@ -101,7 +101,7 @@
         name = "JetBrains Mono";
         size = 15;
       };
-      theme = "Catppuccin-Frappe";
+      themeFile = "Catppuccin-Frappe";
       settings = {
         confirm_os_window_close = 0;
         remember_window_size = true;

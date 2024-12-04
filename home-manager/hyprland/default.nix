@@ -3,6 +3,7 @@
     ./waybar
     ./rofi
   ];
+  services.hyprpaper.enable = true;
   home.packages = with pkgs; [
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
@@ -13,21 +14,12 @@
     (writeShellScriptBin "autostart" ''
       # Variables
       config=$HOME/.config/hypr
-
-      # Wallpaper
-      swww kill
-      swww init
-
+      
       # Dunst (Notifications)
       pkill dunst
       dunst &
-
-      # Cursor
-      gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Original-Ice"
-      gsettings set org.gnome.desktop.interface cursor-size 20
-      hyprtl setcursor "Bibata-Original-Ice" 30
-      gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-
+      
+      hyprctl setcursor "Bibata-Original-Ice" 20    
     '')
   ];
   wayland.windowManager.hyprland = {
@@ -55,10 +47,6 @@
         touchpad = {
           natural_scroll = 1;
         };
-      };
-
-      general = {
-        layout = "master";
       };
 
       decoration = {
@@ -94,12 +82,12 @@
         default_split_ratio = 1.0;
       };
 
-      master = {
-        no_gaps_when_only = false;
-      };
-
       debug = {
         damage_tracking = 2; # leave it on 2 (full) unless you hate your GPU and want to make it suffer!
+      };
+
+      opengl = {
+        nvidia_anti_flicker = true;
       };
 
       exec-once = [
@@ -157,9 +145,8 @@
         ",Print, exec, screenshot"
         "SUPER, Print, exec, screenshot-edit"
         "SUPER, o, exec, obsidian"
-        "SUPER SHIFT, c, exec, wallpaper"
         "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "SUPER,space, exec,rofi -show run"
+        "SUPER,space, exec, rofi -show run"
 
         # Focus windows
         "SUPER, s, focuswindow, chrome"
@@ -175,9 +162,6 @@
         ",XF86AudioMute, exec, pamixer -t"
         ",XF86AudioPlay, exec, playerctl play-pause"
         ",XF86AudioPause, exec, playerctl play-pause"
-      ];
-
-      windowrule = [
       ];
     };
 
