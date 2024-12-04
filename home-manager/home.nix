@@ -280,6 +280,7 @@
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Original-Ice";
+      size = 25;
     };
   };
   home.file.".XCompose".source = ./Xcompose;
