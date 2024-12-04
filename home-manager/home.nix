@@ -35,7 +35,7 @@
     gnome.gnome-software
 
     ## coding
-    helix-gpt
+    helix-gpt # language server
     nil # language server
     taplo # toml language server
 
