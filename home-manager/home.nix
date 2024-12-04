@@ -18,7 +18,7 @@
 
   imports = [
     ./hyprland
-    ./gnome
+    ./gnome.nix
   ];
 
   home = {
@@ -274,6 +274,12 @@
     };
   };
 
+  gtk = {
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata Original Ice";
+    };
+  };
   home.file.".XCompose".source = ./Xcompose;
 
   # Nicely reload system units when changing configs
