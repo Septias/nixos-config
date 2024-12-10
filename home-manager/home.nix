@@ -3,6 +3,7 @@
   lib,
   pkgs,
   outputs,
+  config,
   ...
 }: {
   nixpkgs = {
@@ -19,6 +20,7 @@
   imports = [
     ./hyprland
     ./gnome.nix
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   home = {
@@ -71,6 +73,8 @@
     glxinfo # OpenGL info
     fzf # fuzzy finder
     sl # funny train
+    tldr
+    sops
 
     ## Utils
     wl-clipboard # wayland clipboard utils
@@ -190,6 +194,7 @@
     helix = {
       enable = true;
       package = pkgs.unstable.helix;
+      defaultEditor = true;
       settings = {
         theme = "catppuccin_frappe";
         editor = {
@@ -243,11 +248,22 @@
         };
       };
       languages = {
-        language-server.gpt.command = "helix-gpt --handler copilot --copilotApiKey secret";
+        language-server.helix-gpt = {
+          command = "helix-gpt";
+          args = ["--handler openai" "--openaiKey $(cat ${config.sops.secrets.openai.path})"];
+        };
         language = [
           {
             name = "rust";
             language-servers = ["rust-analyzer" "helix-gpt"];
+          }
+          {
+            name = "javascript";
+            language-servers = ["typescript-language-server" "helix-gpt"];
+          }
+          {
+            name = "python";
+            language-servers = ["pylsp" "helix-gpt"];
           }
         ];
       };
@@ -283,6 +299,13 @@
       size = 25;
     };
   };
+
+  sops = {
+    age.keyFile = "/home/septias/.config/sops/age/keys.txt";
+    defaultSopsFile = ./secrets/secret.yaml;
+    secrets.openai = {};
+  };
+  
   home.file.".XCompose".source = ./Xcompose;
 
   # Nicely reload system units when changing configs

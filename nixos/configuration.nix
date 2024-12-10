@@ -113,14 +113,6 @@
     jack.enable = true;
   };
 
-  # services.pipewire.wireplumber.extraConfig.bluetoothEnhancements = {
-  #   "monitor.bluez.properties" = {
-  #       "bluez5.enable-sbc-xq" = true;
-  #       "bluez5.enable-msbc" = true;
-  #       "bluez5.enable-hw-volume" = true;
-  #       "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
-  #   };
-  # };  # realtime scheduling for user processes
   security.rtkit.enable = true;
 
   services.minecraft-server = {
@@ -185,17 +177,18 @@
   };
 
   # for daemon mode
-  services.emacs.enable = true;
+  services.emacs.enable = false;
 
   xdg.portal.enable = true;
 
-  #programs.zsh.enable = true;
+  # programs.zsh.enable = true;
   programs.steam.enable = true;
   programs.hyprland.enable = true;
 
   environment = {
     shells = with pkgs; [nushell zsh];
     variables = {
+      EDITOR = "hx";
       RUST_LOG = "info";
     };
   };
@@ -204,7 +197,7 @@
   environment.systemPackages = with pkgs; [
     home-manager
     git
-    nodejs_20
+    nodejs
     python3
     zip
     unzip

@@ -14,6 +14,10 @@
     # Nix-hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    # Secrets
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs"; 
+    
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
 
@@ -58,6 +62,7 @@
           lanzaboote.nixosModules.lanzaboote
           ./nixos/configuration.nix
           ./hosts/desktop
+          inputs.sops-nix.nixosModules.sops
         ];
       };
 
@@ -68,6 +73,7 @@
           ./hosts/laptop
           lanzaboote.nixosModules.lanzaboote
           inputs.nixos-hardware.nixosModules.dell-xps-13-9310
+          inputs.sops-nix.nixosModules.sops
         ];
       };
     };
