@@ -5,34 +5,37 @@
   ...
 }: let
   scripts = {
-    bluetooth-control = pkgs.writeShellApplication {
-      name = "bluetooth-control.sh";
-      text = builtins.readFile ./scripts/bluetooth-control.sh;
+    cpu-temp = pkgs.writeShellApplication "cpu-temp" {
+      src = ./scripts/cpu-temp.sh;
+      nativeBuildInputs = [ pkgs.coreutils pkgs.awk pkgs.sensors ];
     };
-    brightnesscontrol = pkgs.writeShellApplication {
-      name = "brighthness-control.sh";
-      text = builtins.readFile ./scripts/brighthness-contorl.sh;
+    brightness-control = pkgs.writeShellApplication "brightness-control" {
+      src = ./scripts/brightness-control.sh;
+      nativeBuildInputs = [ pkgs.brightnessctl pkgs.notify-send pkgs.coreutils ];
     };
-    logout-menu = pkgs.writeShellApplication {
-      name = "logout-menu.sh";
-      runtimeInputs = with pkgs; [wlogout];
-      text = builtins.readFile ./scripts/logout-menu.sh;
+    bluetooth-menu = pkgs.writeShellApplication "bluetooth-menu" {
+      src = ./scripts/bluetooth-menu.sh;
+      nativeBuildInputs = [ pkgs.bluetoothctl pkgs.rofi pkgs.notify-send pkgs.rfkill ];
     };
-    media-player = pkgs.writeShellApplication {
-      name = "media-player.sh";
-      text = builtins.readFile ./scripts/media-player.sh;
+    wifi-menu = pkgs.writeShellApplication "wifi-menu" {
+      src = ./scripts/wifi-menu.sh;
+      nativeBuildInputs = [ pkgs.nmcli pkgs.rofi pkgs.notify-send ];
     };
-    volume-control = pkgs.writeShellApplication {
-      name = "volume-control.sh";
-      text = builtins.readFile ./scripts/volume-control.sh;
+    volume-control = pkgs.writeShellApplication "volume-control" {
+      src = ./scripts/volume-control.sh;
+      nativeBuildInputs = [ pkgs.pactl pkgs.notify-send pkgs.playerctl ];
     };
-    wifi-menu = pkgs.writeShellApplication {
-      name = "wifi-menu.sh";
-      text = builtins.readFile ./scripts/wifi-menu.sh;
+    media-player = pkgs.writeShellApplication "media-player" {
+      src = ./scripts/media-player.py;
+      nativeBuildInputs = [ pkgs.python3 pkgs.gobject-introspection pkgs.playerctl ];
     };
-    wifi-status = pkgs.writeShellApplication {
-      name = "wifi-status.sh";
-      text = builtins.readFile ./scripts/wifi-status.sh;
+    logout-menu = pkgs.writeShellApplication "logout-menu" {
+      src = ./scripts/logout-menu.sh;
+      nativeBuildInputs = [ pkgs.rofi pkgs.hyprland pkgs.systemd ];
+    };
+    cpu-usage = pkgs.writeShellApplication "cpu-usage" {
+      src = ./scripts/cpu-usage.sh;
+      nativeBuildInputs = [ pkgs.vmstat pkgs.awk ];
     };
   };
 in {
@@ -227,10 +230,6 @@ in {
           interval = 1;
           max-length = 1;
           min-length = 1;
-          # on-click = scripts.wifimenu;
-          on-click-right = "kitty bash -c nmtui";
-          return-type = "json";
-          tooltip = true;
         };
         "custom/ws" = {
           format = "  ";
@@ -261,7 +260,7 @@ in {
           max-length = 45;
           min-length = 5;
           rewrite = {
-            "" = "<span foreground='#89b4fa'> </span> Hyprland";
+            "" = "<span foreground='#89b4fa'>��� </span> Hyprland";
             "(.*) - Godot Engine" = "<span foreground='#89b4fa'> </span> $1";
             "(.*) - VLC media player" = "<span foreground='#fab387'>󰕼 </span> $1";
             "(.*) - Visual Studio Code" = "<span foreground='#89b4fa'>󰨞 </span> $1";
