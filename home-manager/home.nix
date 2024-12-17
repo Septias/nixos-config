@@ -34,7 +34,7 @@
     unstable.google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
-    unstable.isabelle
+    #unstable.isabelle
     gnome-software
 
     ## coding

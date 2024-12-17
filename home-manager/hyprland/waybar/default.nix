@@ -5,34 +5,34 @@
   ...
 }: let
   scripts = {
+    bluetooth-control = pkgs.writeShellApplication {
+      name = "bluetooth-control.sh";
+      text = builtins.readFile ./scripts/bluetooth-control.sh;
+    };
     brightnesscontrol = pkgs.writeShellApplication {
-      name = "brighthnesscontrol.sh";
-      text = builtins.readFile ./scripts/brighthnesscontorl.sh;
+      name = "brighthness-control.sh";
+      text = builtins.readFile ./scripts/brighthness-contorl.sh;
     };
-    cpuinfo = pkgs.writeShellApplication {
-      name = "cpuinfo.sh";
-      text = builtins.readFile ./scripts/cpuinfo.sh;
-    };
-    logoutlaunch = pkgs.writeShellApplication {
-      name = "logoutlaunch.sh";
+    logout-menu = pkgs.writeShellApplication {
+      name = "logout-menu.sh";
       runtimeInputs = with pkgs; [wlogout];
-      text = builtins.readFile ./scripts/logoutlaunch.sh;
+      text = builtins.readFile ./scripts/logout-menu.sh;
     };
-    mediaplayer = pkgs.writeShellApplication {
-      name = "mediaplayer.sh";
-      text = builtins.readFile ./scripts/mediaplayer.sh;
+    media-player = pkgs.writeShellApplication {
+      name = "media-player.sh";
+      text = builtins.readFile ./scripts/media-player.sh;
     };
-    volumecontrol = pkgs.writeShellApplication {
-      name = "volumecontrol.sh";
-      text = builtins.readFile ./scripts/volumecontrol.sh;
+    volume-control = pkgs.writeShellApplication {
+      name = "volume-control.sh";
+      text = builtins.readFile ./scripts/volume-control.sh;
     };
-    wifiinfo = pkgs.writeShellApplication {
-      name = "wifiinfo.sh";
-      text = builtins.readFile ./scripts/wifiinfo.sh;
+    wifi-menu = pkgs.writeShellApplication {
+      name = "wifi-menu.sh";
+      text = builtins.readFile ./scripts/wifi-menu.sh;
     };
-    wifimenu = pkgs.writeShellApplication {
-      name = "wifimenu.sh";
-      text = builtins.readFile ./scripts/wifimenu.sh;
+    wifi-status = pkgs.writeShellApplication {
+      name = "wifi-status.sh";
+      text = builtins.readFile ./scripts/wifi-status.sh;
     };
   };
 in {
