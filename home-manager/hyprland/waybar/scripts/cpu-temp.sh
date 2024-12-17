@@ -13,11 +13,12 @@ get_cpu_temperature() {
   temp=$(sensors | awk '/Package id 0/ {print $4}' | awk -F '[+.]' '{print $2}')
   if [[ -z "$temp" ]]; then
     temp=$(sensors | awk '/Tctl/ {print $2}' | tr -d '+°C')
-  fi
-  if [[ -z "$temp" ]]; then
-    temp="N/A"
-  else
-    temp_f=$(awk "BEGIN {printf \"%.1f\", ($temp * 9 / 5) + 32}")
+    if [[ -z "$temp" ]]; then
+      temp="N/A"
+      echo "Error: Unable to retrieve CPU temperature." >&2
+    else
+      temp_f=$(awk "BEGIN {printf \"%.1f\", ($temp * 9 / 5) + 32}")
+    fi
   fi
   echo "${temp:-N/A} ${temp_f:-N/A}"
 }
@@ -40,6 +41,10 @@ get_temperature_icon() {
 # Main script execution
 cpu_frequency=$(get_cpu_frequency)
 read -r temp_info < <(get_cpu_temperature)
+if [[ "$temp_info" == "N/A N/A" ]]; then
+  echo "{\"text\": \"Error retrieving CPU data\", \"tooltip\": \"Failed to get CPU temperature or frequency.\"}"
+  exit 1
+fi
 temp=$(echo "$temp_info" | awk '{print $1}')   # Celsius
 temp_f=$(echo "$temp_info" | awk '{print $2}') # Fahrenheit
 

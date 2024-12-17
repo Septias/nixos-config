@@ -5,37 +5,45 @@
   ...
 }: let
   scripts = {
-    cpu-temp = pkgs.writeShellApplication "cpu-temp" {
-      src = ./scripts/cpu-temp.sh;
-      nativeBuildInputs = [ pkgs.coreutils pkgs.awk pkgs.sensors ];
+    cpu-temp = pkgs.writeShellApplication {
+      name = "cpu-temp";
+      text = builtins.readFile ./scripts/cpu-temp.sh;
+      runtimeInputs = [ pkgs.coreutils pkgs.lm_sensors ];
     };
-    brightness-control = pkgs.writeShellApplication "brightness-control" {
-      src = ./scripts/brightness-control.sh;
-      nativeBuildInputs = [ pkgs.brightnessctl pkgs.notify-send pkgs.coreutils ];
+    brightness-control = pkgs.writeShellApplication {
+      name = "brightness-control";
+      text = builtins.readFile ./scripts/brightness-control.sh;
+      runtimeInputs = [ pkgs.brightnessctl pkgs.libnotify pkgs.coreutils ];
     };
-    bluetooth-menu = pkgs.writeShellApplication "bluetooth-menu" {
-      src = ./scripts/bluetooth-menu.sh;
-      nativeBuildInputs = [ pkgs.bluetoothctl pkgs.rofi pkgs.notify-send pkgs.rfkill ];
+    bluetooth-menu = pkgs.writeShellApplication {
+      name = "bluetooth-menu";
+      text = builtins.readFile ./scripts/bluetooth-menu.sh;
+      runtimeInputs = [ pkgs.bluetoothctl pkgs.rofi pkgs.libnotify pkgs.rfkill ];
     };
-    wifi-menu = pkgs.writeShellApplication "wifi-menu" {
-      src = ./scripts/wifi-menu.sh;
-      nativeBuildInputs = [ pkgs.nmcli pkgs.rofi pkgs.notify-send ];
+    wifi-menu = pkgs.writeShellApplication {
+      name = "wifi-menu";
+      text = builtins.readFile ./scripts/wifi-menu.sh;
+      runtimeInputs = [ pkgs.rofi pkgs.libnotify ];
     };
-    volume-control = pkgs.writeShellApplication "volume-control" {
-      src = ./scripts/volume-control.sh;
-      nativeBuildInputs = [ pkgs.pactl pkgs.notify-send pkgs.playerctl ];
+    volume-control = pkgs.writeShellApplication {
+      name = "volume-control";
+      text = builtins.readFile ./scripts/volume-control.sh;
+      runtimeInputs = [ pkgs.pactl pkgs.libnotify pkgs.playerctl ];
     };
-    media-player = pkgs.writeShellApplication "media-player" {
-      src = ./scripts/media-player.py;
-      nativeBuildInputs = [ pkgs.python3 pkgs.gobject-introspection pkgs.playerctl ];
+    /* media-player = pkgs.writeShellApplication {
+      name = "media-player";
+      text = builtins.readFile ./scripts/media-player.py;
+      runtimeInputs = [ pkgs.python3 pkgs.gobject-introspection pkgs.playerctl ];
+    }; */
+    logout-menu = pkgs.writeShellApplication {
+      name = "logout-menu";
+      text = builtins.readFile ./scripts/logout-menu.sh;
+      runtimeInputs = [ pkgs.rofi pkgs.hyprland pkgs.systemd ];
     };
-    logout-menu = pkgs.writeShellApplication "logout-menu" {
-      src = ./scripts/logout-menu.sh;
-      nativeBuildInputs = [ pkgs.rofi pkgs.hyprland pkgs.systemd ];
-    };
-    cpu-usage = pkgs.writeShellApplication "cpu-usage" {
-      src = ./scripts/cpu-usage.sh;
-      nativeBuildInputs = [ pkgs.vmstat pkgs.awk ];
+    cpu-usage = pkgs.writeShellApplication {
+      name = "cpu-usage";
+      text = builtins.readFile ./scripts/cpu-usage.sh;
+      runtimeInputs = [ ];
     };
   };
 in {
@@ -99,7 +107,7 @@ in {
           tooltip-format = "12-hour Format: {:%I:%M %p}";
         };
         "custom/backlight" = {
-          # exec = scripts.brightnesscontrol;
+          exec = "${scripts.brightness-control}/bin/brightness-control";
           format = "{}";
           interval = 1;
           max-length = 6;
@@ -110,7 +118,7 @@ in {
           tooltip = true;
         };
         "custom/cpu" = {
-          # exec = scripts.cpuusage;
+          exec = "${scripts.cpu-usage}/bin/cpu-usage";
           interval = 5;
           max-length = 6;
           min-length = 6;
@@ -118,7 +126,7 @@ in {
           tooltip = true;
         };
         "custom/cpuinfo" = {
-          # exec = scripts.cpuinfo;
+          exec = "${scripts.cpu-temp}/bin/cpu-temp";
           format = "{}";
           interval = 5;
           max-length = 8;
@@ -167,7 +175,7 @@ in {
           tooltip = false;
         };
         "custom/media" = {
-          # exec = scripts.mediaplayer;
+          #exec = "${scripts.media-player}/bin/media-player";
           format = "{}";
           max-length = 35;
           min-length = 5;
@@ -213,19 +221,8 @@ in {
           format = "";
           tooltip = false;
         };
-        "custom/update" = {
-          exec = "~/.local/share/bin/systemupdate.sh";
-          format = "{}";
-          interval = 60;
-          max-length = 1;
-          min-length = 1;
-          on-click = "hyprctl dispatch exec 'systemupdate.sh up'";
-          return-type = "json";
-          signal = 20;
-          tooltip = true;
-        };
         "custom/wifi" = {
-          # exec = scripts.wifiinfo;
+          exec = "${scripts.wifi-menu}/bin/wifi-menu";
           format = "{}";
           interval = 1;
           max-length = 1;
@@ -320,7 +317,7 @@ in {
           tooltip-format = "Memory Used: {used:0.1f} GB / {total:0.1f} GB";
         };
         mode = "dock";
-        modules-center = ["custom/paddc" "custom/left2" "custom/cpuinfo" "custom/left3" "memory" "custom/left4" "custom/cpu" "custom/leftin1" "custom/left5" "idle_inhibitor" "custom/right2" "custom/rightin1" "clock#time" "custom/right3" "clock#date" "custom/right4" "custom/wifi" "bluetooth" "custom/update" "custom/right5"];
+        modules-center = ["custom/paddc" "custom/left2" "custom/cpuinfo" "custom/left3" "memory" "custom/left4" "custom/cpu" "custom/leftin1" "custom/left5" "idle_inhibitor" "custom/right2" "custom/rightin1" "clock#time" "custom/right3" "clock#date" "custom/right4" "custom/wifi" "bluetooth" "custom/right5"];
         modules-left = ["custom/ws" "custom/left1" "hyprland/workspaces" "custom/right1" "custom/paddw" "hyprland/window"];
         modules-right = ["custom/media" "custom/left6" "pulseaudio" "custom/left7" "custom/backlight" "custom/left8" "battery" "custom/leftin2" "custom/power"];
         passthrough = false;

@@ -13,6 +13,11 @@ EOF
 # Send a notification with brightness info
 send_notification() {
   brightness=$(brightnessctl info | grep -oP "(?<=\()\d+(?=%)")
+  if [[ -z "$brightness" ]]; then
+    echo "Error: Unable to retrieve brightness level." >&2
+    notify-send "Brightness" "Error retrieving brightness level."
+    return 1
+  fi
   notify-send -r 91190 "Brightness: ${brightness}%"
 }
 
@@ -32,19 +37,19 @@ while getopts o: opt; do
     case $OPTARG in
     i) # Increase brightness
       if [[ $brightness -lt 10 ]]; then
-        brightnessctl set +1%
+        brightnessctl set +1% || { echo "Failed to increase brightness." >&2; exit 1; }
       else
-        brightnessctl set +2%
+        brightnessctl set +2% || { echo "Failed to increase brightness." >&2; exit 1; }
       fi
       send_notification
       ;;
     d) # Decrease brightness
       if [[ $brightness -le 1 ]]; then
-        brightnessctl set 1%
+        brightnessctl set 1% || { echo "Failed to set brightness to 1%." >&2; exit 1; }
       elif [[ $brightness -le 10 ]]; then
-        brightnessctl set 1%-
+        brightnessctl set 1%- || { echo "Failed to decrease brightness by 1%." >&2; exit 1; }
       else
-        brightnessctl set 2%-
+        brightnessctl set 2%- || { echo "Failed to decrease brightness by 2%." >&2; exit 1; }
       fi
       send_notification
       ;;
