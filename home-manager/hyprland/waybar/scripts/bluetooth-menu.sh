@@ -27,6 +27,10 @@ while true; do
 
   # Display menu using Rofi
   selected_option=$(echo -e "$options" | rofi -dmenu -i -selected-row 1 -config "${config}" -theme-str "${override}")
+  if [ $? -ne 0 ]; then
+    echo "Error: Rofi failed to display the menu." >&2
+    exit 1
+  fi
 
   # Exit if no option is selected
   if [ -z "$selected_option" ]; then
@@ -37,21 +41,21 @@ while true; do
   case "$selected_option" in
   " 󰂯  Enable Bluetooth")
     notify-send "Bluetooth" "Enabled"
-    rfkill unblock bluetooth
-    bluetoothctl power on
+    rfkill unblock bluetooth || { echo "Failed to unblock Bluetooth." >&2; exit 1; }
+    bluetoothctl power on || { echo "Failed to power on Bluetooth." >&2; exit 1; }
     sleep 1
     ;;
   " 󰂲  Disable Bluetooth")
     notify-send "Bluetooth" "Disabled"
-    rfkill block bluetooth
-    bluetoothctl power off
+    rfkill block bluetooth || { echo "Failed to block Bluetooth." >&2; exit 1; }
+    bluetoothctl power off || { echo "Failed to power off Bluetooth." >&2; exit 1; }
     sleep 1
     ;;
   " 󰂰  Rescan")
     notify-send "Bluetooth" "Rescanning for devices..."
-    bluetoothctl scan on
+    bluetoothctl scan on || { echo "Failed to start Bluetooth scan." >&2; exit 1; }
     sleep 3
-    bluetoothctl scan off
+    bluetoothctl scan off || { echo "Failed to stop Bluetooth scan." >&2; exit 1; }
     notify-send "Bluetooth" "Device scan completed"
     ;;
   *)
@@ -64,7 +68,7 @@ while true; do
 
       # Connect the device
       notify-send "Bluetooth" "Connecting to $device_name..."
-      bluetoothctl connect "$device_mac" &
+      bluetoothctl connect "$device_mac" || { notify-send "Bluetooth" "Failed to connect to $device_name"; exit 1; }
       sleep 3
 
       # Check connection status
