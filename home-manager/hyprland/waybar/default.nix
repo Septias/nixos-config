@@ -175,7 +175,8 @@ in {
           tooltip = false;
         };
         "custom/media" = {
-          #exec = "${scripts.media-player}/bin/media-player";
+          #
+          exec = "${scripts.media-player}/bin/media-player";
           format = "{}";
           max-length = 35;
           min-length = 5;
