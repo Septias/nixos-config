@@ -114,6 +114,7 @@
   };
 
   security.pam.services.gdm-password.enableGnomeKeyring = true;
+  security.pam.services.hyprlock = {};
   security.rtkit.enable = true;
 
   services.minecraft-server = {
