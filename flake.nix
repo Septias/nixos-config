@@ -16,8 +16,8 @@
 
     # Secrets
     sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs"; 
-    
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
 

@@ -305,7 +305,7 @@
     defaultSopsFile = ./secrets/secret.yaml;
     secrets.openai = {};
   };
-  
+
   home.file.".XCompose".source = ./Xcompose;
 
   # Nicely reload system units when changing configs

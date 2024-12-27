@@ -8,42 +8,44 @@
     cpu-temp = pkgs.writeShellApplication {
       name = "cpu-temp";
       text = builtins.readFile ./scripts/cpu-temp.sh;
-      runtimeInputs = [ pkgs.coreutils pkgs.lm_sensors ];
+      runtimeInputs = [pkgs.coreutils pkgs.lm_sensors];
     };
     brightness-control = pkgs.writeShellApplication {
       name = "brightness-control";
       text = builtins.readFile ./scripts/brightness-control.sh;
-      runtimeInputs = [ pkgs.brightnessctl pkgs.libnotify pkgs.coreutils ];
+      runtimeInputs = [pkgs.brightnessctl pkgs.libnotify pkgs.coreutils];
     };
     bluetooth-menu = pkgs.writeShellApplication {
       name = "bluetooth-menu";
       text = builtins.readFile ./scripts/bluetooth-menu.sh;
-      runtimeInputs = [ pkgs.bluetoothctl pkgs.rofi pkgs.libnotify pkgs.rfkill ];
+      runtimeInputs = [pkgs.bluetoothctl pkgs.rofi pkgs.libnotify pkgs.rfkill];
     };
     wifi-menu = pkgs.writeShellApplication {
       name = "wifi-menu";
       text = builtins.readFile ./scripts/wifi-menu.sh;
-      runtimeInputs = [ pkgs.rofi pkgs.libnotify ];
+      runtimeInputs = [pkgs.rofi pkgs.libnotify];
     };
     volume-control = pkgs.writeShellApplication {
       name = "volume-control";
       text = builtins.readFile ./scripts/volume-control.sh;
-      runtimeInputs = [ pkgs.pactl pkgs.libnotify pkgs.playerctl ];
+      runtimeInputs = [pkgs.pactl pkgs.libnotify pkgs.playerctl];
     };
-    /* media-player = pkgs.writeShellApplication {
+    /*
+       media-player = pkgs.writeShellApplication {
       name = "media-player";
       text = builtins.readFile ./scripts/media-player.py;
       runtimeInputs = [ pkgs.python3 pkgs.gobject-introspection pkgs.playerctl ];
-    }; */
+    };
+    */
     logout-menu = pkgs.writeShellApplication {
       name = "logout-menu";
       text = builtins.readFile ./scripts/logout-menu.sh;
-      runtimeInputs = [ pkgs.rofi pkgs.hyprland pkgs.systemd ];
+      runtimeInputs = [pkgs.rofi pkgs.hyprland pkgs.systemd];
     };
     cpu-usage = pkgs.writeShellApplication {
       name = "cpu-usage";
       text = builtins.readFile ./scripts/cpu-usage.sh;
-      runtimeInputs = [ ];
+      runtimeInputs = [];
     };
   };
 in {

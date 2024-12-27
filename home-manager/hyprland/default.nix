@@ -5,50 +5,50 @@
   ];
   services.hyprpaper = {
     enable = true;
-    settings = {  
+    settings = {
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
 
-      preload = [ "~/coding/nixos-config/home-manager/mask.jpeg" ];
+      preload = ["~/coding/nixos-config/home-manager/mask.jpeg"];
       wallpaper = ", ~/coding/nixos-config/home-manager/mask.jpeg";
     };
   };
   programs.hyprlock = {
     enable = true;
-    settings = 
-{
-  general = {
-    disable_loading_bar = true;
-    grace = 300;
-    hide_cursor = true;
-    no_fade_in = false;
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        grace = 300;
+        hide_cursor = true;
+        no_fade_in = false;
+      };
+
+      background = [
+        {
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+        }
+      ];
+
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          placeholder_text = "Password...";
+          shadow_passes = 2;
+        }
+      ];
+    };
   };
-
-  background = [
-    {
-      path = "screenshot";
-      blur_passes = 3;
-      blur_size = 8;
-    }
-  ];
-
-  input-field = [
-    {
-      size = "200, 50";
-      position = "0, -80";
-      monitor = "";
-      dots_center = true;
-      fade_on_empty = false;
-      font_color = "rgb(202, 211, 245)";
-      inner_color = "rgb(91, 96, 120)";
-      outer_color = "rgb(24, 25, 38)";
-      outline_thickness = 5;
-      placeholder_text = "Password...";
-      shadow_passes = 2;
-    }
-  ];
-};  };
   home.packages = with pkgs; [
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
@@ -59,12 +59,12 @@
     (writeShellScriptBin "autostart" ''
       # Variables
       config=$HOME/.config/hypr
-      
+
       # Dunst (Notifications)
       pkill dunst
       dunst &
-      
-      hyprctl setcursor "Bibata-Original-Ice" 20    
+
+      hyprctl setcursor "Bibata-Original-Ice" 20
     '')
   ];
   wayland.windowManager.hyprland = {
