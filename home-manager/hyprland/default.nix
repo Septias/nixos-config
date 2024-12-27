@@ -104,10 +104,10 @@
         "SUPER,c,centerwindow"
 
         # Move focus
-        "SUPER,n,workspace,-1"
-        "SUPER,d,workspace,+1"
-        "SUPER,r,movefocus,l"
-        "SUPER,t,movefocus,r"
+        "SUPER,r,workspace,-1"
+        "SUPER,t,workspace,+1"
+        "SUPER,n,movefocus,l"
+        "SUPER,d,movefocus,r"
 
         "SUPER,left,movefocus,l"
         "SUPER,right,movefocus,r"
@@ -124,10 +124,8 @@
         "SUPER,8,workspace,8"
 
         # Move window
-        "SUPER ALT, t, movewindow, r"
-        "SUPER ALT, r, movewindow, l"
-        "SUPER ALT, d, movetoworkspace, +1"
-        "SUPER ALT, n, movetoworkspace, -1"
+        "SUPER ALT, t, movetoworkspace, +1"
+        "SUPER ALT, r, movetoworkspace, -1"
         "SUPER SHIFT, left, movewindow, l"
         "SUPER SHIFT, right, movewindow, r"
         "SUPER SHIFT, up, movewindow, u"
