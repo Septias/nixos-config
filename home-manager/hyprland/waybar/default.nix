@@ -299,7 +299,7 @@ in {
           separate-outputs = true;
         };
         idle_inhibitor = {
-          format = " ";
+          format = "󱄅 ";
           start-activated = false;
           timeout = 5;
           tooltip = true;
