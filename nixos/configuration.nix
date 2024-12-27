@@ -113,6 +113,7 @@
     jack.enable = true;
   };
 
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
   security.rtkit.enable = true;
 
   services.minecraft-server = {
