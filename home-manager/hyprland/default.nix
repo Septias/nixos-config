@@ -19,7 +19,6 @@
     settings = {
       general = {
         disable_loading_bar = true;
-        grace = 300;
         hide_cursor = true;
         no_fade_in = false;
       };
@@ -32,6 +31,9 @@
         }
       ];
 
+      auth = {
+        "fingerprint:enabled" = true;
+      };
       input-field = [
         {
           size = "200, 50";
