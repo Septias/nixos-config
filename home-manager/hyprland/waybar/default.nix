@@ -38,8 +38,9 @@
     };
     */
     logout-menu = pkgs.writeShellApplication {
+      checkPhase = "";
       name = "logout-menu";
-      text = builtins.readFile ./scripts/logout-menu.sh;
+      text = "config = ${./rofi/logout-menu.rasi}" + (builtins.readFile ./scripts/logout-menu.sh);
       runtimeInputs = [pkgs.rofi pkgs.hyprland pkgs.systemd];
     };
     cpu-usage = pkgs.writeShellApplication {
@@ -71,17 +72,19 @@ in {
             good = 99;
             warning = 30;
           };
-          tooltip-format = "Time to Empty: {time}";
-          tooltip-format-charging = "Time to Full: {time}";
+          tooltip-format = "Discharging: {time}";
+          tooltip-format-charging = "Charging: {time}";
         };
         bluetooth = {
           format = "󰂰";
           format-connected = "󰂱";
           format-connected-battery = "󰂱";
           format-disabled = "󰂲";
+          interval = 1;
           max-length = 1;
           min-length = 1;
-          on-click = "blueman-manager";
+          on-click = "${scripts.bluetooth-menu}/bin/bluetooth-menu";
+          on-click-right = "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui";
           tooltip-format = "{num_connections} connected";
           tooltip-format-connected = "{num_connections} connected\n{device_enumerate}";
           tooltip-format-disabled = "Bluetooth Disabled";
@@ -89,9 +92,16 @@ in {
           tooltip-format-enumerate-connected-battery = "{device_alias}: {device_battery_percentage}%";
         };
         "clock#date" = {
-          actions = {on-click-right = "mode";};
+          actions = {
+            on-click = "mode";
+            on-click-right = "mode";
+          };
           calendar = {
-            format = {today = "<span color='#f38ba8'><b>{}</b></span>";};
+            format = {
+              months = "<span color='#b4befe'><b>{}</b></span>";
+              today = "<span color='#f38ba8'><b>{}</b></span>";
+              weekdays = "<span color='#a6adc8' font='7'>{}</span>";
+            };
             mode = "month";
             mode-mon-col = 6;
             on-click-right = "mode";
@@ -106,7 +116,7 @@ in {
           max-length = 8;
           min-length = 8;
           tooltip = true;
-          tooltip-format = "12-hour Format: {:%I:%M %p}";
+          tooltip-format = "Standard Time: {:%I:%M %p}";
         };
         "custom/backlight" = {
           exec = "${scripts.brightness-control}/bin/brightness-control";
@@ -114,8 +124,8 @@ in {
           interval = 1;
           max-length = 6;
           min-length = 6;
-          on-scroll-down = "~/.local/share/bin/brightnesscontrol.sh -o d";
-          on-scroll-up = "~/.local/share/bin/brightnesscontrol.sh -o i";
+          on-scroll-down = "${scripts.brightness-control}/bin/brightness-control -o d";
+          on-scroll-up = "${scripts.brightness-control}/bin/brightness-control -o i";
           return-type = "json";
           tooltip = true;
         };
@@ -195,8 +205,7 @@ in {
         };
         "custom/power" = {
           format = " ";
-          on-click = "~/.local/share/bin/logoutlaunch.sh 2";
-          on-click-right = "~/.local/share/bin/logoutlaunch.sh 1";
+          on-click = "${scripts.logout-menu}/bin/logout-menu";
           tooltip = false;
         };
         "custom/right1" = {
@@ -229,6 +238,10 @@ in {
           interval = 1;
           max-length = 1;
           min-length = 1;
+          on-click = "${scripts.wifi-menu}/bin/wifi-menu";
+          on-click-right = "kitty --title '󰤨  Network Manager TUI' bash -c nmtui";
+          return-type = "json";
+          tooltip = true;
         };
         "custom/ws" = {
           format = "  ";
@@ -236,30 +249,12 @@ in {
           min-length = 3;
           tooltip = false;
         };
-        exclusive = true;
         gtk-layer-shell = true;
-        "hyland/workspaces" = {
-          active-only = false;
-          all-outputs = false;
-          disable-scroll = false;
-          on-click = "activate";
-          on-scroll-down = "hyprctl dispatch workspace +1";
-          on-scroll-up = "hyprctl dispatch workspace -1";
-          persistent-workspaces = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
-            "5" = [];
-          };
-          sort-by-number = true;
-        };
         "hyprland/window" = {
           format = "{}";
-          max-length = 45;
           min-length = 5;
           rewrite = {
-            "" = "<span foreground='#89b4fa'>��� </span> Hyprland";
+            "" = "<span foreground='#89b4fa'> </span> Hyprland";
             "(.*) - Godot Engine" = "<span foreground='#89b4fa'> </span> $1";
             "(.*) - VLC media player" = "<span foreground='#fab387'>󰕼 </span> $1";
             "(.*) - Visual Studio Code" = "<span foreground='#89b4fa'>󰨞 </span> $1";
@@ -294,7 +289,17 @@ in {
             "~" = "  Terminal";
             "• Discord(.*)" = "Discord$1";
           };
-          separate-outputs = true;
+        };
+        "hyprland/workspaces" = {
+          on-scroll-down = "hyprctl dispatch workspace +1";
+          on-scroll-up = "hyprctl dispatch workspace -1";
+          persistent-workspaces = {
+            "1" = [];
+            "2" = [];
+            "3" = [];
+            "4" = [];
+            "5" = [];
+          };
         };
         idle_inhibitor = {
           format = "󱄅 ";
@@ -322,7 +327,6 @@ in {
         modules-center = ["custom/paddc" "custom/left2" "custom/cpuinfo" "custom/left3" "memory" "custom/left4" "custom/cpu" "custom/leftin1" "custom/left5" "idle_inhibitor" "custom/right2" "custom/rightin1" "clock#time" "custom/right3" "clock#date" "custom/right4" "custom/wifi" "bluetooth" "custom/right5"];
         modules-left = ["custom/ws" "custom/left1" "hyprland/workspaces" "custom/right1" "custom/paddw" "hyprland/window"];
         modules-right = ["custom/media" "custom/left6" "pulseaudio" "custom/left7" "custom/backlight" "custom/left8" "battery" "custom/leftin2" "custom/power"];
-        passthrough = false;
         position = "top";
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -334,9 +338,9 @@ in {
           format-muted = "󰝟 {volume}%";
           max-length = 6;
           min-length = 6;
-          on-click = "~/.local/share/bin/volumecontrol.sh -o m";
-          on-scroll-down = "~/.local/share/bin/volumecontrol.sh -o d";
-          on-scroll-up = "~/.local/share/bin/volumecontrol.sh -o i";
+          on-click = "${scripts.volume-control}/bin/volume-control -o m";
+          on-scroll-down = "${scripts.volume-control}/bin/volume-control -o d";
+          on-scroll-up = "${scripts.volume-control}/bin/volume-control -o i";
           tooltip = true;
           tooltip-format = "Device: {desc}";
         };
