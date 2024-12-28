@@ -35,7 +35,6 @@
     unstable.obsidian
     unstable.nodePackages.pnpm
     #unstable.isabelle
-    gnome-software
 
     ## coding
     helix-gpt # language server
@@ -59,6 +58,8 @@
     anki
     sioyek
     ranger
+    gnome-software
+    sonic-pi
 
     ## Tooling
     scc # loc counter
@@ -250,7 +251,7 @@
       languages = {
         language-server.helix-gpt = {
           command = "helix-gpt";
-          args = ["--handler openai" "--openaiKey $(cat ${config.sops.secrets.openai.path})"];
+          args = ["--copilotApiKey $(cat ${config.sops.secrets.copilot.path})"];
         };
         language = [
           {
@@ -303,7 +304,7 @@
   sops = {
     age.keyFile = "/home/septias/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets/secret.yaml;
-    secrets.openai = {};
+    secrets.copilot = {};
   };
 
   home.file.".XCompose".source = ./Xcompose;
