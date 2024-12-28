@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Rofi configuration
 config="$HOME/.config/rofi/wifi-bluetooth-menu.rasi"
 

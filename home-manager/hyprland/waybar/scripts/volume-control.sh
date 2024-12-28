@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Define functions
 print_error() {
   cat <<"EOF"

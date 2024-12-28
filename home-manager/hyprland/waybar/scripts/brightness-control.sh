@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Print error message for invalid arguments
 print_error() {
   cat <<"EOF"

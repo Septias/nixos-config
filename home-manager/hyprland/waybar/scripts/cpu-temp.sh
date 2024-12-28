@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Get CPU clock speeds
 get_cpu_frequency() {
   freqlist=$(awk '/cpu MHz/ {print $4}' /proc/cpuinfo)

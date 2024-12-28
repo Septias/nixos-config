@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # This script allows you to:
 # - Enable or disable Bluetooth.
 # - Scan for available devices.
