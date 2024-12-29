@@ -37,9 +37,10 @@
     #unstable.isabelle
 
     ## coding
-    helix-gpt # language server
-    nil # language server
-    taplo # toml language server
+    helix-gpt # gpt lsp
+    nil # nix lsp
+    taplo # toml lps
+    marksman # markdown lsp
 
     ## Office
     telegram-desktop
@@ -158,6 +159,7 @@
         todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
         o = "xdg-open";
         fu = "nix flake update";
+        debug_h = "tail --follow ~/.cache/helix/helix.log";
       };
     };
     starship = {
@@ -265,6 +267,10 @@
           {
             name = "python";
             language-servers = ["pylsp" "helix-gpt"];
+          }
+          {
+            name = "markdown";
+            language-servers = ["helix-gpt"];
           }
         ];
       };
