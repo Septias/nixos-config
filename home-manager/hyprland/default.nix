@@ -42,6 +42,7 @@
           dots_center = true;
           fade_on_empty = false;
           dots_size = 0.2;
+          dots_spacing = 0.6;
           font_color = "rgb(198, 208, 245)";
           inner_color = "rgb(48, 52, 70)";
           outer_color = "rgb(131, 139, 167)";
