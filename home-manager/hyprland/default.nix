@@ -55,6 +55,7 @@
     };
   };
   home.packages = with pkgs; [
+    hyprsunset
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
     '')
@@ -69,6 +70,9 @@
       pkill dunst
       dunst &
 
+      pkill hyprsunset
+      hyprsunset -t 5000 &
+      
       hyprctl setcursor "Bibata-Original-Ice" 20
     '')
   ];
