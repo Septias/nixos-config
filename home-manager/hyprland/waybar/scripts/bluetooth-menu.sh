@@ -3,9 +3,6 @@
 # - Scan for available devices.
 # - Connect to a device.
 
-# Rofi configuration
-config="$HOME/.config/rofi/wifi-bluetooth-menu.rasi"
-
 # Initial notification
 notify-send "Bluetooth" "Searching for available devices..."
 

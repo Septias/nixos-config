@@ -16,9 +16,10 @@
       runtimeInputs = [pkgs.brightnessctl pkgs.libnotify pkgs.coreutils];
     };
     bluetooth-menu = pkgs.writeShellApplication {
+      checkPhase = "";
       name = "bluetooth-menu";
-      text = builtins.readFile ./scripts/bluetooth-menu.sh;
-      runtimeInputs = [pkgs.bluetoothctl pkgs.rofi pkgs.libnotify pkgs.rfkill];
+      text = "config=\"${./rofi/bluetooth-menu.rasi}\"\n" + (builtins.readFile ./scripts/bluetooth-menu.sh);
+      runtimeInputs = [pkgs.rofi pkgs.libnotify];
     };
     wifi-menu = pkgs.writeShellApplication {
       name = "wifi-menu";
@@ -26,9 +27,10 @@
       runtimeInputs = [pkgs.rofi pkgs.libnotify];
     };
     volume-control = pkgs.writeShellApplication {
+      checkPhase = "";
       name = "volume-control";
       text = builtins.readFile ./scripts/volume-control.sh;
-      runtimeInputs = [pkgs.pactl pkgs.libnotify pkgs.playerctl];
+      runtimeInputs = [pkgs.pulseaudioFull pkgs.libnotify pkgs.playerctl];
     };
     /*
        media-player = pkgs.writeShellApplication {
@@ -40,7 +42,7 @@
     logout-menu = pkgs.writeShellApplication {
       checkPhase = "";
       name = "logout-menu";
-      text = "config = ${./rofi/logout-menu.rasi}" + (builtins.readFile ./scripts/logout-menu.sh);
+      text = "config = ${./rofi/power-menu.rasi}" + (builtins.readFile ./scripts/power-menu.sh);
       runtimeInputs = [pkgs.rofi pkgs.hyprland pkgs.systemd];
     };
     cpu-usage = pkgs.writeShellApplication {
