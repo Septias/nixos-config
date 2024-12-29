@@ -3,17 +3,42 @@
     ./waybar
     ./rofi
   ];
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "on";
-      splash = false;
-      splash_offset = 2.0;
+  services = {
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = false;
+        splash_offset = 2.0;
 
-      preload = ["~/coding/nixos-config/home-manager/mask.jpeg"];
-      wallpaper = ", ~/coding/nixos-config/home-manager/mask.jpeg";
+        preload = ["~/coding/nixos-config/home-manager/mask.jpeg"];
+        wallpaper = ", ~/coding/nixos-config/home-manager/mask.jpeg";
+      };
+    };
+    hypridle = {
+      enable = true;
+      settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 900;
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 1200;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
     };
   };
+
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -73,7 +98,6 @@
 
       pkill hyprsunset
       hyprsunset -t 5000 &
-      
       hyprctl setcursor "Bibata-Original-Ice" 20
     '')
   ];
