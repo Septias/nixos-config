@@ -34,18 +34,21 @@
       auth = {
         "fingerprint:enabled" = true;
       };
+
       input-field = [
         {
           size = "200, 50";
           position = "0, -80";
-          monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
-          outline_thickness = 5;
-          placeholder_text = "Password...";
+          dots_size = 0.2;
+          font_color = "rgb(198, 208, 245)";
+          inner_color = "rgb(48, 52, 70)";
+          outer_color = "rgb(131, 139, 167)";
+          check_color = "rgb(48, 52, 70)";
+          fail_color = "rgb(231, 130, 132)";
+          outline_thickness = 2;
+          placeholder_text = "•`_´•";
           shadow_passes = 2;
         }
       ];
