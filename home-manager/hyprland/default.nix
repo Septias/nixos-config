@@ -242,14 +242,14 @@
 
       bindle = [
         # Backlight Keys
-        ",XF86MonBrightnessUp,exec,light -A 5"
-        ",XF86MonBrightnessDown,exec,light -U 5"
+        ",XF86MonBrightnessUp,exec, ${pkgs.brightnessctl}/bin/brightnessctl set +10%"
+        ",XF86MonBrightnessDown,exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%-"
         # Volume Keys
-        ",XF86AudioRaiseVolume,exec, pamixer -i 5"
-        ",XF86AudioLowerVolume,exec, pamixer -d 5"
-        ",XF86AudioMute, exec, pamixer -t"
-        ",XF86AudioPlay, exec, playerctl play-pause"
-        ",XF86AudioPause, exec, playerctl play-pause"
+        ",XF86AudioRaiseVolume,exec, ${pkgs.pamixer}/bin/pamixer -i 5"
+        ",XF86AudioLowerVolume,exec, ${pkgs.pamixer}/bin/pamixer -d 5"
+        ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+        ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        ",XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
       ];
     };
 
