@@ -75,8 +75,9 @@
     glxinfo # OpenGL info
     fzf # fuzzy finder
     sl # funny train
-    tldr
-    sops
+    tldr # short man pages
+    sops # encrypted secrets in flake
+    bluetuith # bluetooth tui
 
     ## Utils
     wl-clipboard # wayland clipboard utils
