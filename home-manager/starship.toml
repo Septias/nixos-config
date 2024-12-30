@@ -1,4 +1,3 @@
-
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
@@ -64,4 +63,7 @@ format ="[$symbol($version )]($style)"
 format ="[$symbol($version )]($style)"
 
 [cmake]
+disabled = true
+
+[scala]
 disabled = true
