@@ -117,6 +117,7 @@
         hide_window_decorations = true;
         tab_bar_style = "powerline";
         enabled_layouts = "horizontal,stack";
+        background_opacity = 0.9;
       };
       keybindings = {
         "ctrl+t" = "launch --cwd=current";
