@@ -10,7 +10,6 @@
         ipc = "on";
         splash = false;
         splash_offset = 2.0;
-
         preload = ["~/coding/nixos-config/home-manager/mask.jpeg"];
         wallpaper = ", ~/coding/nixos-config/home-manager/mask.jpeg";
       };
@@ -102,7 +101,7 @@
     '')
   ];
   wayland.windowManager.hyprland = {
-    package = pkgs.hyprland;
+    package = pkgs.unstable.hyprland;
     enable = true;
     systemd.enable = true;
     xwayland = {
@@ -240,6 +239,10 @@
         "SUPER, s, focuswindow, chrome"
       ];
 
+      bindm = [
+        "ALT, mouse:272, movewindow"
+      ];
+
       bindle = [
         # Backlight Keys
         ",XF86MonBrightnessUp,exec, ${pkgs.brightnessctl}/bin/brightnessctl set +10%"
@@ -257,7 +260,8 @@
       env = XDG_SESSION_TYPE,wayland
       env = WLR_NO_HARDWARE_CURSORS,1
       env = NIXOS_OZONE_WL,1
-      env = QT_QPA_PLATFORMTHEME,qt6ct
+      env = QT_QPA_PLATFORMTHEME,wayland
+      env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
     '';
   };
 }
