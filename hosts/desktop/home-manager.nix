@@ -6,8 +6,8 @@
   ...
 }: {
   wayland.windowManager.hyprland.settings.monitor = [
-    "HDMI-A-1,1920x1080,1920x0,1"
     "DP-2,1920x1080@144.00Hz,0x0,1"
+    "HDMI-A-1,1920x1080,1920x0,1"
     "Unkown-1, disabled"
   ];
   wayland.windowManager.hyprland.extraConfig = lib.mkOverride 10 ''
