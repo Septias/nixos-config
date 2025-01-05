@@ -81,6 +81,7 @@
   };
   home.packages = with pkgs; [
     hyprsunset
+    easyeffects
     (writeShellScriptBin "screenshot" ''
       grim -g "$(slurp)" - | wl-copy
     '')
@@ -132,37 +133,29 @@
         rounding = 12;
       };
 
-      # gestures = {
-      #   workplace_swipe = true;
-      # };
-
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_forever= true;
+      };
+      
       animations = {
         enabled = true;
         bezier = [
-          "pace,0.46, 1, 0.29, 0.99"
-          "overshot,0.13,0.99,0.29,1.1"
+          "pace, 0.46, 1, 0.29, 0.99"
+          "overshot, 0.13, 0.99, 0.29, 1.1"
           "md3_decel, 0.05, 0.7, 0.1, 1"
         ];
         animation = [
-          "windowsIn,1,6,md3_decel,slide"
-          "windowsOut,1,6,md3_decel,slide"
-          "windowsMove,1,6,md3_decel,slide"
-          "fade,1,10,md3_decel"
+          "windowsIn,1,2,md3_decel,slide"
+          "windowsOut,1,3,md3_decel,slide"
+          "windowsMove,1,3,md3_decel,slide"
+          "fade,1,6,md3_decel"
           "workspaces,1,9,md3_decel,slide"
-          "workspaces, 1, 6, default"
+          "workspaces,1,6,default"
           "specialWorkspace,1,8,md3_decel,slide"
           "border,1,10,md3_decel"
         ];
       };
-
-      misc = {
-        vfr = true; # misc:no_vfr -> misc:vfr. bool, heavily recommended to leave at default on. Saves on CPU usage.
-        vrr = 0; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
-        mouse_move_enables_dpms = true;
-        key_press_enables_dpms = true;
-        animate_mouse_windowdragging = true;
-      };
-
       dwindle = {
         pseudotile = true; # enable pseudotiling on dwindle
         default_split_ratio = 1.0;
@@ -174,6 +167,14 @@
 
       opengl = {
         nvidia_anti_flicker = true;
+      };
+
+      misc = {
+        vfr = true; # misc:no_vfr -> misc:vfr. bool, heavily recommended to leave at default on. Saves on CPU usage.
+        vrr = 0; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
+        mouse_move_enables_dpms = true;
+        key_press_enables_dpms = true;
+        animate_mouse_windowdragging = true;
       };
 
       exec-once = [
