@@ -4,6 +4,11 @@
   lib,
   ...
 }: let
+  add_theme = file: pkgs.writeTextFile {
+    text = "@theme \"${./rofi/mechabar-theme.rasi}\" \n" + builtins.readFile(file);
+    name = "placeholder";
+  };
+  add_config = conf: script: "config=\"${add_theme conf}\"\n" + (builtins.readFile script);
   scripts = {
     cpu-temp = pkgs.writeShellApplication {
       name = "cpu-temp";
@@ -18,7 +23,7 @@
     bluetooth-menu = pkgs.writeShellApplication {
       checkPhase = "";
       name = "bluetooth-menu";
-      text = "config=\"${./rofi/bluetooth-menu.rasi}\"\n" + (builtins.readFile ./scripts/bluetooth-menu.sh);
+      text = add_config ./rofi/bluetooth-menu.rasi ./scripts/bluetooth-menu.sh;
       runtimeInputs = [pkgs.rofi pkgs.libnotify];
     };
     wifi-menu = pkgs.writeShellApplication {
