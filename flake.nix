@@ -59,7 +59,7 @@
       nixos-desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          lanzaboote.nixosModules.lanzaboote
+          # lanzaboote.nixosModules.lanzaboote
           ./nixos/configuration.nix
           ./hosts/desktop
           inputs.sops-nix.nixosModules.sops
@@ -71,7 +71,7 @@
         modules = [
           ./nixos/configuration.nix
           ./hosts/laptop
-          lanzaboote.nixosModules.lanzaboote
+          # lanzaboote.nixosModules.lanzaboote
           inputs.nixos-hardware.nixosModules.dell-xps-13-9310
           inputs.sops-nix.nixosModules.sops
         ];
@@ -80,21 +80,20 @@
 
     # 'home-manager --flake .username@hostname'
     homeConfigurations = {
-      "septias@nixos-laptop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home-manager/home.nix
-          ./hosts/laptop/home-manager.nix
-        ];
-      };
-
       "septias@nixos-desktop" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home-manager/home.nix
           ./hosts/desktop/home-manager.nix
+        ];
+      };
+      "septias@nixos-laptop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home-manager/home.nix
+          ./hosts/laptop/home-manager.nix
         ];
       };
     };
