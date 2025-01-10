@@ -83,10 +83,10 @@
     hyprsunset
     easyeffects
     (writeShellScriptBin "screenshot" ''
-      grim -g "$(slurp)" - | wl-copy
+      ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '')
     (writeShellScriptBin "screenshot-edit" ''
-      wl-paste | swappy -f -
+      wl-paste | ${swappy}/bin/swappy -f -
     '')
     (writeShellScriptBin "autostart" ''
       # Variables
@@ -102,7 +102,7 @@
     '')
   ];
   wayland.windowManager.hyprland = {
-    package = pkgs.unstable.hyprland;
+    package = pkgs.hyprland;
     enable = true;
     systemd.enable = true;
     xwayland = {
