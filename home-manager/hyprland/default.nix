@@ -194,7 +194,7 @@
         # Move focus
         "SUPER,r,workspace,-1"
         "SUPER,t,workspace,+1"
-        "SUPER,n,movefocus,l"
+        "SUPER,n,cyclenext"
         "SUPER,d,movefocus,r"
 
         "SUPER,left,movefocus,l"
