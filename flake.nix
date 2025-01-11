@@ -21,9 +21,6 @@
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
 
-    # Emacs
-    emacs.url = "github:nix-community/emacs-overlay";
-
     # Custom
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
