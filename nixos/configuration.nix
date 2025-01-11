@@ -194,6 +194,7 @@
       EDITOR = "hx";
       RUST_LOG = "info";
     };
+    sessionVariables.NIXOS_OZONE_WL = "1";
   };
   users.defaultUserShell = pkgs.nushell;
 
