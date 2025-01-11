@@ -189,7 +189,7 @@
         "SUPER,m,fullscreen"
         "SUPER,p,pin"
         "SUPER,c,centerwindow"
-        "SUPER,l,exec, hyprlock"
+        "SUPER,l,exec,hyprlock"
 
         # Move focus
         "SUPER,r,workspace,-1"
@@ -229,7 +229,7 @@
         "SUPER $mainMod SHIFT, 8, movetoworkspacesilent, 8"
 
         # Start programs
-        "SUPER,RETURN, exec, kitty"
+        "SUPER,RETURN, exec, kitty /home/septias/coding" 
         ",Print, exec, screenshot"
         "SUPER, Print, exec, screenshot-edit"
         "SUPER, o, exec, obsidian"
