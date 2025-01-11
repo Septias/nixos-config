@@ -205,6 +205,7 @@
       settings = {
         theme = "catppuccin_frappe";
         editor = {
+          end-of-line-diagnostics = "hint";
           lsp = {
             display-inlay-hints = true;
             display-messages = true;
@@ -274,6 +275,7 @@
           {
             name = "markdown";
             language-servers = ["helix-gpt"];
+            soft-wrap.enable = true;
           }
         ];
       };
