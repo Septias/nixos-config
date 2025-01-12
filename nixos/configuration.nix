@@ -117,6 +117,7 @@
   # Unlock keyring
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
+  programs.ssh.startAgent = true;
 
   security.pam.services.hyprlock = {};
   security.rtkit.enable = true;
