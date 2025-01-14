@@ -240,12 +240,12 @@ in {
           tooltip = false;
         };
         "custom/wifi" = {
-          exec = "${scripts.wifi-menu}/bin/wifi-menu";
+          #exec = "${scripts.wifi-menu}/bin/wifi-menu";
           format = "{}";
           interval = 1;
           max-length = 1;
           min-length = 1;
-          on-click = "${scripts.wifi-menu}/bin/wifi-menu";
+          #on-click = "${scripts.wifi-menu}/bin/wifi-menu";
           on-click-right = "kitty --title '󰤨  Network Manager TUI' bash -c nmtui";
           return-type = "json";
           tooltip = true;
