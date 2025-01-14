@@ -2,86 +2,15 @@
   imports = [
     ./waybar
     ./rofi
+    ./hypridle.nix
+    ./hyprpaper.nix
   ];
-  services = {
-    hyprpaper = {
-      enable = true;
-      settings = {
-        ipc = "on";
-        splash = false;
-        splash_offset = 2.0;
-        preload = ["~/coding/nixos-config/home-manager/mask.jpeg"];
-        wallpaper = ", ~/coding/nixos-config/home-manager/mask.jpeg";
-      };
-    };
-    hypridle = {
-      enable = true;
-      settings = {
-      general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
-      };
 
-      listener = [
-        {
-          timeout = 900;
-          on-timeout = "hyprlock";
-        }
-        {
-          timeout = 1200;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-      ];
-    };
-    };
-  };
-
-  programs.hyprlock = {
-    enable = true;
-    settings = {
-      general = {
-        disable_loading_bar = true;
-        hide_cursor = true;
-        no_fade_in = false;
-      };
-
-      background = [
-        {
-          path = "screenshot";
-          blur_passes = 3;
-          blur_size = 8;
-        }
-      ];
-
-      auth = {
-        "fingerprint:enabled" = true;
-      };
-
-      input-field = [
-        {
-          size = "200, 50";
-          position = "0, -80";
-          dots_center = true;
-          fade_on_empty = false;
-          dots_size = 0.2;
-          dots_spacing = 0.6;
-          font_color = "rgb(198, 208, 245)";
-          inner_color = "rgb(48, 52, 70)";
-          outer_color = "rgb(131, 139, 167)";
-          check_color = "rgb(48, 52, 70)";
-          fail_color = "rgb(231, 130, 132)";
-          outline_thickness = 2;
-          placeholder_text = "•`_´•";
-          shadow_passes = 2;
-        }
-      ];
-    };
-  };
   home.packages = with pkgs; [
     hyprsunset
     easyeffects
+    swaynotificationcenter
+  ] ++ [
     (writeShellScriptBin "screenshot" ''
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '')
@@ -89,15 +18,12 @@
       wl-paste | ${swappy}/bin/swappy -f -
     '')
     (writeShellScriptBin "autostart" ''
-      # Variables
-      config=$HOME/.config/hypr
-
-      # Dunst (Notifications)
-      pkill dunst
-      dunst &
+      pkill swaync
+      swaync &
 
       pkill hyprsunset
       hyprsunset -t 5000 &
+      
       hyprctl setcursor "Bibata-Original-Ice" 20
     '')
   ];
@@ -116,14 +42,12 @@
         kb_variant = "neo";
         kb_model = "p4104";
         kb_options = "terminate:ctrl_alt_bksp";
-        kb_rules = "";
 
-        follow_mouse = 1;
-        repeat_delay = 400;
+        follow_mouse = 2;
+        repeat_delay = 300;
         repeat_rate = 25;
         accel_profile = "flat";
         sensitivity = 0;
-        force_no_accel = 1;
         touchpad = {
           natural_scroll = 1;
         };
@@ -156,6 +80,7 @@
           "border,1,10,md3_decel"
         ];
       };
+      
       dwindle = {
         pseudotile = true; # enable pseudotiling on dwindle
         default_split_ratio = 1.0;
@@ -179,7 +104,7 @@
 
       exec-once = [
         "autostart"
-        "easyeffects --gapplication-service" # Starts easyeffects in the background
+        "easyeffects --gapplication-service"
       ];
 
       bind = [
