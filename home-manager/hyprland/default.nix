@@ -159,7 +159,7 @@
         "SUPER, Print, exec, screenshot-edit"
         "SUPER, o, exec, obsidian"
         "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "SUPER,space, exec, rofi -show run"
+        "SUPER,space, exec, rofi -show drun"
 
         # Focus windows
         "SUPER, s, focuswindow, chrome"
