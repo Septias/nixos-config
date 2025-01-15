@@ -66,10 +66,9 @@
     ## Tooling
     scc # loc counter
     fd # find
-    alejandra # formatter
-    firebase-tools
+    alejandra # Nix Formatter
+    firebase-tools # Firebase tools
     lazygit # tui git
-    difftastic # diff files
     powertop # tui power usage analysis
     btop # tui resource monitor
     nix-tree # show nix store
@@ -80,6 +79,8 @@
     sops # encrypted secrets in flake
     bluetuith # bluetooth tui
     via # keyboard config
+    delta # Difftool
+    difftastic # Difftool
 
     ## Utils
     wl-clipboard # wayland clipboard utils
