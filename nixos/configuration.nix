@@ -198,6 +198,8 @@
     variables = {
       EDITOR = "hx";
       RUST_LOG = "info";
+      # To unlock keyring
+      XDG_RUNTIME_DIR = "/run/user/$UID";
     };
     sessionVariables.NIXOS_OZONE_WL = "1";
   };
@@ -210,6 +212,7 @@
     python3
     zip
     unzip
+    libsecret
   ];
 
   fonts.packages = with pkgs; [
