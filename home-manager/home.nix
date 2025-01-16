@@ -68,7 +68,6 @@
     fd # find
     alejandra # Nix Formatter
     firebase-tools # Firebase tools
-    lazygit # tui git
     powertop # tui power usage analysis
     btop # tui resource monitor
     nix-tree # show nix store
@@ -92,6 +91,15 @@
   ];
   programs = {
     bat.enable = true;
+    lazygit = {
+      enable = true;
+      settings = {
+        keybindings.universal = {
+          openDiffTool = "<c-d>";
+          scrollDownMain-alt2 = "?";
+        };
+      };
+    };
     git = {
       enable = true;
       userName = "Sebastian Klähn";
