@@ -113,7 +113,7 @@
     audio.enable = true;
     jack.enable = true;
   };
-  
+
   # Unlock keyring
   security.pam.services.gdm.enableGnomeKeyring = true;
   services.gnome.gnome-keyring.enable = true;
