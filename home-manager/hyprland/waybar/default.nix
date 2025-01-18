@@ -4,10 +4,11 @@
   lib,
   ...
 }: let
-  add_theme = file: pkgs.writeTextFile {
-    text = "@theme \"${./rofi/mechabar-theme.rasi}\" \n" + builtins.readFile(file);
-    name = "placeholder";
-  };
+  add_theme = file:
+    pkgs.writeTextFile {
+      text = "@theme \"${./rofi/mechabar-theme.rasi}\" \n" + builtins.readFile file;
+      name = "placeholder";
+    };
   add_config = conf: script: "config=\"${add_theme conf}\"\n" + (builtins.readFile script);
   scripts = {
     cpu-temp = pkgs.writeShellApplication {

@@ -6,27 +6,29 @@
     ./hyprpaper.nix
   ];
 
-  home.packages = with pkgs; [
-    hyprsunset
-    easyeffects
-    swaynotificationcenter
-  ] ++ [
-    (writeShellScriptBin "screenshot" ''
-      ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
-    '')
-    (writeShellScriptBin "screenshot-edit" ''
-      wl-paste | ${swappy}/bin/swappy -f -
-    '')
-    (writeShellScriptBin "autostart" ''
-      pkill swaync
-      swaync &
+  home.packages = with pkgs;
+    [
+      hyprsunset
+      easyeffects
+      swaynotificationcenter
+    ]
+    ++ [
+      (writeShellScriptBin "screenshot" ''
+        ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
+      '')
+      (writeShellScriptBin "screenshot-edit" ''
+        wl-paste | ${swappy}/bin/swappy -f -
+      '')
+      (writeShellScriptBin "autostart" ''
+        pkill swaync
+        swaync &
 
-      pkill hyprsunset
-      hyprsunset -t 5000 &
-      
-      hyprctl setcursor "Bibata-Original-Ice" 20
-    '')
-  ];
+        pkill hyprsunset
+        hyprsunset -t 5000 &
+
+        hyprctl setcursor "Bibata-Original-Ice" 20
+      '')
+    ];
   wayland.windowManager.hyprland = {
     package = pkgs.hyprland;
     enable = true;
@@ -59,9 +61,9 @@
 
       gestures = {
         workspace_swipe = true;
-        workspace_swipe_forever= true;
+        workspace_swipe_forever = true;
       };
-      
+
       animations = {
         enabled = true;
         bezier = [
@@ -80,7 +82,7 @@
           "border,1,10,md3_decel"
         ];
       };
-      
+
       dwindle = {
         pseudotile = true; # enable pseudotiling on dwindle
         default_split_ratio = 1.0;
@@ -154,7 +156,7 @@
         "SUPER $mainMod SHIFT, 8, movetoworkspacesilent, 8"
 
         # Start programs
-        "SUPER,RETURN, exec, kitty /home/septias/coding" 
+        "SUPER,RETURN, exec, kitty /home/septias/coding"
         ",Print, exec, screenshot"
         "SUPER, Print, exec, screenshot-edit"
         "SUPER, o, exec, obsidian"

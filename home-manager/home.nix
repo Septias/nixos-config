@@ -13,7 +13,6 @@
     ];
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = _: true;
     };
   };
 
@@ -151,6 +150,7 @@
         dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
         nd = "nix develop";
         nb = "nix build";
+        fu = "nix flake update";
         nc = "hx /home/septias/coding/nixos-config";
         nh = "hx -w /home/septias/coding/nixos-config /home/septias/coding/nixos-config/home-manager/home.nix";
         nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
@@ -158,7 +158,6 @@
         _ = "sudo ";
         pkg = "nix-shell -p";
         pkg-s = "nix search nixpkgs";
-        dr = "nix develop /home/septias/coding/nixos-config/direnvs/rust";
         c-fmt = "cargo fmt";
         c-fix = "cargo clippy --fix --allow-staged";
         gaa = "git add *";
@@ -168,12 +167,10 @@
         gd = "git pull";
         gds = "git stash and git pull and git stash pop";
         nix-clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old and nix-collect-garbage -d";
-        #sess_type = "loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'";
         lg = "lazygit";
         life = "hx /home/septias/OneDrive/Life";
         todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
         o = "xdg-open";
-        fu = "nix flake update";
         debug_h = "tail --follow ~/.cache/helix/helix.log";
       };
     };
@@ -216,6 +213,7 @@
     direnv = {
       enable = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
     zoxide = {
