@@ -34,47 +34,39 @@
     unstable.google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
-    #unstable.isabelle
-
-    ## coding
-    helix-gpt # gpt lsp
-    nil # nix lsp
-    taplo # toml lps
-    marksman # markdown lsp
 
     ## Office
     telegram-desktop
     discord
     inkscape
-    insomnia
     evince
     libreoffice
     thunderbird
     gimp
     sqlitebrowser
-    gthumb
+    gthumb # image viewer
     zoom-us
-    gparted
+    gparted # partition editor
     vlc
     anki
-    sioyek
-    ranger
+    sioyek # pdf reader
+    ranger # tui file manager
     gnome-software
-    sonic-pi
+    sonic-pi # music coding
 
     ## Tooling
     scc # loc counter
     fd # find
     alejandra # Nix Formatter
-    firebase-tools # Firebase tools
+    firebase-tools
     powertop # tui power usage analysis
     btop # tui resource monitor
-    nix-tree # show nix store
+    nix-tree
     glxinfo # OpenGL info
     fzf # fuzzy finder
     sl # funny train
-    tldr # short man pages
-    sops # encrypted secrets in flake
+    tldr # Short man pages
+    sops # Encrypted secrets in flake
     bluetuith # bluetooth tui
     via # keyboard config
     delta # Difftool
@@ -88,6 +80,7 @@
     inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
     inputs.better-ilias.packages.x86_64-linux.better-ilias
   ];
+
   programs = {
     bat.enable = true;
     lazygit = {

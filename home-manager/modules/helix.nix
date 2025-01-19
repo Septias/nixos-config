@@ -1,7 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    # Some lsps for languages that should work out of the box
     vscode-extensions.vadimcn.vscode-lldb
     vscode-langservers-extracted
+    helix-gpt
+    nil
+    taplo # toml lsp
+    marksman
   ];
   programs.helix = {
     enable = true;
@@ -15,11 +20,10 @@
           display-inlay-hints = true;
           display-messages = true;
         };
-        #line-number = "relative";
+        # line-number = "relative";
         completion-timeout = 10;
         completion-replace = true;
         statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers"];
-        auto-save.focus-lost = true;
       };
       keys = {
         # https://docs.helix-editor.com/keymap.html
