@@ -30,23 +30,6 @@
       systemd-boot.enable = true;
       systemd-boot.configurationLimit = 3;
       efi.canTouchEfiVariables = true;
-      /*
-         grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        useOSProber = true;
-        configurationLimit = 8;
-        theme =
-          pkgs.fetchFromGitHub
-          {
-            owner = "Lxtharia";
-            repo = "minegrub-theme";
-            rev = "193b3a7c3d432f8c6af10adfb465b781091f56b3";
-            sha256 = "1bvkfmjzbk7pfisvmyw5gjmcqj9dab7gwd5nmvi8gs4vk72bl2ap";
-          };
-      };
-      */
     };
   };
 
@@ -64,28 +47,12 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
-  services.xserver.xkb = {
-    layout = "de";
-    variant = "neo";
-  };
   console.keyMap = "neo";
 
   users.users.septias = {
     hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
     isNormalUser = true;
     extraGroups = ["media" "audio" "video" "networkmanager" "wheel"];
-  };
-
-  # Sound setup
-  hardware.pulseaudio = {
-    enable = false;
-    # more codecs
-    package = pkgs.pulsaudioFull;
-    # global pulseaudio installation
-    configFile = pkgs.writeText "default.pa" ''
-      load-module module-bluetooth-policy
-      load-module module-bluetooth-discovery
-    '';
   };
 
   # media buttons support
@@ -95,106 +62,133 @@
     wantedBy = ["default.target"];
     serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
   };
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      audio.enable = true;
+      jack.enable = true;
+    };
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    audio.enable = true;
-    jack.enable = true;
+    gnome.gnome-keyring.enable = true;
+
+    minecraft-server = {
+      enable = false;
+      eula = true;
+      openFirewall = true;
+    };
+    
+    xserver = {
+      xkb = {
+        layout = "de";
+        variant = "neo";
+      };
+
+      enable = true;
+      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
+    };
+
+    # update firmeware
+    fwupd.enable = true;
+
+    printing = {
+      enable = true;
+      drivers = [pkgs.hplip];
+      openFirewall = true;
+    };
+
+    # local network communication
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    onedrive.enable = true;
+    openssh.enable = true;
   };
-
-  # Unlock keyring
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  security.pam.services.gdm-password.enableGnomeKeyring = true;
-  services.gnome.gnome-keyring.enable = true;
-  programs.seahorse.enable = true;
-  programs.ssh.startAgent = true;
-
-  security.pam.services.hyprlock = {};
-  security.rtkit.enable = true;
-
-  services.minecraft-server = {
-    enable = false;
-    eula = true;
-    openFirewall = true;
+  
+  security = {
+    polkit.enable = true;
+    pam = {
+      services = {
+        gdm-password.enableGnomeKeyring = true;
+        gdm.enableGnomeKeyring = true;
+        hyprland.enableGnomeKeyring = true;
+        hyprlock = {};
+      };
+    };
+    rtkit.enable = true;
   };
+  
+  hardware = {
+    # Sound setup
+    pulseaudio = {
+      enable = false;
+      package = pkgs.pulsaudioFull;
+      configFile = pkgs.writeText "default.pa" ''
+        load-module module-bluetooth-policy
+        load-module module-bluetooth-discovery
+      '';
+    };
 
-  # Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    # Enable A2DP
-    settings.General = {
-      Enable = "Source,Sink,Media,Socket";
-      # Needed to show bluetooth headphone charge
-      Experimental = true;
+    # Bluetooth
+    bluetooth = {
+      enable = true;
+      # Enable A2DP
+      settings.General = {
+        Enable = "Source,Sink,Media,Socket";
+        # Needed to show bluetooth headphone charge
+        Experimental = true;
+      };
+    };
+
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    printers = {
+      ensurePrinters = [
+        {
+          name = "Officejet-4620";
+          location = "Home";
+          deviceUri = "dnssd://Officejet%204620%20series%20%5BA6BBCE%5D._pdl-datastream._tcp.local/?uuid=1c852a4d-b800-1f08-abcd-c8cbb8a6bbce";
+          model = "drv:///hp/hpcups.drv/hp-officejet_4620_series.ppd";
+          ppdOptions = {
+            PageSize = "A4";
+          };
+        }
+      ];
     };
   };
 
-  hardware.graphics = {
+  xdg.portal = {
     enable = true;
-    enable32Bit = true;
+    wlr.enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
   };
-
-  services.xserver.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-
-  # update firmeware
-  services.fwupd.enable = true;
-
-  services.printing = {
-    enable = true;
-    drivers = [pkgs.hplip];
-    openFirewall = true;
+  
+  programs = {
+    seahorse.enable = true;
+    ssh.startAgent = true;
+    steam.enable = true;
+    hyprland.enable = true;
   };
-
-  hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "Officejet-4620";
-        location = "Home";
-        deviceUri = "dnssd://Officejet%204620%20series%20%5BA6BBCE%5D._pdl-datastream._tcp.local/?uuid=1c852a4d-b800-1f08-abcd-c8cbb8a6bbce";
-        model = "drv:///hp/hpcups.drv/hp-officejet_4620_series.ppd";
-        ppdOptions = {
-          PageSize = "A4";
-        };
-      }
-    ];
-  };
-
-  # local network communication
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  services.onedrive.enable = true;
-  services.openssh = {
-    enable = true;
-  };
-
-  # for daemon mode
-  # services.emacs.enable = true;
-
-  xdg.portal.enable = true;
-
-  # programs.zsh.enable = true;
-  programs.steam.enable = true;
-  programs.hyprland.enable = true;
 
   environment = {
     shells = with pkgs; [nushell zsh];
-    variables = {
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
       EDITOR = "hx";
       RUST_LOG = "info";
-      # To unlock keyring
       XDG_RUNTIME_DIR = "/run/user/$UID";
     };
-    sessionVariables.NIXOS_OZONE_WL = "1";
   };
+  
   users.defaultUserShell = pkgs.nushell;
 
   environment.systemPackages = with pkgs; [
