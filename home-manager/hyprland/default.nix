@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./waybar
     ./rofi
     ./hypridle.nix
     ./hyprpaper.nix
@@ -11,7 +10,7 @@
     [
       hyprsunset
       easyeffects
-      swaynotificationcenter
+      hyprpanel
     ]
     ++ [
       (writeShellScriptBin "screenshot" ''
@@ -21,8 +20,7 @@
         wl-paste | ${swappy}/bin/swappy -f -
       '')
       (writeShellScriptBin "autostart" ''
-        pkill swaync
-        swaync &
+        hyprpanel
 
         pkill hyprsunset
         hyprsunset -t 5000 &

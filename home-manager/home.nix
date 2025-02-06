@@ -10,6 +10,7 @@
     overlays = [
       outputs.overlays.unstable-packages
       outputs.overlays.additions
+      outputs.overlays.hyprpanel
     ];
     config = {
       allowUnfree = true;

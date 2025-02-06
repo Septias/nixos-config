@@ -21,6 +21,9 @@
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
 
+    
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    
     # Custom
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
@@ -49,7 +52,7 @@
     # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    overlays = (import ./overlays {inherit inputs;}) // {emacs = inputs.emacs;};
+    overlays = (import ./overlays {inherit inputs;});
 
     # 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
