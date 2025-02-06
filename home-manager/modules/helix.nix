@@ -16,6 +16,10 @@
       theme = "catppuccin_frappe";
       editor = {
         end-of-line-diagnostics = "hint";
+        inline-diagnostics = {
+          cursor-line = "hint";
+          other-lines = "warning";
+        };
         lsp = {
           display-inlay-hints = true;
           display-messages = true;
@@ -97,6 +101,10 @@
         }
         {
           name = "javascript";
+          language-servers = ["typescript-language-server" "helix-gpt"];
+        }
+        {
+          name = "typescript";
           language-servers = ["typescript-language-server" "helix-gpt"];
         }
         {
