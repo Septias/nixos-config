@@ -109,6 +109,23 @@
 
     onedrive.enable = true;
     openssh.enable = true;
+    blocky = {
+      enable = true;
+      settings = {
+        blocking = {
+          blacklists = {
+            ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
+            social = ["${../social-blocking.txt}"];
+          };
+          whitelists = {
+            music = ["${../music-allow.txt}"];
+          };
+          clientGroupsBlock = {
+            default = ["ads" "social" "music"];
+          };
+        };
+      };
+    };
   };
   
   security = {
