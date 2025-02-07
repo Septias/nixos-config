@@ -1,0 +1,30 @@
+{pkgs, ...} : {
+  programs.kitty = {
+      enable = true;
+      font = {
+        package = pkgs.jetbrains-mono;
+        name = "JetBrains Mono";
+        size = 15;
+      };
+      themeFile = "Catppuccin-Frappe";
+      settings = {
+        confirm_os_window_close = 0;
+        remember_window_size = true;
+        initial_window_width = 640;
+        initial_window_height = 1080;
+        hide_window_decorations = true;
+        tab_bar_style = "powerline";
+        enabled_layouts = "horizontal,stack";
+        background_opacity = 0.9;
+      };
+      keybindings = {
+        "ctrl+t" = "launch --cwd=current";
+        "ctrl+shift+t" = "launch --type=tab --cwd=current";
+        "ctrl+shift+n" = "next_window";
+        "ctrl+q" = "close_window";
+        "kitty_mod+/" = "launch";
+        # "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
+      };
+      shellIntegration.enableZshIntegration = false;
+    };
+}

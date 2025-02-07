@@ -21,6 +21,7 @@
     ./hyprland
     ./gnome.nix
     ./modules/helix.nix
+    ./modules/kitty.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
 
