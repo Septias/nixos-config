@@ -72,6 +72,7 @@
     via # keyboard config
     delta # Difftool
     difftastic # Difftool
+    ripgrep
 
     ## Utils
     wl-clipboard # wayland clipboard utils
