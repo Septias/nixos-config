@@ -20,9 +20,9 @@
 
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
-
-    
+        
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    hyprpanel.inputs.nixpkgs.follows ="nixpkgs";
     
     # Custom
     dc-times.url = "github:septias/dc-times";

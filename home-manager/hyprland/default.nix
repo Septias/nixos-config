@@ -1,16 +1,17 @@
 {pkgs, ...}: {
   imports = [
+    # ./waybar
     ./rofi
     ./hypridle.nix
     ./hyprpaper.nix
     ./hyprlock.nix
+    ./hyprpanel.nix
   ];
 
   home.packages = with pkgs;
     [
       hyprsunset
       easyeffects
-      hyprpanel
     ]
     ++ [
       (writeShellScriptBin "screenshot" ''
@@ -20,8 +21,6 @@
         wl-paste | ${swappy}/bin/swappy -f -
       '')
       (writeShellScriptBin "autostart" ''
-        hyprpanel
-
         pkill hyprsunset
         hyprsunset -t 5000 &
 
