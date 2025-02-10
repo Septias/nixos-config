@@ -54,6 +54,7 @@
     ranger # tui file manager
     gnome-software
     sonic-pi # music coding
+    firefox
 
     ## Tooling
     scc # loc counter

@@ -156,6 +156,7 @@
         # Start programs
         "SUPER,RETURN, exec, kitty /home/septias/coding"
         ",Print, exec, screenshot"
+        "SUPER, i, exec, screenshot"
         "SUPER, Print, exec, screenshot-edit"
         "SUPER, o, exec, obsidian"
         "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
