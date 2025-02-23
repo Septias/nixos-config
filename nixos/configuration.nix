@@ -73,7 +73,6 @@
     };
 
     gnome.gnome-keyring.enable = true;
-
     minecraft-server = {
       enable = false;
       eula = true;
@@ -112,16 +111,28 @@
     blocky = {
       enable = true;
       settings = {
+        upstreams.groups = {
+          default = ["1.1.1.1" "8.8.8.8"];
+        };
+        ports = {
+          http = 4000;
+          https = 443;
+        };
         blocking = {
-          blacklists = {
+          denylists = {
             ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
-            social = ["${../social-blocking.txt}"];
+            social = ["${../social-blocking.txt}" ''
+              instagram.com
+              youtube.com
+              facebook.com
+              reddit.com
+            ''];
           };
-          whitelists = {
+          allowlists = {
             music = ["${../music-allow.txt}"];
           };
           clientGroupsBlock = {
-            default = ["ads" "social" "music"];
+            default = ["ads" "social"];
           };
         };
       };
