@@ -7,7 +7,11 @@
     nil
     taplo # toml lsp
     marksman
-  ];
+  ] ++ (with python312Packages; [
+    pycodestyle 
+    pylint
+    flake8
+  ]);
   programs.helix = {
     enable = true;
     package = pkgs.unstable.helix;
@@ -45,8 +49,10 @@
           "C-g" = "jump_backward";
           "C-s" = "save_selection";
           "C-b" = "goto_previous_buffer";
+          "C-n" = "goto_next_buffer";
           "C-e" = "goto_file_end";
           "C-l" = "last_picker";
+          "A-." = "repeat_last_motion";
           # Changes
           "R" = "replace_with_yanked";
           "=" = "format_selections";
@@ -60,9 +66,9 @@
           "_" = "trim_selections";
           "C" = "copy_selection_on_next_line";
           "A-f" = "expand_selection";
-          "A-g" = "shrink_selection";
+          "A-g" = "shrink_selectuon";
           "A-n" = "select_next_sibling";
-          "A-b" = "select_prev_sibling";
+          "A-p" = "select_prev_sibling";
           # Search
           "*" = "search_selection";
         };
@@ -72,6 +78,15 @@
       language-server.helix-gpt = {
         command = "helix-gpt";
       };
+
+      language-server.pylsp.config= {
+        pycodestyle.enabled = false;
+        pyflakes.enabled = false;
+        yapf.enabled = false;
+        pylint.enabled = true;
+        flake8.enabled = true; 
+      };
+      
       language = [
         {
           name = "rust";
@@ -109,6 +124,10 @@
         }
         {
           name = "python";
+          formatter = {
+            command = "${pkgs.black}/bin/black";
+            args = ["-" "--quiet"];
+          };
           language-servers = ["pylsp" "helix-gpt"];
         }
         {
