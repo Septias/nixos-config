@@ -20,9 +20,19 @@
       (writeShellScriptBin "screenshot-edit" ''
         wl-paste | ${swappy}/bin/swappy -f -
       '')
+      (writeShellScriptBin "set_wp" ''
+        PICTURE_URI=$(gsettings get org.gnome.desktop.background picture-uri)
+        PICTURE_PATH=$(echo "$PICTURE_URI" | sed -E "s/^'file:\/\/(.*)'$/\1/")
+        hyprctl hyprpaper preload "$PICTURE_PATH"
+        hyprctl hyprpaper wallpaper ",$PICTURE_PATH"
+        echo "Wallpaper set to: $PICTURE_PATH"
+      '')
       (writeShellScriptBin "autostart" ''
         pkill hyprsunset
         hyprsunset -t 5000 &
+
+        # Set wallpaper from gsettings
+        set_wp
 
         hyprctl setcursor "Bibata-Original-Ice" 20
       '')
@@ -161,6 +171,7 @@
         "SUPER, o, exec, obsidian"
         "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
         "SUPER,space, exec, rofi -show drun"
+        "SUPER, e, exec, nautilus"
 
         # Focus windows
         "SUPER, s, focuswindow, chrome"
