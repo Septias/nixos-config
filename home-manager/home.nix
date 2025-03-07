@@ -83,6 +83,7 @@
     inputs.dc-times.packages.x86_64-linux.dc-times
     inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
     inputs.better-ilias.packages.x86_64-linux.better-ilias
+    inputs.hyprswitch.packages.x86_64-linux.default
   ];
 
   programs = {
@@ -213,6 +214,7 @@
     age.keyFile = "/home/septias/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets/secret.yaml;
     secrets.copilot = {};
+    secrets.weather = {};
   };
 
   home.file.".XCompose".source = ./Xcompose;
