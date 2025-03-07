@@ -11,6 +11,30 @@
     ", preferred, auto, 1"
     "Unkown-1, disabled"
   ];
+  programs.hyprpanel.layout = {
+    bar.layouts = {
+      "1" = {
+        left = ["dashboard" "workspaces" "windowtitle"];
+        middle = ["media"];
+        right = [
+          "kbinput"
+          "hyprsunset"
+          "cava"
+          "systray"
+          "volume"
+          "network"
+          "bluetooth"
+          "clock"
+          "notifications"
+        ];
+      };
+      "*" = {
+        left = [];
+        middle = [];
+        right = [];
+      };
+    };
+  };
   wayland.windowManager.hyprland.extraConfig = lib.mkOverride 10 ''
     env = XDG_SESSION_TYPE,wayland
     env = WLR_NO_HARDWARE_CURSORS,1
