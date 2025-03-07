@@ -1,17 +1,19 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    # Some lsps for languages that should work out of the box
-    vscode-extensions.vadimcn.vscode-lldb
-    vscode-langservers-extracted
-    helix-gpt
-    nil
-    taplo # toml lsp
-    marksman
-  ] ++ (with python312Packages; [
-    pycodestyle 
-    pylint
-    flake8
-  ]);
+  home.packages = with pkgs;
+    [
+      # Some lsps for languages that should work out of the box
+      vscode-extensions.vadimcn.vscode-lldb
+      vscode-langservers-extracted
+      helix-gpt
+      nil
+      taplo # toml lsp
+      marksman
+    ]
+    ++ (with python312Packages; [
+      pycodestyle
+      pylint
+      flake8
+    ]);
   programs.helix = {
     enable = true;
     package = pkgs.unstable.helix;
@@ -66,7 +68,7 @@
           "_" = "trim_selections";
           "C" = "copy_selection_on_next_line";
           "A-f" = "expand_selection";
-          "A-g" = "shrink_selectuon";
+          "A-g" = "shrink_selection";
           "A-n" = "select_next_sibling";
           "A-p" = "select_prev_sibling";
           # Search
@@ -79,14 +81,14 @@
         command = "helix-gpt";
       };
 
-      language-server.pylsp.config= {
+      language-server.pylsp.config = {
         pycodestyle.enabled = false;
         pyflakes.enabled = false;
         yapf.enabled = false;
         pylint.enabled = true;
-        flake8.enabled = true; 
+        flake8.enabled = true;
       };
-      
+
       language = [
         {
           name = "rust";
