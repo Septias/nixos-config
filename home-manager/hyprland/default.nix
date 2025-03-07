@@ -8,35 +8,16 @@
     ./hyprpanel.nix
   ];
 
-  home.packages = with pkgs;
-    [
-      hyprsunset
-      easyeffects
-    ]
-    ++ [
-      (writeShellScriptBin "screenshot" ''
-        ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
-      '')
-      (writeShellScriptBin "screenshot-edit" ''
-        wl-paste | ${swappy}/bin/swappy -f -
-      '')
-      (writeShellScriptBin "set_wp" ''
-        PICTURE_URI=$(gsettings get org.gnome.desktop.background picture-uri)
-        PICTURE_PATH=$(echo "$PICTURE_URI" | sed -E "s/^'file:\/\/(.*)'$/\1/")
-        hyprctl hyprpaper preload "$PICTURE_PATH"
-        hyprctl hyprpaper wallpaper ",$PICTURE_PATH"
-        echo "Wallpaper set to: $PICTURE_PATH"
-      '')
-      (writeShellScriptBin "autostart" ''
-        pkill hyprsunset
-        hyprsunset -t 5000 &
-
-        # Set wallpaper from gsettings
-        set_wp
-
-        hyprctl setcursor "Bibata-Original-Ice" 20
-      '')
-    ];
+  home.packages = with pkgs; [
+    hyprsunset
+    easyeffects
+    (writeShellScriptBin "screenshot" ''
+      ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
+    '')
+    (writeShellScriptBin "screenshot-edit" ''
+      wl-paste | ${swappy}/bin/swappy -f -
+    '')
+  ];
   wayland.windowManager.hyprland = {
     package = pkgs.hyprland;
     enable = true;
@@ -112,9 +93,39 @@
         animate_mouse_windowdragging = true;
       };
 
-      exec-once = [
-        "autostart"
-        "easyeffects --gapplication-service"
+      exec-once = let
+        auto_close = pkgs.writeShellScriptBin "auto_close" ''
+          function handle {
+              if [[ $${1:0:11} == "closewindow" ]]; then
+                  echo "Close Window detected"
+                  if [[ 'hyprctl workspaces |grep "windows: 0"' ]]; then
+                      echo "Empty workspace detected"
+                      hyprctl dispatch workspace m 1
+                      sleep 0.0001
+                      hyprctl dispatch workspace 1
+                  fi
+              fi
+          }
+          ${pkgs.socat}/bin/socat - "UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do handle "$line"; done
+        '';
+        set_wp = pkgs.writeShellScriptBin "set_wp" ''
+          PICTURE_URI=$(gsettings get org.gnome.desktop.background picture-uri)
+          PICTURE_PATH=$(echo "$PICTURE_URI" | sed -E "s/^'file:\/\/(.*)'$/\1/")
+          hyprctl hyprpaper preload "$PICTURE_PATH"
+          hyprctl hyprpaper wallpaper ",$PICTURE_PATH"
+          echo "Wallpaper set to: $PICTURE_PATH"
+        '';
+        autostart = pkgs.writeShellScriptBin "autostart" ''
+          pkill hyprswitch
+          hyprswitch init --show-title --size-factor 3.5 --workspaces-per-row 5 &
+          pkill hyprsunset
+          hyprsunset -t 5000 &
+          hyprctl setcursor "Bibata-Original-Ice" 20
+        '';
+      in [
+        "${autostart}/bin/autostart"
+        "${set_wp}/bin/set_wp"
+        "${auto_close}/bin/auto_close"
       ];
 
       bind = [
@@ -172,6 +183,7 @@
         "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
         "SUPER,space, exec, rofi -show drun"
         "SUPER, e, exec, nautilus"
+        "SUPER, Tab, exec, hyprswitch gui --mod-key super --key tab"
 
         # Focus windows
         "SUPER, s, focuswindow, chrome"
@@ -192,6 +204,8 @@
         ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
         ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
         ",XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+        ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl prev"
       ];
     };
 
