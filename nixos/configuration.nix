@@ -23,7 +23,10 @@
     };
   };
 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    nameservers = ["127.0.0.1"];
+  };
 
   boot = {
     loader = {
@@ -78,7 +81,7 @@
       eula = true;
       openFirewall = true;
     };
-    
+
     xserver = {
       xkb = {
         layout = "de";
@@ -121,12 +124,16 @@
         blocking = {
           denylists = {
             ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
-            social = ["${../social-blocking.txt}" ''
+            social = [
+              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt"
+              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/reddit_wild.txt"
+              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt"
+              ''
               instagram.com
-              youtube.com
-              facebook.com
               reddit.com
-            ''];
+              youtube.com
+              ''
+            ];
           };
           allowlists = {
             music = ["${../music-allow.txt}"];
@@ -138,7 +145,7 @@
       };
     };
   };
-  
+
   security = {
     polkit.enable = true;
     pam = {
@@ -151,7 +158,7 @@
     };
     rtkit.enable = true;
   };
-  
+
   hardware = {
     # Sound setup
     pulseaudio = {
@@ -199,7 +206,7 @@
     wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
   };
-  
+
   programs = {
     seahorse.enable = true;
     ssh.startAgent = true;
@@ -216,7 +223,7 @@
       XDG_RUNTIME_DIR = "/run/user/$UID";
     };
   };
-  
+
   users.defaultUserShell = pkgs.nushell;
 
   environment.systemPackages = with pkgs; [
