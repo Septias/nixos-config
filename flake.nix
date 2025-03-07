@@ -20,10 +20,14 @@
 
     # Lanzaboot
     lanzaboote.url = "github:nix-community/lanzaboote";
-        
+
+    # Hyprpanel
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    hyprpanel.inputs.nixpkgs.follows ="nixpkgs";
-    
+    hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
+
+    # App Switcher
+    hyprswitch.url = "github:h3rmt/hyprswitch/release";
+
     # Custom
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
@@ -52,7 +56,7 @@
     # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    overlays = (import ./overlays {inherit inputs;});
+    overlays = import ./overlays {inherit inputs;};
 
     # 'nixos-rebuild --flake .#hostname'
     nixosConfigurations = {
