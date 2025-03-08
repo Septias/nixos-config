@@ -9,6 +9,8 @@
         left = ["dashboard" "workspaces" "windowtitle"];
         middle = ["media"];
         right = [
+          "hyprsunset"
+          "cava"
           "systray"
           "volume"
           "battery"

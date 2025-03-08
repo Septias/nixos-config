@@ -11,7 +11,6 @@
         left = ["dashboard" "workspaces" "windowtitle"];
         middle = ["media"];
         right = [
-          "kbinput"
           "hyprsunset"
           "cava"
           "systray"
