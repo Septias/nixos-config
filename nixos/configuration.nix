@@ -123,15 +123,17 @@
         };
         blocking = {
           denylists = {
-            ads = ["https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"];
+            ads = [
+              "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+            ];
             social = [
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt"
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/reddit_wild.txt"
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt"
               ''
-              instagram.com
-              reddit.com
-              youtube.com
+                instagram.com
+                reddit.com
+                youtube.com
               ''
             ];
           };
