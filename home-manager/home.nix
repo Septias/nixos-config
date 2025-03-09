@@ -75,6 +75,7 @@
     delta # Difftool
     difftastic # Difftool
     ripgrep
+    dig
 
     ## Utils
     wl-clipboard # wayland clipboard utils

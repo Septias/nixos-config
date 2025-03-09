@@ -112,15 +112,30 @@
     onedrive.enable = true;
     openssh.enable = true;
     blocky = {
+      # https://github.com/0xERR0R/blocky/blob/main/docs/config.yml
       enable = true;
       settings = {
         upstreams.groups = {
-          default = ["1.1.1.1" "8.8.8.8"];
+          default = ["1.1.1.1" "8.8.8.8" "https://dns.digitale-gesellschaft.ch/dns-query" "tcp-tls:fdns1.dismail.de:853"];
         };
         ports = {
           http = 4000;
           https = 443;
         };
+        bootstrapDns = [
+            {
+              upstream = "https://one.one.one.one/dns-query";
+              ips = [ "1.1.1.1" "1.0.0.1" ];
+            }
+            {
+              upstream = "https://dns.quad9.net/dns-query";
+              ips = [ "9.9.9.9" "149.112.112.112" ];
+            }
+            {
+              upstream = "tcp-tls:dns.example.com";
+              ips = [ "123.123.123.123" ];
+            }
+          ];
         blocking = {
           denylists = {
             ads = [
@@ -138,10 +153,10 @@
             ];
           };
           allowlists = {
-            music = ["${../music-allow.txt}"];
+            music = [''music.youtube.com''];
           };
           clientGroupsBlock = {
-            default = ["ads" "social"];
+            default = ["ads" "social" "music"];
           };
         };
       };
