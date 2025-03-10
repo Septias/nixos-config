@@ -5,8 +5,8 @@
       ipc = "on";
       splash = false;
       splash_offset = 2.0;
-      preload = ["${../wallpaper.jpeg}"];
-      wallpaper = ", ${../wallpaper.jpeg}";
+      preload = ["${../wallpaper.png}"];
+      wallpaper = ", ${../wallpaper.png}";
     };
   };
 }
