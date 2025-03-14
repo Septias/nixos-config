@@ -144,12 +144,18 @@
             ];
             social = [
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt"
-              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/reddit_wild.txt"
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt"
            ];
           };
+          allowlists = {
+            social = [
+              ''
+              music.youtube.com
+              ''
+            ];
+          };
           clientGroupsBlock = {
-            default = ["ads" "social" "music"];
+            default = ["ads" "social"];
           };
         };
       };
