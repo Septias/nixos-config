@@ -121,7 +121,8 @@
           pkill hyprsunset
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
-        '';
+          gnome-keyring-daemon --start --components=secrets
+          '';
       in [
         "${autostart}/bin/autostart"
         "${set_wp}/bin/set_wp"
