@@ -65,6 +65,7 @@
     wantedBy = ["default.target"];
     serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
   };
+  
   services = {
     pipewire = {
       enable = true;
@@ -145,15 +146,7 @@
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt"
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/reddit_wild.txt"
               "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt"
-              ''
-                instagram.com
-                reddit.com
-                youtube.com
-              ''
-            ];
-          };
-          allowlists = {
-            music = [''music.youtube.com''];
+           ];
           };
           clientGroupsBlock = {
             default = ["ads" "social" "music"];
@@ -229,6 +222,7 @@
     ssh.startAgent = true;
     steam.enable = true;
     hyprland.enable = true;
+    dconf.enable = true;
   };
 
   environment = {

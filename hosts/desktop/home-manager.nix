@@ -12,6 +12,7 @@
         middle = ["media"];
         right = [
           "hyprsunset"
+          "ram"
           "cava"
           "systray"
           "volume"
