@@ -40,22 +40,23 @@
     ## Office
     telegram-desktop
     discord
-    inkscape
-    evince
+    # inkscape
+    # evince
     libreoffice
     thunderbird
-    gimp
+    # gimp
     sqlitebrowser
-    gthumb # image viewer
+    gthumb
     zoom-us
-    gparted # partition editor
     vlc
     anki
     sioyek # pdf reader
     ranger # tui file manager
     gnome-software
-    sonic-pi # music coding
+    # sonic-pi # music coding
     firefox
+    aider-chat
+    code-cursor
 
     ## Tooling
     scc # loc counter
@@ -65,17 +66,15 @@
     powertop # tui power usage analysis
     btop # tui resource monitor
     nix-tree
-    glxinfo # OpenGL info
     fzf # fuzzy finder
     sl # funny train
     tldr # Short man pages
     sops # Encrypted secrets in flake
     bluetuith # bluetooth tui
-    via # keyboard config
+    # via # keyboard config
     delta # Difftool
     difftastic # Difftool
     ripgrep
-    dig
 
     ## Utils
     wl-clipboard # wayland clipboard utils
@@ -140,8 +139,6 @@
         gds = "git stash and git pull and git stash pop";
         nix-clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old and nix-collect-garbage -d";
         lg = "lazygit";
-        life = "hx /home/septias/OneDrive/Life";
-        todo = "hx /home/septias/OneDrive/Life/Projects/TODOS.md";
         o = "xdg-open";
         debug_h = "tail --follow ~/.cache/helix/helix.log";
       };
@@ -150,9 +147,8 @@
       enable = true;
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
-    # unused
     zsh = {
-      enable = true;
+      enable = false;
       enableCompletion = true;
       autosuggestion.enable = true;
       plugins = [
@@ -216,9 +212,16 @@
     defaultSopsFile = ./secrets/secret.yaml;
     secrets.copilot = {};
     secrets.weather = {};
+    secrets.openai = {};
+    templates = {
+      ".aider.conf.yaml".content = ''
+        openai-api-key: ${config.sops.placeholder.openai}
+      '';
+    };
   };
 
   home.file.".XCompose".source = ./Xcompose;
+  home.file.".aider.conf.yml".source = config.sops.templates.".aider.conf.yaml".path;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
