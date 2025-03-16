@@ -79,6 +79,7 @@
 
       debug = {
         damage_tracking = 2; # leave it on 2 (full) unless you hate your GPU and want to make it suffer!
+        disable_logs = false;
       };
 
       opengl = {
@@ -122,6 +123,7 @@
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
           gnome-keyring-daemon --start --components=secrets,ssh
+          eval $(ssh-agent)
           '';
       in [
         "${autostart}/bin/autostart"
