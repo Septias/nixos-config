@@ -121,7 +121,7 @@
           pkill hyprsunset
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
-          gnome-keyring-daemon --start --components=secrets
+          gnome-keyring-daemon --start --components=secrets,ssh
           '';
       in [
         "${autostart}/bin/autostart"
