@@ -125,6 +125,10 @@
           language-servers = ["typescript-language-server" "helix-gpt"];
         }
         {
+          name = "tsx";          
+          language-servers = ["typescript-language-server" "helix-gpt"];
+        }
+        {
           name = "python";
           formatter = {
             command = "${pkgs.black}/bin/black";
