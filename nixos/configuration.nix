@@ -142,17 +142,17 @@
             ads = [
               "${pkgs.fetchurl {
                 url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-                sha256 = lib.fakeSha256;
+                sha256 = "sha256-YciiFSK8lxnsHhEY7ezU7MKPeFJeKECaIcpgPnNgkUA=";
               }}"
             ];
             social = [
               "${pkgs.fetchurl {
                 url = "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt";
-                sha256 = "<calculated-sha256>";
+                sha256 = "sha256-6GNZN/yK3uHLfl37s0LrtgmNhdxnqZcwn8TwYKgCXOc=";
               }}"
               "${pkgs.fetchurl {
                 url = "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt";
-                sha256 = "<calculated-sha256>";
+                sha256 = "sha256-//CxsTi2kSI6e5hSqwVZImca7xxMiqEyEml+2Xwq5Mk=";
               }}"
            ];
           };
