@@ -55,7 +55,7 @@
     gnome-software
     # sonic-pi # music coding
     firefox
-    aider-chat
+    unstable.aider-chat
     code-cursor
 
     ## Tooling
@@ -232,7 +232,7 @@
         Type = "oneshot";
         RemainAfterExit = true;
         ExecStart = pkgs.writeShellScript "write-aider-config" ''
-          cat ${config.sops.templates.".aider.conf.yaml".path} > /home/septias/.aider.conf.yml
+          ${pkgs.coreutils}/bin/cat ${config.sops.templates.".aider.conf.yaml".path} > /home/septias/.aider.conf.yml
         '';
       };
 
