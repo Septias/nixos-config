@@ -75,6 +75,7 @@
     delta # Difftool
     difftastic # Difftool
     ripgrep
+    dig
 
     ## Utils
     wl-clipboard # wayland clipboard utils
@@ -220,8 +221,25 @@
     };
   };
 
-  home.file.".XCompose".source = ./Xcompose;
-  home.file.".aider.conf.yml".source = config.sops.templates.".aider.conf.yaml".path;
+  
+  systemd.user.services.aider-config = {
+      Unit = {
+        Description = "Generate Config File for Aider";
+        After = [ "graphical-session.target" "sops-nix.service"]; # Runs after login
+      };
+
+      Service = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = pkgs.writeShellScript "write-aider-config" ''
+          cat ${config.sops.templates.".aider.conf.yaml".path} > /home/septias/.aider.conf.yml
+        '';
+      };
+
+      Install = {
+        WantedBy = [ "default.target" ]; # Ensures it starts at user login
+      };
+    };  home.file.".XCompose".source = ./Xcompose;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
