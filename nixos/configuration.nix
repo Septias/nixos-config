@@ -140,11 +140,20 @@
         blocking = {
           denylists = {
             ads = [
-              "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+              "${pkgs.fetchurl {
+                url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+                sha256 = "<calculated-sha256>";
+              }}"
             ];
             social = [
-              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt"
-              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt"
+              "${pkgs.fetchurl {
+                url = "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt";
+                sha256 = "<calculated-sha256>";
+              }}"
+              "${pkgs.fetchurl {
+                url = "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt";
+                sha256 = "<calculated-sha256>";
+              }}"
            ];
           };
           allowlists = {
