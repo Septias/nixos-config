@@ -142,7 +142,7 @@
             ads = [
               "${pkgs.fetchurl {
                 url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
-                sha256 = "<calculated-sha256>";
+                sha256 = lib.fakeSha256;
               }}"
             ];
             social = [
