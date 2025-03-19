@@ -44,6 +44,10 @@
         };
       };
 
+      windowrulev2 = [
+        "workspace:1, tile,title: Delta Chat Tauri"
+      ];
+
       decoration = {
         rounding = 12;
       };
