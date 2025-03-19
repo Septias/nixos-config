@@ -1,12 +1,13 @@
 {pkgs, ...}: {
   programs.kitty = {
     enable = true;
+    package = pkgs.unstable.kitty;
     font = {
       package = pkgs.jetbrains-mono;
       name = "JetBrains Mono";
       size = 15;
     };
-    themeFile = "Catppuccin-Frappe";
+    #themeFile = "Catppuccin-Frappe";
     settings = {
       confirm_os_window_close = 0;
       remember_window_size = true;

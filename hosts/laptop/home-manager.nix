@@ -13,6 +13,7 @@
           "cava"
           "systray"
           "volume"
+          "ram"
           "battery"
           "network"
           "bluetooth"
