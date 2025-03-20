@@ -73,6 +73,11 @@
           "A-p" = "select_prev_sibling";
           # Search
           "*" = "search_selection";
+          space = let
+          blame_script = import ./helix/blame.nix {inherit pkgs;}; in {
+            B = ":sh ${blame_script} %{buffer_name} %{cursor_line}";
+            U = ":sh ${blame_script} --url-only %{cursor_line} %{buffer_name} | xargs -I{} xdg-open {}";
+          };
         };
       };
     };
