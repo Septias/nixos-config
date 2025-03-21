@@ -142,6 +142,8 @@
         lg = "lazygit";
         o = "xdg-open";
         debug_h = "tail --follow ~/.cache/helix/helix.log";
+        dark = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'";
+        light = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'";
       };
     };
     starship = {
