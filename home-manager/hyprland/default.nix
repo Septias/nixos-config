@@ -35,8 +35,8 @@
         kb_options = "terminate:ctrl_alt_bksp";
 
         follow_mouse = 2;
-        repeat_delay = 300;
-        repeat_rate = 25;
+        repeat_delay = 220;
+        repeat_rate = 45;
         accel_profile = "flat";
         sensitivity = 0;
         touchpad = {
