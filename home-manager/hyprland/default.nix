@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    # ./waybar
     ./rofi
     ./hypridle.nix
     ./hyprpaper.nix
@@ -26,8 +25,11 @@
       enable = true;
     };
     settings = {
-      "$mainMod" = "SUPER";
-
+      general = {
+        gaps_out = 0;  
+        "col.active_border" = "rgb(7287fd)";
+      };
+      
       input = {
         kb_layout = "de";
         kb_variant = "neo";
@@ -45,11 +47,11 @@
       };
 
       windowrulev2 = [
-        "workspace:1, tile,title: Delta Chat Tauri"
+        "workspace:1,tile,title:Delta Chat Tauri"
       ];
 
       decoration = {
-        rounding = 12;
+        rounding = 10;
       };
 
       gestures = {
@@ -72,7 +74,7 @@
           "workspaces,1,9,md3_decel,slide"
           "workspaces,1,6,default"
           "specialWorkspace,1,8,md3_decel,slide"
-          "border,1,10,md3_decel"
+          # "border,1,10,md3_decel"
         ];
       };
 
@@ -83,7 +85,7 @@
 
       debug = {
         damage_tracking = 2; # leave it on 2 (full) unless you hate your GPU and want to make it suffer!
-        disable_logs = false;
+        disable_logs = true;
       };
 
       opengl = {
@@ -171,15 +173,6 @@
         "SUPER SHIFT, right, movewindow, r"
         "SUPER SHIFT, up, movewindow, u"
         "SUPER SHIFT, down, movewindow, d"
-
-        "SUPER $mainMod SHIFT, 1, movetoworkspacesilent, 1"
-        "SUPER $mainMod SHIFT, 2, movetoworkspacesilent, 2"
-        "SUPER $mainMod SHIFT, 3, movetoworkspacesilent, 3"
-        "SUPER $mainMod SHIFT, 4, movetoworkspacesilent, 4"
-        "SUPER $mainMod SHIFT, 5, movetoworkspacesilent, 5"
-        "SUPER $mainMod SHIFT, 6, movetoworkspacesilent, 6"
-        "SUPER $mainMod SHIFT, 7, movetoworkspacesilent, 7"
-        "SUPER $mainMod SHIFT, 8, movetoworkspacesilent, 8"
 
         # Start programs
         "SUPER,RETURN, exec, kitty /home/septias/coding"
