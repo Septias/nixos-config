@@ -154,12 +154,18 @@
                 url = "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt";
                 sha256 = "sha256-//CxsTi2kSI6e5hSqwVZImca7xxMiqEyEml+2Xwq5Mk=";
               }}"
+              ''
+              *.twitch.tv
+              *.twitch.com
+              ''
            ];
           };
           allowlists = {
             social = [
               ''
               music.youtube.com
+              *.ytimg.com
+              *.googlevideo.com
               ''
             ];
           };
