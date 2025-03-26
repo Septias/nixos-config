@@ -33,7 +33,7 @@
         # line-number = "relative";
         completion-timeout = 10;
         completion-replace = true;
-        statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers"];
+        statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers" "primary-selection-length"];
       };
       keys = {
         # https://docs.helix-editor.com/keymap.html
