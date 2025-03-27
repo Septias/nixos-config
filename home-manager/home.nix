@@ -40,23 +40,23 @@
     ## Office
     telegram-desktop
     discord
-    # inkscape
-    # evince
     libreoffice
     thunderbird
-    # gimp
     sqlitebrowser
     gthumb
     zoom-us
     vlc
     anki
-    sioyek # pdf reader
-    ranger # tui file manager
+    sioyek
+    ranger
     gnome-software
-    # sonic-pi # music coding
     firefox
     unstable.aider-chat
     code-cursor
+    # inkscape
+    # evince
+    # gimp
+    # sonic-pi # music coding
 
     ## Tooling
     scc # loc counter
@@ -188,7 +188,7 @@
       nix-direnv.enable = true;
     };
     zoxide = {
-      enable = true;
+      enable = false;
     };
     atuin = {
       enable = false;
