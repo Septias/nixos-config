@@ -157,6 +157,7 @@
               ''
               *.twitch.tv
               *.twitch.com
+              *.chess.com
               ''
            ];
           };
