@@ -96,7 +96,7 @@
       language = [
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "helix-gpt"];
+          language-servers = ["rust-analyzer"];
           debugger = {
             command = "codelldb";
             name = "codelldb";
