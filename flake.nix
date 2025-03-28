@@ -22,7 +22,7 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
 
     # Hyprpanel
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    hyprpanel.url = "github:Septias/HyprPanel";
     hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
 
     # App Switcher
