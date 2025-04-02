@@ -8,6 +8,7 @@
       nil
       taplo # toml lsp
       marksman
+      vtsls
     ] ++ (with python312Packages; [
       pycodestyle
       pylint
@@ -126,7 +127,7 @@
         }
         {
           name = "typescript";
-          language-servers = ["vtsls" "helix-gpt"];
+          language-servers = ["typescript-language-svever" "helix-gpt"];
         }
         {
           name = "tsx";          
