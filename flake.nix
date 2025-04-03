@@ -32,6 +32,11 @@
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
     better-ilias.url = "github:septias/better-ilias";
+
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -63,7 +68,6 @@
       nixos-desktop = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          # lanzaboote.nixosModules.lanzaboote
           ./nixos/configuration.nix
           ./hosts/desktop
           inputs.sops-nix.nixosModules.sops
@@ -75,7 +79,6 @@
         modules = [
           ./nixos/configuration.nix
           ./hosts/laptop
-          # lanzaboote.nixosModules.lanzaboote
           inputs.nixos-hardware.nixosModules.dell-xps-13-9310
           inputs.sops-nix.nixosModules.sops
         ];

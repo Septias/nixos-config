@@ -26,11 +26,11 @@
     };
     settings = {
       general = {
-        gaps_out = 0;  
+        gaps_out = 0;
         "col.active_border" = "rgb(7287fd)";
         allow_tearing = true;
       };
-      
+
       input = {
         kb_layout = "de";
         kb_variant = "neo";
@@ -132,7 +132,7 @@
           hyprctl setcursor "Bibata-Original-Ice" 20
           gnome-keyring-daemon --start --components=secrets,ssh
           eval $(ssh-agent)
-          '';
+        '';
       in [
         "${autostart}/bin/autostart"
         "${set_wp}/bin/set_wp"
@@ -183,7 +183,7 @@
         "SUPER, Print, exec, screenshot-edit"
         "SUPER, o, exec, obsidian"
         "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "SUPER,space, exec, rofi -show drun"
+        "SUPER,space, exec, anyrun"
         "SUPER, e, exec, nautilus"
         "SUPER, Tab, exec, hyprswitch gui --mod-key super --key tab"
 

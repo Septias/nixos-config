@@ -65,7 +65,7 @@
     wantedBy = ["default.target"];
     serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
   };
-  
+
   services = {
     pipewire = {
       enable = true;
@@ -124,19 +124,19 @@
           https = 443;
         };
         bootstrapDns = [
-            {
-              upstream = "https://one.one.one.one/dns-query";
-              ips = [ "1.1.1.1" "1.0.0.1" ];
-            }
-            {
-              upstream = "https://dns.quad9.net/dns-query";
-              ips = [ "9.9.9.9" "149.112.112.112" ];
-            }
-            {
-              upstream = "tcp-tls:dns.example.com";
-              ips = [ "123.123.123.123" ];
-            }
-          ];
+          {
+            upstream = "https://one.one.one.one/dns-query";
+            ips = ["1.1.1.1" "1.0.0.1"];
+          }
+          {
+            upstream = "https://dns.quad9.net/dns-query";
+            ips = ["9.9.9.9" "149.112.112.112"];
+          }
+          {
+            upstream = "tcp-tls:dns.example.com";
+            ips = ["123.123.123.123"];
+          }
+        ];
         blocking = {
           denylists = {
             ads = [
@@ -155,18 +155,18 @@
                 sha256 = "sha256-//CxsTi2kSI6e5hSqwVZImca7xxMiqEyEml+2Xwq5Mk=";
               }}"
               ''
-              *.twitch.tv
-              *.twitch.com
-              *.chess.com
+                *.twitch.tv
+                *.twitch.com
+                *.chess.com
               ''
-           ];
+            ];
           };
           allowlists = {
             social = [
               ''
-              music.youtube.com
-              *.ytimg.com
-              *.googlevideo.com
+                music.youtube.com
+                *.ytimg.com
+                *.googlevideo.com
               ''
             ];
           };

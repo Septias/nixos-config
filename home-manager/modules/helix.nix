@@ -10,7 +10,8 @@
       taplo # toml lsp
       marksman
       vtsls
-    ] ++ (with python312Packages; [
+    ]
+    ++ (with python312Packages; [
       pycodestyle
       pylint
       flake8
@@ -130,7 +131,7 @@
           language-servers = ["typescript-language-server" "helix-gpt"];
         }
         {
-          name = "tsx";          
+          name = "tsx";
           language-servers = ["typescript-language-server" "helix-gpt"];
         }
         {
