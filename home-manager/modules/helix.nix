@@ -4,6 +4,7 @@
       # Some lsps for languages that should work out of the box
       vscode-extensions.vadimcn.vscode-lldb
       vscode-langservers-extracted
+      typescript-language-server
       helix-gpt
       nil
       taplo # toml lsp
@@ -37,6 +38,8 @@
       };
       keys = {
         # https://docs.helix-editor.com/keymap.html
+        # Prefix commands with nums!
+        # ctrl-r to insert register in picker
         insert = {
           "C-s" = [":w" "normal_mode"];
           "C-r" = "insert_register";
@@ -57,6 +60,8 @@
           "A-." = "repeat_last_motion";
           # Changes
           "R" = "replace_with_yanked";
+          "I" = "insert_at_line_start";
+          "A" = "insert_at_line_end";
           "=" = "format_selections";
           "A-d" = "delete_selection_noyank";
           "Q" = "record_macro";
@@ -73,11 +78,6 @@
           "A-p" = "select_prev_sibling";
           # Search
           "*" = "search_selection";
-          # space = let
-          # blame_script = import ./helix/blame.nix {inherit pkgs;}; in {
-          #   B = ":sh ${blame_script} %{buffer_name} %{cursor_line}";
-          #   U = ":sh ${blame_script} --url-only %{cursor_line} %{buffer_name} | xargs -I{} xdg-open {}";
-          # };
         };
       };
     };
@@ -127,7 +127,7 @@
         }
         {
           name = "typescript";
-          language-servers = ["typescript-language-svever" "helix-gpt"];
+          language-servers = ["typescript-language-server" "helix-gpt"];
         }
         {
           name = "tsx";          
