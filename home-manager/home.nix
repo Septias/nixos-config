@@ -49,10 +49,8 @@
     anki
     sioyek
     ranger
-    gnome-software
     firefox
     unstable.aider-chat
-    code-cursor
     # inkscape
     # evince
     # gimp
@@ -78,7 +76,7 @@
     dig
 
     ## Utils
-    wl-clipboard # wayland clipboard utils
+    wl-clipboard
 
     ## Custom
     inputs.dc-times.packages.x86_64-linux.dc-times
