@@ -48,7 +48,8 @@
     vlc
     anki
     sioyek
-    ranger
+    yazi
+    fd
     firefox
     unstable.aider-chat
     # inkscape
@@ -74,6 +75,7 @@
     difftastic # Difftool
     ripgrep
     dig
+    copyq
 
     ## Utils
     wl-clipboard
@@ -140,6 +142,7 @@
         lg = "lazygit";
         o = "xdg-open";
         debug_h = "tail --follow ~/.cache/helix/helix.log";
+        debug_hy = "open $\"($env.XDG_RUNTIME_DIR | path join 'hypr' | ls $in | sort-by modified -r | get name | first)/hyprland.log\" |  hx";
         dark = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'";
         light = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'";
       };
@@ -186,7 +189,7 @@
       nix-direnv.enable = true;
     };
     zoxide = {
-      enable = false;
+      enable = true;
     };
     atuin = {
       enable = false;
