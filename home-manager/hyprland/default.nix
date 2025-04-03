@@ -28,6 +28,7 @@
       general = {
         gaps_out = 0;  
         "col.active_border" = "rgb(7287fd)";
+        allow_tearing = true;
       };
       
       input = {
@@ -47,7 +48,8 @@
       };
 
       windowrulev2 = [
-        "workspace:1,tile,title:Delta Chat Tauri"
+        "workspace:1,tile,class:^(deltachat-tauri)$"
+        "immediate,class:^(cs2)$"
       ];
 
       decoration = {
@@ -85,7 +87,7 @@
 
       debug = {
         damage_tracking = 2; # leave it on 2 (full) unless you hate your GPU and want to make it suffer!
-        disable_logs = true;
+        disable_logs = false;
       };
 
       opengl = {
