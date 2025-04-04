@@ -23,7 +23,7 @@
     ./modules/helix.nix
     ./modules/kitty.nix
     ./modules/anyrun/mod.nix
-    ./modules/nu.nix
+    ./modules/nu/mod.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
 
