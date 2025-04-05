@@ -90,7 +90,7 @@
       };
 
       enable = true;
-      desktopManager.gnome.enable = true;
+      desktopManager.gnome.enable = false;
       displayManager.gdm.enable = true;
     };
 
