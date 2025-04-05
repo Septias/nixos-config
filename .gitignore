@@ -1,3 +1,4 @@
 .aider*
 home-manager/modules/anyrun/gh/.direnv
 home-manager/modules/anyrun/gh/target
+home-manager/modules/anyrun/gh/result

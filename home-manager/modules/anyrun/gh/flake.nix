@@ -14,15 +14,30 @@
     nixpkgs,
     rust-overlay,
   }: let
-    supportedSystems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    supportedSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
     forEachSupportedSystem = f:
-      nixpkgs.lib.genAttrs supportedSystems (system:
-        f {
+      nixpkgs.lib.genAttrs supportedSystems (
+        system: let
           pkgs = import nixpkgs {
             inherit system;
             overlays = [rust-overlay.overlays.default self.overlays.default];
           };
-        });
+        in
+          f {
+            pkgs = pkgs;
+            system = system;
+          }
+      );
+
+    # Define defaults for missing parameters
+    pluginName = "gh";
+    lockFile = ./Cargo.lock;
+    extraInputs = [];
   in {
     overlays.default = final: prev: {
       rustToolchain = let
@@ -37,79 +52,86 @@
             extensions = ["rust-src" "rustfmt"];
           };
     };
-    packages = forEachSupportedSystem ({pkgs}: {
-      default = let
+
+    packages = forEachSupportedSystem (
+      {
+        pkgs,
+        system,
+      }: let
         cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
         pname = cargoToml.package.name;
         version = cargoToml.package.version;
-      in
-        rustPlatform.buildRustPackage {
-          inherit pname version;
+      in {
+        default = pkgs.rustPlatform.buildRustPackage {
+          pname = pname;
+          version = version;
 
-          src = builtins.path {
-            path = lib.sources.cleanSource inputs.self;
-            name = "${pname}-${version}";
-          };
-          cargoLock = {
-            inherit lockFile;
-          };
+          # Use the current directory as the source, cleaning it via pkgs.lib
+          src = pkgs.lib.cleanSource ./.;
+
+          cargoLock = {inherit lockFile;};
 
           strictDeps = true;
 
           nativeBuildInputs = [
-            pkg-config
-            makeWrapper
+            pkgs.pkg-config
+            pkgs.makeWrapper
           ];
 
           buildInputs =
             [
-              glib
-              atk
-              gtk3
-              librsvg
-              gtk-layer-shell
+              pkgs.glib
+              pkgs.atk
+              pkgs.gtk3
+              pkgs.librsvg
+              pkgs."gtk-layer-shell"
             ]
             ++ extraInputs;
 
           doCheck = true;
           checkInputs = [
-            cargo
-            rustc
+            pkgs.cargo
+            pkgs.rustc
           ];
 
           copyLibs = true;
-          cargoBuildFlags = ["-p ${name}"];
-          buildAndTestSubdir = "plugins/${name}";
+          cargoBuildFlags = ["-p ${pluginName}"];
 
           CARGO_BUILD_INCREMENTAL = "false";
           RUST_BACKTRACE = "full";
 
           meta = {
-            description = "The ${name} plugin for Anyrun";
+            description = "The ${pluginName} plugin for Anyrun";
             homepage = "https://github.com/anyrun-org/anyrun";
-            license = [lib.licenses.gpl3];
-            maintainers = with lib.maintainers; [NotAShelf n3oney];
+            license = [pkgs.lib.licenses.gpl3];
+            maintainers = with pkgs.lib.maintainers; [NotAShelf n3oney];
           };
         };
-    });
+      }
+    );
 
-    devShells = forEachSupportedSystem ({pkgs}: {
-      default = pkgs.mkShell {
-        packages = with pkgs; [
-          rustToolchain
-          openssl
-          pkg-config
-          cargo-deny
-          cargo-edit
-          cargo-watch
-          rust-analyzer
-        ];
+    devShells = forEachSupportedSystem (
+      {
+        pkgs,
+        system,
+      }: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            rustToolchain
+            openssl
+            pkg-config
+            cargo-deny
+            cargo-edit
+            cargo-watch
+            rust-analyzer
+          ];
 
-        env = {
-          # Required by rust-analyzer
-          RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+          env = {
+            # Required by rust-analyzer:
+            RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+          };
         };
-      };
-    });
+      }
+    );
   };
 }
