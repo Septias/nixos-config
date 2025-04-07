@@ -31,7 +31,13 @@
       lg = "lazygit";
       o = "xdg-open";
       debug_h = "tail --follow ~/.cache/helix/helix.log";
-      debug_hy = "open $\"($env.XDG_RUNTIME_DIR | path join 'hypr' | ls $in | sort-by modified -r | get name | first)/hyprland.log\" |  hx";
+      hlog = '' do {
+        let hypr_dir = $env.XDG_RUNTIME_DIR | path join 'hypr'
+        let latest = ls $hypr_dir | sort-by modified -r | get name | first
+        let log_path = $hypr_dir | path join $latest | path join 'hyprland.log'
+        open $log_path | hx
+      }
+      '';
       dark = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'";
       light = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'";
     };

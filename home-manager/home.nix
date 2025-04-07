@@ -54,9 +54,10 @@
     fd
     firefox
     unstable.aider-chat
+    nautilus
+    gimp
     # inkscape
     # evince
-    # gimp
     # sonic-pi # music coding
 
     ## Tooling

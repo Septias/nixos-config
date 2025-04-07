@@ -10,8 +10,8 @@
       taplo # toml lsp
       marksman
       vtsls
-    ]
-    ++ (with python312Packages; [
+      unstable.copilot-language-server
+    ] ++ (with python312Packages; [
       pycodestyle
       pylint
       flake8
@@ -83,16 +83,21 @@
       };
     };
     languages = {
-      language-server.helix-gpt = {
-        command = "helix-gpt";
-      };
-
-      language-server.pylsp.config = {
-        pycodestyle.enabled = false;
-        pyflakes.enabled = false;
-        yapf.enabled = false;
-        pylint.enabled = true;
-        flake8.enabled = true;
+      language-server = {
+        helix-gpt = {
+          command = "helix-gpt";
+        };
+        copilot = {
+          command = "copilot-language-server";
+          args = ["--stdio"];
+        };
+        pylsp.config = {
+          pycodestyle.enabled = false;
+          pyflakes.enabled = false;
+          yapf.enabled = false;
+          pylint.enabled = true;
+          flake8.enabled = true;
+        };
       };
 
       language = [
@@ -123,18 +128,6 @@
           };
         }
         {
-          name = "javascript";
-          language-servers = ["typescript-language-server" "helix-gpt"];
-        }
-        {
-          name = "typescript";
-          language-servers = ["typescript-language-server" "helix-gpt"];
-        }
-        {
-          name = "tsx";
-          language-servers = ["typescript-language-server" "helix-gpt"];
-        }
-        {
           name = "python";
           formatter = {
             command = "${pkgs.black}/bin/black";
@@ -147,7 +140,24 @@
           language-servers = ["helix-gpt"];
           soft-wrap.enable = true;
         }
-      ];
+      ] ++ 
+        (
+          let
+            lsps = ["typescript-language-server" "helix-gpt"];
+          in
+            [{
+              name = "javascript";
+              language-servers = lsps;
+            }
+            {
+              name = "typescript";
+              language-servers = lsps;
+            }
+            {
+              name = "tsx";
+              language-servers = lsps;
+            }]
+        );
     };
   };
 }

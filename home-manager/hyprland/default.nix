@@ -48,8 +48,12 @@
       };
 
       windowrulev2 = [
-        "workspace:1,tile,class:^(deltachat-tauri)$"
+        "workspace 1,class:^(deltachat-tauri)$"
+        "tile,class:^(deltachat-tauri)$"
+        "noinitialfocus,class:^(deltachat-tauri)$"
         "immediate,class:^(cs2)$"
+        "workspace special:social,class:^(whatsapp-for-linux|org.telegram.desktop|signal|DeltaChat|discord)$"
+        "workspace special:obsidian,class:^(obsidian)$"
       ];
 
       decoration = {
@@ -75,8 +79,7 @@
           "fade,1,6,md3_decel"
           "workspaces,1,9,md3_decel,slide"
           "workspaces,1,6,default"
-          "specialWorkspace,1,8,md3_decel,slide"
-          # "border,1,10,md3_decel"
+          "specialWorkspace,1,8,md3_decel,fade"
         ];
       };
 
@@ -141,12 +144,13 @@
 
       bind = [
         "SUPER,Q,killactive,"
-        "SUPER,f,togglefloating,"
         "SUPER,g,togglegroup"
         "SUPER,m,fullscreen"
         "SUPER,p,pin"
         "SUPER,c,centerwindow"
         "SUPER,l,exec,hyprlock"
+        "SUPER,s,togglespecialworkspace,social"
+        "SUPER,o,togglespecialworkspace,obsidian"
 
         # Move focus
         "SUPER,r,workspace,-1"
@@ -177,18 +181,17 @@
         "SUPER SHIFT, down, movewindow, d"
 
         # Start programs
-        "SUPER,RETURN, exec, kitty /home/septias/coding"
-        ",Print, exec, screenshot"
-        "SUPER, i, exec, screenshot"
-        "SUPER, Print, exec, screenshot-edit"
-        "SUPER, o, exec, obsidian"
-        "SUPER SHIFT, s, exec, google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
-        "SUPER,space, exec, anyrun"
-        "SUPER, e, exec, nautilus"
-        "SUPER, Tab, exec, hyprswitch gui --mod-key super --key tab"
+        "SUPER,RETURN,exec,kitty /home/septias/coding"
+        ",Print,exec,screenshot"
+        "SUPER,i,exec,screenshot"
+        "SUPER,Print,exec,screenshot-edit"
+        "SUPER SHIFT,s,exec,google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        "SUPER,space,exec,anyrun"
+        "SUPER,e,exec,nautilus"
+        "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
 
         # Focus windows
-        "SUPER, s, focuswindow, chrome"
+        "SUPER, b, focuswindow, chrome"
       ];
 
       bindm = [
