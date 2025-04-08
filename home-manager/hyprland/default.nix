@@ -140,6 +140,8 @@
         "${autostart}/bin/autostart"
         "${set_wp}/bin/set_wp"
         "${auto_close}/bin/auto_close"
+        "[workspace special obsidian silent] obsidian"
+        "[workspace special social silent] whatsapp-for-linux"
       ];
 
       bind = [
