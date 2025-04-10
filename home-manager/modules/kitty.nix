@@ -7,7 +7,7 @@
       name = "JetBrains Mono";
       size = 15;
     };
-    #themeFile = "Catppuccin-Frappe";
+    # themeFile = "Catppuccin-Frappe";
     settings = {
       confirm_os_window_close = 0;
       remember_window_size = true;
@@ -20,6 +20,7 @@
     };
     keybindings = {
       "ctrl+t" = "launch --cwd=current";
+      "ctrl+f" = "launch --type=overlay --stdin-source=@screen_scrollback ${pkgs.fzf}/bin/fzf --no-sort --no-mouse --exact -i";
       "ctrl+shift+t" = "launch --type=tab --cwd=current";
       "ctrl+shift+n" = "next_window";
       "ctrl+q" = "close_window";
