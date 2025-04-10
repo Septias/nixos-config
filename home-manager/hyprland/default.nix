@@ -60,6 +60,13 @@
         rounding = 10;
       };
 
+      group = {
+        groupbar = {    
+          "col.active" = "rgb(51576d)";
+          "col.inactive" = "rgb(626880)";
+        };
+      };
+
       gestures = {
         workspace_swipe = true;
         workspace_swipe_forever = true;
@@ -108,7 +115,7 @@
       exec-once = let
         auto_close = pkgs.writeShellScriptBin "auto_close" ''
           function handle {
-              if [[ $${1:0:11} == "closewindow" ]]; then
+              if [[ ''${1:0:11} == "closewindow" ]]; then
                   echo "Close Window detected"
                   if [[ 'hyprctl workspaces |grep "windows: 0"' ]]; then
                       echo "Empty workspace detected"
@@ -146,42 +153,16 @@
       ];
 
       bind = [
+        # Window controls
         "SUPER,Q,killactive,"
         "SUPER,g,togglegroup"
+        "SUPER,y,changegroupactive"
         "SUPER,m,fullscreen"
         "SUPER,p,pin"
         "SUPER,c,centerwindow"
         "SUPER,l,exec,hyprlock"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
-
-        # Move focus
-        "SUPER,r,workspace,-1"
-        "SUPER,t,workspace,+1"
-        "SUPER,n,cyclenext"
-        "SUPER,d,movefocus,r"
-
-        "SUPER,left,movefocus,l"
-        "SUPER,right,movefocus,r"
-        "SUPER,up,movefocus,u"
-        "SUPER,down,movefocus,d"
-
-        "SUPER,1,workspace,1"
-        "SUPER,2,workspace,2"
-        "SUPER,3,workspace,3"
-        "SUPER,4,workspace,4"
-        "SUPER,5,workspace,5"
-        "SUPER,6,workspace,6"
-        "SUPER,7,workspace,7"
-        "SUPER,8,workspace,8"
-
-        # Move window
-        "SUPER ALT, t, movetoworkspace, +1"
-        "SUPER ALT, r, movetoworkspace, -1"
-        "SUPER SHIFT, left, movewindow, l"
-        "SUPER SHIFT, right, movewindow, r"
-        "SUPER SHIFT, up, movewindow, u"
-        "SUPER SHIFT, down, movewindow, d"
 
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
@@ -192,9 +173,19 @@
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
-
+        
         # Focus windows
         "SUPER, b, focuswindow, chrome"
+        
+        # Move focus
+        "SUPER,r,workspace,-1"
+        "SUPER,t,workspace,+1"
+        "SUPER,n,cyclenext"
+        "SUPER,d,movefocus,r"
+
+        # Move window
+        "SUPER ALT, t, movetoworkspace, +1"
+        "SUPER ALT, r, movetoworkspace, -1"
       ];
 
       bindm = [
