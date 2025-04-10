@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   ...
 }: {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
