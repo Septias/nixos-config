@@ -75,10 +75,11 @@
     bluetuith # bluetooth tui
     # via # keyboard config
     delta # Difftool
-    difftastic # Difftool
+    difftastic
     ripgrep
-    dig
-    copyq
+    dig # DNS-lookup
+    wev # input viewer
+    copyq # clipboard manager
 
     ## Utils
     wl-clipboard
