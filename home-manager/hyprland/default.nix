@@ -140,6 +140,7 @@
         "${autostart}/bin/autostart"
         "${set_wp}/bin/set_wp"
         "${auto_close}/bin/auto_close"
+        "${import ./dynamic-borders.nix {inherit pkgs;}}/bin/auto_borders"
         "[workspace special obsidian silent] obsidian"
         "[workspace special social silent] whatsapp-for-linux"
       ];
