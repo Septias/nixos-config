@@ -20,7 +20,7 @@
     };
     keybindings = {
       "ctrl+t" = "launch --cwd=current";
-      "ctrl+f" = "launch --type=overlay --stdin-source=@screen_scrollback ${pkgs.fzf}/bin/fzf --no-sort --no-mouse --exact -i";
+      "ctrl+shift+f" = "launch --type=overlay --stdin-source=@screen_scrollback ${pkgs.fzf}/bin/fzf --no-sort --no-mouse --exact -i";
       "ctrl+shift+t" = "launch --type=tab --cwd=current";
       "ctrl+shift+n" = "next_window";
       "ctrl+q" = "close_window";

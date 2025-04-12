@@ -163,6 +163,7 @@
         "SUPER,l,exec,hyprlock"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
+        "SUPER,a,movewindow,mon:+1"
 
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
