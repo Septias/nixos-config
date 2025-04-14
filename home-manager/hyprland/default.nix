@@ -52,7 +52,8 @@
         "tile,class:^(deltachat-tauri)$"
         "noinitialfocus,class:^(deltachat-tauri)$"
         "immediate,class:^(cs2)$"
-        "workspace special:social,class:^(whatsapp-for-linux|org.telegram.desktop|signal|DeltaChat|discord)$"
+        "workspace special:social,class:^(whatsapp-for-linux|org.telegram.desktop|signal|discord)$"
+        "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
       ];
 
@@ -115,9 +116,9 @@
       exec-once = let
         auto_close = pkgs.writeShellScriptBin "auto_close" ''
           function handle {
-              if [[ ''${1:0:11} == "closewindow" ]]; then
+              if [[ ''${1:0:11} == "killactive" ]]; then
                   echo "Close Window detected"
-                  if [[ 'hyprctl workspaces |grep "windows: 0"' ]]; then
+                  if [[ 'hyprctl workspaces | grep "windows: 0"' ]]; then
                       echo "Empty workspace detected"
                       hyprctl dispatch workspace m 1
                       sleep 0.0001

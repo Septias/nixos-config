@@ -56,6 +56,7 @@
     unstable.aider-chat
     nautilus
     gimp
+    evince
     # inkscape
     # evince
     # sonic-pi # music coding
