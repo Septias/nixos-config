@@ -154,6 +154,7 @@
                 url = "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt";
                 sha256 = "sha256-//CxsTi2kSI6e5hSqwVZImca7xxMiqEyEml+2Xwq5Mk=";
               }}"
+              "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
               ''
                 *.twitch.tv
                 *.twitch.com
