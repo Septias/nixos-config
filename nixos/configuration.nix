@@ -34,6 +34,7 @@
       systemd-boot.configurationLimit = 3;
       efi.canTouchEfiVariables = true;
     };
+    supportedFilesystems = ["ntfs"];
   };
 
   # Configure Language
@@ -75,14 +76,12 @@
       audio.enable = true;
       jack.enable = true;
     };
-
     gnome.gnome-keyring.enable = true;
     minecraft-server = {
       enable = false;
       eula = true;
       openFirewall = true;
     };
-
     xserver = {
       xkb = {
         layout = "de";
@@ -90,13 +89,11 @@
       };
 
       enable = true;
-      desktopManager.gnome.enable = false;
+      desktopManager.gnome.enable = true;
       displayManager.gdm.enable = true;
     };
-
     # update firmeware
     fwupd.enable = true;
-
     printing = {
       enable = true;
       drivers = [pkgs.hplip];
@@ -177,6 +174,8 @@
         };
       };
     };
+    gvfs.enable = true;
+    udisks2.enable = true;
   };
 
   security = {
@@ -269,6 +268,9 @@
     zip
     unzip
     libsecret
+    usbutils
+    udiskie
+    udisks
   ];
 
   fonts.packages = with pkgs; [
