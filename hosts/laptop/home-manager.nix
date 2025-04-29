@@ -4,6 +4,7 @@
     "desc:Eizo Nanao Corporation EV2785 0x03015951, 2560x1440, 0x-1440,1"
     ", preferred, auto, 1, mirror, eDP-1"
   ];
+  wayland.windowManager.hyprland.settings.input.sensitivity = 1.3;
   programs.hyprpanel.layout = lib.mkOverride 10 {
     bar.layouts = {
       "0" = {
