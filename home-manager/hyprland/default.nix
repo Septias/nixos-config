@@ -41,7 +41,6 @@
         repeat_delay = 220;
         repeat_rate = 45;
         accel_profile = "flat";
-        sensitivity = 0;
         touchpad = {
           natural_scroll = 1;
         };
@@ -55,6 +54,7 @@
         "workspace special:social,class:^(whatsapp-for-linux|org.telegram.desktop|signal|discord)$"
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
+        "workspace special:calendar,class:^(org.gnome.Calendar)$"
       ];
 
       decoration = {
@@ -151,6 +151,7 @@
         "${import ./dynamic-borders.nix {inherit pkgs;}}/bin/auto_borders"
         "[workspace special obsidian silent] obsidian"
         "[workspace special social silent] whatsapp-for-linux"
+        "[workspace special calendar silent] gnome-calendar"
       ];
 
       bind = [
@@ -164,6 +165,7 @@
         "SUPER,l,exec,hyprlock"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
+        "SUPER,k,togglespecialworkspace,calendar"
         "SUPER,a,movewindow,mon:+1"
 
         # Start programs
