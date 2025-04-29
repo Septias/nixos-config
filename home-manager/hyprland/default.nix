@@ -47,7 +47,8 @@
       };
 
       windowrulev2 = [
-        "workspace 1,class:^(deltachat-tauri)$"
+        "monitor 1,class:^(deltachat-tauri)$"
+        "fullscreenstate 0 0,class:^(deltachat-tauri)$"
         "tile,class:^(deltachat-tauri)$"
         "noinitialfocus,class:^(deltachat-tauri)$"
         "immediate,class:^(cs2)$"
