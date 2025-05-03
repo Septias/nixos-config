@@ -176,6 +176,7 @@
     };
     gvfs.enable = true;
     udisks2.enable = true;
+    emacs.enable = true;
   };
 
   security = {
