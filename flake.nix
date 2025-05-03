@@ -28,7 +28,9 @@
     # App Switcher
     hyprswitch.url = "github:h3rmt/hyprswitch/release";
 
-    # Custom
+    # Emacs
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
     better-ilias.url = "github:septias/better-ilias";
