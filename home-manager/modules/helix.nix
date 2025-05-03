@@ -3,15 +3,16 @@
     [
       # Some lsps for languages that should work out of the box
       vscode-extensions.vadimcn.vscode-lldb
-      vscode-langservers-extracted
+      vscode-langservers-extracted # needed ?
       typescript-language-server
       helix-gpt
       nil
       taplo # toml lsp
       marksman
-      vtsls
+      vtsls # typescript
       unstable.copilot-language-server
-    ] ++ (with python312Packages; [
+    ]
+    ++ (with python312Packages; [
       pycodestyle
       pylint
       flake8
@@ -100,52 +101,59 @@
         };
       };
 
-      language = [
-        {
-          name = "rust";
-          language-servers = ["rust-analyzer"];
-          debugger = {
-            command = "codelldb";
-            name = "codelldb";
-            port-arg = "--port {}";
-            transport = "tcp";
-            templates = [
-              {
-                name = "binary";
-                request = "launch";
-                completion = [
-                  {
-                    completion = "filename";
-                    name = "binary";
-                  }
-                ];
-                args = {
-                  program = "{0}";
-                  runInTerminal = false;
-                };
-              }
-            ];
-          };
-        }
-        {
-          name = "python";
-          formatter = {
-            command = "${pkgs.black}/bin/black";
-            args = ["-" "--quiet"];
-          };
-          language-servers = ["pylsp" "helix-gpt"];
-        }
-        {
-          name = "markdown";
-          language-servers = ["helix-gpt"];
-          soft-wrap.enable = true;
-        }
-      ] ++ 
-        (
+      language =
+        [
+          {
+            name = "rust";
+            language-servers = ["rust-analyzer"];
+            debugger = {
+              command = "codelldb";
+              name = "codelldb";
+              port-arg = "--port {}";
+              transport = "tcp";
+              templates = [
+                {
+                  name = "binary";
+                  request = "launch";
+                  completion = [
+                    {
+                      completion = "filename";
+                      name = "binary";
+                    }
+                  ];
+                  args = {
+                    program = "{0}";
+                    runInTerminal = false;
+                  };
+                }
+              ];
+            };
+          }
+          {
+            name = "python";
+            formatter = {
+              command = "${pkgs.black}/bin/black";
+              args = ["-" "--quiet"];
+            };
+            language-servers = ["pylsp" "helix-gpt"];
+          }
+          {
+            name = "markdown";
+            language-servers = ["helix-gpt"];
+            soft-wrap.enable = true;
+          }
+          {
+            name = "nix";
+            formatter = {
+              command = "${pkgs.alejandra}/bin/alejandra";
+            };
+          }
+        ]
+        ++ (
           let
             lsps = ["typescript-language-server" "helix-gpt"];
-          in
-            [{
+          in [
+            {
               name = "javascript";
               language-servers = lsps;
             }
@@ -156,7 +164,8 @@
             {
               name = "tsx";
               language-servers = lsps;
-            }]
+            }
+          ]
         );
     };
   };
