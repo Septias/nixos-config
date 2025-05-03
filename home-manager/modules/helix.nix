@@ -131,6 +131,7 @@
           }
           {
             name = "python";
+            auto-format = true;
             formatter = {
               command = "${pkgs.black}/bin/black";
               args = ["-" "--quiet"];
@@ -144,6 +145,7 @@
           }
           {
             name = "nix";
+            auto-format = true;
             formatter = {
               command = "${pkgs.alejandra}/bin/alejandra";
             };
