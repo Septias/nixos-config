@@ -4,6 +4,10 @@
   ...
 }: {
   home.packages = [pkgs.carapace];
+  programs.carapace = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
   programs.nushell = {
     enable = true;
     configFile.source = ./config.nu;
@@ -11,9 +15,7 @@
       CHATMAIL_DOMAIN = "\"nine.testrun.org\"";
       HANDLER = "copilot";
     };
-    extraConfig = ''
-      source ${./carapace.nu}
-      $env.COPILOT_API_KEY = (open ${config.sops.secrets.copilot.path} | str trim)'';
+    extraConfig = ''$env.COPILOT_API_KEY = (open ${config.sops.secrets.copilot.path} | str trim)'';
     shellAliases = {
       dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
       nd = "nix develop";
