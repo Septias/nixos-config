@@ -63,7 +63,7 @@
       };
 
       group = {
-        groupbar = {    
+        groupbar = {
           "col.active" = "rgb(51576d)";
           "col.inactive" = "rgb(626880)";
         };
@@ -179,15 +179,16 @@
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
-        
+
         # Focus windows
         "SUPER, b, focuswindow, chrome"
-        
+
         # Move focus
         "SUPER,r,workspace,-1"
         "SUPER,t,workspace,+1"
         "SUPER,n,cyclenext"
-        "SUPER,d,movefocus,r"
+        "SUPER,d,focusmonitor,+1"
+        "SUPER,z,focuscurrentorlast"
 
         # Move window
         "SUPER ALT, t, movetoworkspace, +1"
