@@ -42,7 +42,7 @@
     unstable.nodePackages.pnpm
     # additions.sioyek
     emacs
-    agda
+    (agda.withPackages [agdaPackages.standard-library])
 
     ## Office
     telegram-desktop
