@@ -160,6 +160,7 @@
       bind = [
         # Window controls
         "SUPER,Q,killactive,"
+        # "SUPER SHIFT,Q,killwindow,activewindow"
         "SUPER,g,togglegroup"
         "SUPER,y,changegroupactive"
         "SUPER,m,fullscreen"
