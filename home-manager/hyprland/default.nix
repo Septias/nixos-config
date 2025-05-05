@@ -52,6 +52,7 @@
         "tile,class:^(deltachat-tauri)$"
         "noinitialfocus,class:^(deltachat-tauri)$"
         "immediate,class:^(cs2)$"
+        "tile,class:^(sioyek)$"
         "workspace special:social,class:^(whatsapp-for-linux|org.telegram.desktop|signal|discord)$"
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
