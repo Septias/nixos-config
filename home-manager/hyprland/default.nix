@@ -195,6 +195,9 @@
         # Move window
         "SUPER ALT, t, movetoworkspace, +1"
         "SUPER ALT, r, movetoworkspace, -1"
+
+        # Misc
+        "SUPER SHIFT, t, exec, hyprpanel t bar-0"
       ];
 
       bindm = [
