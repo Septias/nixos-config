@@ -51,12 +51,14 @@
         "fullscreenstate 0 0,class:^(deltachat-tauri)$"
         "tile,class:^(deltachat-tauri)$"
         "noinitialfocus,class:^(deltachat-tauri)$"
-        "immediate,class:^(cs2)$"
         "tile,class:^(sioyek)$"
         "workspace special:social,class:^(whatsapp-for-linux|org.telegram.desktop|signal|discord)$"
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:calendar,class:^(org.gnome.Calendar)$"
+        "workspace cs2,class:^(cs2)$"
+        "immediate,class:^(cs2)$"
+        "fullscreen,class:^(cs2)$"
       ];
 
       decoration = {
