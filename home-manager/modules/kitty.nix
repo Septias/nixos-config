@@ -15,7 +15,7 @@
       initial_window_height = 1080;
       hide_window_decorations = true;
       tab_bar_style = "powerline";
-      enabled_layouts = "tall,stack";
+      enabled_layouts = "stack,tall";
       background_opacity = 0.9;
     };
     keybindings = {
