@@ -107,7 +107,7 @@
       openFirewall = true;
     };
 
-    onedrive.enable = true;
+    onedrive.enable = false;
     openssh.enable = true;
     blocky = {
       # https://github.com/0xERR0R/blocky/blob/main/docs/config.yml
