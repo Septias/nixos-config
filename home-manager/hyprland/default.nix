@@ -172,7 +172,6 @@
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,k,togglespecialworkspace,calendar"
-        "SUPER,a,movewindow,mon:+1"
 
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
@@ -183,6 +182,7 @@
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
+        "SUPER,c,exec, xdg-open https://chatgpt.com"
 
         # Focus windows
         "SUPER, b, focuswindow, chrome"
@@ -192,6 +192,7 @@
         "SUPER,t,workspace,+1"
         "SUPER,n,cyclenext"
         "SUPER,d,focusmonitor,+1"
+        "SUPER SHIFT,d,movewindow,mon:+1"
         "SUPER,z,focuscurrentorlast"
 
         # Move window
