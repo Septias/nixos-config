@@ -199,7 +199,7 @@
         "SUPER ALT, r, movetoworkspace, -1"
 
         # Misc
-        "SUPER SHIFT, t, exec, hyprpanel t bar-0"
+        "SUPER SHIFT, t, exec, hyprpanel t bar-0 & hyprpanel t bar-1"
       ];
 
       bindm = [
