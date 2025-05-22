@@ -68,6 +68,14 @@
   };
 
   services = {
+    pulseaudio = {
+      enable = false;
+      package = pkgs.pulsaudioFull;
+      configFile = pkgs.writeText "default.pa" ''
+        load-module module-bluetooth-policy
+        load-module module-bluetooth-discovery
+      '';
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -193,16 +201,6 @@
   };
 
   hardware = {
-    # Sound setup
-    pulseaudio = {
-      enable = false;
-      package = pkgs.pulsaudioFull;
-      configFile = pkgs.writeText "default.pa" ''
-        load-module module-bluetooth-policy
-        load-module module-bluetooth-discovery
-      '';
-    };
-
     # Bluetooth
     bluetooth = {
       enable = true;
@@ -274,10 +272,11 @@
     udisks
   ];
 
-  fonts.packages = with pkgs; [
-    jetbrains-mono
-    nerdfonts
-  ];
+  fonts.packages = with pkgs;
+    [
+      jetbrains-mono
+    ]
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.autoUpgrade.enable = true;
