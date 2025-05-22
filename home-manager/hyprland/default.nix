@@ -59,6 +59,8 @@
         "workspace cs2,class:^(cs2)$"
         "immediate,class:^(cs2)$"
         "fullscreen,class:^(cs2)$"
+        "size 574 50%,class:^(anki)$"
+        "float,class:^(anki)$"
       ];
 
       decoration = {
