@@ -47,6 +47,7 @@
                open $log_path | hx
              }
       '';
+      hlogr = ''hyprctl rollinglog -f'';
       emacs = "emacs -nw";
       dark = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'";
       light = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'";
