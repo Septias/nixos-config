@@ -176,7 +176,8 @@
 
       bind = [
         # Window controls
-        "SUPER,Q,killactive,"
+        "SUPER,Q,forcekillactive,"
+        "SUPER SHIFT,Q,forcekillactive,"
         # "SUPER SHIFT,Q,killwindow,activewindow"
         "SUPER,g,togglegroup"
         "SUPER,y,changegroupactive"
@@ -197,10 +198,11 @@
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
+        "SUPER SHIFT,f,togglefloating"
         "SUPER,c,exec, xdg-open https://chatgpt.com"
 
         # Focus windows
-        "SUPER, b, focuswindow, chrome"
+        "SUPER, b, focuswindow, google-chrome"
 
         # Move focus
         "SUPER,r,workspace,-1"
