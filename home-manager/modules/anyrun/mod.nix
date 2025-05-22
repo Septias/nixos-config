@@ -8,12 +8,8 @@
     config = {
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
-        randr
-        symbols
-        translate
         websearch
       ];
-
       width.fraction = 0.3;
       hidePluginInfo = true;
       closeOnClick = true;
@@ -46,6 +42,7 @@
       }
       /* anyrun's input window - Text */
       #entry {
+        padding: 3px 10px;
         color: @fg-col;
         background-color: @bg-col;
       }
