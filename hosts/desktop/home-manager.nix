@@ -11,9 +11,9 @@
         left = ["dashboard" "workspaces" "windowtitle"];
         middle = ["media"];
         right = [
-          "hyprsunset"
-          "ram"
           "cava"
+          "cpu"
+          "ram"
           "systray"
           "volume"
           "network"

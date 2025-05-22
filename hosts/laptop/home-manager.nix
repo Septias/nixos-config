@@ -11,11 +11,11 @@
         left = ["dashboard" "workspaces" "windowtitle"];
         middle = ["media"];
         right = [
-          "hyprsunset"
           "cava"
+          "ram"
+          "cpu"
           "systray"
           "volume"
-          "ram"
           "battery"
           "network"
           "bluetooth"
