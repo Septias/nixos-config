@@ -29,6 +29,7 @@
         gaps_out = 0;
         "col.active_border" = "rgb(7287fd)";
         allow_tearing = true;
+        layout = "dwindle";
       };
 
       input = {
@@ -64,13 +65,14 @@
       ];
 
       decoration = {
-        rounding = 10;
+        rounding = 4;
       };
 
       group = {
         groupbar = {
           "col.active" = "rgb(51576d)";
           "col.inactive" = "rgb(626880)";
+          rounding = "5";
         };
       };
 
@@ -111,12 +113,23 @@
         nvidia_anti_flicker = true;
       };
 
+      binds = {
+        hide_special_on_workspace_change = true;
+      };
+
+      render = {
+        direct_scanout = 2;
+      };
+
       misc = {
         vfr = true; # misc:no_vfr -> misc:vfr. bool, heavily recommended to leave at default on. Saves on CPU usage.
         vrr = 0; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
         animate_mouse_windowdragging = true;
+        animate_manual_resizes = true;
+        font_family = "JetBrainsMono Nerd Font";
+        new_window_takes_over_fullscreen = true;
       };
 
       exec-once = let
