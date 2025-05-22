@@ -204,6 +204,7 @@
     };
   };
 
+  services.activitywatch.enable = true;
   systemd.user.services.aider-config = {
     Unit = {
       Description = "Generate Config File for Aider";
