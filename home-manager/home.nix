@@ -35,7 +35,6 @@
   };
 
   home.packages = with pkgs; [
-    whatsapp-for-linux
     unstable.deltachat-desktop
     unstable.google-chrome
     unstable.obsidian

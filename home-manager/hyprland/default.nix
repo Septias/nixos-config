@@ -54,6 +54,7 @@
         "noinitialfocus,class:^(deltachat-tauri)$"
         "tile,class:^(sioyek)$"
         "workspace special:social,class:^(whatsapp-for-linux|org.telegram.desktop|signal|discord)$"
+        "workspace special:social,title:^(WhatsApp Web)$"
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:calendar,class:^(org.gnome.Calendar)$"
@@ -169,7 +170,7 @@
         "${auto_close}/bin/auto_close"
         "${import ./dynamic-borders.nix {inherit pkgs;}}/bin/auto_borders"
         "[workspace special obsidian silent] obsidian"
-        "[workspace special social silent] whatsapp-for-linux"
+        # "[workspace special social silent] whatsapp-for-linux"
         "[workspace special social silent] deltachat"
         # "[workspace special calendar silent] gnome-calendar"
       ];
