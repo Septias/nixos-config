@@ -156,7 +156,7 @@
         "[workspace special obsidian silent] obsidian"
         "[workspace special social silent] whatsapp-for-linux"
         "[workspace special social silent] deltachat"
-        "[workspace special calendar silent] gnome-calendar"
+        # "[workspace special calendar silent] gnome-calendar"
       ];
 
       bind = [
