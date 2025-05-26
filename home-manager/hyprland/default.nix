@@ -177,8 +177,8 @@
 
       bind = [
         # Window controls
-        "SUPER,Q,forcekillactive,"
-        "SUPER SHIFT,Q,forcekillactive,"
+        "SUPER,Q,killactive"
+        "SUPER SHIFT,Q,forcekillactive"
         # "SUPER SHIFT,Q,killwindow,activewindow"
         "SUPER,g,togglegroup"
         "SUPER,y,changegroupactive"
