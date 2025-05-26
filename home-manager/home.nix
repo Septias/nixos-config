@@ -104,6 +104,17 @@
     inputs.hyprswitch.packages.x86_64-linux.default
   ];
 
+  xdg.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+    configPackages = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+    config.common = {
+      default = ["gnome" "hyprland" "gtk"];
+      "org.freedesktop.impl.portal.Settings" = "gnome";
+    };
+  };
+
   programs = {
     bat.enable = true;
     lazygit = {
