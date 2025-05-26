@@ -183,7 +183,7 @@
       enable = true;
     };
     atuin = {
-      enable = false;
+      enable = true;
       settings = {
         auto_sync = true;
         style = "compact";
@@ -226,7 +226,7 @@
         };
       };
 
-      aw-watcher-windows = {
+      aw-watcher-window = {
         package = pkgs.activitywatch;
         settings = {
           poll_time = 1;
