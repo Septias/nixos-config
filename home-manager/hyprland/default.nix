@@ -195,7 +195,7 @@
         ",Print,exec,screenshot"
         "SUPER,i,exec,screenshot"
         "SUPER,Print,exec,screenshot-edit"
-        "SUPER SHIFT,s,exec,google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
+        "SUPER SHIFT,s,exec,google-chrome-stable"
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
@@ -203,7 +203,7 @@
         "SUPER,c,exec, xdg-open https://chatgpt.com"
 
         # Focus windows
-        "SUPER, b, focuswindow, google-chrome"
+        "SUPER, b, focuswindow, class:google-chrome"
 
         # Move focus
         "SUPER,r,workspace,-1"
