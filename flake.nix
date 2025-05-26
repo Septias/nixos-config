@@ -28,6 +28,11 @@
     # App Switcher
     hyprswitch.url = "github:h3rmt/hyprswitch/release";
 
+    nix-your-shell = {
+      url = "github:MercuryTechnologies/nix-your-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Emacs
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 

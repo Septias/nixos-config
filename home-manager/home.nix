@@ -12,6 +12,7 @@
       outputs.overlays.additions
       outputs.overlays.hyprpanel
       outputs.overlays.emacs
+      inputs.nix-your-shell.overlays.default
     ];
     config = {
       allowUnfree = true;

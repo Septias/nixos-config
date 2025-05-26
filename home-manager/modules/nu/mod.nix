@@ -15,7 +15,10 @@
       CHATMAIL_DOMAIN = "\"nine.testrun.org\"";
       HANDLER = "copilot";
     };
-    extraConfig = ''$env.COPILOT_API_KEY = (open ${config.sops.secrets.copilot.path} | str trim)'';
+    extraConfig = ''
+      $env.COPILOT_API_KEY = (open ${config.sops.secrets.copilot.path} | str trim)
+      source ${pkgs.nix-your-shell.generate-config "nu"}
+    '';
     shellAliases = {
       dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
       nd = "nix develop";
