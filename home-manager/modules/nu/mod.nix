@@ -52,8 +52,8 @@
       '';
       hlogr = ''hyprctl rollinglog -f'';
       emacs = "emacs -nw";
-      dark = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'";
-      light = "gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'";
+      dark = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\"";
+      light = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";
     };
   };
 }
