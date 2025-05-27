@@ -282,7 +282,6 @@
     usbutils
     udiskie
     udisks
-    glib
     killall
   ];
 

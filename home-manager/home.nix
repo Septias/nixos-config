@@ -183,7 +183,7 @@
       enable = true;
     };
     atuin = {
-      enable = true;
+      enable = false;
       settings = {
         auto_sync = true;
         style = "compact";
