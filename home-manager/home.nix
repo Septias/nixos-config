@@ -40,8 +40,8 @@
     unstable.google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
-    # additions.sioyek
-    emacs
+
+    # emacs
     (agda.withPackages [agdaPackages.standard-library])
     (pkgs.symlinkJoin {
       name = "sioyek";
@@ -52,6 +52,7 @@
           --set QT_QPA_PLATFORM xcb
       '';
     })
+
     ## Office
     telegram-desktop
     discord
@@ -63,15 +64,12 @@
     vlc
     anki
     yazi
-    fd
     firefox
     unstable.aider-chat
     nautilus
     gimp
     evince
-    # inkscape
-    # evince
-    # sonic-pi # music coding
+    code-cursor
 
     ## Tooling
     scc # loc counter
