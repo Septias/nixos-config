@@ -120,8 +120,8 @@
 
       config = {
         # default_dark_mode = "false";
-        # papers_folder_path = "~/life/Areas/Studium/Masterproject/Paper";
-        # shared_database_path = "~/life/Ressources";
+        papers_folder_path = "/home/septias/life/Areas/Studium/Masterproject/Paper";
+        shared_database_path = "/home/septias/life/Ressources/shared.db";
       };
     };
     lazygit = {
