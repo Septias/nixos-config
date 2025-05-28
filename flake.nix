@@ -18,9 +18,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Lanzaboot
-    lanzaboote.url = "github:nix-community/lanzaboote";
-
     # Hyprpanel
     hyprpanel.url = "github:Septias/HyprPanel";
     hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
@@ -28,8 +25,15 @@
     # App Switcher
     hyprswitch.url = "github:h3rmt/hyprswitch/release";
 
+    # Nix your shell
     nix-your-shell = {
       url = "github:MercuryTechnologies/nix-your-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Anyrun
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,11 +43,6 @@
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
     better-ilias.url = "github:septias/better-ilias";
-
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -51,7 +50,6 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    lanzaboote,
     ...
   } @ inputs: let
     inherit (self) outputs;
