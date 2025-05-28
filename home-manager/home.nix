@@ -61,6 +61,8 @@
     gimp
     evince
     code-cursor
+    gnome-calendar
+    gnome-control-center
 
     ## Tooling
     scc # loc counter

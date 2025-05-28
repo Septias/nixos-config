@@ -91,7 +91,11 @@
       audio.enable = true;
       jack.enable = true;
     };
-    gnome.gnome-keyring.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+      evolution-data-server.enable = true;
+      gnome-online-accounts.enable = true;
+    };
     minecraft-server = {
       enable = false;
       eula = true;
@@ -102,7 +106,6 @@
         layout = "de";
         variant = "neo";
       };
-
       enable = true;
       desktopManager.gnome.enable = false;
       displayManager.gdm.enable = true;
@@ -122,7 +125,6 @@
       openFirewall = true;
     };
 
-    onedrive.enable = false;
     openssh.enable = true;
     blocky = {
       # https://github.com/0xERR0R/blocky/blob/main/docs/config.yml
@@ -278,10 +280,6 @@
     python3
     zip
     unzip
-    libsecret
-    usbutils
-    udiskie
-    udisks
     killall
   ];
 
