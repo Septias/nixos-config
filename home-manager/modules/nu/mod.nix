@@ -12,7 +12,7 @@
     enable = true;
     configFile.source = ./config.nu;
     environmentVariables = {
-      CHATMAIL_DOMAIN = "\"nine.testrun.org\"";
+      CHATMAIL_DOMAIN = "\"ci-chatmail.testrun.org\"";
       HANDLER = "copilot";
     };
     extraConfig = ''
@@ -20,15 +20,12 @@
       source ${pkgs.nix-your-shell.generate-config "nu"}
     '';
     shellAliases = {
-      dc-acc = "curl -X POST 'https://testrun.org/new_email?t=1w_96myYfKq1BGjb2Yc&n=oneweek'";
       nd = "nix develop";
       nb = "nix build";
       fu = "nix flake update";
-      nc = "hx /home/septias/coding/nixos-config";
       nh = "hx -w /home/septias/coding/nixos-config /home/septias/coding/nixos-config/home-manager/home.nix";
       nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
       hms = "home-manager switch --flake /home/septias/coding/nixos-config";
-      _ = "sudo ";
       pkg = "nix-shell -p";
       pkg-s = "nix search nixpkgs";
       c-fmt = "cargo fmt";
@@ -38,8 +35,6 @@
       gc = "git commit -am";
       gu = "git push --force-with-lease";
       gd = "git pull";
-      gds = "git stash and git pull and git stash pop";
-      nix-clean = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old and nix-collect-garbage -d";
       lg = "lazygit";
       o = "xdg-open";
       debug_h = "tail --follow ~/.cache/helix/helix.log";
