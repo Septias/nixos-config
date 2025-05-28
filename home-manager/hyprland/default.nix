@@ -38,7 +38,7 @@
         kb_model = "p4104";
         kb_options = "terminate:ctrl_alt_bksp";
 
-        follow_mouse = 2;
+        follow_mouse = 1;
         repeat_delay = 220;
         repeat_rate = 45;
         accel_profile = "flat";
