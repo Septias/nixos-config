@@ -43,15 +43,6 @@
 
     # emacs
     (agda.withPackages [agdaPackages.standard-library])
-    (pkgs.symlinkJoin {
-      name = "sioyek";
-      paths = [sioyek];
-      buildInputs = [makeWrapper];
-      postBuild = ''
-        wrapProgram $out/bin/sioyek \
-          --set QT_QPA_PLATFORM xcb
-      '';
-    })
 
     ## Office
     telegram-desktop
@@ -115,6 +106,24 @@
 
   programs = {
     bat.enable = true;
+    sioyek = {
+      enable = true;
+      package = pkgs.symlinkJoin {
+        name = "sioyek";
+        paths = [pkgs.sioyek];
+        buildInputs = [pkgs.makeWrapper];
+        postBuild = ''
+          wrapProgram $out/bin/sioyek \
+            --set QT_QPA_PLATFORM xcb
+        '';
+      };
+
+      config = {
+        # default_dark_mode = "false";
+        # papers_folder_path = "~/life/Areas/Studium/Masterproject/Paper";
+        # shared_database_path = "~/life/Ressources";
+      };
+    };
     lazygit = {
       enable = true;
       settings = {
