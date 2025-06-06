@@ -193,7 +193,7 @@
     };
     gvfs.enable = true;
     udisks2.enable = true;
-    emacs.enable = true;
+    emacs.enable = false;
   };
 
   security = {
