@@ -23,7 +23,7 @@
     hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
 
     # App Switcher
-    hyprswitch.url = "github:h3rmt/hyprswitch/release";
+    hyprswitch.url = "github:h3rmt/hyprshell";
 
     # Nix your shell
     nix-your-shell = {
