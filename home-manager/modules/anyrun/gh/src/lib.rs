@@ -54,8 +54,8 @@ fn handler(selection: Match, config: &Config) -> HandleResult {
     if let Err(why) = Command::new("sh")
         .arg("-c")
         .arg(format!(
-            "xdg-open https://{}",
-            &encode(&selection.title.to_string())
+            "xdg-open \"https://github.com/Septias?q={}&tab=repositories\"",
+            &encode(&selection.title.to_string().trim())
         ))
         .spawn()
     {

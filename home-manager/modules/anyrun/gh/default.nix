@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   # Common dependencies for the plugin
   glib,
@@ -13,8 +12,6 @@
   cargo,
   rustc,
   # Generic args
-  name,
-  lockFile,
   extraInputs ? [], # allow appending buildInputs
   ...
 }: let
@@ -26,11 +23,11 @@ in
     inherit pname version;
 
     src = builtins.path {
-      path = lib.sources.cleanSource inputs.self;
+      path = lib.sources.cleanSource ./.;
       name = "${pname}-${version}";
     };
     cargoLock = {
-      inherit lockFile;
+      lockFile = ./Cargo.lock;
     };
 
     strictDeps = true;
@@ -57,13 +54,13 @@ in
     ];
 
     copyLibs = true;
-    cargoBuildFlags = ["-p ${name}"];
+    cargoBuildFlags = ["-p gh"];
 
     CARGO_BUILD_INCREMENTAL = "false";
     RUST_BACKTRACE = "full";
 
     meta = {
-      description = "The ${name} plugin for Anyrun";
+      description = "The gh plugin for Anyrun";
       homepage = "https://github.com/anyrun-org/anyrun";
       license = [lib.licenses.gpl3];
       maintainers = with lib.maintainers; [NotAShelf n3oney];

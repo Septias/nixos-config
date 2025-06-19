@@ -7,6 +7,7 @@
     enable = true;
     config = {
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
+        (pkgs.callPackage ./gh {})
         applications
         websearch
       ];
