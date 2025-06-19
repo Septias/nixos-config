@@ -44,6 +44,7 @@
         accel_profile = "flat";
         touchpad = {
           natural_scroll = 1;
+          disable_while_typing = true;
         };
       };
 
@@ -61,8 +62,6 @@
         "workspace cs2,class:^(cs2)$"
         "immediate,class:^(cs2)$"
         "fullscreen,class:^(cs2)$"
-        "size 574 50%,class:^(anki)$"
-        "float,class:^(anki)$"
       ];
 
       decoration = {
@@ -170,9 +169,8 @@
         "${auto_close}/bin/auto_close"
         "${import ./dynamic-borders.nix {inherit pkgs;}}/bin/auto_borders"
         "[workspace special obsidian silent] obsidian"
-        # "[workspace special social silent] whatsapp-for-linux"
         "[workspace special social silent] deltachat"
-        # "[workspace special calendar silent] gnome-calendar"
+        "[workspace special calendar silent] gnome-calendar"
       ];
 
       bind = [
