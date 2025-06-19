@@ -26,6 +26,7 @@
     ./modules/kitty.nix
     ./modules/anyrun/mod.nix
     ./modules/nu/mod.nix
+    ./modules/vscode.nix
     # ./modules/emacs/emacs.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
@@ -177,10 +178,6 @@
           };
         }
       ];
-    };
-    vscode = {
-      enable = true;
-      package = pkgs.unstable.vscode;
     };
     direnv = {
       enable = true;
