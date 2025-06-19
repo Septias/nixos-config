@@ -140,7 +140,6 @@
           }
           {
             name = "markdown";
-            language-servers = ["helix-gpt"];
             soft-wrap.enable = true;
           }
           {
