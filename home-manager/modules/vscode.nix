@@ -65,31 +65,30 @@
   };
   defaultExtensions = with pkgs.vscode-extensions; [
     mkhl.direnv
-    fill-libs.dependi
-    editorconfig.editor
-    usernamehw.errorlen
+    fill-labs.dependi
+    editorconfig.editorconfig
+    usernamehw.errorlens
     github.copilot
-    eamodio.gitlense
+    eamodio.gitlens
     bbenoist.nix
   ];
 in {
   programs.vscode = {
     enable = true;
     package = pkgs.unstable.vscode;
-    profiles = {
-      vue = {
-        enableExtensionUpdateCheck = false;
-        extensions =
-          defaultExtensions
-          ++ (with pkgs.vscode-extensions; [
-            dbaeumer.vscode-eslint
-            amandeepmittal.pug
-            syler.sass-indented
-            antfu.unocss
-            vue.volar
-          ]);
-        userSettings = defaultSettings;
-      };
-    };
+    # profiles = {
+    #   vue = {
+    #     extensions =
+    #       defaultExtensions
+    #       ++ (with pkgs.vscode-extensions; [
+    #         dbaeumer.vscode-eslint
+    #         # amandeepmittal.pug
+    #         # syler.sass-indented
+    #         # antfu.unocss
+    #         vue.volar
+    #       ]);
+    #     userSettings = defaultSettings;
+    #   };
+    # };
   };
 }
