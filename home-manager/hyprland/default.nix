@@ -133,20 +133,6 @@
       };
 
       exec-once = let
-        auto_close = pkgs.writeShellScriptBin "auto_close" ''
-          function handle {
-              if [[ ''${1:0:11} == "killactive" ]]; then
-                  echo "Close Window detected"
-                  if [[ 'hyprctl workspaces | grep "windows: 0"' ]]; then
-                      echo "Empty workspace detected"
-                      hyprctl dispatch workspace m 1
-                      sleep 0.0001
-                      hyprctl dispatch workspace 1
-                  fi
-              fi
-          }
-          ${pkgs.socat}/bin/socat - "UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do handle "$line"; done
-        '';
         set_wp = pkgs.writeShellScriptBin "set_wp" ''
           PICTURE_URI=$(gsettings get org.gnome.desktop.background picture-uri)
           PICTURE_PATH=$(echo "$PICTURE_URI" | sed -E "s/^'file:\/\/(.*)'$/\1/")
@@ -166,7 +152,6 @@
       in [
         "${autostart}/bin/autostart"
         "${set_wp}/bin/set_wp"
-        "${auto_close}/bin/auto_close"
         "${import ./dynamic-borders.nix {inherit pkgs;}}/bin/auto_borders"
         "[workspace special obsidian silent] obsidian"
         "[workspace special social silent] deltachat"
@@ -177,7 +162,6 @@
         # Window controls
         "SUPER,Q,killactive"
         "SUPER SHIFT,Q,forcekillactive"
-        # "SUPER SHIFT,Q,killwindow,activewindow"
         "SUPER,g,togglegroup"
         "SUPER,y,changegroupactive"
         "SUPER,m,fullscreen"
