@@ -43,9 +43,6 @@
     unstable.nodePackages.pnpm
     unstable.aider-chat
 
-    # emacs
-    (agda.withPackages [agdaPackages.standard-library])
-
     ## Office
     telegram-desktop
     discord
@@ -67,9 +64,6 @@
     code-cursor
     warp-terminal
 
-    ##Terminal
-    yazi
-
     ## Tooling
     scc # loc counter
     fd # find
@@ -84,6 +78,10 @@
     ripgrep
     dig # DNS-lookup
     wev # input viewer
+    yazi
+
+    ## langs
+    (agda.withPackages [agdaPackages.standard-library])
 
     ## Utils
     wl-clipboard
