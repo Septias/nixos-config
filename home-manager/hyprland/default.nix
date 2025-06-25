@@ -59,6 +59,7 @@
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:calendar,class:^(org.gnome.Calendar)$"
+        "workspace special:email,class:^(thunderbird)$"
         "workspace cs2,class:^(cs2)$"
         "immediate,class:^(cs2)$"
         "fullscreen,class:^(cs2)$"
@@ -109,21 +110,13 @@
         disable_logs = false;
       };
 
-      opengl = {
-        nvidia_anti_flicker = true;
-      };
-
-      binds = {
-        hide_special_on_workspace_change = true;
-      };
-
-      render = {
-        direct_scanout = 2;
-      };
+      opengl.nvidia_anti_flicker = true;
+      binds.hide_special_on_workspace_change = true;
+      render.direct_scanout = 2;
 
       misc = {
-        vfr = true; # misc:no_vfr -> misc:vfr. bool, heavily recommended to leave at default on. Saves on CPU usage.
-        vrr = 0; # misc:vrr -> Adaptive sync of your monitor. 0 (off), 1 (on), 2 (fullscreen only). Default 0 to avoid white flashes on select hardware.
+        vfr = true;
+        vrr = 0;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
         animate_mouse_windowdragging = true;
@@ -141,12 +134,11 @@
           echo "Wallpaper set to: $PICTURE_PATH"
         '';
         autostart = pkgs.writeShellScriptBin "autostart" ''
-          pkill hyprswitch
-          hyprswitch init --show-title --size-factor 3.5 --workspaces-per-row 5 &
           pkill hyprsunset
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
           gnome-keyring-daemon --start --components=secrets,ssh
+          ${pkgs.coypq}
           eval $(ssh-agent)
         '';
       in [
@@ -156,6 +148,7 @@
         "[workspace special obsidian silent] obsidian"
         "[workspace special social silent] deltachat"
         "[workspace special calendar silent] gnome-calendar"
+        "[workspace special email silent] thunderbird"
       ];
 
       bind = [
@@ -163,14 +156,15 @@
         "SUPER,Q,killactive"
         "SUPER SHIFT,Q,forcekillactive"
         "SUPER,g,togglegroup"
-        "SUPER,y,changegroupactive"
         "SUPER,m,fullscreen"
         "SUPER,p,pin"
+        "SUPER,f,togglefloating"
         "SUPER,c,centerwindow"
         "SUPER,l,exec,hyprlock"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,k,togglespecialworkspace,calendar"
+        "SUPER,y,togglespecialworkspace,email"
 
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
@@ -180,8 +174,7 @@
         "SUPER SHIFT,s,exec,google-chrome-stable"
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
-        "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
-        "SUPER SHIFT,f,togglefloating"
+        # "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
         "SUPER,c,exec, xdg-open https://chatgpt.com"
 
         # Focus windows
@@ -226,7 +219,6 @@
     extraConfig = ''
       env = XDG_SESSION_TYPE,wayland
       env = WLR_NO_HARDWARE_CURSORS,1
-      env = NIXOS_OZONE_WL,1
       env = QT_QPA_PLATFORMTHEME,wayland
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
     '';
