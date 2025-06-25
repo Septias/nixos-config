@@ -41,6 +41,7 @@
     unstable.google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
+    unstable.aider-chat
 
     # emacs
     (agda.withPackages [agdaPackages.standard-library])
@@ -55,36 +56,34 @@
     zoom-us
     vlc
     anki
-    yazi
     firefox
-    unstable.aider-chat
     nautilus
     gimp
     evince
-    code-cursor
     gnome-calendar
     gnome-control-center
+
+    ## Testing
+    code-cursor
+    warp-terminal
+
+    ##Terminal
+    yazi
 
     ## Tooling
     scc # loc counter
     fd # find
     alejandra # Nix Formatter
-    firebase-tools
     powertop # tui power usage analysis
     btop # tui resource monitor
     nix-tree
     fzf # fuzzy finder
     sl # funny train
-    tldr # Short man pages
     sops # Encrypted secrets in flake
     bluetuith # bluetooth tui
-    # via # keyboard config
-    delta # Difftool
-    difftastic
     ripgrep
     dig # DNS-lookup
     wev # input viewer
-    copyq # clipboard manager
 
     ## Utils
     wl-clipboard
@@ -99,11 +98,11 @@
   xdg.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
-    configPackages = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+    extraPortals = [pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr];
+    configPackages = [pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr];
     config.common = {
-      default = ["gnome" "hyprland" "gtk"];
-      "org.freedesktop.impl.portal.Settings" = "gnome";
+      default = ["hyprland"];
+      # "org.freedesktop.impl.portal.Settings" = "gnome";
     };
   };
 
