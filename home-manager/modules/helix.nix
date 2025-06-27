@@ -53,6 +53,8 @@
           "C-m" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
           "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
           "C-f" = "jump_forward";
+          "p" = "paste_before";
+          "P" = "paste_after";
           "C-g" = "jump_backward";
           "C-s" = "save_selection";
           "C-a" = "goto_next_buffer";
