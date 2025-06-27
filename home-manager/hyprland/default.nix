@@ -138,7 +138,7 @@
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
           gnome-keyring-daemon --start --components=secrets,ssh
-          ${pkgs.copyq}
+          ${pkgs.copyq}/bin/copyq
           eval $(ssh-agent)
         '';
       in [
