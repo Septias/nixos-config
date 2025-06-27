@@ -213,6 +213,7 @@
     # Bluetooth
     bluetooth = {
       enable = true;
+      powerOnBoot = false;
       # Enable A2DP
       settings.General = {
         Enable = "Source,Sink,Media,Socket";
