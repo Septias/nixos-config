@@ -84,6 +84,7 @@
     "eamodio.gitlens"
     "bbenoist.nix"
     "beardedbear.beardedtheme"
+    "anthropic.claude-code"
   ];
 in {
   programs.vscode = {

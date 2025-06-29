@@ -5,7 +5,7 @@
     ", preferred, auto, 1"
     "Unkown-1, disabled"
   ];
-  programs.hyprpanel.layout = {
+  programs.hyprpanel.settings = {
     bar.layouts = {
       "1" = {
         left = ["cava" "systray"];

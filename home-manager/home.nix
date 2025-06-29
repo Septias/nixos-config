@@ -10,7 +10,6 @@
     overlays = [
       outputs.overlays.unstable-packages
       outputs.overlays.additions
-      outputs.overlays.hyprpanel
       outputs.overlays.emacs
       inputs.nix-your-shell.overlays.default
       inputs.nix4vscode.overlays.forVscode

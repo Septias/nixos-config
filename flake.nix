@@ -18,10 +18,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Hyprpanel
-    hyprpanel.url = "github:Septias/HyprPanel";
-    hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
-
     # App Switcher
     hyprswitch.url = "github:h3rmt/hyprshell";
 
