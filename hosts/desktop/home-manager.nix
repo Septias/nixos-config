@@ -8,16 +8,14 @@
   programs.hyprpanel.layout = {
     bar.layouts = {
       "1" = {
-        left = ["dashboard" "workspaces" "windowtitle"];
+        left = ["cava" "systray"];
         middle = ["media"];
         right = [
-          "cava"
           "cpu"
           "ram"
-          "systray"
           "volume"
-          "network"
           "bluetooth"
+          "network"
           "clock"
           "notifications"
         ];

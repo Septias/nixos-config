@@ -8,17 +8,15 @@
   programs.hyprpanel.layout = lib.mkOverride 10 {
     bar.layouts = {
       "0" = {
-        left = ["dashboard" "workspaces" "windowtitle"];
+        left = ["cava" "systray"];
         middle = ["media"];
         right = [
-          "cava"
           "ram"
           "cpu"
-          "systray"
           "volume"
+          "bluetooth"
           "battery"
           "network"
-          "bluetooth"
           "clock"
           "notifications"
         ];
