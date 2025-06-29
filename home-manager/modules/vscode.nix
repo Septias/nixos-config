@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  defaultSettings = {
+  userSettings = {
     git = {
       autofetch = true;
       enableSmartCommit = true;
@@ -74,8 +74,7 @@
       menuBarVisibility = "compact";
     };
   };
-  keybindings = {
-  };
+  keybindings = builtins.fromJSON (builtins.readFile ./keybings.json);
   defaultExtensions = pkgs.nix4vscode.forVscode [
     "mkhl.direnv"
     "fill-labs.dependi"
@@ -92,6 +91,7 @@ in {
     package = pkgs.unstable.vscodium;
     profiles = {
       vue = {
+        inherit userSettings keybindings;
         extensions =
           defaultExtensions
           ++ pkgs.nix4vscode.forVscode [
@@ -101,15 +101,14 @@ in {
             "antfu.unocss"
             "vue.volar"
           ];
-        userSettings = defaultSettings;
       };
       rust = {
+        inherit userSettings keybindings;
         extensions =
           defaultExtensions
           ++ pkgs.nix4vscode.forVscode [
             "rust-lang.rust-analyzer"
           ];
-        userSettings = defaultSettings;
       };
     };
   };
