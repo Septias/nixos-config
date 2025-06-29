@@ -74,7 +74,7 @@
       menuBarVisibility = "compact";
     };
   };
-  keybindings = builtins.fromJSON (builtins.readFile ./keybings.json);
+  keybindings = builtins.fromJSON (builtins.readFile ./keybindings.json);
   defaultExtensions = pkgs.nix4vscode.forVscode [
     "mkhl.direnv"
     "fill-labs.dependi"

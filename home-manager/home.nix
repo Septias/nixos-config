@@ -27,7 +27,7 @@
     ./modules/kitty.nix
     ./modules/anyrun/mod.nix
     ./modules/nu/mod.nix
-    ./modules/vscode.nix
+    ./modules/vscode/mod.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
 
