@@ -2,15 +2,14 @@
   home.packages = with pkgs;
     [
       # Some lsps for languages that should work out of the box
+      taplo # toml lsp
+      vtsls # typescript
       vscode-extensions.vadimcn.vscode-lldb
       vscode-langservers-extracted # needed ?
       typescript-language-server
       helix-gpt
       nil
-      taplo # toml lsp
       marksman
-      vtsls # typescript
-      unstable.copilot-language-server
     ]
     ++ (with python312Packages; [
       pycodestyle
