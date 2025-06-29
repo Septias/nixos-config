@@ -111,6 +111,14 @@ in {
             "rust-lang.rust-analyzer"
           ];
       };
+      agda = {
+        inherit userSettings keybindings;
+        extensions =
+          defaultExtensions
+          ++ pkgs.nix4vscode.forVscode [
+            "banacorn.agda-mode"
+          ];
+      };
     };
   };
 }
