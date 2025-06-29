@@ -40,6 +40,11 @@
     # Emacs
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
+    nix4vscode = {
+      url = "github:nix-community/nix4vscode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
     better-ilias.url = "github:septias/better-ilias";

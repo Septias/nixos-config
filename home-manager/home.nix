@@ -13,6 +13,7 @@
       outputs.overlays.hyprpanel
       outputs.overlays.emacs
       inputs.nix-your-shell.overlays.default
+      inputs.nix4vscode.overlays.forVscode
     ];
     config = {
       allowUnfree = true;
@@ -27,7 +28,6 @@
     ./modules/anyrun/mod.nix
     ./modules/nu/mod.nix
     ./modules/vscode.nix
-    # ./modules/emacs/emacs.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
 

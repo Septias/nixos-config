@@ -71,24 +71,41 @@
     github.copilot
     eamodio.gitlens
     bbenoist.nix
+  defaultExtensions = pkgs.nix4vscode.forVscode [
+    "mkhl.direnv"
+    "fill-labs.dependi"
+    "editorconfig.editorconfig"
+    "usernamehw.errorlens"
+    "github.copilot"
+    "eamodio.gitlens"
+    "bbenoist.nix"
+    "beardedbear.beardedtheme"
   ];
 in {
   programs.vscode = {
     enable = true;
-    package = pkgs.unstable.vscode;
-    # profiles = {
-    #   vue = {
-    #     extensions =
-    #       defaultExtensions
-    #       ++ (with pkgs.vscode-extensions; [
-    #         dbaeumer.vscode-eslint
-    #         # amandeepmittal.pug
-    #         # syler.sass-indented
-    #         # antfu.unocss
-    #         vue.volar
-    #       ]);
-    #     userSettings = defaultSettings;
-    #   };
-    # };
+    package = pkgs.unstable.vscodium;
+    profiles = {
+      vue = {
+        extensions =
+          defaultExtensions
+          ++ pkgs.nix4vscode.forVscode [
+            "dbaeumer.vscode-eslint"
+            "amandeepmittal.pug"
+            "syler.sass-indented"
+            "antfu.unocss"
+            "vue.volar"
+          ];
+        userSettings = defaultSettings;
+      };
+      rust = {
+        extensions =
+          defaultExtensions
+          ++ pkgs.nix4vscode.forVscode [
+            "rust-lang.rust-analyzer"
+          ];
+        userSettings = defaultSettings;
+      };
+    };
   };
 }
