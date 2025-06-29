@@ -1,29 +1,54 @@
 {pkgs, ...}: let
   defaultSettings = {
-    explorer.confirmDelete = false;
     git = {
       autofetch = true;
       enableSmartCommit = true;
       confirmSync = false;
       ignoreRebaseWarning = true;
     };
-    explorer.confirmDragAndDrop = false;
-    editor.inlineSuggest.enabled = true;
-    github.copilot.enable = {
-      "*" = true;
+    explorer = {
+      confirmDelete = false;
+      confirmDragAndDrop = false;
     };
-    editor.unicodeHighlight.invisibleCharacters = false;
+    editor = {
+      inlineSuggest.enabled = true;
+      unicodeHighlight.invisibleCharacters = false;
+      formatOnSave = true;
+      minimap.enabled = false;
+      fontFamily = "'JetBrains Mono', monospace";
+      fontLigatures = true;
+    };
+    github = {
+      copilot.enable = {
+        "*" = true;
+      };
+      copilot.editor.enableAutoCompletions = true;
+    };
     security.workspace.trust.untrustedFiles = "open";
-    editor.formatOnSave = true;
-    editor.minimap.enabled = false;
-    gitlens.currentLine.enabled = false;
-    gitlens.statusBar.enabled = false;
-    cSpell.userWords = ["firestore" "Klähn" "pinia" "webxdc"];
-    window.autoDetectColorScheme = true;
-    workbench.preferredDarkColorTheme = "Sapphire (Dim)";
-    workbench.preferredLightColorTheme = "Atom One Light";
-    editor.fontFamily = "'JetBrains Mono', monospace";
-    editor.fontLigatures = true;
+    gitlens = {
+      currentLine.enabled = false;
+      statusBar.enabled = false;
+      views.scm.grouped.views = {
+        commits = true;
+        branches = true;
+        remotes = true;
+        stashes = true;
+        tags = true;
+        worktrees = true;
+        contributors = true;
+        repositories = false;
+        searchAndCompare = true;
+        launchpad = false;
+      };
+      graph.minimap.enabled = false;
+      views.commitDetails.files.layout = "tree";
+    };
+    workbench = {
+      preferredDarkColorTheme = "Bearded Theme Monokai Black";
+      preferredLightColorTheme = "Bearded Theme feat. Mintshake D Raynh";
+      layoutControl.enabled = false;
+      navigationControl.enabled = false;
+    };
     nix = {
       enableLanguageServer = true;
       serverPath = "nil";
@@ -40,37 +65,17 @@
     };
     githubPullRequests.pullBranch = "never";
     files.insertFinalNewline = true;
-    github.copilot.editor.enableAutoCompletions = true;
     agdaMode.connection.paths = [
       "/home/septias/.nix-profile/bin/agda"
     ];
-    gitlens.views.scm.grouped.views = {
-      commits = true;
-      branches = true;
-      remotes = true;
-      stashes = true;
-      tags = true;
-      worktrees = true;
-      contributors = true;
-      repositories = false;
-      searchAndCompare = true;
-      launchpad = false;
+    window = {
+      autoDetectColorScheme = true;
+      commandCenter = false;
+      menuBarVisibility = "compact";
     };
-    gitlens.graph.minimap.enabled = false;
-    gitlens.views.commitDetails.files.layout = "tree";
-    workbench.layoutControl.enabled = false;
-    workbench.navigationControl.enabled = false;
-    window.commandCenter = false;
-    window.menuBarVisibility = "compact";
   };
-  defaultExtensions = with pkgs.vscode-extensions; [
-    mkhl.direnv
-    fill-labs.dependi
-    editorconfig.editorconfig
-    usernamehw.errorlens
-    github.copilot
-    eamodio.gitlens
-    bbenoist.nix
+  keybindings = {
+  };
   defaultExtensions = pkgs.nix4vscode.forVscode [
     "mkhl.direnv"
     "fill-labs.dependi"
