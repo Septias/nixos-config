@@ -5,6 +5,7 @@
       enableSmartCommit = true;
       confirmSync = false;
       ignoreRebaseWarning = true;
+      openRepositoryInParentFolders = "always";
     };
     explorer = {
       confirmDelete = false;
@@ -64,8 +65,17 @@
       editor.wordWrap = "on";
     };
     githubPullRequests.pullBranch = "never";
-    files.insertFinalNewline = true;
-    agdaMode.connection.paths = [
+    files = {
+      insertFinalNewline = true;
+      autoSave = "afterDelay";
+      readonlyInclude = {
+        "**/.cargo/registry/src/**/*.rs" = true;
+        "**/.cargo/git/checkouts/**/*.rs" = true;
+        "**/lib/rustlib/src/rust/library/**/*.rs" = true;
+      };
+    };
+
+    "agdaMode.connection.paths" = [
       "/home/septias/.nix-profile/bin/agda"
     ];
     window = {
