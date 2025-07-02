@@ -182,7 +182,7 @@
       nix-direnv.enable = true;
     };
     zoxide = {
-      enable = true;
+      enable = false;
     };
     atuin = {
       enable = true;
@@ -256,16 +256,12 @@
   };
 
   home.file.".XCompose".source = ./Xcompose;
-  home.file.".emacs.d/init.el".source = ./modules/emacs/emacs.el;
-  # {
-  #     recursive = true;
-  #     source = pkgs.fetchFromGitHub {
-  #       owner = "syl20bnr";
-  #       repo = "spacemacs";
-  #       rev = "9542f41";
-  #       hash = "sha256-IqlnL9ItAima24Er9VS0Rrgopx+GO4akORKlPYEAkyM=";
-  #     };
-  #   }
+  home.file.".emacs.d/init.el".source = pkgs.fetchFromGitHub {
+    owner = "syl20bnr";
+    repo = "spacemacs";
+    rev = "9542f41";
+    hash = "sha256-IqlnL9ItAima24Er9VS0Rrgopx+GO4akORKlPYEAkyM=";
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
