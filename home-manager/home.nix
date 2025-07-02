@@ -256,14 +256,20 @@
   };
 
   home.file.".XCompose".source = ./Xcompose;
-  home.file.".emacs.d/init.el".source = pkgs.fetchFromGitHub {
-    owner = "syl20bnr";
-    repo = "spacemacs";
-    rev = "9542f41";
-    hash = "sha256-IqlnL9ItAima24Er9VS0Rrgopx+GO4akORKlPYEAkyM=";
-  };
-
-  # Nicely reload system units when changing configs
+  home.activation.installWritableRepo = let
+    repo = pkgs.fetchFromGitHub {
+      owner = "syl20bnr";
+      repo = "spacemacs";
+      rev = "6751dae7ab8785f90edea585160926bad5e3e2ff";
+      sha256 = "sha256-ajHgzeYcD1moI1Eir+GT0iZsOxMSlgkgB+Bh513TnxQ=";
+    };
+  in
+    lib.hm.dag.entryAfter ["writeBoundary"] ''
+      rm -rf "$HOME/.emacs.d"
+      mkdir -p "$HOME/.emacs.d"
+      cp -r ${repo}/. "$HOME/.emacs.d"
+      chmod -R u+w "$HOME/.emacs.d"
+    '';
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
