@@ -26,7 +26,7 @@
       @define-color fg-col2 #F28FAD;
 
       * {
-        transition: 200ms ease;
+        transition: 110ms ease;
         font-family: "JetBrainsMono Nerd Font";
         font-size: 1.3rem;
       }
@@ -41,6 +41,7 @@
         color: @fg-col;
         background-color: @bg-col;
       }
+
       /* anyrun's input window - Text */
       #entry {
         padding: 3px 10px;
@@ -69,12 +70,6 @@
         border-radius: 16px;
       }
 
-      box#main {
-        background: rgba(30, 30, 46, 0.7);
-        border: 1px solid @border-col;
-        border-radius: 15px;
-        padding: 5px;
-      }
     '';
     extraConfigFiles."websearch.ron".text = ''
       Config(
