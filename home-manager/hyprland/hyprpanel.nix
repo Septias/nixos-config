@@ -13,7 +13,14 @@
       bar = {
         clock.format = "%a %b %d %H:%M";
         launcher.autoDetectIcon = true;
-        customModules.hyprsunset.label = false;
+        customModules = {
+          hyprsunset.label = false;
+          cava = {
+            showIcon = false;
+            showActiveOnly = true;
+          };
+        };
+        systray.ignore = ["deltachat-desktop" "telegram"];
       };
       menus = {
         clock = {

@@ -6,16 +6,19 @@
   ];
   wayland.windowManager.hyprland.settings.input.sensitivity = 1.3;
   programs.hyprpanel.settings = lib.mkOverride 10 {
+    theme.bar.scaling = 80;
     bar.layouts = {
       "0" = {
-        left = ["cava" "systray"];
+        left = [
+          "cava"
+          "volume"
+          "cpu"
+          "ram"
+        ];
         middle = ["media"];
         right = [
-          "ram"
-          "cpu"
-          "volume"
+          # "battery"
           "bluetooth"
-          "battery"
           "network"
           "clock"
           "notifications"
