@@ -16,13 +16,17 @@
 - Bar (Hyprpanel)
    - Theme (catppucin)
 - Window Manager (Hyprland)
+   - Hypridle
+   - Hyprsunset
+   - Hyprlock
 - File Explorer
    - yazi
    - nautilus (gnome)
 - Input mode (neo2.0)
+   - Configured compose combinations
 - Application launcher (anyrun)
 - Application switcher (hpyrshell)
-    
+- Secrets (sops)    
   
   
   
