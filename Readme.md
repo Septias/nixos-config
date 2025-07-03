@@ -8,25 +8,22 @@
    - Shell: nu
    - Prompt: starship
    - History: atuin
-   - Theme: cattpuccin_frappe
+   - Theme: cattpuccin frappe
 - Editor:
-   - Emacs (spacemacs)
-   - Vscode (vscodium)
-   - Helix
-- Bar (Hyprpanel)
-   - Theme (catppucin)
-- Window Manager (Hyprland)
-   - Hypridle
-   - Hyprsunset
-   - Hyprlock
+   - emacs (spacemacs)
+   - vscode (vscodium)
+   - helix
+- Bar: Hyprpanel
+   - theme: catppuccin frappe
+- Window Manager: Hyprland
+   - hypridle
+   - hyprsunset
+   - hyprlock
 - File Explorer
    - yazi
    - nautilus (gnome)
 - Input mode (neo2.0)
    - Configured compose combinations
-- Application launcher (anyrun)
-- Application switcher (hpyrshell)
-- Secrets (sops)    
-  
-  
-  
+- Application launcher: anyrun
+- Application switcher: hpyrshell
+- Secrets: sops
