@@ -19,7 +19,8 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # App Switcher
-    hyprswitch.url = "github:h3rmt/hyprshell";
+    hyprshell.url = "github:H3rmt/hyprshell?ref=hyprshell-release";
+    hyprshell.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix your shell
     nix-your-shell = {

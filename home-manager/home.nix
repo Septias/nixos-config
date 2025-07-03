@@ -27,6 +27,7 @@
     ./modules/anyrun/mod.nix
     ./modules/nu/mod.nix
     ./modules/vscode/mod.nix
+    ./modules/hyprshell.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
 
@@ -89,7 +90,6 @@
     inputs.dc-times.packages.x86_64-linux.dc-times
     inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
     inputs.better-ilias.packages.x86_64-linux.better-ilias
-    inputs.hyprswitch.packages.x86_64-linux.default
   ];
 
   xdg.enable = true;
