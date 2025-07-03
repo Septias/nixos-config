@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./rofi
     ./hypridle.nix
     ./hyprpaper.nix
     ./hyprlock.nix
