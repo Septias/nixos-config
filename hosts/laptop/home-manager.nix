@@ -5,8 +5,7 @@
     ", preferred, auto, 1, mirror, eDP-1"
   ];
   wayland.windowManager.hyprland.settings.input.sensitivity = 1.3;
-  programs.hyprpanel.settings = lib.mkOverride 10 {
-    theme.bar.scaling = 80;
+  programs.hyprpanel.settings = {
     bar.layouts = {
       "0" = {
         left = [

@@ -2,14 +2,14 @@
   programs.hyprpanel = {
     enable = true;
     settings = {
-      theme.bar = {
-        transparent = false;
-        enableShadow = true;
-      };
-      theme.font = {
-        name = "JetBrainsMono Nerd Font";
-        size = "12px";
-      };
+      theme =
+        builtins.fromJSON (builtins.readFile ./hyprpanel/theme.json)
+        // {
+          font = {
+            name = "JetBrainsMono Nerd Font";
+            size = "12px";
+          };
+        };
       bar = {
         clock.format = "%a %b %d %H:%M";
         launcher.autoDetectIcon = true;
