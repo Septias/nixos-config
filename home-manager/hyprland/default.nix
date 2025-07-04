@@ -138,6 +138,7 @@
           hyprctl setcursor "Bibata-Original-Ice" 20
           gnome-keyring-daemon --start --components=secrets,ssh
           ${pkgs.copyq}/bin/copyq
+          ${pkgs.hyprdim}/bin/hyprdim
           eval $(ssh-agent)
         '';
       in [
