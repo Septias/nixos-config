@@ -26,7 +26,7 @@
     settings = {
       general = {
         gaps_out = 0;
-        "col.active_border" = "rgb(7287fd)";
+        border_size = 0;
         allow_tearing = true;
         layout = "dwindle";
       };
@@ -36,7 +36,6 @@
         kb_variant = "neo";
         kb_model = "p4104";
         kb_options = "terminate:ctrl_alt_bksp";
-
         follow_mouse = 1;
         repeat_delay = 220;
         repeat_rate = 45;
@@ -65,7 +64,8 @@
       ];
 
       decoration = {
-        rounding = 4;
+        dim_inactive = true;
+        dim_strength = 0.2;
       };
 
       group = {
@@ -81,21 +81,20 @@
         workspace_swipe_forever = true;
       };
 
+      # https://wiki.hypr.land/Configuring/Animations
       animations = {
         enabled = true;
+        first_launch_animation = false;
         bezier = [
           "pace, 0.46, 1, 0.29, 0.99"
           "overshot, 0.13, 0.99, 0.29, 1.1"
           "md3_decel, 0.05, 0.7, 0.1, 1"
         ];
         animation = [
-          "windowsIn,1,2,md3_decel,slide"
-          "windowsOut,1,3,md3_decel,slide"
-          "windowsMove,1,3,md3_decel,slide"
-          "fade,1,6,md3_decel"
-          "workspaces,1,9,md3_decel,slide"
-          "workspaces,1,6,default"
-          "specialWorkspace,1,8,md3_decel,fade"
+          "windows,1,3,default"
+          "fade,1,3,default"
+          "workspaces,1,3,default"
+          "specialWorkspace,1,1,default,fade"
         ];
       };
 
