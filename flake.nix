@@ -23,28 +23,19 @@
     hyprshell.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix your shell
-    nix-your-shell = {
-      url = "github:MercuryTechnologies/nix-your-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-your-shell.url = "github:MercuryTechnologies/nix-your-shell";
+    nix-your-shell.inputs.nixpkgs.follows = "nixpkgs";
 
     # Anyrun
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    anyrun.url = "github:anyrun-org/anyrun";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Emacs
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    nix4vscode.url = "github:nix-community/nix4vscode";
+    nix4vscode.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix4vscode = {
-      url = "github:nix-community/nix4vscode";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
-    better-ilias.url = "github:septias/better-ilias";
   };
 
   outputs = {
