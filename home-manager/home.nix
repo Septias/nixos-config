@@ -10,7 +10,6 @@
     overlays = [
       outputs.overlays.unstable-packages
       outputs.overlays.additions
-      outputs.overlays.emacs
       inputs.nix-your-shell.overlays.default
       inputs.nix4vscode.overlays.forVscode
     ];
@@ -90,7 +89,6 @@
     ## Custom
     inputs.dc-times.packages.x86_64-linux.dc-times
     inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
-    inputs.better-ilias.packages.x86_64-linux.better-ilias
   ];
 
   xdg.enable = true;
