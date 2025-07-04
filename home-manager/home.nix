@@ -79,6 +79,7 @@
     dig # DNS-lookup
     wev # input viewer
     yazi
+    cachix
 
     ## langs
     (agda.withPackages [agdaPackages.standard-library])
