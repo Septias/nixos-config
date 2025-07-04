@@ -3,7 +3,7 @@
     inputs.hyprshell.homeModules.hyprshell
   ];
   programs.hyprshell = {
-    enable = true;
+    enable = false;
     systemd.args = "-v";
     settings = {
       windows = {
