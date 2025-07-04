@@ -33,6 +33,7 @@
     nix4vscode.url = "github:nix-community/nix4vscode";
     nix4vscode.inputs.nixpkgs.follows = "nixpkgs";
 
+    Hyprspace.url = "github:KZDKM/Hyprspace";
 
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";

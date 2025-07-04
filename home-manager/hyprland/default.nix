@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hypridle.nix
     ./hyprpaper.nix
@@ -23,6 +27,9 @@
     xwayland = {
       enable = true;
     };
+    plugins = [
+      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+    ];
     settings = {
       general = {
         gaps_out = 5;
@@ -161,7 +168,8 @@
         "SUPER,g,togglegroup"
         "SUPER,m,fullscreen"
         "SUPER,p,pin"
-        "SUPER,f,togglefloating"
+        "SUPER,f,overview:toggle"
+        "SUPER SHIFT,f,togglefloating"
         "SUPER,c,centerwindow"
         "SUPER,l,exec,hyprlock"
         "SUPER,s,togglespecialworkspace,social"
