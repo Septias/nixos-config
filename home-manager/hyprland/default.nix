@@ -25,7 +25,8 @@
     };
     settings = {
       general = {
-        gaps_out = 0;
+        gaps_out = 5;
+        gaps_in = 5;
         border_size = 0;
         allow_tearing = true;
         layout = "dwindle";
@@ -66,10 +67,13 @@
       decoration = {
         dim_inactive = true;
         dim_strength = 0.2;
+        rounding = 5;
       };
 
       group = {
+        auto_group = true;
         groupbar = {
+          enabled = false;
           "col.active" = "rgb(51576d)";
           "col.inactive" = "rgb(626880)";
           rounding = "5";
