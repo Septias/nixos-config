@@ -209,6 +209,7 @@
     secrets.copilot = {};
     secrets.weather = {};
     secrets.openai = {};
+    secrets.cachix = {};
     templates = {
       ".aider.conf.yaml".content = ''
         openai-api-key: ${config.sops.placeholder.openai}

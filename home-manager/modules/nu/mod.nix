@@ -17,6 +17,7 @@
     };
     extraConfig = ''
       $env.COPILOT_API_KEY = (open ${config.sops.secrets.copilot.path} | str trim)
+      $env.CACHIX_AUTH_TOKEN = (open ${config.sops.secrets.cachix.path} | str trim)
       source ${pkgs.nix-your-shell.generate-config "nu"}
     '';
     shellAliases = {
