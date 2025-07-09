@@ -131,7 +131,7 @@
         animate_mouse_windowdragging = true;
         animate_manual_resizes = true;
         font_family = "JetBrainsMono Nerd Font";
-        new_window_takes_over_fullscreen = true;
+        new_window_takes_over_fullscreen = 2;
       };
 
       exec-once = let
