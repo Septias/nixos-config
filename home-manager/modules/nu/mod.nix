@@ -50,6 +50,7 @@
       emacs = "emacs -nw";
       dark = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\"";
       light = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";
+      "c." = "codium .";
     };
   };
 }
