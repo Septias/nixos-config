@@ -37,7 +37,7 @@
 
   home.packages = with pkgs; [
     unstable.deltachat-desktop
-    unstable.google-chrome
+    google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
     unstable.aider-chat
