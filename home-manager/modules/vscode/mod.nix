@@ -97,6 +97,9 @@
     "anthropic.claude-code"
   ];
 in {
+  home.packages = [
+    pkgs.libsecret
+  ];
   programs.vscode = {
     enable = true;
     package = pkgs.unstable.vscodium;
