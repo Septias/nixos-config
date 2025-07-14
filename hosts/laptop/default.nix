@@ -6,4 +6,5 @@
   powerManagement.powertop.enable = true;
   services.fprintd.enable = lib.mkForce false;
   services.touchegg.enable = true;
+  services.upower.enable = true;
 }
