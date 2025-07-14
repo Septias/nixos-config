@@ -60,7 +60,7 @@
     gnome-control-center
 
     ## Testing
-    code-cursor
+    # code-cursor
     warp-terminal
 
     ## Tooling
@@ -210,9 +210,11 @@
     secrets.weather = {};
     secrets.openai = {};
     secrets.cachix = {};
+    secrets.openrouter = {};
     templates = {
       ".aider.conf.yaml".content = ''
         openai-api-key: ${config.sops.placeholder.openai}
+        openrouter: ${config.sops.placeholder.openai}
       '';
     };
   };
