@@ -220,7 +220,7 @@
   };
 
   services.activitywatch = {
-    enable = true;
+    enable = false;
     watchers = {
       aw-watcher-afk = {
         package = pkgs.activitywatch;
@@ -229,32 +229,44 @@
           poll_time = 2;
         };
       };
-
-      aw-watcher-window = {
-        package = pkgs.activitywatch;
-        settings = {
-          poll_time = 1;
-          exclude_title = true;
-        };
-      };
     };
   };
 
-  systemd.user.services.aider-config = {
-    Unit = {
-      Description = "Generate Config File for Aider";
-      After = ["graphical-session.target" "sops-nix.service"];
+  systemd = {
+    # user.services.activitywatch-watcher-window-hyprland = {
+    #   Unit = {
+    #     Description = "ActivityWatch watcher 'aw-watcher-window-hyprland'";
+    #     After = [
+    #       "graphical-session.target"
+    #       "activitywatch.service"
+    #     ];
+    #     BindsTo = ["activitywatch.target"];
+    #     ConditionEnvironment = "WAYLAND_DISPLAY";
+    #   };
+    #   Service = {
+    #     ExecStart = lib.getExe pkgs.aw-watcher-window-hyprland;
+    #   };
+    #   Install = {
+    #     WantedBy = ["activitywatch.target"];
+    #   };
+    # };
+    user.services.aider-config = {
+      Unit = {
+        Description = "Generate Config File for Aider";
+        After = ["graphical-session.target" "sops-nix.service"];
+      };
+      Service = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = pkgs.writeShellScript "write-aider-config" ''
+          ${pkgs.coreutils}/bin/cat ${config.sops.templates.".aider.conf.yaml".path} > /home/septias/.aider.conf.yml
+        '';
+      };
+      Install = {
+        WantedBy = ["default.target"];
+      };
     };
-    Service = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = pkgs.writeShellScript "write-aider-config" ''
-        ${pkgs.coreutils}/bin/cat ${config.sops.templates.".aider.conf.yaml".path} > /home/septias/.aider.conf.yml
-      '';
-    };
-    Install = {
-      WantedBy = ["default.target"];
-    };
+    user.startServices = "sd-switch";
   };
 
   home.file.".XCompose".source = ./Xcompose;
@@ -272,7 +284,6 @@
       cp -r ${repo}/. "$HOME/.emacs.d"
       chmod -R u+w "$HOME/.emacs.d"
     '';
-  systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
