@@ -91,6 +91,7 @@
     "editorconfig.editorconfig"
     "usernamehw.errorlens"
     "github.copilot"
+    "gitHub.copilot-chat"
     "eamodio.gitlens"
     "bbenoist.nix"
     "beardedbear.beardedtheme"
