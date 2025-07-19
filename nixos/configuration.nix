@@ -193,8 +193,11 @@
         };
       };
     };
+    # virtual file system
     gvfs.enable = true;
+    # dbus service for storage devices
     udisks2.enable = true;
+    # emacs daemon
     emacs.enable = true;
   };
 
@@ -250,6 +253,7 @@
   };
 
   programs = {
+    # Gnome password manager
     seahorse.enable = true;
     ssh.startAgent = true;
     steam.enable = true;
