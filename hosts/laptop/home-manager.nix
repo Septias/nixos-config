@@ -16,7 +16,7 @@
         ];
         middle = ["media"];
         right = [
-          # "battery"
+          "battery"
           "bluetooth"
           "network"
           "clock"

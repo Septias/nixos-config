@@ -8,12 +8,14 @@
   programs.hyprpanel.settings = {
     bar.layouts = {
       "1" = {
-        left = ["cava" "systray"];
-        middle = ["media"];
-        right = [
+        left = [
+          "cava"
+          "volume"
           "cpu"
           "ram"
-          "volume"
+        ];
+        middle = ["media"];
+        right = [
           "bluetooth"
           "network"
           "clock"
