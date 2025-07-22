@@ -28,7 +28,7 @@
       enable = true;
     };
     plugins = [
-      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
     ];
     settings = {
       general = {
@@ -168,7 +168,7 @@
         "SUPER,g,togglegroup"
         "SUPER,m,fullscreen"
         "SUPER,p,pin"
-        "SUPER,f,overview:toggle"
+        # "SUPER,f,overview:toggle"
         "SUPER SHIFT,f,togglefloating"
         "SUPER,c,centerwindow"
         "SUPER,l,exec,hyprlock"
