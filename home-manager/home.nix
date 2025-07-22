@@ -40,7 +40,7 @@
     google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
-    unstable.aider-chat
+    aider-chat
 
     ## Office
     telegram-desktop
@@ -58,9 +58,11 @@
     evince
     gnome-calendar
     gnome-control-center
+    cider # apple music client
+    rstudio
 
     ## Testing
-    # code-cursor
+    code-cursor
     warp-terminal
 
     ## Tooling
