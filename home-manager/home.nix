@@ -211,12 +211,6 @@
     secrets.openai = {};
     secrets.cachix = {};
     secrets.openrouter = {};
-    templates = {
-      ".aider.conf.yaml".content = ''
-        openai-api-key: ${config.sops.placeholder.openai}
-        openrouter: ${config.sops.placeholder.openai}
-      '';
-    };
   };
 
   services.activitywatch = {
@@ -250,22 +244,6 @@
     #     WantedBy = ["activitywatch.target"];
     #   };
     # };
-    user.services.aider-config = {
-      Unit = {
-        Description = "Generate Config File for Aider";
-        After = ["graphical-session.target" "sops-nix.service"];
-      };
-      Service = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = pkgs.writeShellScript "write-aider-config" ''
-          ${pkgs.coreutils}/bin/cat ${config.sops.templates.".aider.conf.yaml".path} > /home/septias/.aider.conf.yml
-        '';
-      };
-      Install = {
-        WantedBy = ["default.target"];
-      };
-    };
     user.startServices = "sd-switch";
   };
 
