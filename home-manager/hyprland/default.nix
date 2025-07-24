@@ -135,30 +135,20 @@
       };
 
       exec-once = let
-        set_wp = pkgs.writeShellScriptBin "set_wp" ''
-          PICTURE_URI=$(gsettings get org.gnome.desktop.background picture-uri)
-          PICTURE_PATH=$(echo "$PICTURE_URI" | sed -E "s/^'file:\/\/(.*)'$/\1/")
-          hyprctl hyprpaper preload "$PICTURE_PATH"
-          hyprctl hyprpaper wallpaper ",$PICTURE_PATH"
-          echo "Wallpaper set to: $PICTURE_PATH"
-        '';
         autostart = pkgs.writeShellScriptBin "autostart" ''
           pkill hyprsunset
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
           gnome-keyring-daemon --start --components=secrets,ssh
-          ${pkgs.copyq}/bin/copyq
           ${pkgs.hyprdim}/bin/hyprdim
           eval $(ssh-agent)
         '';
       in [
         "${autostart}/bin/autostart"
-        "${set_wp}/bin/set_wp"
-        "${import ./dynamic-borders.nix {inherit pkgs;}}/bin/auto_borders"
         "[workspace special obsidian silent] obsidian"
-        "[workspace special social silent] deltachat"
-        "[workspace special calendar silent] gnome-calendar"
-        "[workspace special email silent] thunderbird"
+        # "[workspace special calendar silent] gnome-calendar"
+        # "[workspace special social silent] deltachat"
+        # "[workspace special email silent] thunderbird"
       ];
 
       bind = [
