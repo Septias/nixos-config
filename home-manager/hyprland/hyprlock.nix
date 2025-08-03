@@ -36,6 +36,7 @@
           outline_thickness = 2;
           placeholder_text = "•`_´•";
           shadow_passes = 2;
+          fail_text = "You wish";
         }
       ];
     };
