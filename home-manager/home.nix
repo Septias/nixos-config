@@ -3,7 +3,6 @@
   lib,
   pkgs,
   outputs,
-  config,
   ...
 }: {
   nixpkgs = {
@@ -214,18 +213,20 @@
     secrets.cachix = {};
     secrets.openrouter = {};
   };
-
-  services.activitywatch = {
-    enable = false;
-    watchers = {
-      aw-watcher-afk = {
-        package = pkgs.activitywatch;
-        settings = {
-          timeout = 300;
-          poll_time = 2;
+  services = {
+    activitywatch = {
+      enable = false;
+      watchers = {
+        aw-watcher-afk = {
+          package = pkgs.activitywatch;
+          settings = {
+            timeout = 300;
+            poll_time = 2;
+          };
         };
       };
     };
+    mpris-proxy.enable = true;
   };
 
   systemd = {
