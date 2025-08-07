@@ -4,6 +4,7 @@
   networking.hostName = "nixos-laptop";
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
+  services.power-profiles-daemon.enable = true;
   services.fprintd.enable = lib.mkForce false;
   services.touchegg.enable = true;
   services.upower.enable = true;
