@@ -27,3 +27,21 @@
 - Application launcher: anyrun
 - Application switcher: hpyrshell
 - Secrets: sops
+
+## New Device
+
+1. Get the nix iso (mini is fine)
+2. Boot from USB or PXE
+3. Load keyboard (keyload de neo)
+4. Follow manual install steps
+5. Reboot into first generation
+6. Add nix-sops
+   1. Generate age-key and add to `~/.config/sops/keys.txt`
+   2. Add age-key in `.sops.yaml`
+   3. Rebuild sops file `sops updatekeys secrets/secret.yaml`
+7. Log into Chrome
+8. Obsidian
+   1. Enable Obsidian Selfhosted sync
+   2. Disable spellcheck
+9. Log into Whatsapp Web
+10. Select Kitten themes
