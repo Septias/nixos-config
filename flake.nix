@@ -78,7 +78,7 @@
         modules = [
           ./nixos/configuration.nix
           ./hosts/laptop
-          inputs.nixos-hardware.nixosModules.dell-xps-13-9310
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14
           inputs.sops-nix.nixosModules.sops
         ];
       };
