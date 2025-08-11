@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hypridle.nix
     ./hyprpaper.nix
@@ -27,9 +23,7 @@
     xwayland = {
       enable = true;
     };
-    plugins = [
-      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
-    ];
+    plugins = [];
     settings = {
       general = {
         gaps_out = 5;
@@ -158,10 +152,8 @@
         "SUPER,g,togglegroup"
         "SUPER,m,fullscreen"
         "SUPER,p,pin"
-        # "SUPER,f,overview:toggle"
         "SUPER SHIFT,f,togglefloating"
         "SUPER,c,centerwindow"
-        "SUPER,l,exec,hyprlock"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,k,togglespecialworkspace,calendar"
@@ -170,12 +162,12 @@
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
         ",Print,exec,screenshot"
+        "SUPER,l,exec,hyprlock"
         "SUPER,i,exec,screenshot"
         "SUPER,Print,exec,screenshot-edit"
         "SUPER SHIFT,s,exec,google-chrome-stable"
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
-        # "SUPER,f,exec,hyprswitch gui --mod-key super --key tab"
         "SUPER,c,exec, xdg-open https://chatgpt.com"
 
         # Focus windows
