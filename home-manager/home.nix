@@ -56,7 +56,6 @@
     gimp
     evince
     gnome-calendar
-    gnome-control-center
     cider # apple music client
     rstudio
 
@@ -75,11 +74,11 @@
     sl # funny train
     sops # Encrypted secrets in flake
     bluetuith # bluetooth tui
-    ripgrep
+    ripgrep # searcher
     dig # DNS-lookup
     wev # input viewer
-    yazi
-    cachix
+    yazi # tui file explorer
+    cachix # cache
 
     ## langs
     (agda.withPackages [agdaPackages.standard-library])
@@ -127,7 +126,7 @@
       enable = true;
       settings = {
         keybindings.universal = {
-          openDiffTool = "<c-d>";
+          openDiffTool = "<c-x>";
           scrollDownMain-alt2 = "?";
         };
       };

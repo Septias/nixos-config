@@ -4,8 +4,6 @@
       # Some lsps for languages that should work out of the box
       taplo # toml lsp
       vtsls # typescript
-      vscode-extensions.vadimcn.vscode-lldb
-      vscode-langservers-extracted # needed ?
       typescript-language-server
       helix-gpt
       nil
@@ -32,15 +30,13 @@
           display-inlay-hints = true;
           display-messages = true;
         };
-        # line-number = "relative";
-        completion-timeout = 10;
+        line-number = "absolute";
+        completion-timeout = 5;
         completion-replace = true;
         statusline.left = ["mode" "spinner" "file-name" "read-only-indicator" "file-modification-indicator" "total-line-numbers" "primary-selection-length"];
       };
       keys = {
         # https://docs.helix-editor.com/keymap.html
-        # Prefix commands with nums!
-        # ctrl-r to insert register in picker
         insert = {
           "C-s" = [":w" "normal_mode"];
           "C-r" = "insert_register";
@@ -65,7 +61,7 @@
           "R" = "replace_with_yanked";
           "I" = "insert_at_line_start";
           "A" = "insert_at_line_end";
-          "=" = "format_selections";
+          "=" = ":format";
           "A-d" = "delete_selection_noyank";
           "Q" = "record_macro";
           "q" = "replay_macro";

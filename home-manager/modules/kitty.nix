@@ -7,7 +7,6 @@
       name = "JetBrains Mono";
       size = 15;
     };
-    # themeFile = "Catppuccin-Frappe";
     settings = {
       confirm_os_window_close = 0;
       remember_window_size = true;
@@ -25,8 +24,6 @@
       "ctrl+shift+n" = "next_window";
       "ctrl+q" = "close_window";
       "kitty_mod+/" = "launch";
-      # "ctrl+g" = "kitten hints --type=linenum --linenum-action=tab code --goto \"{path}:{line}\"";
     };
-    shellIntegration.enableZshIntegration = false;
   };
 }
