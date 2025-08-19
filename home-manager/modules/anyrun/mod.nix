@@ -14,9 +14,9 @@
       width.fraction = 0.3;
       hidePluginInfo = true;
       closeOnClick = true;
+      y.absolute = 100;
     };
 
-    # custom css for anyrun, based on catppuccin-mocha
     extraCss = ''
       @define-color bg-col  rgba(30, 30, 46, 0.7);
       @define-color bg-col-light rgba(150, 220, 235, 0.7);
@@ -37,9 +37,8 @@
 
       #plugin,
       #main {
-        border: 3px solid @border-col;
         color: @fg-col;
-        background-color: @bg-col;
+        background-color: transparent;
       }
 
       /* anyrun's input window - Text */
@@ -47,18 +46,18 @@
         padding: 3px 10px;
         color: @fg-col;
         background-color: @bg-col;
+        border-color: #e78284;
       }
 
       /* anyrun's ouput matches entries - Base */
       #match {
         color: @fg-col;
-        background: @bg-col;
+        background-color: @bg-col;
       }
 
-      /* anyrun's selected entry - Red */
+      /* anyrun's selected entry */
       #match:selected {
         color: @fg-col2;
-        background: @selected-col;
       }
 
       #match {
@@ -69,8 +68,8 @@
       #entry, #plugin:hover {
         border-radius: 16px;
       }
-
     '';
+
     extraConfigFiles."websearch.ron".text = ''
       Config(
         prefix: "?",

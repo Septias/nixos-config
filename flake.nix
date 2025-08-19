@@ -22,18 +22,14 @@
     hyprshell.url = "github:H3rmt/hyprshell?ref=hyprshell-release";
     hyprshell.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Nix your shell
     nix-your-shell.url = "github:MercuryTechnologies/nix-your-shell";
     nix-your-shell.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Anyrun
     anyrun.url = "github:anyrun-org/anyrun";
     anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
     nix4vscode.url = "github:nix-community/nix4vscode";
     nix4vscode.inputs.nixpkgs.follows = "nixpkgs";
-
-    Hyprspace.url = "github:KZDKM/Hyprspace";
 
     dc-times.url = "github:septias/dc-times";
     reddit-wallpapers.url = "github:septias/reddit-wallpapers";
@@ -47,7 +43,6 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    # Supported systems
     systems = [
       "aarch64-linux"
       "i686-linux"
@@ -57,7 +52,6 @@
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
-    # Custom packages
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     overlays = import ./overlays {inherit inputs;};

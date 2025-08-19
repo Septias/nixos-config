@@ -3,7 +3,6 @@
     [
       # Some lsps for languages that should work out of the box
       taplo # toml lsp
-      vtsls # typescript
       typescript-language-server
       helix-gpt
       nil
@@ -47,6 +46,7 @@
         normal = {
           "C-m" = ["extend_to_line_bounds" "delete_selection" "paste_after"];
           "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
+          "C-b" = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}";
           "C-f" = "jump_forward";
           "p" = "paste_before";
           "P" = "paste_after";
@@ -133,7 +133,7 @@
               command = "${pkgs.black}/bin/black";
               args = ["-" "--quiet"];
             };
-            language-servers = ["pylsp" "helix-gpt"];
+            language-servers = ["pylsp"];
           }
           {
             name = "markdown";

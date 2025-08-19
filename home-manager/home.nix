@@ -19,7 +19,6 @@
 
   imports = [
     ./hyprland
-    ./modules/gnome.nix
     ./modules/helix.nix
     ./modules/kitty.nix
     ./modules/anyrun/mod.nix
@@ -36,12 +35,12 @@
 
   home.packages = with pkgs; [
     unstable.deltachat-desktop
-    google-chrome
     unstable.obsidian
     unstable.nodePackages.pnpm
-    aider-chat
+    google-chrome
 
     ## Office
+    cider # apple music client
     telegram-desktop
     discord
     libreoffice
@@ -56,32 +55,25 @@
     gimp
     evince
     gnome-calendar
-    cider # apple music client
-    rstudio
-
-    ## Testing
-    code-cursor
-    warp-terminal
+    aider-chat
 
     ## Tooling
     scc # loc counter
-    fd # find
-    alejandra # Nix Formatter
-    powertop # tui power usage analysis
-    btop # tui resource monitor
+    powertop # TUI power usage analysis
+    btop # TUI resource monitor
     nix-tree
-    fzf # fuzzy finder
-    sl # funny train
+    fzf # Fuzzy finder
+    sl # Funny train
     sops # Encrypted secrets in flake
-    bluetuith # bluetooth tui
-    ripgrep # searcher
+    bluetuith # Bluetooth tui
+    ripgrep # Text search
     dig # DNS-lookup
     wev # input viewer
     yazi # tui file explorer
     cachix # cache
 
     ## langs
-    (agda.withPackages [agdaPackages.standard-library])
+    # (agda.withPackages [agdaPackages.standard-library])
 
     ## Utils
     wl-clipboard
@@ -117,7 +109,6 @@
       };
 
       config = {
-        # default_dark_mode = "false";
         papers_folder_path = "/home/septias/life/Areas/Studium/Masterproject/Paper";
         shared_database_path = "/home/septias/life/Ressources/shared.db";
       };
@@ -126,7 +117,7 @@
       enable = true;
       settings = {
         keybindings.universal = {
-          openDiffTool = "<c-x>";
+          openDiffTool = "<c-t>";
           scrollDownMain-alt2 = "?";
         };
       };
@@ -134,7 +125,7 @@
     git = {
       enable = true;
       userName = "Sebastian Klähn";
-      userEmail = "scoreplayer2000@gmail.com";
+      userEmail = "info@sebastian-klaehn.de";
       extraConfig = {
         pull.rebase = true;
         push.default = "current";
@@ -176,7 +167,6 @@
     };
     direnv = {
       enable = true;
-      enableZshIntegration = true;
       enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
@@ -214,38 +204,29 @@
   };
   services = {
     activitywatch = {
-      enable = false;
-      watchers = {
-        aw-watcher-afk = {
-          package = pkgs.activitywatch;
-          settings = {
-            timeout = 300;
-            poll_time = 2;
-          };
-        };
-      };
+      enable = true;
     };
     mpris-proxy.enable = true;
   };
 
   systemd = {
-    # user.services.activitywatch-watcher-window-hyprland = {
-    #   Unit = {
-    #     Description = "ActivityWatch watcher 'aw-watcher-window-hyprland'";
-    #     After = [
-    #       "graphical-session.target"
-    #       "activitywatch.service"
-    #     ];
-    #     BindsTo = ["activitywatch.target"];
-    #     ConditionEnvironment = "WAYLAND_DISPLAY";
-    #   };
-    #   Service = {
-    #     ExecStart = lib.getExe pkgs.aw-watcher-window-hyprland;
-    #   };
-    #   Install = {
-    #     WantedBy = ["activitywatch.target"];
-    #   };
-    # };
+    user.services.activitywatch-watcher-window-hyprland = {
+      Unit = {
+        Description = "ActivityWatch watcher 'aw-watcher-window-hyprland'";
+        After = [
+          "graphical-session.target"
+          "activitywatch.service"
+        ];
+        BindsTo = ["activitywatch.target"];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+      Service = {
+        ExecStart = lib.getExe pkgs.aw-watcher-window-wayland;
+      };
+      Install = {
+        WantedBy = ["activitywatch.target"];
+      };
+    };
     user.startServices = "sd-switch";
   };
 
