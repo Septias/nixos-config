@@ -33,8 +33,9 @@
   };
 
   networking = {
+    firewall.enable = true;
     networkmanager.enable = true;
-    nameservers = ["127.0.0.1"];
+    resolvconf.useLocalResolver = true;
   };
 
   boot = {
@@ -172,6 +173,11 @@
           clientGroupsBlock = {
             default = ["ads" "social"];
           };
+        };
+        caching = {
+          minTime = "5m";
+          maxTime = "30m";
+          prefetching = true;
         };
       };
     };
