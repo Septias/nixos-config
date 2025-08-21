@@ -40,19 +40,20 @@
       gd = "git pull";
       lg = "lazygit";
       o = "xdg-open";
-      debug_h = "tail --follow ~/.cache/helix/helix.log";
-      hlog = ''        do {
+      log_helix = "tail --follow ~/.cache/helix/helix.log";
+      log_hyprland = ''        do {
                let hypr_dir = $env.XDG_RUNTIME_DIR | path join 'hypr'
                let latest = ls $hypr_dir | sort-by modified -r | get name | first
                let log_path = $hypr_dir | path join $latest | path join 'hyprland.log'
                open $log_path | hx
              }
       '';
-      hlogr = ''hyprctl rollinglog -f'';
+      log_hyprland_rolling = ''hyprctl rollinglog -f'';
       emacs = "emacs -nw";
       dark = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\"";
       light = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";
       "c." = "codium .";
+      life = "cd /home/septias/life";
     };
   };
 }

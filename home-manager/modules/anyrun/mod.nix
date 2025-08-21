@@ -19,11 +19,8 @@
 
     extraCss = ''
       @define-color bg-col  rgba(30, 30, 46, 0.7);
-      @define-color bg-col-light rgba(150, 220, 235, 0.7);
-      @define-color border-col rgba(30, 30, 46, 0.7);
-      @define-color selected-col rgba(150, 205, 251, 0.7);
+      @define-color border-col #e78284;
       @define-color fg-col #D9E0EE;
-      @define-color fg-col2 #F28FAD;
 
       * {
         transition: 110ms ease;
@@ -46,23 +43,22 @@
         padding: 3px 10px;
         color: @fg-col;
         background-color: @bg-col;
-        border-color: #e78284;
+        border-color: @border-col;
       }
 
       /* anyrun's ouput matches entries - Base */
       #match {
         color: @fg-col;
+        padding: 3px;
+        border-radius: 16px;
         background-color: @bg-col;
       }
 
       /* anyrun's selected entry */
       #match:selected {
-        color: @fg-col2;
-      }
-
-      #match {
-        padding: 3px;
         border-radius: 16px;
+        border-color: @border-col;
+        color: @fg-col;
       }
 
       #entry, #plugin:hover {
