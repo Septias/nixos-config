@@ -26,7 +26,7 @@
     plugins = [];
     settings = {
       general = {
-        gaps_out = 5;
+        gaps_out = 10;
         gaps_in = 5;
         border_size = 0;
         allow_tearing = true;
