@@ -38,3 +38,12 @@
    2. Add age-key in `.sops.yaml`
    3. Rebuild sops file `sops updatekeys secrets/secret.yaml`
 7. Select Kitten themes
+
+## Quirks
+> Things that should work but had to be fixed manually. Eventually these might be fixed by upstream.
+
+- Portals for setting gnome `color-scheme` had to be enabled manuall in `home-manager > xdg.portals`
+- For ssh agent, some env-vars had to be set.
+   - The gnome keyring would not unlock automatically.
+- For nvidia, some env-vars had to be set.
+- Sioyek had to add some env variables.
