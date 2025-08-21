@@ -83,14 +83,16 @@
     inputs.reddit-wallpapers.packages.x86_64-linux.reddit-wallpapers
   ];
 
-  xdg.enable = true;
-  xdg.portal = {
+  xdg = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
-    configPackages = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
-    config.common = {
-      default = ["hyprland" "gtk" "gnome"];
-      "org.freedesktop.impl.portal.Settings" = "gnome";
+    portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+      # configPackages = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+      config.common = {
+        default = ["hyprland" "gtk" "gnome"];
+        "org.freedesktop.impl.portal.Settings" = "gnome";
+      };
     };
   };
 
@@ -117,8 +119,7 @@
       enable = true;
       settings = {
         keybindings.universal = {
-          openDiffTool = "<c-t>";
-          scrollDownMain-alt2 = "?";
+          openDiffTool = "<c-r>";
         };
       };
     };
