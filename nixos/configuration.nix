@@ -78,6 +78,7 @@
         load-module module-bluetooth-discovery
       '';
     };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -86,22 +87,25 @@
       audio.enable = true;
       jack.enable = true;
     };
+
     gnome = {
       gnome-keyring.enable = true;
       evolution-data-server.enable = true;
       gnome-online-accounts.enable = true;
     };
+
     minecraft-server = {
       enable = false;
       eula = true;
       openFirewall = true;
     };
+
     xserver = {
+      enable = true;
       xkb = {
         layout = "de";
         variant = "neo";
       };
-      enable = true;
       desktopManager.gnome.enable = false;
       displayManager.gdm.enable = true;
     };
@@ -191,14 +195,6 @@
 
   security = {
     polkit.enable = true;
-    pam = {
-      services = {
-        gdm-password.enableGnomeKeyring = true;
-        gdm.enableGnomeKeyring = true;
-        hyprland.enableGnomeKeyring = true;
-        hyprlock = {};
-      };
-    };
     rtkit.enable = true;
   };
 
@@ -210,14 +206,13 @@
       # Enable A2DP
       settings.General = {
         Enable = "Source,Sink,Media,Socket";
-        # Needed to show bluetooth headphone charge
         Experimental = true;
       };
     };
 
     graphics = {
       enable = true;
-      enable32Bit = true;
+      enable32Bit = false;
     };
 
     printers = {
@@ -244,7 +239,7 @@
     # Gnome password manager
     seahorse.enable = true;
     ssh.startAgent = true;
-    steam.enable = true;
+    steam.enable = false;
     hyprland.enable = true;
     dconf.enable = true;
   };
@@ -273,9 +268,7 @@
   ];
 
   fonts.packages = with pkgs;
-    [
-      jetbrains-mono
-    ]
+    [jetbrains-mono]
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
