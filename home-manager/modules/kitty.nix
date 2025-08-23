@@ -14,11 +14,11 @@
       initial_window_height = 1080;
       hide_window_decorations = true;
       tab_bar_style = "powerline";
-      enabled_layouts = "stack,tall";
+      enabled_layouts = "tall,stack";
       background_opacity = 0.9;
     };
     keybindings = {
-      "ctrl+t" = "launch --cwd=current";
+      "ctrl+t" = "launch --type=os-window --cwd=current";
       "ctrl+shift+f" = "launch --type=overlay --stdin-source=@screen_scrollback ${pkgs.fzf}/bin/fzf --no-sort --no-mouse --exact -i";
       "ctrl+shift+t" = "launch --type=tab --cwd=current";
       "ctrl+shift+n" = "next_window";
