@@ -54,6 +54,7 @@
       light = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";
       "c." = "codium .";
       life = "cd /home/septias/life";
+      read = "yazi /home/septias/life/Areas/Studium/Masterproject/Paper";
     };
   };
 }
