@@ -187,7 +187,6 @@
 
         # Misc
         "SUPER SHIFT, t, exec, hyprpanel t bar-0 & hyprpanel t bar-1"
-        "SUPER ALT,m,submap,music"
       ];
 
       bindm = [
@@ -204,8 +203,10 @@
         ",XF86AudioLowerVolume,exec, ${pkgs.pamixer}/bin/pamixer -d 5"
         ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
         ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        "SUPER ALT,s, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
         ",XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
         ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+        "SUPER ALT,n, exec, ${pkgs.playerctl}/bin/playerctl next"
         ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl prev"
       ];
     };
@@ -217,8 +218,6 @@
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
       submap=music
-      bind=,n,exec, ${pkgs.playerctl}/bin/playerctl next
-      bind=,s,exec, ${pkgs.playerctl}/bin/playerctl play-pause
       bind=,escape,submap,reset
       submap=reset
 
