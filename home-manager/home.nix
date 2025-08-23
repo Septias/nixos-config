@@ -120,6 +120,7 @@
       settings = {
         keybindings.universal = {
           openDiffTool = "<c-r>";
+          openRecentRepos = "<disabled>";
         };
       };
     };

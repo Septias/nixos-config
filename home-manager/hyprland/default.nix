@@ -187,6 +187,7 @@
 
         # Misc
         "SUPER SHIFT, t, exec, hyprpanel t bar-0 & hyprpanel t bar-1"
+        "SUPER ALT,m,submap,music"
       ];
 
       bindm = [
@@ -214,6 +215,13 @@
       env = WLR_NO_HARDWARE_CURSORS,1
       env = QT_QPA_PLATFORMTHEME,wayland
       env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+
+      submap=music
+      bind=,n,exec, ${pkgs.playerctl}/bin/playerctl next
+      bind=,s,exec, ${pkgs.playerctl}/bin/playerctl play-pause
+      bind=,escape,submap,reset
+      submap=reset
+
     '';
   };
 }
