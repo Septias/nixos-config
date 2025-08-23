@@ -16,6 +16,7 @@
           "volume"
           "cpu"
           "ram"
+          "submap"
         ];
         middle = ["media"];
         right = [
