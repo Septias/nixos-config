@@ -26,4 +26,13 @@
       "kitty_mod+/" = "launch";
     };
   };
+
+  home.file.light = {
+    source = ./kitty/light-theme.conf;
+    target = ".config/kitty/light-theme.auto.conf";
+  };
+  home.file.dark = {
+    source = ./kitty/dark-theme.conf;
+    target = ".config/kitty/dark-theme.auto.conf";
+  };
 }
