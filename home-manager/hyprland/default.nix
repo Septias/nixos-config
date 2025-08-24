@@ -48,23 +48,6 @@
         };
       };
 
-      windowrulev2 = [
-        "monitor 1,class:^(deltachat-tauri)$"
-        "fullscreenstate 0 0,class:^(deltachat-tauri)$"
-        "tile,class:^(deltachat-tauri)$"
-        "noinitialfocus,class:^(deltachat-tauri)$"
-        "tile,class:^(sioyek)$"
-        "workspace special:social,class:^(org.telegram.desktop|signal|discord)$"
-        "workspace special:social,title:^(WhatsApp Web)$"
-        "workspace special:social,title:^(Delta Chat)$"
-        "workspace special:obsidian,class:^(obsidian)$"
-        "workspace special:calendar,class:^(org.gnome.Calendar)$"
-        "workspace special:email,class:^(thunderbird)$"
-        "workspace cs2,class:^(cs2)$"
-        "immediate,class:^(cs2)$"
-        "fullscreen,class:^(cs2)$"
-      ];
-
       decoration = {
         dim_inactive = true;
         dim_strength = 0.2;
@@ -145,6 +128,23 @@
         # "[workspace special email silent] thunderbird"
       ];
 
+      windowrulev2 = [
+        "monitor 1,class:^(deltachat-tauri)$"
+        "fullscreenstate 0 0,class:^(deltachat-tauri)$"
+        "tile,class:^(deltachat-tauri)$"
+        "noinitialfocus,class:^(deltachat-tauri)$"
+        "tile,class:^(sioyek)$"
+        "workspace special:social,class:^(org.telegram.desktop|signal|discord)$"
+        "workspace special:social,title:^(WhatsApp Web)$"
+        "workspace special:social,title:^(Delta Chat)$"
+        "workspace special:obsidian,class:^(obsidian)$"
+        "workspace special:calendar,class:^(org.gnome.Calendar)$"
+        "workspace special:email,class:^(thunderbird)$"
+        "workspace cs2,class:^(cs2)$"
+        "immediate,class:^(cs2)$"
+        "fullscreen,class:^(cs2)$"
+      ];
+
       bind = [
         # Window controls
         "SUPER,Q,killactive"
@@ -187,6 +187,7 @@
 
         # Misc
         "SUPER SHIFT, t, exec, hyprpanel t bar-0 & hyprpanel t bar-1"
+        "SUPER SHIFT, o, movetoworkspace, special:obsidian, class:^(obsidian)$"
       ];
 
       bindm = [
