@@ -71,6 +71,8 @@
     wev # input viewer
     yazi # tui file explorer
     cachix # cache
+    difftastic
+    meld
 
     ## langs
     # (agda.withPackages [agdaPackages.standard-library])
@@ -119,9 +121,8 @@
       enable = true;
       package = pkgs.unstable.lazygit;
       settings = {
-        keybindings.universal = {
-          openDiffTool = "<c-r>";
-          openRecentRepos = "<disabled>";
+        keybinding.universal = {
+          openDiffTool = "<c-g>";
         };
       };
     };
@@ -134,7 +135,18 @@
         push.default = "current";
         init.defaultBranch = "main";
         core.editor = "hx";
+        difftool.prompt = false;
+        difftool.meld = {
+          cmd = ''meld "$LOCAL" "$REMOTE"'';
+        };
+        diff.tool = "meld";
         checkout.defaultRemote = "origin";
+      };
+      difftastic.enable = true;
+      aliases = {
+        dl = "-c diff.external=difft log -p --ext-diff";
+        ds = "-c diff.external=difft show --ext-diff";
+        dft = "-c diff.external=difft diff";
       };
     };
     starship = {
