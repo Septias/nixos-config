@@ -125,6 +125,15 @@ in {
             "rust-lang.rust-analyzer"
           ];
       };
+      python = {
+        inherit userSettings keybindings;
+        extensions =
+          defaultExtensions
+          ++ pkgs.nix4vscode.forVscode [
+            "ms-python.python"
+            "ms-python.vscode-pylance"
+          ];
+      };
       agda = {
         inherit userSettings keybindings;
         extensions =
