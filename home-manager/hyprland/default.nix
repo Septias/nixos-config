@@ -184,6 +184,8 @@
         # Move window
         "SUPER ALT, t, movetoworkspace, +1"
         "SUPER ALT, r, movetoworkspace, -1"
+        "SUPER ALT, d, exec, dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\""
+        "SUPER ALT, y, exec, dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\""
 
         # Misc
         "SUPER SHIFT, t, exec, hyprpanel t bar-0 & hyprpanel t bar-1"
