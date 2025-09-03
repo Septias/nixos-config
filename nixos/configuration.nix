@@ -156,12 +156,16 @@
               "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
             ];
             social = [
-              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/youtube_wild.txt"
-              "https://raw.githubusercontent.com/Cebeerre/dnsblocklists/refs/heads/main/instagram_wild.txt"
               ''
                 *.twitch.tv
                 *.twitch.com
                 *.chess.com
+                *.youtube.com
+                *.youtu.be
+                *.yt.be
+                *.ig.me
+                *.instagram.com
+                *.cdninstagram.com
               ''
             ];
           };
@@ -169,8 +173,6 @@
             social = [
               ''
                 music.youtube.com
-                *.ytimg.com
-                *.googlevideo.com
               ''
             ];
           };
