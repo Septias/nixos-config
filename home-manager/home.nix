@@ -53,8 +53,7 @@
     firefox
     nautilus
     gimp
-    evince
-    gnome-calendar
+    evinc
     aider-chat
 
     ## Tooling
@@ -75,7 +74,7 @@
     meld
 
     ## langs
-    # (agda.withPackages [agdaPackages.standard-library])
+    (agda.withPackages [agdaPackages.standard-library])
 
     ## Utils
     wl-clipboard

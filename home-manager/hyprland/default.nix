@@ -123,7 +123,6 @@
       in [
         "${autostart}/bin/autostart"
         "[workspace special obsidian silent] obsidian"
-        # "[workspace special calendar silent] gnome-calendar"
         # "[workspace special social silent] deltachat"
         # "[workspace special email silent] thunderbird"
       ];
@@ -138,7 +137,6 @@
         "workspace special:social,title:^(WhatsApp Web)$"
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
-        "workspace special:calendar,class:^(org.gnome.Calendar)$"
         "workspace special:email,class:^(thunderbird)$"
         "workspace cs2,class:^(cs2)$"
         "immediate,class:^(cs2)$"
@@ -156,7 +154,6 @@
         "SUPER,c,centerwindow"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
-        "SUPER,k,togglespecialworkspace,calendar"
         "SUPER,y,togglespecialworkspace,email"
 
         # Start programs
