@@ -218,10 +218,9 @@
     secrets.openrouter = {};
   };
   services = {
-    activitywatch = {
-      enable = true;
-    };
+    activitywatch.enable = true;
     mpris-proxy.enable = true;
+    udiskie.enable = true; # automount usb
   };
 
   systemd = {

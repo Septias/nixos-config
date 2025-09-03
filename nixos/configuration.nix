@@ -187,8 +187,6 @@
         };
       };
     };
-    # virtual file system
-    gvfs.enable = true;
     # dbus service for storage devices
     udisks2.enable = true;
     # emacs daemon
