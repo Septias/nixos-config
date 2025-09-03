@@ -74,7 +74,7 @@
           "A-f" = "expand_selection";
           "A-g" = "shrink_selection";
           "A-n" = "select_next_sibling";
-          "A-p" = "select_prev_sibling";
+          "A-N" = "select_prev_sibling";
           # Search
           "*" = "search_selection";
         };
