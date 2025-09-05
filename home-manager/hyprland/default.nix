@@ -123,8 +123,8 @@
       in [
         "${autostart}/bin/autostart"
         "[workspace special obsidian silent] obsidian"
+        "[workspace special email silent] thunderbird"
         # "[workspace special social silent] deltachat"
-        # "[workspace special email silent] thunderbird"
       ];
 
       windowrulev2 = [
@@ -160,6 +160,7 @@
         "SUPER,RETURN,exec,kitty /home/septias/coding"
         ",Print,exec,screenshot"
         "SUPER,l,exec,hyprlock"
+        "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl play-pause"
         "SUPER,i,exec,screenshot"
         "SUPER,Print,exec,screenshot-edit"
         "SUPER SHIFT,s,exec,google-chrome-stable"
