@@ -13,7 +13,10 @@
     };
     editor = {
       inlineSuggest.enabled = true;
-      unicodeHighlight.invisibleCharacters = false;
+      unicodeHighlight = {
+        invisibleCharacters = false;
+        ambiguousCharacters = false;
+      };
       formatOnSave = true;
       minimap.enabled = false;
       fontFamily = "'JetBrains Mono', monospace";
@@ -74,10 +77,6 @@
         "**/lib/rustlib/src/rust/library/**/*.rs" = true;
       };
     };
-
-    "agdaMode.connection.paths" = [
-      "/home/septias/.nix-profile/bin/agda"
-    ];
     window = {
       autoDetectColorScheme = true;
       commandCenter = false;
@@ -135,7 +134,23 @@ in {
           ];
       };
       agda = {
-        inherit userSettings keybindings;
+        inherit keybindings;
+        userSettings =
+          userSettings
+          // {
+            agdaMode.connection = {
+              downloadPolicy = "No, and don't ask again";
+              paths = [
+                "/home/septias/.nix-profile/bin/agda"
+              ];
+            };
+            "[agda]" = {
+              editor.unicodeHighlight.ambiguousCharacters = false;
+            };
+            "[lagda]" = {
+              editor.unicodeHighlight.ambiguousCharacters = false;
+            };
+          };
         extensions =
           defaultExtensions
           ++ pkgs.nix4vscode.forVscode [

@@ -53,7 +53,7 @@
     firefox
     nautilus
     gimp
-    evinc
+    evince
     aider-chat
 
     ## Tooling
