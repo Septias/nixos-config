@@ -14,6 +14,7 @@
     touchegg.enable = true;
     upower.enable = true;
     thermald.enable = true;
+    logind.lidSwitch = "suspend";
     tlp = {
       enable = true;
       settings = {
