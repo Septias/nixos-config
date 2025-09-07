@@ -67,7 +67,7 @@
     bluetuith # Bluetooth tui
     ripgrep # Text search
     dig # DNS-lookup
-    wev # input viewer
+    # wev # input viewer
     yazi # tui file explorer
     cachix # cache
     difftastic
@@ -89,7 +89,6 @@
     portal = {
       enable = true;
       extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
-      # configPackages = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
       config.common = {
         default = ["hyprland" "gtk" "gnome"];
         "org.freedesktop.impl.portal.Settings" = "gnome";
@@ -110,7 +109,6 @@
             --set QT_QPA_PLATFORM xcb
         '';
       };
-
       config = {
         papers_folder_path = "/home/septias/life/Areas/Studium/Masterproject/Paper";
         shared_database_path = "/home/septias/life/Ressources/shared.db";
@@ -183,9 +181,6 @@
       enable = true;
       enableNushellIntegration = true;
       nix-direnv.enable = true;
-    };
-    zoxide = {
-      enable = false;
     };
     atuin = {
       enable = true;

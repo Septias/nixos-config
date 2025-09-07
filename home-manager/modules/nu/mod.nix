@@ -25,7 +25,7 @@
     shellAliases = {
       nd = "nix develop";
       nb = "nix build";
-      fu = "nix flake update";
+      nu = "nix flake update";
       nh = "hx -w /home/septias/coding/nixos-config /home/septias/coding/nixos-config/home-manager/home.nix";
       nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
       hms = "home-manager switch --flake /home/septias/coding/nixos-config";
@@ -36,19 +36,19 @@
       gaa = "git add *";
       gro = "git reset HEAD~1";
       gc = "git commit -am";
-      gu = "git push --force-with-lease";
+      gu = "git push";
       gd = "git pull";
       lg = "lazygit";
       o = "xdg-open";
-      log_helix = "tail --follow ~/.cache/helix/helix.log";
-      log_hyprland = ''        do {
+      "log:helix" = "tail --follow ~/.cache/helix/helix.log";
+      "log:hyprland" = ''        do {
                let hypr_dir = $env.XDG_RUNTIME_DIR | path join 'hypr'
                let latest = ls $hypr_dir | sort-by modified -r | get name | first
                let log_path = $hypr_dir | path join $latest | path join 'hyprland.log'
                open $log_path | hx
              }
       '';
-      log_hyprland_rolling = ''hyprctl rollinglog -f'';
+      "log:hyprland_rolling" = ''hyprctl rollinglog -f'';
       emacs = "emacs -nw";
       dark = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\"";
       light = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";

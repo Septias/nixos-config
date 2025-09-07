@@ -52,8 +52,8 @@
           "P" = "paste_after";
           "C-g" = "jump_backward";
           "C-s" = "save_selection";
-          "C-a" = "goto_next_buffer";
-          "C-i" = "goto_previous_buffer";
+          "C-i" = "goto_next_buffer";
+          "C-u" = "goto_previous_buffer";
           "C-e" = "goto_file_end";
           "C-l" = "last_picker";
           "A-." = "repeat_last_motion";
