@@ -7,12 +7,12 @@
     systemd.args = "-v";
     settings = {
       windows = {
-        enable = false;
+        enable = true;
         overview = {
-          key = "super_l";
+          enable = true;
+          key = "super_a";
           modifier = "super";
           launcher = {
-            enable = false;
           };
         };
         switch.enable = true;
