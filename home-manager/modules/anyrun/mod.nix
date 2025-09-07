@@ -5,65 +5,74 @@
 }: {
   programs.anyrun = {
     enable = true;
+    package = pkgs.unstable.anyrun;
     config = {
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
-        (pkgs.callPackage ./gh {})
-        applications
-        websearch
+      plugins = [
+        # (pkgs.callPackage ./gh {})
+        "${pkgs.unstable.anyrun}/lib/libapplications.so"
+        "${pkgs.unstable.anyrun}/lib/libwebsearch.so"
       ];
       width.fraction = 0.3;
-      hidePluginInfo = true;
+      layer = "overlay";
+      hidePluginInfo = false;
       closeOnClick = true;
       y.absolute = 100;
     };
 
     extraCss = ''
-      @define-color bg-col  rgba(30, 30, 46, 0.7);
-      @define-color border-col #e78284;
-      @define-color fg-col #D9E0EE;
-
-      * {
-        transition: 110ms ease;
-        font-family: "JetBrainsMono Nerd Font";
-        font-size: 1.3rem;
-      }
-
-      #window {
+      window {
         background: transparent;
       }
 
-      #plugin,
-      #main {
-        color: @fg-col;
-        background-color: transparent;
+      box.main {
+        padding: 5px;
+        margin: 10px;
+        border-radius: 10px;
+        border: 2px solid black;
+        background-color: #4c4f69;
       }
 
-      /* anyrun's input window - Text */
-      #entry {
-        padding: 3px 10px;
-        color: @fg-col;
-        background-color: @bg-col;
-        border-color: @border-col;
+      text {
+        min-height: 30px;
+        padding: 5px;
+        border-radius: 5px;
       }
 
-      /* anyrun's ouput matches entries - Base */
-      #match {
-        color: @fg-col;
-        padding: 3px;
-        border-radius: 16px;
-        background-color: @bg-col;
+      .matches {
+        background-color: #4c4f69;
+        border-radius: 10px;
       }
 
-      /* anyrun's selected entry */
-      #match:selected {
-        border-radius: 16px;
-        border-color: @border-col;
-        color: @fg-col;
+      box.plugin:first-child {
+        margin-top: 5px;
       }
 
-      #entry, #plugin:hover {
-        border-radius: 16px;
+      box.plugin.info {
+        min-width: 200px;
       }
+
+      list.plugin {
+        background-color: #4c4f69;
+      }
+
+      label.match.description {
+        font-size: 10px;
+      }
+
+      label.plugin.info {
+        font-size: 14px;
+      }
+
+      .match {
+        background: transparent;
+      }
+
+      .match:selected {
+        border-left: 4px solid #e64553;
+        background: transparent;
+        animation: none;
+      }
+
     '';
 
     extraConfigFiles."websearch.ron".text = ''
