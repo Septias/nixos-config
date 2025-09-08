@@ -13,6 +13,7 @@
           "volume"
           "cpu"
           "ram"
+          "workspaces"
         ];
         middle = ["media"];
         right = [
