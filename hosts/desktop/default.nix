@@ -5,10 +5,9 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
-  programs.gamemode.enable = true;
   # in case you have problem with booting to text mode
   boot.initrd.kernelModules = ["nvidia"];
-  #boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
+  # boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
   boot.kernelParams = ["nvidia-drm.fbdev=1"];
 
   hardware.nvidia = {
