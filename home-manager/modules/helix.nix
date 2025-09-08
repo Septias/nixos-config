@@ -29,6 +29,7 @@
           display-inlay-hints = true;
           display-messages = true;
         };
+        bufferline = "multiple";
         line-number = "absolute";
         completion-timeout = 5;
         completion-replace = true;
@@ -57,6 +58,7 @@
           "C-e" = "goto_file_end";
           "C-l" = "last_picker";
           "A-." = "repeat_last_motion";
+          "C-space" = [":w" "normal_mode"];
           # Changes
           "R" = "replace_with_yanked";
           "I" = "insert_at_line_start";
