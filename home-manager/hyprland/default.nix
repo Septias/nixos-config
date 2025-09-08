@@ -160,7 +160,7 @@
         "SUPER,RETURN,exec,kitty /home/septias/coding"
         ",Print,exec,screenshot"
         "SUPER,l,exec,hyprlock"
-        "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl play-pause"
+        "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
         "SUPER,i,exec,screenshot"
         "SUPER,Print,exec,screenshot-edit"
         "SUPER SHIFT,s,exec,google-chrome-stable"
