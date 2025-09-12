@@ -23,32 +23,9 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "shift+alt+left",
-    "command": "-editor.action.smartSelect.shrink",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+tab",
-    "command": "-workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
-  },
-  {
-    "key": "ctrl+shift+tab",
-    "command": "-workbench.action.quickOpenLeastRecentlyUsedEditorInGroup"
-  },
-  {
-    "key": "ctrl+shift+tab",
-    "command": "-workbench.action.quickOpenNavigatePreviousInEditorPicker",
-    "when": "inEditorsPicker && inQuickOpen"
-  },
-  {
     "key": "ctrl+tab",
     "command": "-workbench.action.quickOpenNavigateNextInEditorPicker",
     "when": "inEditorsPicker && inQuickOpen"
-  },
-  {
-    "key": "f12",
-    "command": "-editor.action.revealDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
   },
   {
     "key": "ctrl+u",
@@ -80,18 +57,8 @@
     "when": "isDevelopment"
   },
   {
-    "key": "ctrl+shift+k",
-    "command": "-editor.action.deleteLines",
-    "when": "textInputFocus && !editorReadonly"
-  },
-  {
     "key": "ctrl+[KeyC]",
     "command": "editor.action.revealDefinition"
-  },
-  {
-    "key": "home",
-    "command": "-list.focusFirst",
-    "when": "listFocus && !inputFocus"
   },
   {
     "key": "ctrl+s",
@@ -102,21 +69,6 @@
     "command": "-workbench.action.quickOpen"
   },
   {
-    "key": "ctrl+i",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-  },
-  {
-    "key": "s",
-    "command": "-jupyter.notebookeditor.keybind.save",
-    "when": "config.jupyter.enableKeyboardShortcuts && config.jupyter.enableKeyboardShortcuts && notebookEditorFocused && notebookEditorFocused && !inputFocus && !inputFocus && notebookType == 'jupyter-notebook' && notebookType == 'jupyter-notebook'"
-  },
-  {
-    "key": "ctrl+backspace",
-    "command": "-deleteWordLeft",
-    "when": "textInputFocus && !editorReadonly"
-  },
-  {
     "key": "ctrl+n",
     "command": "-workbench.action.files.newUntitledFile"
   },
@@ -125,41 +77,13 @@
     "command": "workbench.action.navigateBack"
   },
   {
-    "key": "ctrl+alt+-",
-    "command": "-workbench.action.navigateBack"
-  },
-  {
-    "key": "alt+left",
-    "command": "-workbench.action.terminal.focusPreviousPane",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
     "key": "alt+right",
     "command": "workbench.action.navigateForward"
-  },
-  {
-    "key": "ctrl+shift+-",
-    "command": "-workbench.action.navigateForward"
   },
   {
     "key": "ctrl+shift+m",
     "command": "editor.action.copyLinesDownAction",
     "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+shift+alt+down",
-    "command": "-editor.action.copyLinesDownAction",
-    "when": "editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "ctrl+shift+m",
-    "command": "-rust-analyzer.matchingBrace",
-    "when": "editorTextFocus && editorLangId == 'rust'"
-  },
-  {
-    "key": "ctrl+shift+m",
-    "command": "-workbench.actions.view.problems",
-    "when": "workbench.panel.markers.view.active"
   },
   {
     "key": "ctrl+alt+m",
@@ -179,16 +103,6 @@
     "key": "ctrl+t",
     "command": "cursorWordEndRight",
     "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+right",
-    "command": "-cursorWordEndRight",
-    "when": "textInputFocus"
-  },
-  {
-    "key": "ctrl+d",
-    "command": "-editor.action.addSelectionToNextFindMatch",
-    "when": "editorFocus"
   },
   {
     "key": "ctrl+l",
@@ -514,8 +428,19 @@
     "key": "ctrl+y",
     "command": "workbench.action.gotoSymbol"
   },
-  {
-    "key": "shift+alt+g",
-    "command": "git.openFile"
+{ 
+ 	"command": "agda-mode.input-symbol[Activate]", 
+  "key": "[KeyC]",
+ 	"when": "config.agdaMode.inputMethod.enabled && !agdaModeTyping && editorLangId =~ /.*(l?agda(-(markdown|typst|latex|tex|rst|org|forester))?).*/ && editorTextFocus && variableLanguage" 
+ }, 
+ { 
+ 	"command": "agda-mode.input-symbol[Activate]", 
+  "key": "[KeyC]",
+ 	"when": "config.agdaMode.inputMethod.enabled && !agdaModeTyping && editorLangId =~ /.*(l?agda(-(markdown|typst|latex|tex|rst|org|forester))?).*/ && editorTextFocus" 
+ },
+ {
+    "key": "[Backslash]",
+    "command": "-agda-mode.input-symbol[Activate]",
+    "when": "config.agdaMode.inputMethod.enabled && editorTextFocus && !agdaModeTyping && editorLangId =~ /.*(l?agda(-(markdown|typst|latex|tex|rst|org|forester))?).*/"
   }
 ]
