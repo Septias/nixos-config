@@ -1,18 +1,15 @@
 {pkgs, ...}: {
-  home.packages = with pkgs;
-    [
-      # Some lsps for languages that should work out of the box
-      taplo # toml lsp
-      typescript-language-server
-      helix-gpt
-      nil
-      marksman
-    ]
-    ++ (with python312Packages; [
-      pycodestyle
-      pylint
-      flake8
-    ]);
+  home.packages = with pkgs; [
+    # Some lsps for languages that should work out of the box
+    taplo
+    typescript-language-server
+    rust-analyzer
+    nil
+    marksman
+    nodePackages.vscode-json-languageserver
+    python313Packages.ruff
+    python313Packages.python-lsp-server
+  ];
   programs.helix = {
     enable = true;
     package = pkgs.unstable.helix;
@@ -55,12 +52,16 @@
           "C-s" = "save_selection";
           "C-i" = "goto_next_buffer";
           "C-u" = "goto_previous_buffer";
-          "C-e" = "goto_file_end";
           "C-l" = "last_picker";
+          "C-D" = "page_cursor_half_up";
           "A-." = "repeat_last_motion";
-          "C-space" = [":w" "normal_mode"];
+          "C-r" = ":reset-diff-change";
+          "C-space" = [":w"];
           # Changes
+          "`" = "switch_to_lowercase";
           "R" = "replace_with_yanked";
+          "A-u" = "earlier";
+          "A-U" = "later";
           "I" = "insert_at_line_start";
           "A" = "insert_at_line_end";
           "=" = ":format";
@@ -73,6 +74,7 @@
           "&" = "align_selections";
           "_" = "trim_selections";
           "C" = "copy_selection_on_next_line";
+          "K" = "keep_selections";
           "A-f" = "expand_selection";
           "A-g" = "shrink_selection";
           "A-n" = "select_next_sibling";
@@ -84,89 +86,82 @@
     };
     languages = {
       language-server = {
-        helix-gpt = {
-          command = "helix-gpt";
-        };
         copilot = {
           command = "copilot-language-server";
           args = ["--stdio"];
         };
-        pylsp.config = {
+        pylsp.config.pylsp.plugins = {
+          ruff.enabled = false;
+          autopep8.enabled = false;
+          flake8.enabled = false;
+          mccabe.enabled = false;
           pycodestyle.enabled = false;
           pyflakes.enabled = false;
+          pylint.enabled = false;
           yapf.enabled = false;
-          pylint.enabled = true;
-          flake8.enabled = true;
         };
       };
 
-      language =
-        [
-          {
-            name = "rust";
-            language-servers = ["rust-analyzer"];
-            debugger = {
-              command = "codelldb";
-              name = "codelldb";
-              port-arg = "--port {}";
-              transport = "tcp";
-              templates = [
-                {
-                  name = "binary";
-                  request = "launch";
-                  completion = [
-                    {
-                      completion = "filename";
-                      name = "binary";
-                    }
-                  ];
-                  args = {
-                    program = "{0}";
-                    runInTerminal = false;
-                  };
-                }
-              ];
-            };
-          }
-          {
-            name = "python";
-            auto-format = true;
-            formatter = {
-              command = "${pkgs.black}/bin/black";
-              args = ["-" "--quiet"];
-            };
-            language-servers = ["pylsp"];
-          }
-          {
-            name = "markdown";
-            soft-wrap.enable = true;
-          }
-          {
-            name = "nix";
-            auto-format = true;
-            formatter = {
-              command = "${pkgs.alejandra}/bin/alejandra";
-            };
-          }
-        ]
-        ++ (
-          let
-            lsps = ["typescript-language-server" "helix-gpt"];
-          in [
-            {
-              name = "javascript";
-              language-servers = lsps;
-            }
-            {
-              name = "typescript";
-              language-servers = lsps;
-            }
-            {
-              name = "tsx";
-              language-servers = lsps;
-            }
-          ]
-        );
+      language = [
+        {
+          name = "rust";
+          language-servers = ["rust-analyzer"];
+          debugger = {
+            command = "codelldb";
+            name = "codelldb";
+            port-arg = "--port {}";
+            transport = "tcp";
+            templates = [
+              {
+                name = "binary";
+                request = "launch";
+                completion = [
+                  {
+                    completion = "filename";
+                    name = "binary";
+                  }
+                ];
+                args = {
+                  program = "{0}";
+                  runInTerminal = false;
+                };
+              }
+            ];
+          };
+        }
+        {
+          name = "python";
+          auto-format = true;
+          # formatter = {
+          #   command = "${pkgs.black}/bin/black";
+          #   args = ["-" "--quiet"];
+          # };
+          language-servers = ["pylsp" "ruff"];
+        }
+        {
+          name = "markdown";
+          soft-wrap.enable = true;
+        }
+        {
+          name = "nix";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.alejandra}/bin/alejandra";
+          };
+        }
+        {
+          name = "javascript";
+          language-servers = ["typescript-language-server"];
+        }
+        {
+          name = "typescript";
+          language-servers = ["typescript-language-server"];
+        }
+        {
+          name = "tsx";
+          language-servers = ["typescript-language-server"];
+        }
+      ];
     };
   };
 }
