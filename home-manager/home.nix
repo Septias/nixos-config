@@ -72,6 +72,7 @@
     cachix # cache
     difftastic
     meld
+    linuxKernel.packages.linux_zen.cpupower
 
     ## langs
     (agda.withPackages [agdaPackages.standard-library])
