@@ -21,62 +21,60 @@
 
     extraCss = ''
       window {
-        background: red;
+        background: transparent;
       }
 
       box.main {
         padding: 5px;
         margin: 10px;
         border-radius: 10px;
-        border: 2px solid #ef9f76;
-        background-color: red;
+        border: 2px solid #232634;
+        color: #c6d0f5;
+        background-color: #303446;
       }
 
 
       text {
-        background-color: red;
         min-height: 30px;
         padding: 5px;
         border-radius: 5px;
-        border-color: #ef9f74;
+        color: #c6d0f5;
       }
 
       .matches {
-        background-color: red;
+        background-color: #414559;
         border-radius: 10px;
       }
 
       box.plugin:first-child {
-        background-color: red;
         margin-top: 5px;
       }
 
       box.plugin.info {
-        background-color: red;
         min-width: 200px;
       }
 
       list.plugin {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: #414559;
       }
 
       label.match.description {
-        background-color: red;
         font-size: 10px;
       }
 
       label.plugin.info {
-        background-color: red;
         font-size: 14px;
       }
 
       .match {
-        background-color: red;
+        background: transparent;
+        color: #232634;
       }
 
       .match:selected {
-        border-left: 4px solid #ef9f76;
-        background-color: red;
+        border-left: 2px solid #ef9f76;
+        background-color: #303446;
+        animation: none;
       }
     '';
 
