@@ -121,7 +121,7 @@
           eval $(ssh-agent)
         '';
       in [
-        "${autostart}/bin/autostart"
+        "${autostart}/bin/autostart > \"$HOME/.local/share/hypr/startup.log\" 2>&1"
         "[workspace special obsidian silent] obsidian"
         "[workspace special email silent] thunderbird"
         # "[workspace special social silent] deltachat"
