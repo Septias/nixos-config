@@ -68,7 +68,7 @@
 
       .match {
         background: transparent;
-        color: #232634;
+        color: #c6d0f5;
       }
 
       .match:selected {
