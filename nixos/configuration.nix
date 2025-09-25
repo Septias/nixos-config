@@ -251,7 +251,7 @@
       EDITOR = "hx";
       RUST_LOG = "info";
       XDG_RUNTIME_DIR = "/run/user/$UID";
-      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+      # SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
     };
   };
 

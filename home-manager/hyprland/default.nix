@@ -8,7 +8,6 @@
 
   home.packages = with pkgs; [
     hyprsunset
-    easyeffects
     (writeShellScriptBin "screenshot" ''
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '')
@@ -116,15 +115,12 @@
           pkill hyprsunset
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
-          gnome-keyring-daemon --start --components=secrets,ssh
           ${pkgs.hyprdim}/bin/hyprdim
-          eval $(ssh-agent)
         '';
       in [
-        "${autostart}/bin/autostart > \"$HOME/.local/share/hypr/startup.log\" 2>&1"
+        "${autostart}/bin/autostart"
         "[workspace special obsidian silent] obsidian"
         "[workspace special email silent] thunderbird"
-        # "[workspace special social silent] deltachat"
       ];
 
       windowrulev2 = [
@@ -213,15 +209,14 @@
     };
 
     extraConfig = ''
-      env = XDG_SESSION_TYPE,wayland
-      env = WLR_NO_HARDWARE_CURSORS,1
-      env = QT_QPA_PLATFORMTHEME,wayland
-      env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+      # env = XDG_SESSION_TYPE,wayland
+      # env = WLR_NO_HARDWARE_CURSORS,1
+      # env = QT_QPA_PLATFORMTHEME,wayland
+      # env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
 
       submap=music
       bind=,escape,submap,reset
       submap=reset
-
     '';
   };
 }
