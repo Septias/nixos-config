@@ -105,7 +105,15 @@ in {
     package = pkgs.unstable.vscodium;
     profiles = {
       vue = {
-        inherit userSettings keybindings;
+        inherit keybindings;
+        userSettings =
+          userSettings
+          // {
+            editor.codeActionsOnSave = {
+              source.fixAll.eslint = "explicit";
+            };
+            "editor.formatOnSave" = false;
+          };
         extensions =
           defaultExtensions
           ++ pkgs.nix4vscode.forVscode [
