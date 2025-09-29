@@ -109,17 +109,59 @@ in {
         userSettings =
           userSettings
           // {
-            editor.codeActionsOnSave = {
-              source.fixAll.eslint = "explicit";
+            editor = {
+              gotoLocation.multipleDefinitions = "goto";
+              codeActionsOnSave = {
+                source.fixAll.eslint = "explicit";
+              };
             };
             "editor.formatOnSave" = false;
           };
+        languageSnippets = {
+          vue = {
+            script = {
+              body = [
+                "<script lang=\"ts\" setup>"
+                ""
+                "</script>"
+              ];
+              description = "Ts setup sript";
+              prefix = [
+                "script"
+              ];
+            };
+            pug = {
+              body = [
+                "<template lang=\"pug\">"
+                ""
+                "</template>"
+              ];
+              description = "A pug html tag";
+              prefix = [
+                "pug"
+              ];
+            };
+            sass = {
+              body = [
+                "<style lang=\"sass\" scoped>"
+                ""
+                "</style>"
+              ];
+              description = "Scoped Sass";
+              prefix = [
+                "sass"
+              ];
+            };
+          };
+        };
         extensions =
           defaultExtensions
           ++ pkgs.nix4vscode.forVscode [
             "dbaeumer.vscode-eslint"
             "amandeepmittal.pug"
             "syler.sass-indented"
+            "csstools.postcss"
+            "antfu.goto-alias"
             "antfu.unocss"
             "vue.volar"
           ];
