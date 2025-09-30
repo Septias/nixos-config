@@ -181,6 +181,10 @@
         "SUPER ALT, d, exec, dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\""
         "SUPER ALT, y, exec, dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\""
 
+        # Resize
+        "SUPER ALT, b, resizeactive, -10% 0"
+        "SUPER ALT, m, resizeactive, 10% 0"
+
         # Misc
         "SUPER SHIFT, t, exec, hyprpanel t bar-0 & hyprpanel t bar-1"
         "SUPER SHIFT, o, movetoworkspace, special:obsidian, class:^(obsidian)$"
