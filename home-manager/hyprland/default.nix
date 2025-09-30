@@ -78,10 +78,12 @@
           "md3_decel, 0.05, 0.7, 0.1, 1"
         ];
         animation = [
-          "windows,1,3,default"
-          "fade,1,3,default"
+          # name, onoff, speed(ds), curve, style
+          "windows,1,1,pace,slide"
+          "fade,0,3,default"
           "workspaces,1,3,default"
           "specialWorkspace,1,1,default,fade"
+          "layers,0,1,default"
         ];
       };
 
