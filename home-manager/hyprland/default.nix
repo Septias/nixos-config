@@ -124,19 +124,19 @@
       ];
 
       windowrulev2 = [
-        "monitor 1,class:^(deltachat-tauri)$"
-        "fullscreenstate 0 0,class:^(deltachat-tauri)$"
-        "tile,class:^(deltachat-tauri)$"
-        "noinitialfocus,class:^(deltachat-tauri)$"
+        # "monitor 1,class:^(deltachat-tauri)$"
+        # "fullscreenstate 0 0,class:^(deltachat-tauri)$"
+        # "tile,class:^(deltachat-tauri)$"
+        # "noinitialfocus,class:^(deltachat-tauri)$"
         "tile,class:^(sioyek)$"
+        "immediate,class:^(cs2)$"
+        "fullscreen,class:^(cs2)$"
         "workspace special:social,class:^(org.telegram.desktop|signal|discord)$"
         "workspace special:social,title:^(WhatsApp Web)$"
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:email,class:^(thunderbird)$"
         "workspace cs2,class:^(cs2)$"
-        "immediate,class:^(cs2)$"
-        "fullscreen,class:^(cs2)$"
       ];
 
       bind = [
@@ -145,8 +145,8 @@
         "SUPER SHIFT,Q,forcekillactive"
         "SUPER,g,togglegroup"
         "SUPER,m,fullscreen"
+        "SUPER ALT,f,togglefloating"
         "SUPER,p,pin"
-        "SUPER SHIFT,f,togglefloating"
         "SUPER,c,centerwindow"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
@@ -154,11 +154,11 @@
 
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
-        ",Print,exec,screenshot"
+        "SUPER,ö     ,exec,kitty yazi /home/septias/coding"
+        ",Print,exec ,screenshot"
+        "SUPER,i,exec,screenshot"
         "SUPER,l,exec,hyprlock"
         "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
-        "SUPER,i,exec,screenshot"
-        "SUPER,Print,exec,screenshot-edit"
         "SUPER SHIFT,s,exec,google-chrome-stable"
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
@@ -192,19 +192,17 @@
       ];
 
       bindle = [
-        # Backlight Keys
-        ",XF86MonBrightnessUp,exec, ${pkgs.brightnessctl}/bin/brightnessctl set +10%"
+        ",XF86MonBrightnessUp,  exec, ${pkgs.brightnessctl}/bin/brightnessctl set +10%"
         ",XF86MonBrightnessDown,exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%-"
-        # Volume Keys
-        ",XF86AudioRaiseVolume,exec, ${pkgs.pamixer}/bin/pamixer -i 5"
-        ",XF86AudioLowerVolume,exec, ${pkgs.pamixer}/bin/pamixer -d 5"
-        ",XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
-        ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-        "SUPER ALT,s, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-        ",XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-        ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
-        "SUPER ALT,n, exec, ${pkgs.playerctl}/bin/playerctl next"
-        ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl prev"
+        ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5"
+        ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5"
+        ",XF86AudioMute,        exec, ${pkgs.pamixer}/bin/pamixer -t"
+        ",XF86AudioPlay,        exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        ",XF86AudioPause,       exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        ",XF86AudioNext,        exec, ${pkgs.playerctl}/bin/playerctl next"
+        ",XF86AudioPrev,        exec, ${pkgs.playerctl}/bin/playerctl prev"
+        "SUPER ALT,n,           exec, ${pkgs.playerctl}/bin/playerctl next"
+        "SUPER ALT,s,           exec, ${pkgs.playerctl}/bin/playerctl play-pause"
       ];
     };
 
