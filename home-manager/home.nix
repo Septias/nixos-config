@@ -240,6 +240,7 @@
   };
 
   home.file.".XCompose".source = ./Xcompose;
+  home.file.".config/helix/themes/kitty256.toml".source = ./modules/helix/kitty256.toml;
   home.activation.installWritableRepo = let
     repo = pkgs.fetchFromGitHub {
       owner = "syl20bnr";

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # Some lsps for languages that should work out of the box
     taplo
     typescript-language-server
     rust-analyzer
@@ -15,7 +14,7 @@
     package = pkgs.unstable.helix;
     defaultEditor = true;
     settings = {
-      theme = "catppuccin_frappe";
+      theme = "kitty256";
       editor = {
         end-of-line-diagnostics = "hint";
         inline-diagnostics = {
