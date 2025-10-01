@@ -11,6 +11,8 @@
         (pkgs.callPackage ./gh {})
         "${pkgs.unstable.anyrun}/lib/libapplications.so"
         "${pkgs.unstable.anyrun}/lib/libwebsearch.so"
+        "${pkgs.unstable.anyrun}/lib/libtranslate.so"
+        "${pkgs.unstable.anyrun}/lib/libsymbols.so"
       ];
       width.fraction = 0.3;
       layer = "overlay";
