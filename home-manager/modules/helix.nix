@@ -89,6 +89,10 @@
           command = "copilot-language-server";
           args = ["--stdio"];
         };
+        nil = {
+          command = "nil";
+          config.nil.nix.flake.autoArchive = true;
+        };
         pylsp.config.pylsp.plugins = {
           ruff.enabled = false;
           autopep8.enabled = false;
@@ -131,10 +135,6 @@
         {
           name = "python";
           auto-format = true;
-          # formatter = {
-          #   command = "${pkgs.black}/bin/black";
-          #   args = ["-" "--quiet"];
-          # };
           language-servers = ["pylsp" "ruff"];
         }
         {
