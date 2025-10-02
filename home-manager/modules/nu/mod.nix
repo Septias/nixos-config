@@ -41,21 +41,20 @@
       lg = "lazygit";
       o = "xdg-open";
       "log:helix" = "tail --follow ~/.cache/helix/helix.log";
-      "log:hyprland" = ''        do {
-               let hypr_dir = $env.XDG_RUNTIME_DIR | path join 'hypr'
-               let latest = ls $hypr_dir | sort-by modified -r | get name | first
-               let log_path = $hypr_dir | path join $latest | path join 'hyprland.log'
-               open $log_path | hx
-             }
+      "log:hyprland" = ''
+        do {
+          let hypr_dir = $env.XDG_RUNTIME_DIR | path join 'hypr'
+          let latest = ls $hypr_dir | sort-by modified -r | get name | first
+          let log_path = $hypr_dir | path join $latest | path join 'hyprland.log'
+          open $log_path | hx
+        }
       '';
       "log:hyprland_rolling" = ''hyprctl rollinglog -f'';
       emacs = "emacs -nw";
-      dark = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\"";
-      light = "dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";
-      "c." = "codium .";
       life = "cd /home/septias/life";
       read = "yazi /home/septias/life/Areas/Studium/Masterproject/Paper";
       governer = "cpupower frequency-info";
+      charge = "sudo tlp chargeonce BAT0";
     };
   };
 }
