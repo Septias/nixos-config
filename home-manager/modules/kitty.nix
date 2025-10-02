@@ -24,6 +24,9 @@
       "ctrl+shift+n" = "next_window";
       "ctrl+q" = "close_window";
       "kitty_mod+/" = "launch";
+      "ctrl+e" = "launch --type=overlay --cwd=current hx .";
+      "ctrl+l" = "launch --type=overlay --cwd=current lazygit";
+      "ctrl+shift+e" = "combine : launch --type=background --hold=no --cwd=current codium .: close_window";
     };
   };
 
