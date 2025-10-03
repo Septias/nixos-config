@@ -40,7 +40,6 @@
     google-chrome
 
     ## Office
-    cider # apple music client
     telegram-desktop
     discord
     libreoffice
@@ -54,9 +53,10 @@
     nautilus
     gimp
     evince
-    aider-chat
+    claude-code
 
     ## Tooling
+    # wev # input viewer
     scc # loc counter
     powertop # TUI power usage analysis
     btop # TUI resource monitor
@@ -67,12 +67,10 @@
     bluetuith # Bluetooth tui
     ripgrep # Text search
     dig # DNS-lookup
-    # wev # input viewer
     yazi # tui file explorer
     cachix # cache
     difftastic
     meld
-    linuxKernel.packages.linux_zen.cpupower
 
     ## langs
     (agda.withPackages [agdaPackages.standard-library])
@@ -233,7 +231,7 @@
         ExecStart = lib.getExe pkgs.aw-watcher-window-wayland;
       };
       Install = {
-        WantedBy = ["activitywatch.target"];
+        WantedBy = ["activitywatch.target" "graphical-session.target"];
       };
     };
     user.startServices = "sd-switch";
