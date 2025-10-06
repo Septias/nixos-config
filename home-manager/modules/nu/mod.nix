@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.carapace];
   programs.carapace = {
     enable = false;
     enableNushellIntegration = true;
@@ -25,7 +24,7 @@
     shellAliases = {
       nd = "nix develop";
       nb = "nix build";
-      nu = "nix flake update";
+      fu = "nix flake update";
       nh = "hx -w /home/septias/coding/nixos-config /home/septias/coding/nixos-config/home-manager/home.nix";
       nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
       hms = "home-manager switch --flake /home/septias/coding/nixos-config";
