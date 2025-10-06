@@ -72,6 +72,8 @@
     difftastic
     meld
 
+    linuxKernel.packages.linux_zen.cpupower
+
     ## langs
     (agda.withPackages [agdaPackages.standard-library])
 
@@ -111,6 +113,7 @@
       config = {
         papers_folder_path = "/home/septias/life/Areas/Studium/Masterproject/Paper";
         shared_database_path = "/home/septias/life/Ressources/shared.db";
+        should_highlight_unselected_search = "1";
       };
     };
     lazygit = {
