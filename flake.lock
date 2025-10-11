@@ -490,11 +490,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1758734193,
-        "narHash": "sha256-SXhYeky4Gr/GuNKr/tFt0RQMCPNubafveFenh0rFl00=",
+        "lastModified": 1759913387,
+        "narHash": "sha256-EatkihY8omhgcbvqAZXr3hUHKHVWegxoesayPtLrc/8=",
         "owner": "septias",
         "repo": "reddit-wallpapers",
-        "rev": "8544e228719a6766c7894849b24600b8911b9a49",
+        "rev": "005b75298b9f59f1c6b549e4e90dee7c2dcedf54",
         "type": "github"
       },
       "original": {
