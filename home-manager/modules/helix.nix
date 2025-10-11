@@ -45,6 +45,7 @@
           "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
           "C-b" = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}";
           "C-f" = "jump_forward";
+          "E" = ":quit!";
           "p" = "paste_before";
           "P" = "paste_after";
           "C-g" = "jump_backward";
