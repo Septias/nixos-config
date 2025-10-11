@@ -56,7 +56,7 @@
       group = {
         auto_group = true;
         groupbar = {
-          enabled = false;
+          enabled = true;
           "col.active" = "rgb(51576d)";
           "col.inactive" = "rgb(626880)";
           rounding = "5";
@@ -137,7 +137,8 @@
         "workspace special:social,title:^(WhatsApp Web)$"
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
-        "workspace special:email,class:^(thunderbird)$"
+        "workspace special:email,title:^(Mozilla Thunderbird)$"
+        "float, pin, size 400 400, move 0 0,title:^([0-9]* Reminder)$"
         "workspace cs2,class:^(cs2)$"
       ];
 
@@ -146,6 +147,7 @@
         "SUPER,Q,killactive"
         "SUPER SHIFT,Q,forcekillactive"
         "SUPER,g,togglegroup"
+        "SUPER ALT,g,changegroupactive"
         "SUPER,m,fullscreen"
         "SUPER ALT,f,togglefloating"
         "SUPER,p,pin"
@@ -165,6 +167,7 @@
         "SUPER,space,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,c,exec, xdg-open https://chatgpt.com"
+        "SUPER,v,exec, xdg-open https://www.wetter.com/japan/tokio/JP0TY0011.html"
 
         # Focus windows
         "SUPER, b, focuswindow, class:google-chrome"
