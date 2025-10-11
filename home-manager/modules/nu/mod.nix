@@ -73,6 +73,8 @@
       life = "cd /home/septias/life";
       read = "yazi /home/septias/life/Areas/Studium/Masterproject/Paper";
       governer = "cpupower frequency-info";
+      power = "sudo cpupower frequency-set -g performance";
+      powersave = "sudo cpupower frequency-set -g powersave";
       charge = "sudo tlp chargeonce BAT0";
     };
   };
