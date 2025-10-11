@@ -71,6 +71,8 @@
     cachix # cache
     difftastic
     meld
+    networkmanagerapplet
+    tdf
 
     linuxKernel.packages.linux_zen.cpupower
 
