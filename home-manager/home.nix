@@ -70,7 +70,6 @@
     yazi # tui file explorer
     cachix # cache
     difftastic
-    meld
     networkmanagerapplet
     tdf
 
@@ -91,7 +90,7 @@
     enable = true;
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
       config.common = {
         default = ["hyprland" "gtk" "gnome"];
         "org.freedesktop.impl.portal.Settings" = "gnome";
@@ -153,6 +152,8 @@
     starship = {
       enable = true;
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+      enableNushellIntegration = true;
+      enableBashIntegration = true;
     };
     zsh = {
       enable = false;
