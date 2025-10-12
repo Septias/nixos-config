@@ -94,6 +94,15 @@
           command = "nil";
           config.nil.nix.flake.autoArchive = true;
         };
+        tinymist = {
+          command = "tinymist";
+          config = {
+            exportPdf = "onType";
+            outputPath = "$root/$dir/$name";
+            # preview.background.enabled = true;
+            # preview.background.args = ["--data-plane-host=127.0.0.1:23635" "--invert-colors=never" "--open"];
+          };
+        };
         pylsp.config.pylsp.plugins = {
           ruff.enabled = false;
           autopep8.enabled = false;
@@ -147,6 +156,15 @@
           auto-format = true;
           formatter = {
             command = "${pkgs.alejandra}/bin/alejandra";
+          };
+        }
+        {
+          name = "typst";
+          # auto-format = true;
+          soft-wrap.enable = true;
+          formatter = {
+            command = "${pkgs.typstyle}/bin/typstyle";
+            args = ["%{buffer_name}"];
           };
         }
         {
