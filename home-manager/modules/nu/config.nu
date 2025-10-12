@@ -18,15 +18,15 @@ let carapace_completer = {|spans|
   carapace $spans.0 nushell ...$spans | from json
 }
 
-$env.config.shell_integration = {
-  osc2                   : true
-  osc7                   : true
-  osc8                   : true
-  osc9_9                 : true
-  osc133                 : true
-  osc633                 : true
-  reset_application_mode : true
-}
+# $env.config.shell_integration = {
+#   osc2                   : true
+#   osc7                   : true
+#   osc8                   : true
+#   osc9_9                 : true
+#   osc133                 : true
+#   osc633                 : true
+#   reset_application_mode : true
+# }
 
 $env.config = {
   show_banner: false,
