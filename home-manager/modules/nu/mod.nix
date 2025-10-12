@@ -19,25 +19,6 @@
       $env.CACHIX_AUTH_TOKEN = (open ${config.sops.secrets.cachix.path} | str trim)
       $env.OPENROUTER_API_KEY = (open ${config.sops.secrets.openrouter.path} | str trim)
       $env.OPENAI_API_KEY = (open ${config.sops.secrets.openai.path} | str trim)
-
-      let carapace_completer = {|spans|
-        carapace $spans.0 nushell ...$spans | from json
-      }
-
-      $env.config = {
-        show_banner: false,
-        completions: {
-          case_sensitive: false
-          quick: true           # set to false to prevent auto-selecting completions
-          partial: true         # set to false to prevent partial filling of the prompt
-          algorithm: "fuzzy"
-          external: {
-            enable: true
-            max_results: 100
-            completer: $carapace_completer
-          }
-        }
-      }
       source ${pkgs.nix-your-shell.generate-config "nu"}
     '';
     shellAliases = {
