@@ -240,7 +240,11 @@
     seahorse.enable = true;
     ssh.startAgent = true;
     steam.enable = false;
-    hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      package = pkgs.unstable.hyprland;
+      portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
+    };
     dconf.enable = true;
   };
 

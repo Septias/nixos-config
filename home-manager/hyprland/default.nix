@@ -16,7 +16,7 @@
     '')
   ];
   wayland.windowManager.hyprland = {
-    package = pkgs.hyprland;
+    package = pkgs.unstable.hyprland;
     enable = true;
     systemd.enable = true;
     xwayland = {
@@ -63,15 +63,18 @@
         };
       };
 
+      gesture = [
+        "3, horizontal, workspace"
+      ];
+
       gestures = {
-        workspace_swipe = true;
+        workspace_swipe_touch = true;
         workspace_swipe_forever = true;
       };
 
       # https://wiki.hypr.land/Configuring/Animations
       animations = {
         enabled = true;
-        first_launch_animation = false;
         bezier = [
           "pace, 0.46, 1, 0.29, 0.99"
           "overshot, 0.13, 0.99, 0.29, 1.1"
@@ -126,10 +129,6 @@
       ];
 
       windowrulev2 = [
-        # "monitor 1,class:^(deltachat-tauri)$"
-        # "fullscreenstate 0 0,class:^(deltachat-tauri)$"
-        # "tile,class:^(deltachat-tauri)$"
-        # "noinitialfocus,class:^(deltachat-tauri)$"
         "tile,class:^(sioyek)$"
         "immediate,class:^(cs2)$"
         "fullscreen,class:^(cs2)$"
@@ -139,6 +138,7 @@
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:email,title:^(Mozilla Thunderbird)$"
         "float, pin, size 400 400, move 0 0,title:^([0-9]* Reminder)$"
+        "float, pin, size 400 400, move 0 0,title:^(jurts)$"
         "workspace cs2,class:^(cs2)$"
       ];
 
