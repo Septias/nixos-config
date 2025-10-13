@@ -16,11 +16,11 @@
     };
     keybindings = {
       "ctrl+q" = "close_window";
-      "ctrl+t" = "launch --type=os-window --cwd=current";
-      "ctrl+shift+t" = "launch --type=tab --cwd=current";
+      "ctrl+t" = "launch --type=tab --cwd=current";
+      "ctrl+shift+t" = "launch --type=os-window --cwd=current";
       "ctrl+shift+f" = "launch --type=overlay --stdin-source=@screen_scrollback ${pkgs.fzf}/bin/fzf --no-sort --no-mouse --exact -i";
-      "ctrl+e" = "launch --type=os-window --cwd=current --copy-env hx .";
-      "ctrl+w" = "launch --type=overlay --cwd=current --copy-env"; # testing
+      "ctrl+e" = "clone-in-kitty --cwd=current --type=overlay --hold hx .";
+      "ctrl+ü" = "launch --cwd=current --copy-env --type=overlay --hold env";
       "ctrl+l" = "launch --type=overlay --cwd=current lazygit";
       "ctrl+shift+e" = "combine : launch --type=background --hold=no --copy-env --cwd=current codium .: close_window";
     };
