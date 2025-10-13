@@ -160,11 +160,10 @@
         }
         {
           name = "typst";
-          # auto-format = true;
+          auto-format = true;
           soft-wrap.enable = true;
           formatter = {
             command = "${pkgs.typstyle}/bin/typstyle";
-            args = ["%{buffer_name}"];
           };
         }
         {
