@@ -71,7 +71,7 @@
     cachix # cache
     difftastic
     networkmanagerapplet
-    tdf
+    tdf # terminal pdf viewer
 
     linuxKernel.packages.linux_zen.cpupower
 
@@ -142,6 +142,7 @@
         diff.tool = "meld";
         checkout.defaultRemote = "origin";
       };
+      lfs.enable = true;
       difftastic.enable = true;
       aliases = {
         dl = "-c diff.external=difft log -p --ext-diff";
