@@ -49,17 +49,18 @@
           "p" = "paste_before";
           "P" = "paste_after";
           "C-g" = "jump_backward";
+          "backspace" = "jump_backward";
           "C-s" = "save_selection";
           "C-i" = "goto_next_buffer";
           "C-u" = "goto_previous_buffer";
-          "C-l" = "last_picker";
+          "C-p" = "last_picker";
           "C-D" = "page_cursor_half_up";
           "A-." = "repeat_last_motion";
           "C-r" = ":reset-diff-change";
-          "C-space" = [":w"];
+          "C-space" = ":w";
           # Changes
           "`" = "switch_to_lowercase";
-          "R" = "replace_with_yanked";
+          "r" = "replace_with_yanked";
           "A-u" = "earlier";
           "A-U" = "later";
           "I" = "insert_at_line_start";
