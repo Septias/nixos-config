@@ -3,6 +3,7 @@
     settings.monitor = [
       "eDP-1,1920x1200,0x0,1"
       "desc:Eizo Nanao Corporation EV2785 0x03015951, 2560x1440, 0x-1440,1"
+      "DP-1, 2560x1440, 0x-1440,1"
       "HDMI-A-1,2560x1440, 0x-1440,1"
       ", preferred, auto, 1, mirror, eDP-1"
     ];
