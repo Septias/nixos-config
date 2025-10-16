@@ -120,6 +120,7 @@
           pkill hyprsunset
           hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
+          hyprctl hyprpaper reload ,"/home/septias/pictures/wallpapers/t3_vixt2p.png"
           ${pkgs.hyprdim}/bin/hyprdim
         '';
       in [
