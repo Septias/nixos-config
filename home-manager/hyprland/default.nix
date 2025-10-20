@@ -7,7 +7,6 @@
   ];
 
   home.packages = with pkgs; [
-    hyprsunset
     (writeShellScriptBin "screenshot" ''
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '')
@@ -91,16 +90,16 @@
       };
 
       dwindle = {
-        pseudotile = true; # enable pseudotiling on dwindle
+        pseudotile = true;
         default_split_ratio = 1.0;
       };
 
       debug = {
-        damage_tracking = 2; # leave it on 2 (full) unless you hate your GPU and want to make it suffer!
+        damage_tracking = 2;
         disable_logs = false;
       };
 
-      opengl.nvidia_anti_flicker = true;
+      # opengl.nvidia_anti_flicker = true;
       binds.hide_special_on_workspace_change = true;
       render.direct_scanout = 2;
 
@@ -117,8 +116,6 @@
 
       exec-once = let
         autostart = pkgs.writeShellScriptBin "autostart" ''
-          pkill hyprsunset
-          hyprsunset -t 5000 &
           hyprctl setcursor "Bibata-Original-Ice" 20
           hyprctl hyprpaper reload ,"/home/septias/pictures/wallpapers/t3_vixt2p.png"
           ${pkgs.hyprdim}/bin/hyprdim
@@ -138,7 +135,7 @@
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:email,title:^(Mozilla Thunderbird)$"
-        "float, pin, size 400 400, move 0 0,title:^([0-9]* Reminder)$"
+        "float, pin, size 400 400, move 0 0,title:^(Calendar Reminders)$"
         "float, pin, size 400 400, move 0 0,title:^(jurts)$"
         "workspace cs2,class:^(cs2)$"
       ];
@@ -151,8 +148,7 @@
         "SUPER ALT,g,changegroupactive"
         "SUPER,m,fullscreen"
         "SUPER ALT,f,togglefloating"
-        "SUPER,p,pin"
-        "SUPER,c,centerwindow"
+        # "SUPER,p,pin"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,y,togglespecialworkspace,email"
@@ -164,11 +160,12 @@
         "SUPER,i,exec,screenshot"
         "SUPER,l,exec,hyprlock"
         "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
-        "SUPER SHIFT,s,exec,google-chrome-stable"
-        "SUPER,space,exec,anyrun"
+        "SUPER,p,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
+        "SUPER SHIFT ,s,exec,google-chrome-stable"
+        "SUPER,space ,exec,anyrun"
         "SUPER,e,exec,nautilus"
-        "SUPER,c,exec, xdg-open https://chatgpt.com"
-        "SUPER,v,exec, xdg-open https://www.wetter.com/japan/tokio/JP0TY0011.html"
+        "SUPER,c,exec,xdg-open https://chatgpt.com"
+        "SUPER,v,exec,xdg-open https://www.wetter.com/japan/tokio/JP0TY0011.html"
 
         # Focus windows
         "SUPER, b, focuswindow, class:google-chrome"
@@ -217,11 +214,6 @@
     };
 
     extraConfig = ''
-      # env = XDG_SESSION_TYPE,wayland
-      # env = WLR_NO_HARDWARE_CURSORS,1
-      # env = QT_QPA_PLATFORMTHEME,wayland
-      # env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-
       submap=music
       bind=,escape,submap,reset
       submap=reset
