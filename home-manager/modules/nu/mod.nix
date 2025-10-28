@@ -52,7 +52,7 @@
       "log:hyprland_rolling" = ''hyprctl rollinglog -f'';
       emacs = "emacs -nw";
       life = "cd /home/septias/life";
-      read = "yazi /home/septias/life/Areas/Studium/Masterproject/Paper";
+      read = "yazi /home/septias/life/Areas/Studium/Research";
       governer = "cpupower frequency-info";
       power = "sudo cpupower frequency-set -g performance";
       powersave = "sudo cpupower frequency-set -g powersave";

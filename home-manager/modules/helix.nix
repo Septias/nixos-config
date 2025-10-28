@@ -9,6 +9,7 @@
     python313Packages.ruff
     python313Packages.python-lsp-server
   ];
+  home.file.".config/helix/themes/kitty256.toml".source = ./helix/kitty256.toml;
   programs.helix = {
     enable = true;
     package = pkgs.unstable.helix;
@@ -82,6 +83,9 @@
           "A-N" = "select_prev_sibling";
           # Search
           "*" = "search_selection";
+          space = {
+            # H = [":vsplit" ":append-output git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}"];
+          };
         };
       };
     };
