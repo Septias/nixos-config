@@ -4,7 +4,10 @@
   pkgs,
   outputs,
   ...
-}: {
+}: let
+  username = "septias";
+  homeDirectory = "/home/${username}";
+in {
   nixpkgs = {
     overlays = [
       outputs.overlays.unstable-packages
@@ -29,8 +32,8 @@
   ];
 
   home = {
-    username = "septias";
-    homeDirectory = "/home/septias";
+    inherit username;
+    inherit homeDirectory;
   };
 
   home.packages = with pkgs; [
@@ -112,8 +115,8 @@
         '';
       };
       config = {
-        papers_folder_path = "/home/septias/life/Areas/Studium/Masterproject/Paper";
-        shared_database_path = "/home/septias/life/Ressources/shared.db";
+        papers_folder_path = "${homeDirectory}/life/Areas/Studium/Masterproject/Paper";
+        shared_database_path = "${homeDirectory}/life/Ressources/shared.db";
         should_highlight_unselected_search = "1";
       };
     };
@@ -209,7 +212,7 @@
   };
 
   sops = {
-    age.keyFile = "/home/septias/.config/sops/age/keys.txt";
+    age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets/secret.yaml;
     secrets.copilot = {};
     secrets.weather = {};

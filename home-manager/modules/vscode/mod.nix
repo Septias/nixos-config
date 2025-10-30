@@ -1,4 +1,9 @@
-{pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
+  homeDir = config.home.homeDirectory;
   userSettings = {
     git = {
       autofetch = true;
@@ -191,7 +196,7 @@ in {
             agdaMode.connection = {
               downloadPolicy = "No, and don't ask again";
               paths = [
-                "/home/septias/.nix-profile/bin/agda"
+                "${homeDir}/.nix-profile/bin/agda"
               ];
             };
             "[agda]" = {

@@ -3,9 +3,10 @@
 
   networking.hostName = "nixos-desktop";
 
+  # NVIDIA GPU configuration
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
-  # in case you have problem with booting to text mode
+  # Ensure nvidia module is loaded early in boot
   boot.initrd.kernelModules = ["nvidia"];
   # boot.extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
   boot.kernelParams = ["nvidia-drm.fbdev=1"];

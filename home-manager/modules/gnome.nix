@@ -1,4 +1,6 @@
-{
+{config, ...}: let
+  homeDir = config.home.homeDirectory;
+in {
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
       move-to-monitor-left = ["<Shift><Super>r"];
@@ -29,7 +31,7 @@
       workspaces-only-on-primary = true;
     };
     "org/gnome/evince" = {
-      document-directory = "@ms file:///home/septias/OneDrive/Life/Ressources/books";
+      document-directory = "@ms file://${homeDir}/OneDrive/Life/Ressources/books";
     };
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
@@ -41,7 +43,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Shift><Super>Return";
-      command = "kitty /home/septias/coding";
+      command = "kitty ${homeDir}/coding";
       name = "Terminal";
     };
     "org/gnome/terminal/legacy" = {
