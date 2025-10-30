@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  homeDir = config.home.homeDirectory;
+in {
   imports = [
     ./hypridle.nix
     ./hyprpaper.nix
@@ -117,7 +123,7 @@
       exec-once = let
         autostart = pkgs.writeShellScriptBin "autostart" ''
           hyprctl setcursor "Bibata-Original-Ice" 20
-          hyprctl hyprpaper reload ,"/home/septias/pictures/wallpapers/t3_vixt2p.png"
+          hyprctl hyprpaper reload ,"${homeDir}/pictures/wallpapers/t3_vixt2p.png"
           ${pkgs.hyprdim}/bin/hyprdim
         '';
       in [
@@ -154,8 +160,8 @@
         "SUPER,y,togglespecialworkspace,email"
 
         # Start programs
-        "SUPER,RETURN,exec,kitty /home/septias/coding"
-        "SUPER,ö     ,exec,kitty yazi /home/septias/coding"
+        "SUPER,RETURN,exec,kitty ${homeDir}/coding"
+        "SUPER,ö     ,exec,kitty yazi ${homeDir}/coding"
         ",Print,exec ,screenshot"
         "SUPER,i,exec,screenshot"
         "SUPER,l,exec,hyprlock"

@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  homeDir = config.home.homeDirectory;
+in {
   programs.carapace = {
     enable = true;
     enableNushellIntegration = true;
@@ -22,24 +24,44 @@
       source ${pkgs.nix-your-shell.generate-config "nu"}
     '';
     shellAliases = {
+      # Nix development shortcuts
       nd = "nix develop";
       nb = "nix build";
       fu = "nix flake update";
-      nh = "hx -w /home/septias/coding/nixos-config /home/septias/coding/nixos-config/home-manager/home.nix";
-      nrs = "sudo nixos-rebuild switch --flake /home/septias/coding/nixos-config";
-      hms = "home-manager switch --flake /home/septias/coding/nixos-config";
+      nh = "hx -w ${homeDir}/coding/nixos-config ${homeDir}/coding/nixos-config/home-manager/home.nix";
+      nrs = "sudo nixos-rebuild switch --flake ${homeDir}/coding/nixos-config";
+      hms = "home-manager switch --flake ${homeDir}/coding/nixos-config";
       pkg = "nix-shell -p";
       pkg-s = "nix search nixpkgs";
+      
+      # Rust/Cargo shortcuts
       c-fmt = "cargo fmt";
       c-fix = "cargo clippy --fix --allow-staged";
       cr = "cargo run";
+      
+      # Git shortcuts
       gaa = "git add *";
       gro = "git reset HEAD~1";
       gc = "git commit -am";
       gu = "git push";
       gd = "git pull";
       lg = "lazygit";
+      
+      # General utilities
       o = "xdg-open";
+      emacs = "emacs -nw";
+      
+      # Personal directories
+      life = "cd ${homeDir}/life";
+      read = "yazi ${homeDir}/life/Areas/Studium/Research";
+      
+      # System monitoring and control
+      governer = "cpupower frequency-info";
+      power = "sudo cpupower frequency-set -g performance";
+      powersave = "sudo cpupower frequency-set -g powersave";
+      charge = "sudo tlp chargeonce BAT0";
+      
+      # Log viewing
       "log:helix" = "tail --follow ~/.cache/helix/helix.log";
       "log:hyprland" = ''
         do {
