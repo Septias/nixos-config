@@ -25,9 +25,6 @@
     nix-your-shell.url = "github:MercuryTechnologies/nix-your-shell";
     nix-your-shell.inputs.nixpkgs.follows = "nixpkgs";
 
-    anyrun.url = "github:anyrun-org/anyrun";
-    anyrun.inputs.nixpkgs.follows = "nixpkgs";
-
     nix4vscode.url = "github:nix-community/nix4vscode";
     nix4vscode.inputs.nixpkgs.follows = "nixpkgs";
 

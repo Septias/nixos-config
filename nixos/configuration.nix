@@ -4,6 +4,8 @@
   ...
 }: {
   imports = [];
+  
+  # Package configuration
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
@@ -11,7 +13,9 @@
     ];
   };
 
+  # Nix settings
   nix = {
+    # Automatic garbage collection to save disk space
     gc = {
       automatic = true;
       dates = "daily";
@@ -21,6 +25,7 @@
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
       builders-use-substitutes = true;
+      # Binary caches for faster package installation
       substituters = [
         "https://hyprland.cachix.org"
         "https://septias.cachix.org"
@@ -35,21 +40,25 @@
   networking = {
     firewall.enable = true;
     networkmanager.enable = true;
+    # Use local DNS resolver (blocky)
     resolvconf.useLocalResolver = true;
   };
 
+  # Boot configuration
   boot = {
     loader = {
       systemd-boot.enable = true;
+      # Limit number of generations to save boot partition space
       systemd-boot.configurationLimit = 3;
       efi.canTouchEfiVariables = true;
     };
     supportedFilesystems = ["ntfs"];
   };
 
-  # Configure Language
+  # Configure Language and Locale
   time.timeZone = "Asia/Tokyo";
   i18n.defaultLocale = "en_US.UTF-8";
+  # German locale for addresses, measurements, etc.
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
@@ -61,15 +70,18 @@
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
   };
+  # Neo keyboard layout
   console.keyMap = "neo";
 
   users.users.septias = {
     hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
     isNormalUser = true;
+    # Groups for hardware access and system administration
     extraGroups = ["media" "audio" "video" "networkmanager" "wheel"];
   };
 
   services = {
+    # Audio configuration (PipeWire instead of PulseAudio)
     pulseaudio = {
       enable = false;
       package = pkgs.pulsaudioFull;
@@ -88,12 +100,14 @@
       jack.enable = true;
     };
 
+    # GNOME services (keyring, calendar, online accounts)
     gnome = {
       gnome-keyring.enable = true;
       evolution-data-server.enable = true;
       gnome-online-accounts.enable = true;
     };
 
+    # Minecraft server (disabled by default)
     minecraft-server = {
       enable = false;
       eula = true;
@@ -109,15 +123,18 @@
       desktopManager.gnome.enable = false;
       displayManager.gdm.enable = true;
     };
-    # update firmeware
+    
+    # Firmware updates
     fwupd.enable = true;
+    
+    # Printing support
     printing = {
       enable = true;
       drivers = [pkgs.hplip];
       openFirewall = true;
     };
 
-    # local network communication
+    # Local network device discovery (printers, etc.)
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -125,6 +142,8 @@
     };
 
     openssh.enable = true;
+    
+    # DNS-based ad blocking and social media filtering
     blocky = {
       # https://github.com/0xERR0R/blocky/blob/main/docs/config.yml
       enable = true;
@@ -187,9 +206,11 @@
         };
       };
     };
-    # dbus service for storage devices
+    
+    # Auto-mount storage devices
     udisks2.enable = true;
-    # emacs daemon
+    
+    # Emacs daemon
     emacs.enable = true;
   };
 
@@ -199,11 +220,11 @@
   };
 
   hardware = {
-    # Bluetooth
+    # Bluetooth configuration
     bluetooth = {
       enable = true;
       powerOnBoot = true;
-      # Enable A2DP
+      # Enable A2DP for high-quality audio
       settings.General = {
         Enable = "Source,Sink,Media,Socket";
         Experimental = true;
@@ -236,7 +257,7 @@
   };
 
   programs = {
-    # Gnome password manager
+    # GNOME keyring for password management
     seahorse.enable = true;
     ssh.startAgent = true;
     steam.enable = false;
@@ -251,6 +272,7 @@
   environment = {
     shells = with pkgs; [nushell zsh];
     sessionVariables = {
+      # Enable Wayland for Electron/Chromium apps
       NIXOS_OZONE_WL = "1";
       EDITOR = "hx";
       RUST_LOG = "info";
@@ -261,6 +283,7 @@
 
   users.defaultUserShell = pkgs.nushell;
 
+  # Essential system packages
   environment.systemPackages = with pkgs; [
     home-manager
     git
@@ -271,10 +294,12 @@
     killall
   ];
 
+  # Install all Nerd Fonts for icon support in terminal
   fonts.packages = with pkgs;
     [jetbrains-mono]
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
+  # Automatic system updates
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
