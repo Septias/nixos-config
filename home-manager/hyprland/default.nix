@@ -117,7 +117,7 @@
       exec-once = let
         autostart = pkgs.writeShellScriptBin "autostart" ''
           hyprctl setcursor "Bibata-Original-Ice" 20
-          hyprctl hyprpaper reload ,"/home/septias/pictures/wallpapers/t3_vixt2p.png"
+          hyprctl hyprpaper reload ",/home/septias/pictures/wallpapers/t3_vixt2p.png"
           ${pkgs.hyprdim}/bin/hyprdim
         '';
       in [
@@ -135,7 +135,7 @@
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:email,title:^(Mozilla Thunderbird)$"
-        "float, pin, size 400 400, move 0 0,title:^(Calendar Reminders)$"
+        "float, pin, size 400 200, move 0 0,title:^(Calendar Reminders)$"
         "float, pin, size 400 400, move 0 0,title:^(jurts)$"
         "workspace cs2,class:^(cs2)$"
       ];
@@ -161,7 +161,7 @@
         "SUPER,l,exec,hyprlock"
         "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
         "SUPER,p,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
-        "SUPER SHIFT ,s,exec,google-chrome-stable"
+        "SUPER SHIFT ,s,exec,google-chrome-stable --disable-features=WaylandWpColorManagerV1"
         "SUPER,space ,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,c,exec,xdg-open https://chatgpt.com"
