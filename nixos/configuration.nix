@@ -32,12 +32,6 @@
     };
   };
 
-  networking = {
-    firewall.enable = true;
-    networkmanager.enable = true;
-    resolvconf.useLocalResolver = true;
-  };
-
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -49,25 +43,21 @@
 
   # Configure Language
   time.timeZone = "Asia/Tokyo";
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
-    LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "de_DE.UTF-8";
+      LC_IDENTIFICATION = "de_DE.UTF-8";
+      LC_MEASUREMENT = "de_DE.UTF-8";
+      LC_MONETARY = "de_DE.UTF-8";
+      LC_NAME = "de_DE.UTF-8";
+      LC_NUMERIC = "de_DE.UTF-8";
+      LC_PAPER = "de_DE.UTF-8";
+      LC_TELEPHONE = "de_DE.UTF-8";
+      LC_TIME = "de_DE.UTF-8";
+    };
   };
   console.keyMap = "neo";
-
-  users.users.septias = {
-    hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
-    isNormalUser = true;
-    extraGroups = ["media" "audio" "video" "networkmanager" "wheel"];
-  };
 
   services = {
     pulseaudio = {
@@ -190,12 +180,7 @@
     # dbus service for storage devices
     udisks2.enable = true;
     # emacs daemon
-    emacs.enable = true;
-  };
-
-  security = {
-    polkit.enable = true;
-    rtkit.enable = true;
+    emacs.enable = false;
   };
 
   hardware = {
@@ -230,11 +215,6 @@
     };
   };
 
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-  };
-
   programs = {
     # Gnome password manager
     seahorse.enable = true;
@@ -248,6 +228,17 @@
     dconf.enable = true;
   };
 
+  networking = {
+    firewall.enable = true;
+    networkmanager.enable = true;
+    resolvconf.useLocalResolver = true;
+  };
+
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true;
+  };
+
   environment = {
     shells = with pkgs; [nushell zsh];
     sessionVariables = {
@@ -257,23 +248,35 @@
       XDG_RUNTIME_DIR = "/run/user/$UID";
       # SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
     };
+
+    systemPackages = with pkgs; [
+      home-manager
+      git
+      nodejs
+      python3
+      zip
+      unzip
+      killall
+    ];
   };
-
-  users.defaultUserShell = pkgs.nushell;
-
-  environment.systemPackages = with pkgs; [
-    home-manager
-    git
-    nodejs
-    python3
-    zip
-    unzip
-    killall
-  ];
 
   fonts.packages = with pkgs;
     [jetbrains-mono]
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
+  users = {
+    users.septias = {
+      hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
+      isNormalUser = true;
+      extraGroups = ["media" "audio" "video" "networkmanager" "wheel"];
+    };
+    defaultUserShell = pkgs.nushell;
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.autoUpgrade.enable = true;
