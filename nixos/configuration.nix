@@ -240,7 +240,7 @@
   };
 
   environment = {
-    shells = with pkgs; [nushell zsh];
+    shells = with pkgs; [nushell];
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       EDITOR = "hx";
