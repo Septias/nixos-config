@@ -53,10 +53,11 @@
     nautilus
     gimp
     evince
-    claude-code
+    inkscape
 
     ## Tooling
     # wev # input viewer
+    # tdf # terminal pdf viewer
     scc # loc counter
     powertop # TUI power usage analysis
     btop # TUI resource monitor
@@ -71,12 +72,12 @@
     cachix # cache
     difftastic
     networkmanagerapplet
-    tdf # terminal pdf viewer
+    claude-code
 
     linuxKernel.packages.linux_zen.cpupower
 
     ## langs
-    (agda.withPackages [agdaPackages.standard-library])
+    # (agda.withPackages [agdaPacages.standard-library])
 
     ## Utils
     wl-clipboard
