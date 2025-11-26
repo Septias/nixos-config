@@ -54,6 +54,8 @@
           "C-s" = "save_selection";
           "C-i" = "goto_next_buffer";
           "C-u" = "goto_previous_buffer";
+          "C-a" = "increment";
+          "C-x" = "decrement";
           "C-p" = "last_picker";
           "C-D" = "page_cursor_half_up";
           "A-." = "repeat_last_motion";
