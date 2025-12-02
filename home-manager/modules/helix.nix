@@ -26,6 +26,11 @@
           display-inlay-hints = true;
           display-messages = true;
         };
+        text-width = 115;
+        soft-wrap = {
+          enable = true;
+          wrap-at-text-width = true;
+        };
         bufferline = "multiple";
         line-number = "absolute";
         completion-timeout = 5;
@@ -73,6 +78,8 @@
           "Q" = "record_macro";
           "q" = "replay_macro";
           # Selection manipulation
+          "(" = "rotate_selections_backward";
+          ")" = "rotate_selections_forward";
           "s" = "select_regex";
           "S" = "split_selection";
           "&" = "align_selections";
@@ -155,10 +162,6 @@
           language-servers = ["pylsp" "ruff"];
         }
         {
-          name = "markdown";
-          soft-wrap.enable = true;
-        }
-        {
           name = "nix";
           auto-format = true;
           formatter = {
@@ -168,7 +171,6 @@
         {
           name = "typst";
           auto-format = true;
-          soft-wrap.enable = true;
           formatter = {
             command = "${pkgs.typstyle}/bin/typstyle";
           };
