@@ -289,7 +289,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
   system.stateVersion = "23.05";
 }
