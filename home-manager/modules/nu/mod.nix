@@ -53,6 +53,7 @@
       emacs = "emacs -nw";
       life = "cd /home/septias/life";
       read = "yazi /home/septias/life/Areas/Studium/Research";
+      books = "yazi /home/septias/life/Ressources/books";
       governer = "cpupower frequency-info";
       power = "sudo cpupower frequency-set -g performance";
       powersave = "sudo cpupower frequency-set -g powersave";
