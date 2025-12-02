@@ -99,9 +99,10 @@
         layout = "de";
         variant = "neo";
       };
-      desktopManager.gnome.enable = false;
-      displayManager.gdm.enable = true;
     };
+
+    displayManager.gdm.enable = true;
+
     # update firmeware
     fwupd.enable = true;
     printing = {
@@ -221,7 +222,6 @@
   programs = {
     # Gnome password manager
     seahorse.enable = true;
-    ssh.startAgent = true;
     steam.enable = false;
     hyprland = {
       enable = true;
@@ -245,7 +245,7 @@
   environment = {
     shells = with pkgs; [nushell];
     sessionVariables = {
-      NIXOS_OZONE_WL = "1";
+      # NIXOS_OZONE_WL = "1";
       EDITOR = "hx";
       RUST_LOG = "info";
       XDG_RUNTIME_DIR = "/run/user/$UID";
@@ -263,10 +263,17 @@
     ];
   };
 
-  fonts.packages = with pkgs;
-    [jetbrains-mono]
-    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    dina-font
+    nerd-fonts.symbols-only
+    proggyfonts
+  ];
   users = {
     users.septias = {
       hashedPassword = "$6$zG32U5C91iUTFQWl$dgLpq4LN9X9UTUfpVA981QHcmMRArHjXKC5m3BnGX.00UvY3ILh5TysXYlGgXqAdLbv9hLQ84jRZ8tt3TaVv00";
