@@ -212,11 +212,5 @@
         "SUPER ALT,s,           exec, ${pkgs.playerctl}/bin/playerctl play-pause"
       ];
     };
-
-    extraConfig = ''
-      submap=music
-      bind=,escape,submap,reset
-      submap=reset
-    '';
   };
 }

@@ -70,7 +70,6 @@
     dig # DNS-lookup
     yazi # tui file explorer
     cachix # cache
-    difftastic
     networkmanagerapplet
     claude-code
 
@@ -127,28 +126,29 @@
         };
       };
     };
+    difftastic = {
+      enable = true;
+      git.enable = true;
+    };
+
     git = {
       enable = true;
-      userName = "Sebastian Klähn";
-      userEmail = "info@sebastian-klaehn.de";
-      extraConfig = {
-        pull.rebase = true;
-        push.default = "current";
-        init.defaultBranch = "main";
-        core.editor = "hx";
-        difftool.prompt = false;
-        difftool.meld = {
-          cmd = ''meld "$LOCAL" "$REMOTE"'';
-        };
-        diff.tool = "meld";
-        checkout.defaultRemote = "origin";
-      };
       lfs.enable = true;
-      difftastic.enable = true;
-      aliases = {
-        dl = "-c diff.external=difft log -p --ext-diff";
-        ds = "-c diff.external=difft show --ext-diff";
-        dft = "-c diff.external=difft diff";
+      settings = {
+        user.name = "Sebastian Klähn";
+        user.email = "info@sebastian-klaehn.de";
+        extraConfig = {
+          pull.rebase = true;
+          push.default = "current";
+          init.defaultBranch = "main";
+          core.editor = "hx";
+          checkout.defaultRemote = "origin";
+        };
+        aliases = {
+          dl = "-c diff.external=difft log -p --ext-diff";
+          ds = "-c diff.external=difft show --ext-diff";
+          dft = "-c diff.external=difft diff";
+        };
       };
     };
     starship = {

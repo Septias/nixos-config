@@ -14,7 +14,7 @@
     touchegg.enable = true;
     upower.enable = true;
     thermald.enable = true;
-    logind.lidSwitch = "suspend";
+    logind.settings.Login.HandleLidSwitch = "suspend";
     tlp = {
       enable = true;
       settings = {
@@ -31,6 +31,8 @@
 
         START_CHARGE_THRESH_BAT0 = 40;
         STOP_CHARGE_THRESH_BAT0 = 81;
+
+        USB_DENYLIST = "046d:c09d";
       };
     };
   };
