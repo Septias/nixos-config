@@ -55,7 +55,6 @@
           "p" = "paste_before";
           "P" = "paste_after";
           "C-g" = "jump_backward";
-          "backspace" = "jump_backward";
           "C-s" = "save_selection";
           "C-i" = "goto_next_buffer";
           "C-u" = "goto_previous_buffer";
@@ -94,6 +93,7 @@
           "*" = "search_selection";
           space = {
             # H = [":vsplit" ":append-output git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}"];
+            "z" = ":toggle gutters.line-numbers.min-width 52 3";
           };
         };
       };
