@@ -144,8 +144,8 @@
         # Window controls
         "SUPER,Q,killactive"
         "SUPER SHIFT,Q,forcekillactive"
-        "SUPER,g,togglegroup"
-        "SUPER ALT,g,changegroupactive"
+        "SUPER ALT,g,togglegroup"
+        "SUPER,g,changegroupactive"
         "SUPER,m,fullscreen"
         "SUPER ALT,f,togglefloating"
         # "SUPER,p,pin"
