@@ -69,9 +69,6 @@
       '';
     };
 
-    udev = {
-      enable = true;
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -81,11 +78,7 @@
       jack.enable = true;
     };
 
-    gnome = {
-      gnome-keyring.enable = true;
-      evolution-data-server.enable = true;
-      gnome-online-accounts.enable = true;
-    };
+    gnome.gnome-keyring.enable = true;
 
     minecraft-server = {
       enable = false;
@@ -245,11 +238,11 @@
   environment = {
     shells = with pkgs; [nushell];
     sessionVariables = {
-      # NIXOS_OZONE_WL = "1";
+      NIXOS_OZONE_WL = "1";
       EDITOR = "hx";
       RUST_LOG = "info";
       XDG_RUNTIME_DIR = "/run/user/$UID";
-      # SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
     };
 
     systemPackages = with pkgs; [
@@ -272,6 +265,7 @@
     fira-code-symbols
     dina-font
     nerd-fonts.symbols-only
+    inter-nerdfont
     proggyfonts
   ];
   users = {
