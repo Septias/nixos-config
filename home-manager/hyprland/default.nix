@@ -148,6 +148,7 @@
         "SUPER,g,changegroupactive"
         "SUPER,m,fullscreen"
         "SUPER ALT,f,togglefloating"
+        "SUPER ALT,s,exec nu ${./sort_workspaces} "
         # "SUPER,p,pin"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
