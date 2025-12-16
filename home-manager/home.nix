@@ -124,6 +124,18 @@
         keybinding.universal = {
           openDiffTool = "<c-g>";
         };
+        git.pagers = [
+          {
+            pager = "${pkgs.delta}/bin/delta --dark --paging=never";
+          }
+          {
+            pager = "${pkgs.ydiff}/bin/ydiff -p cat -s --wrap --width={{columnWidth}}";
+            colorArg = "never";
+          }
+          # {
+          #   externalDiffCommand = "${pkgs.difftastic}/bin/difft --color=always";
+          # }
+        ];
       };
     };
     difftastic = {
