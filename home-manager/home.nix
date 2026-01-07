@@ -126,7 +126,7 @@
         };
         git.pagers = [
           {
-            pager = "${pkgs.delta}/bin/delta --dark --paging=never";
+            pager = "${pkgs.delta}/bin/delta --features drr --paging=never";
           }
           {
             pager = "${pkgs.ydiff}/bin/ydiff -p cat -s --wrap --width={{columnWidth}}";
@@ -138,11 +138,6 @@
         ];
       };
     };
-    difftastic = {
-      enable = true;
-      git.enable = true;
-    };
-
     git = {
       enable = true;
       lfs.enable = true;
@@ -155,11 +150,12 @@
           init.defaultBranch = "main";
           core.editor = "hx";
           checkout.defaultRemote = "origin";
-        };
-        aliases = {
-          dl = "-c diff.external=difft log -p --ext-diff";
-          ds = "-c diff.external=difft show --ext-diff";
-          dft = "-c diff.external=difft diff";
+
+          "delta \"drr\"" = {
+            syntax-theme = "Dracula";
+            plus-color = "#50fa7b";
+            minus-color = "#ff5555";
+          };
         };
       };
     };
