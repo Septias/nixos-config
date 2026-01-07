@@ -82,6 +82,7 @@
       commandCenter = false;
       menuBarVisibility = "compact";
     };
+    chat.disableAIFeatures = false;
   };
   keybindings = builtins.fromJSON (builtins.readFile ./keybindings.json);
   defaultExtensions = pkgs.nix4vscode.forVscode [
