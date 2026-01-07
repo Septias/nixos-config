@@ -6,15 +6,16 @@
     ./hyprpanel.nix
   ];
 
-  home.packages = with pkgs; [
-    (writeShellScriptBin "screenshot" ''
+  wayland.windowManager.hyprland = let
+    screenshot = with pkgs; (writeShellScriptBin "screenshot" ''
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
-    '')
-    (writeShellScriptBin "screenshot-edit" ''
-      wl-paste | ${swappy}/bin/swappy -f -
-    '')
-  ];
-  wayland.windowManager.hyprland = {
+    '');
+    autostart = pkgs.writeShellScriptBin "autostart" ''
+      hyprctl setcursor "Bibata-Original-Ice" 20
+      hyprctl hyprpaper reload ",/home/septias/pictures/wallpapers/t3_vixt2p.png"
+      ${pkgs.hyprdim}/bin/hyprdim
+    '';
+  in {
     package = pkgs.unstable.hyprland;
     enable = true;
     systemd.enable = true;
@@ -58,9 +59,9 @@
         auto_group = true;
         groupbar = {
           enabled = true;
+          rounding = "5";
           "col.active" = "rgb(51576d)";
           "col.inactive" = "rgb(626880)";
-          rounding = "5";
         };
       };
 
@@ -101,8 +102,6 @@
         disable_logs = false;
       };
 
-      # opengl.nvidia_anti_flicker = true;
-      binds.hide_special_on_workspace_change = true;
       render.direct_scanout = 2;
 
       misc = {
@@ -116,13 +115,7 @@
         new_window_takes_over_fullscreen = 2;
       };
 
-      exec-once = let
-        autostart = pkgs.writeShellScriptBin "autostart" ''
-          hyprctl setcursor "Bibata-Original-Ice" 20
-          hyprctl hyprpaper reload ",/home/septias/pictures/wallpapers/t3_vixt2p.png"
-          ${pkgs.hyprdim}/bin/hyprdim
-        '';
-      in [
+      exec-once = [
         "${autostart}/bin/autostart"
         "[workspace special obsidian silent] obsidian"
         "[workspace special email silent] thunderbird"
@@ -159,20 +152,20 @@
         "SUPER,g,changegroupactive"
         "SUPER,m,fullscreen"
         "SUPER ALT,f,togglefloating"
-        "SUPER ALT,s,exec nu ${./sort_workspaces} "
-        # "SUPER,p,pin"
+        "SUPER,p,pin"
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,y,togglespecialworkspace,email"
+        "SUPER ALT,s,exec, nu ${./sort_workspaces.nu}"
+        "SUPER ALT,d,exec, nu ${./toggle_dark.nu}"
 
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
         "SUPER,ö     ,exec,kitty yazi /home/septias/coding"
-        ",Print,exec ,screenshot"
-        "SUPER,i,exec,screenshot"
+        "SUPER,i,exec,${screenshot}"
         "SUPER,l,exec,hyprlock"
         "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
-        "SUPER,p,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
+        "SUPER ALT,p,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
         "SUPER SHIFT ,s,exec,google-chrome-stable --disable-features=WaylandWpColorManagerV1"
         "SUPER,space ,exec,anyrun"
         "SUPER,e,exec,nautilus"
@@ -193,8 +186,6 @@
         # Move window
         "SUPER ALT, t, movetoworkspace, +1"
         "SUPER ALT, r, movetoworkspace, -1"
-        "SUPER ALT, d, exec, dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\""
-        "SUPER ALT, y, exec, dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\""
 
         # Resize
         "SUPER ALT, b, resizeactive, -10% 0"
@@ -209,6 +200,8 @@
         "ALT, mouse:272, movewindow"
         "ALT, mouse:273, resizewindow"
       ];
+
+      binds.hide_special_on_workspace_change = true;
 
       bindle = [
         ",XF86MonBrightnessUp,  exec, ${pkgs.brightnessctl}/bin/brightnessctl set +10%"
