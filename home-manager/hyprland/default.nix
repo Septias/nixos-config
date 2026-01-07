@@ -21,7 +21,9 @@
     xwayland = {
       enable = true;
     };
-    plugins = [];
+    plugins = [
+      pkgs.unstable.hyprlandPlugins.hyprscrolling
+    ];
     settings = {
       general = {
         gaps_out = 10;
@@ -138,6 +140,15 @@
         "float, pin, size 800 400, move (monitor_w/2) (monitor_h/2), title:^(Calendar Reminders)$"
         "float, pin, size 800 400, move (monitor_w/2) (monitor_h/2), title:^(jurts)$"
         "workspace cs2,class:^(cs2)$"
+      ];
+
+      workspace = [
+        "name:social, layout:scrolling"
+        "special:social, layout:scrolling"
+        "special, layout:scrolling"
+        "m:DP-1, layout:scroll"
+        "w[tv1], gapsout:0, gapsin:0"
+        "f[1], gapsout:0, gapsin:0"
       ];
 
       bind = [
