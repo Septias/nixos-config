@@ -135,8 +135,8 @@
         "workspace special:social,title:^(Delta Chat)$"
         "workspace special:obsidian,class:^(obsidian)$"
         "workspace special:email,title:^(Mozilla Thunderbird)$"
-        "float, pin, size 400 200, move 0 0,title:^(Calendar Reminders)$"
-        "float, pin, size 400 400, move 0 0,title:^(jurts)$"
+        "float, pin, size 800 400, move (monitor_w/2) (monitor_h/2), title:^(Calendar Reminders)$"
+        "float, pin, size 800 400, move (monitor_w/2) (monitor_h/2), title:^(jurts)$"
         "workspace cs2,class:^(cs2)$"
       ];
 
