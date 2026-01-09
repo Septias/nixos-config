@@ -92,8 +92,8 @@
           # Search
           "*" = "search_selection";
           space = {
-            # H = [":vsplit" ":append-output git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}"];
-            "z" = ":toggle gutters.line-numbers.min-width 52 3";
+            h = ":sh git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}";
+            z = ":toggle gutters.line-numbers.min-width 52 3";
           };
         };
       };
