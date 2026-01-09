@@ -162,7 +162,7 @@
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
         "SUPER,ö     ,exec,kitty yazi /home/septias/coding"
-        "SUPER,i,exec,${screenshot}"
+        "SUPER,i,exec,${screenshot}/bin/screenshot"
         "SUPER,l,exec,hyprlock"
         "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
         "SUPER ALT,p,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
