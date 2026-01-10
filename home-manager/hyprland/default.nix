@@ -112,27 +112,12 @@
         animate_mouse_windowdragging = true;
         animate_manual_resizes = true;
         font_family = "JetBrainsMono Nerd Font";
-        new_window_takes_over_fullscreen = 2;
       };
 
       exec-once = [
         "${autostart}/bin/autostart"
         "[workspace special obsidian silent] obsidian"
         "[workspace special email silent] thunderbird"
-      ];
-
-      windowrulev2 = [
-        "tile,class:^(sioyek)$"
-        "immediate,class:^(cs2)$"
-        "fullscreen,class:^(cs2)$"
-        "workspace special:social,class:^(org.telegram.desktop|signal|discord)$"
-        "workspace special:social,title:^(WhatsApp Web)$"
-        "workspace special:social,title:^(Delta Chat)$"
-        "workspace special:obsidian,class:^(obsidian)$"
-        "workspace special:email,title:^(Mozilla Thunderbird)$"
-        "float, pin, size 800 400, move (monitor_w/2) (monitor_h/2), title:^(Calendar Reminders)$"
-        "float, pin, size 800 400, move (monitor_w/2) (monitor_h/2), title:^(jurts)$"
-        "workspace cs2,class:^(cs2)$"
       ];
 
       workspace = [
@@ -217,5 +202,68 @@
         "SUPER ALT,s,           exec, ${pkgs.playerctl}/bin/playerctl play-pause"
       ];
     };
+    extraConfig = ''
+      windowrule {
+        name = windowrule-1
+        tile = on
+        match:class = ^(sioyek)$
+      }
+
+      windowrule {
+        name = windowrule-2
+        immediate = on
+        fullscreen = on
+        workspace = cs2
+        match:class = ^(cs2)$
+      }
+
+      windowrule {
+        name = windowrule-3
+        workspace = special:social
+        match:class = ^(org.telegram.desktop|signal|discord)$
+      }
+
+      windowrule {
+        name = windowrule-4
+        workspace = special:social
+        match:title = ^(WhatsApp Web)$
+      }
+
+      windowrule {
+        name = windowrule-5
+        workspace = special:social
+        match:title = ^(Delta Chat)$
+      }
+
+      windowrule {
+        name = windowrule-6
+        workspace = special:obsidian
+        match:class = ^(obsidian)$
+      }
+
+      windowrule {
+        name = windowrule-7
+        workspace = special:email
+        match:title = ^(Mozilla Thunderbird)$
+      }
+
+      windowrule {
+        name = windowrule-8
+        float = on
+        pin = on
+        size = 800 400
+        move = ((monitor_w/2)) ((monitor_h/2))
+        match:title = ^(Calendar Reminders)$
+      }
+
+      windowrule {
+        name = windowrule-9
+        float = on
+        pin = on
+        size = 800 400
+        move = ((monitor_w/2)) ((monitor_h/2))
+        match:title = ^(jurts)$
+      }
+    '';
   };
 }
