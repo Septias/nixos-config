@@ -35,10 +35,9 @@
       };
 
       input = {
-        kb_layout = "de";
-        kb_variant = "neo";
-        kb_model = "p4104";
-        kb_options = "terminate:ctrl_alt_bksp";
+        kb_layout = "de,us";
+        kb_variant = "neo,";
+        kb_options = "grp:alt_shift_toggle";
         follow_mouse = 1;
         repeat_delay = 220;
         repeat_rate = 45;
