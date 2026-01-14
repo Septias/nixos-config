@@ -23,7 +23,7 @@
       enable = true;
     };
     plugins = [
-      pkgs.unstable.hyprlandPlugins.hyprscrolling
+      # pkgs.unstable.hyprlandPlugins.hyprscrolling
     ];
     settings = {
       general = {
@@ -120,10 +120,7 @@
       ];
 
       workspace = [
-        "name:social, layout:scrolling"
         "special:social, layout:scrolling"
-        "special, layout:scrolling"
-        "m:DP-1, layout:scroll"
         "w[tv1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
       ];
