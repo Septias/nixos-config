@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.hyprshell = {
-    enable = true;
+    enable = false;
     package = pkgs.unstable.hyprshell;
     systemd.args = "-v";
     settings = {
@@ -9,7 +9,7 @@
         overview = {
           enable = true;
           key = "tab";
-          modifier = "super";
+          modifier = "alt";
           launcher = {
             max_items = 6;
           };
