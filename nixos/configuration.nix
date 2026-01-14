@@ -194,7 +194,7 @@
 
     graphics = {
       enable = true;
-      enable32Bit = false;
+      enable32Bit = true;
     };
 
     printers = {
@@ -215,7 +215,7 @@
   programs = {
     # Gnome password manager
     seahorse.enable = true;
-    steam.enable = false;
+    steam.enable = true;
     hyprland = {
       enable = true;
       package = pkgs.unstable.hyprland;
