@@ -111,8 +111,8 @@
         tinymist = {
           command = "tinymist";
           config = {
-            exportPdf = "onType";
-            outputPath = "$root/$dir/$name";
+            # exportPdf = "onType";
+            # outputPath = "$root/$dir/$name";
             # preview.background.enabled = true;
             # preview.background.args = ["--data-plane-host=127.0.0.1:23635" "--invert-colors=never" "--open"];
           };
