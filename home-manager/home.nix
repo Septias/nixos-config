@@ -44,6 +44,7 @@
     discord
     libreoffice
     thunderbird
+    evolution
     sqlitebrowser
     gthumb
     zoom-us
@@ -126,11 +127,11 @@
         };
         git.pagers = [
           {
-            pager = "${pkgs.delta}/bin/delta --features drr --paging=never";
-          }
-          {
             pager = "${pkgs.ydiff}/bin/ydiff -p cat -s --wrap --width={{columnWidth}}";
             colorArg = "never";
+          }
+          {
+            pager = "${pkgs.delta}/bin/delta --features drr --paging=never";
           }
           # {
           #   externalDiffCommand = "${pkgs.difftastic}/bin/difft --color=always";
@@ -150,7 +151,6 @@
           init.defaultBranch = "main";
           core.editor = "hx";
           checkout.defaultRemote = "origin";
-
           "delta \"drr\"" = {
             syntax-theme = "Dracula";
             plus-color = "#50fa7b";
