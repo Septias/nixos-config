@@ -126,6 +126,19 @@
         "f[1], gapsout:0, gapsin:0"
       ];
 
+      windowrule = [
+        "immediate on, fullscreen on, workspace cs2, match:class cs2$"
+        "immediate on, workspace aoe, match:class steam_app_813780"
+        "immediate on, workspace aoe, match:title Age of Empires*"
+        "workspace special:social, match:class org.telegram.desktop|signal|discord"
+        "workspace special:social, match:title ^(WhatsApp Web)$"
+        "workspace special:social, match:title ^(Delta Chat)$"
+        "workspace special:obsidian, match:class ^(obsidian)$"
+        "workspace special:email, match:title ^(Mozilla Thunderbird)$"
+        "float on, pin on, size 800 400, move ((monitor_w/2)) ((monitor_h/2)), match:title ^(Calendar Reminders)$"
+        "float on, pin on, size 800 400, move ((monitor_w/2)) ((monitor_h/2)), match:title ^(jurts)$"
+      ];
+
       bind = [
         # Window controls
         "SUPER,Q,killactive"
@@ -139,7 +152,7 @@
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,y,togglespecialworkspace,email"
         "SUPER ALT,s,exec, nu ${./sort_workspaces.nu}"
-        "SUPER ALT,d,exec, nu ${./toggle_dark.nu}"
+        "SUPER ALT,y,exec, nu ${./toggle_dark.nu}"
 
         # Start programs
         "SUPER,RETURN,exec,kitty /home/septias/coding"
@@ -199,68 +212,5 @@
         "SUPER ALT,s,           exec, ${pkgs.playerctl}/bin/playerctl play-pause"
       ];
     };
-    extraConfig = ''
-      windowrule {
-        name = windowrule-1
-        tile = on
-        match:class = ^(sioyek)$
-      }
-
-      windowrule {
-        name = windowrule-2
-        immediate = on
-        fullscreen = on
-        workspace = cs2
-        match:class = ^(cs2)$
-      }
-
-      windowrule {
-        name = windowrule-3
-        workspace = special:social
-        match:class = ^(org.telegram.desktop|signal|discord)$
-      }
-
-      windowrule {
-        name = windowrule-4
-        workspace = special:social
-        match:title = ^(WhatsApp Web)$
-      }
-
-      windowrule {
-        name = windowrule-5
-        workspace = special:social
-        match:title = ^(Delta Chat)$
-      }
-
-      windowrule {
-        name = windowrule-6
-        workspace = special:obsidian
-        match:class = ^(obsidian)$
-      }
-
-      windowrule {
-        name = windowrule-7
-        workspace = special:email
-        match:title = ^(Mozilla Thunderbird)$
-      }
-
-      windowrule {
-        name = windowrule-8
-        float = on
-        pin = on
-        size = 800 400
-        move = ((monitor_w/2)) ((monitor_h/2))
-        match:title = ^(Calendar Reminders)$
-      }
-
-      windowrule {
-        name = windowrule-9
-        float = on
-        pin = on
-        size = 800 400
-        move = ((monitor_w/2)) ((monitor_h/2))
-        match:title = ^(jurts)$
-      }
-    '';
   };
 }
