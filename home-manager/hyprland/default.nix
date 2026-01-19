@@ -127,8 +127,10 @@
       ];
 
       windowrule = [
+        "tile on, match:class sioyek$"
         "immediate on, fullscreen on, workspace cs2, match:class cs2$"
         "immediate on, workspace aoe, match:class steam_app_813780"
+        "immediate on, workspace aoe, match:title Age of Empires"
         "immediate on, workspace aoe, match:title Age of Empires*"
         "workspace special:social, match:class org.telegram.desktop|signal|discord"
         "workspace special:social, match:title ^(WhatsApp Web)$"
