@@ -3,7 +3,9 @@
   outputs,
   ...
 }: {
-  imports = [];
+  imports = [
+    ./vpn.nix
+  ];
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
