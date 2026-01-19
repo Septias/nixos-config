@@ -71,8 +71,9 @@
     dig # DNS-lookup
     yazi # tui file explorer
     cachix # cache
-    networkmanagerapplet
+    # networkmanagerapplet
     claude-code
+    qpdf
 
     linuxKernel.packages.linux_zen.cpupower
 
