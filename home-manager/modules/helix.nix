@@ -92,7 +92,7 @@
           # Search
           "*" = "search_selection";
           space = {
-            h = [":append-output git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}" "delete_selection" ":vsplit-new" "paste_after"];
+            h = [":append-output git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}" "delete_selection" ":vsplit-new" "paste_after" ":set-language diff"];
             z = ":toggle gutters.line-numbers.min-width 52 3";
           };
         };
