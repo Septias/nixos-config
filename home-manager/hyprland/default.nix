@@ -153,7 +153,7 @@
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,y,togglespecialworkspace,email"
-        "SUPER ALT,s,exec, nu ${./sort_workspaces.nu}"
+        "SUPER ALT,d,exec, nu ${./sort_workspaces.nu}"
         "SUPER ALT,y,exec, nu ${./toggle_dark.nu}"
 
         # Start programs
