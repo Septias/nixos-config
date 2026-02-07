@@ -38,7 +38,7 @@
       input = {
         kb_layout = "de,us";
         kb_variant = "neo,";
-        kb_options = "grp:alt_shift_toggle";
+        kb_options = "terminate:ctrl_alt_bksp"; # grp:alt_shift_toggle
         follow_mouse = 1;
         repeat_delay = 220;
         repeat_rate = 45;
@@ -163,7 +163,7 @@
         "SUPER,l,exec,hyprlock"
         "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
         "SUPER ALT,p,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
-        "SUPER SHIFT ,s,exec,google-chrome-stable --disable-features=WaylandWpColorManagerV1"
+        "SUPER SHIFT ,s,exec, google-chrome-stable"
         "SUPER,space ,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,c,exec,xdg-open https://chatgpt.com"
