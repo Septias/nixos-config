@@ -44,7 +44,7 @@
     discord
     libreoffice
     thunderbird
-    evolution
+    # evolution
     sqlitebrowser
     gthumb
     zoom-us
@@ -73,6 +73,7 @@
     cachix # cache
     # networkmanagerapplet
     claude-code
+    zotero
     qpdf
 
     linuxKernel.packages.linux_zen.cpupower
@@ -102,6 +103,15 @@
 
   programs = {
     bat.enable = true;
+    aider-chat = {
+      enable = true;
+      settings = {
+        dark-mode = true;
+        model = "openrouter/openai/gpt-5";
+
+        # weak-model = "openrouter/openrouter/gpt-5";
+      };
+    };
     sioyek = {
       enable = true;
       package = pkgs.symlinkJoin {
