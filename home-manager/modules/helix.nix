@@ -104,6 +104,9 @@
           command = "copilot-language-server";
           args = ["--stdio"];
         };
+        typos-lsp = {
+          command = "${pkgs.typos-lsp}/bin/typos-lsp";
+        };
         nil = {
           command = "nil";
           config.nil.nix.flake.autoArchive = true;
@@ -174,6 +177,7 @@
           formatter = {
             command = "${pkgs.typstyle}/bin/typstyle";
           };
+          language-servers = ["tinymist"]; # "typos-lsp" ];
         }
         {
           name = "javascript";
