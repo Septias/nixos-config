@@ -51,7 +51,7 @@
           "C-h" = ["extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before"];
           "C-b" = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}";
           "C-f" = "jump_forward";
-          "E" = ":quit!";
+          "E" = ":bc!";
           "p" = "paste_before";
           "P" = "paste_after";
           "C-g" = "jump_backward";
@@ -86,13 +86,14 @@
           "C" = "copy_selection_on_next_line";
           "K" = "keep_selections";
           "A-f" = "expand_selection";
+          "A-F" = ":toggle auto-format";
           "A-g" = "shrink_selection";
           "A-n" = "select_next_sibling";
           "A-N" = "select_prev_sibling";
           # Search
           "*" = "search_selection";
           space = {
-            h = [":append-output git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}" "delete_selection" ":vsplit-new" "paste_after" ":set-language diff"];
+            h = [":append-output git log -L %{selection_line_start},%{selection_line_end}:%{buffer_name}" "delete_selection" ":vsplit-new" "paste_after" ":set-language diff" ":goto 1"];
             z = ":toggle gutters.line-numbers.min-width 52 3";
           };
         };
