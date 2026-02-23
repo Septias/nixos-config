@@ -108,8 +108,8 @@
       settings = {
         dark-mode = true;
         model = "openrouter/openai/gpt-5";
-
         # weak-model = "openrouter/openrouter/gpt-5";
+        auto-commits = false;
       };
     };
     sioyek = {
