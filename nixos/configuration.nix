@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./vpn.nix
+    # ./vpn.nix
   ];
   nixpkgs = {
     config.allowUnfree = true;
