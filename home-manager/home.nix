@@ -75,6 +75,7 @@
     claude-code
     zotero
     qpdf
+    qdirstat
 
     linuxKernel.packages.linux_zen.cpupower
 
