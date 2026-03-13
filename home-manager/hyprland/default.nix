@@ -23,9 +23,7 @@
       enable = true;
       # force_zero_scaling = true;
     };
-    plugins = [
-      # pkgs.unstable.hyprlandPlugins.hyprscrolling
-    ];
+    plugins = [];
     settings = {
       general = {
         gaps_out = 10;
@@ -121,7 +119,7 @@
       ];
 
       workspace = [
-        "special:social, layout:scrolling"
+        "special:social,layout:scrolling"
         "w[tv1], gapsout:0, gapsin:0"
         "f[1], gapsout:0, gapsin:0"
       ];
