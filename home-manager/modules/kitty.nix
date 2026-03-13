@@ -21,7 +21,7 @@
       "ctrl+e" = "clone-in-kitty --cwd=current --type=overlay  hx .";
       "ctrl+l" = "launch --type=overlay --cwd=current lazygit";
       "ctrl+shift+e" = "combine : launch --type=background --hold=no --copy-env --cwd=current codium .: close_window";
-      "ctrl+f" = "launch --stdin-source=@screen_scrollback --type=overlay hx";
+      "ctrl+shift+f" = "launch --stdin-source=@screen_scrollback --type=overlay hx";
       "ctrl+minus" = "change_font_size current -2.0";
       "ctrl+plus" = "change_font_size current +2.0";
     };
