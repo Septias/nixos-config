@@ -165,7 +165,7 @@
         "SUPER,space ,exec,anyrun"
         "SUPER,e,exec,nautilus"
         "SUPER,c,exec,xdg-open https://chatgpt.com"
-        "SUPER,v,exec,xdg-open https://www.wetter.com/japan/tokio/JP0TY0011.html"
+        "SUPER,v,exec,xdg-open https://www.wetter.com/deutschland/freiburg-im-breisgau/DE0003016.html"
 
         # Focus windows
         "SUPER, b, focuswindow, class:google-chrome"
