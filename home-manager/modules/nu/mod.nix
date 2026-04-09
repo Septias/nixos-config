@@ -58,6 +58,7 @@
       power = "sudo cpupower frequency-set -g performance";
       powersave = "sudo cpupower frequency-set -g powersave";
       charge = "sudo tlp chargeonce BAT0";
+      charge_full = "sudo tlp setcharge 0 100 BAT0";
     };
   };
 }
