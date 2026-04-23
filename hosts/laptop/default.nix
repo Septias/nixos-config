@@ -1,10 +1,7 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{lib, ...}: {
   imports = [./hardware-configuration.nix];
 
+  boot.kernelParams = ["usbcore.autosuspend=-1"];
   networking = {
     networkmanager.wifi.powersave = true;
     hostName = "nixos-laptop";
@@ -21,7 +18,6 @@
     logind.settings.Login.HandleLidSwitch = "suspend";
     udev.extraRules = ''
       SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c09d", TEST=="power/control", ATTR{power/control}="on"
-      SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c246", TEST=="power/control", ATTR{power/control}="on"
     '';
     tlp = {
       enable = true;
