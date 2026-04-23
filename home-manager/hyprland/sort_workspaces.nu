@@ -1,6 +1,6 @@
 
 let primary = "eDP-1"
-let secondary = "DP-1"
+let secondary = "HDMI-A-1"
 
 let workspaces = (
     hyprctl workspaces -j
