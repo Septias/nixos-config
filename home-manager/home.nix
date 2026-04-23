@@ -23,7 +23,7 @@
     ./modules/kitty.nix
     ./modules/anyrun/mod.nix
     ./modules/nu/mod.nix
-    ./modules/vscode/mod.nix
+    # ./modules/vscode/mod.nix
     ./modules/hyprshell.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
@@ -36,7 +36,7 @@
   home.packages = with pkgs; [
     unstable.deltachat-desktop
     unstable.obsidian
-    unstable.nodePackages.pnpm
+    unstable.pnpm
     google-chrome
 
     ## Office
@@ -47,22 +47,22 @@
     # evolution
     sqlitebrowser
     gthumb
+    # Loupe
     zoom-us
     vlc
     anki
     firefox
     nautilus
     gimp
-    evince
+    # evince
     inkscape
 
     ## Tooling
     # wev # input viewer
-    # tdf # terminal pdf viewer
     scc # loc counter
     powertop # TUI power usage analysis
     btop # TUI resource monitor
-    nix-tree
+    # nix-tree
     fzf # Fuzzy finder
     sl # Funny train
     sops # Encrypted secrets in flake
@@ -73,9 +73,11 @@
     cachix # cache
     # networkmanagerapplet
     claude-code
-    zotero
     qpdf
     qdirstat
+    pavucontrol
+    pandoc
+    gnome-font-viewer
 
     linuxKernel.packages.linux_zen.cpupower
 
