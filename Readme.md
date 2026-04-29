@@ -7,17 +7,17 @@
    - Shell: nu
    - Prompt: starship
    - History: atuin
-   - Theme: cattpuccin frappe
+   - Theme: catppuccin frappe
 - Editor:
-   - emacs (spacemacs)
-   - vscode (vscodium)
    - helix
+   - vscode (vscodium)
 - Bar: Hyprpanel
    - theme: catppuccin frappe
 - Window Manager: Hyprland
    - hypridle
    - hyprsunset
    - hyprlock
+   - hyprpicker
 - File Explorer
    - yazi
    - nautilus (gnome)
