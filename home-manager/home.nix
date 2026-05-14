@@ -23,7 +23,7 @@
     ./modules/kitty.nix
     ./modules/anyrun/mod.nix
     ./modules/nu/mod.nix
-    # ./modules/vscode/mod.nix
+    ./modules/vscode/mod.nix
     ./modules/hyprshell.nix
     inputs.sops-nix.homeManagerModules.sops
   ];
@@ -47,14 +47,14 @@
     # evolution
     sqlitebrowser
     gthumb
-    # Loupe
+    loupe
     zoom-us
     vlc
     anki
     firefox
     nautilus
     gimp
-    # evince
+    evince
     inkscape
 
     ## Tooling
