@@ -151,7 +151,7 @@
         "SUPER,s,togglespecialworkspace,social"
         "SUPER,o,togglespecialworkspace,obsidian"
         "SUPER,y,togglespecialworkspace,email"
-        "SUPER ALT,d,exec, nu ${./sort_workspaces.nu}"
+        "SUPER ALT,d,movewindow,mon:+1"
         "SUPER ALT,y,exec, nu ${./toggle_dark.nu}"
 
         # Start programs
@@ -160,7 +160,7 @@
         "SUPER,i,exec,${screenshot}/bin/screenshot"
         "SUPER,l,exec,hyprlock"
         "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
-        "SUPER ALT,p,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
+        "SUPER ALT,p ,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
         "SUPER SHIFT ,s,exec, google-chrome-stable"
         "SUPER,space ,exec,anyrun"
         "SUPER,e,exec,nautilus"
@@ -175,7 +175,7 @@
         "SUPER,t,workspace,+1"
         "SUPER,n,cyclenext"
         "SUPER,d,focusmonitor,+1"
-        "SUPER SHIFT,d,movewindow,mon:+1"
+        "SUPER SHIFT,d,exec, nu ${./sort_workspaces.nu}"
         "SUPER,z,focuscurrentorlast"
 
         # Move window
