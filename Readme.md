@@ -1,24 +1,23 @@
+<img width="1914" height="1188" alt="image" src="https://github.com/user-attachments/assets/dc51d118-00ba-4bda-9e4b-de09c12f00a4" />
 
 ## Septias' nixos config
-
-> My own cracked up configuration
 
 - Terminal: Kitty
    - Search: fzf
    - Shell: nu
    - Prompt: starship
    - History: atuin
-   - Theme: cattpuccin frappe
+   - Theme: catppuccin frappe
 - Editor:
-   - emacs (spacemacs)
-   - vscode (vscodium)
    - helix
+   - vscode (vscodium)
 - Bar: Hyprpanel
    - theme: catppuccin frappe
 - Window Manager: Hyprland
    - hypridle
    - hyprsunset
    - hyprlock
+   - hyprpicker
 - File Explorer
    - yazi
    - nautilus (gnome)
@@ -40,10 +39,10 @@
 7. Select Kitten themes
 
 ## Quirks
-> Things that should work but had to be fixed manually. Eventually these might be fixed by upstream.
+> Things that should work but had to be fixed manually. Eventually, these might be fixed by upstream.
 
-- Portals for setting gnome `color-scheme` had to be enabled manuall in `home-manager > xdg.portals`
-- For ssh agent, some env-vars had to be set.
+- Portals for setting gnome `color-scheme` had to be enabled manually in `home-manager > xdg.portals`
+- For the SSH agent, some environment variables had to be set.
    - The gnome keyring would not unlock automatically.
-- For nvidia, some env-vars had to be set.
+- For NVIDIA, some env-vars had to be set.
 - Sioyek had to add some env variables.
