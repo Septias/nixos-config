@@ -129,6 +129,8 @@
       config = {
         papers_folder_path = "/home/septias/life/Areas/Studium/Masterproject/Paper";
         shared_database_path = "/home/septias/life/Ressources/shared.db";
+        highlight_color_e = "#338C0C";
+        highlight_color_w = "#eef21f";
         should_highlight_unselected_search = "1";
       };
     };
