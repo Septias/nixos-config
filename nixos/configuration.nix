@@ -180,6 +180,7 @@
     udisks2.enable = true;
     # emacs daemon
     emacs.enable = false;
+    hardware.bolt.enable = true;
   };
 
   hardware = {
