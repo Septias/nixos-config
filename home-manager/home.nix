@@ -56,13 +56,13 @@
     gimp
     evince
     inkscape
+    # mixxx
 
     ## Tooling
     # wev # input viewer
     scc # loc counter
     powertop # TUI power usage analysis
     btop # TUI resource monitor
-    # nix-tree
     fzf # Fuzzy finder
     sl # Funny train
     sops # Encrypted secrets in flake
@@ -71,7 +71,6 @@
     dig # DNS-lookup
     yazi # tui file explorer
     cachix # cache
-    # networkmanagerapplet
     claude-code
     qpdf
     qdirstat
