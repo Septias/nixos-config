@@ -1,8 +1,8 @@
 {...}: {
   wayland.windowManager.hyprland = {
     settings.monitor = [
-      # "DP-1,2560x1440,auto-up,1"
-      ",preferred,auto-up,1"
+      "DP-5,1920x1080@144.00,auto-right,1"
+      ",preferred,auto-right,1"
     ];
     settings.general.gaps_out = 10;
     settings.input.sensitivity = 1.3;
