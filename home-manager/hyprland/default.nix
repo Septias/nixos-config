@@ -3,7 +3,7 @@
     ./hypridle.nix
     ./hyprpaper.nix
     ./hyprlock.nix
-    ./hyprpanel.nix
+    ./wayle.nix
   ];
 
   wayland.windowManager.hyprland = let

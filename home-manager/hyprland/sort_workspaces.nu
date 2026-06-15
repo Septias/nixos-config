@@ -1,8 +1,10 @@
 # Define your primary monitor name
-let primary = "eDP-1"
 
 # Get all monitors in JSON format
 let monitors = (hyprctl monitors -j | from json)
+
+let primary = $monitors.0.name
+
 
 # Find the secondary monitor name (the first one that isn't primary)
 let secondary = (
