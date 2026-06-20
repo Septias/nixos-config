@@ -27,12 +27,10 @@
             left = [
               "cava"
               "volume"
-              "storage"
-              "hyprland-workspaces"
+              "battery"
             ];
             monitor = "eDP-1";
             right = [
-              "battery"
               "bluetooth"
               "network"
               "weather"
@@ -42,41 +40,44 @@
         ];
         scale = 0.7;
       };
-      menus = {
-        clock = {
-          time = {
-            military = true;
-          };
-          weather = {
-            key = "c9b2bc7713f34e49862192604250603";
-            location = "Freiburg";
-            unit = "metric";
-          };
-        };
-        dashboard = {
-          directories = {
-            enabled = false;
-          };
-          stats = {
-            enable_gpu = true;
-          };
-        };
-        media = {
-          noMediaText = "No music ~ uwu";
-        };
-        power = {
-          confirmation = false;
-        };
-      };
       modules = {
+        battery = {
+          border-color = "red";
+          icon-bg-color = "red";
+          icon-color = "red";
+          label-color = "red";
+        };
         clock = {
           format = "%a %b %d %H:%M";
+          border-color = "yellow";
+          icon-bg-color = "yellow";
+          icon-color = "yellow";
+          label-color = "yellow";
+        };
+        notification = {
+          border-color = "yellow";
+          icon-bg-color = "yellow";
+          icon-color = "yellow";
+          label-color = "yellow";
+        };
+        storage = {
+          border-color = "red";
+          icon-bg-color = "red";
+          icon-color = "red";
+          label-color = "red";
         };
         weather = {
           location = "Freiburg";
+          border-color = "green";
+          icon-bg-color = "green";
+          icon-color = "green";
+          label-color = "green";
         };
-        world-clock = {
-          format = "{{ tz('UTC', '%a %b %d %H:%M') }}";
+        bluetooth = {
+          border-color = "accent";
+          icon-bg-color = "accent";
+          icon-color = "accent";
+          label-color = "accent";
         };
       };
       styling = {
