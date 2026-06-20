@@ -187,7 +187,6 @@
         "SUPER ALT, m, resizeactive, 10% 0"
 
         # Misc
-        "SUPER SHIFT, t, exec, hyprpanel t bar-0 & hyprpanel t bar-1"
         "SUPER SHIFT, o, movetoworkspace, special:obsidian, class:^(obsidian)$"
       ];
 
