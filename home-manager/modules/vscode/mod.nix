@@ -175,6 +175,15 @@ in {
             "rust-lang.rust-analyzer"
           ];
       };
+      lean = {
+        inherit userSettings keybindings;
+        extensions =
+          defaultExtensions
+          ++ pkgs.nix4vscode.forVscode [
+            "leanprover.lean4"
+            "tamasfe.even-better-toml"
+          ];
+      };
       python = {
         inherit userSettings keybindings;
         extensions =
