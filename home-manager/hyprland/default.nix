@@ -90,11 +90,6 @@
         ];
       };
 
-      dwindle = {
-        pseudotile = true;
-        default_split_ratio = 1.0;
-      };
-
       debug = {
         damage_tracking = 2;
         disable_logs = false;
@@ -103,7 +98,6 @@
       render.direct_scanout = 2;
 
       misc = {
-        vfr = true;
         vrr = 0;
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
