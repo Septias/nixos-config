@@ -56,7 +56,9 @@
     gimp
     evince
     inkscape
+    unstable.blender
     # mixxx
+    audacity
 
     ## Tooling
     # wev # input viewer
