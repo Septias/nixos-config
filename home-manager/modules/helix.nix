@@ -131,6 +131,10 @@
           pylint.enabled = false;
           yapf.enabled = false;
         };
+        lean = {
+          command = "lean";
+          args = ["--server"];
+        };
       };
 
       language = [
@@ -158,6 +162,15 @@
                 };
               }
             ];
+          };
+        }
+        {
+          name = "lean";
+          auto-format = true;
+          language-servers = ["lean"];
+          formatter = {
+            command = "lake";
+            args = ["fmt"];
           };
         }
         {
