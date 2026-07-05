@@ -5,7 +5,7 @@
     rust-analyzer
     nil
     marksman
-    nodePackages.vscode-json-languageserver
+    vscode-json-languageserver
     python313Packages.ruff
     python313Packages.python-lsp-server
   ];
