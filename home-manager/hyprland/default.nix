@@ -3,6 +3,7 @@
     ./hypridle.nix
     ./hyprpaper.nix
     ./hyprlock.nix
+    ./hyprsunset.nix
     ./wayle.nix
   ];
 
@@ -11,199 +12,304 @@
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '');
     autostart = pkgs.writeShellScriptBin "autostart" ''
-      hyprctl setcursor "Bibata-Original-Ice" 20
-      hyprctl hyprpaper reload ",/home/septias/pictures/wallpapers/t3_vixt2p.png"
       ${pkgs.hyprdim}/bin/hyprdim
     '';
   in {
     package = pkgs.unstable.hyprland;
     enable = true;
     systemd.enable = true;
-    xwayland = {
-      enable = true;
-      # force_zero_scaling = true;
-    };
-    plugins = [];
-    settings = {
-      general = {
-        gaps_out = 10;
-        gaps_in = 5;
-        border_size = 0;
-        allow_tearing = true;
-        layout = "dwindle";
-      };
+    xwayland.enable = true;
+    configType = "lua";
+    extraConfig = ''
+        hl.env("HYPRCURSOR_THEME", "MyCursor")
+        hl.env("HYPRCURSOR_SIZE", "20")
 
-      input = {
-        kb_layout = "de,us";
-        kb_variant = "neo,";
-        kb_options = "terminate:ctrl_alt_bksp"; # grp:alt_shift_toggle
-        follow_mouse = 1;
-        repeat_delay = 220;
-        repeat_rate = 45;
-        accel_profile = "flat";
-        touchpad = {
-          natural_scroll = 1;
-          disable_while_typing = true;
-        };
-      };
 
-      decoration = {
-        dim_inactive = true;
-        dim_strength = 0.2;
-        rounding = 5;
-      };
+        hl.curve("pace", { type = "bezier", points = { { 0.46, 1 }, { 0.29, 0.99 } } })
+        hl.curve("overshot", { type = "bezier", points = { { 0.13, 0.99 }, { 0.29, 1.1 } } })
+        hl.curve("md3_decel", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } })
+        hl.animation({
+          leaf = "windows",
+          enabled = true,
+          speed = 1,
+          bezier = "pace",
+          style = "slide",
+        })
+        hl.animation({
+          leaf = "fade",
+          enabled = false,
+          speed = 3,
+          bezier = "default",
+        })
+        hl.animation({
+          leaf = "workspaces",
+          enabled = true,
+          speed = 3,
+          bezier = "default",
+        })
+        hl.animation({
+          leaf = "specialWorkspace",
+          enabled = true,
+          speed = 1,
+          bezier = "default",
+          style = "fade",
+        })
+        hl.animation({
+          leaf = "layers",
+          enabled = false,
+          speed = 1,
+          bezier = "default",
+        })
 
-      group = {
-        auto_group = true;
-        groupbar = {
-          enabled = true;
-          rounding = "5";
-          "col.active" = "rgb(51576d)";
-          "col.inactive" = "rgb(626880)";
-        };
-      };
+        hl.bind("SUPER + Q", hl.dsp.window.close())
+        hl.bind("SUPER + SHIFT + Q", hl.dsp.window.kill())
+        hl.bind("SUPER + ALT + g", hl.dsp.group.toggle())
+        -- TODO: manual review on line 82 — changegroupactive: expected 'f', 'b', or an index (got "")
+        -- hl.bind("SUPER + g", hl.dsp.changegroupactive())
+        hl.bind("SUPER + m", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+        hl.bind("SUPER + ALT + f", hl.dsp.window.float({ action = "toggle" }))
+        hl.bind("SUPER + p", hl.dsp.window.pin())
+        hl.bind("SUPER + s", hl.dsp.workspace.toggle_special("social"))
+        hl.bind("SUPER + o", hl.dsp.workspace.toggle_special("obsidian"))
+        hl.bind("SUPER + y", hl.dsp.workspace.toggle_special("email"))
+        hl.bind("SUPER + ALT + d", hl.dsp.window.move({ monitor = "+1" }))
+        hl.bind("SUPER + ALT + y", hl.dsp.exec_cmd("nu ${./toggle_dark.nu}"))
+        hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty /home/septias/coding"))
+        hl.bind("SUPER + i", hl.dsp.exec_cmd("${screenshot}"))
+        hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))
+        hl.bind("SUPER + l", hl.dsp.exec_cmd("${pkgs.playerctl} pause"))
+        hl.bind("SUPER + ALT + p", hl.dsp.exec_cmd("${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"))
+        hl.bind("SUPER + SHIFT + s", hl.dsp.exec_cmd("google-chrome-stable"))
+        hl.bind("SUPER + space", hl.dsp.exec_cmd("anyrun"))
+        hl.bind("SUPER + e", hl.dsp.exec_cmd("nautilus"))
+        hl.bind("SUPER + c", hl.dsp.exec_cmd("xdg-open https://chatgpt.com"))
+        hl.bind("SUPER + v", hl.dsp.exec_cmd("xdg-open https://www.wetter.com/deutschland/freiburg-im-breisgau/DE0003016.html"))
+        hl.bind("SUPER + b", hl.dsp.focus({ window = "class:google-chrome" }))
+        hl.bind("SUPER + r", hl.dsp.focus({ workspace = -1 }))
+        hl.bind("SUPER + t", hl.dsp.focus({ workspace = "+1" }))
+        hl.bind("SUPER + n", hl.dsp.window.cycle_next({ next = true }))
+        hl.bind("SUPER + d", hl.dsp.focus({ monitor = "+1" }))
+        hl.bind("SUPER + SHIFT + d", hl.dsp.exec_cmd("nu ${./sort_workspaces.nu}"))
+        hl.bind("SUPER + z", hl.dsp.focus({ last = true }))
+        hl.bind("SUPER + ALT + t", hl.dsp.window.move({ workspace = "+1" }))
+        hl.bind("SUPER + ALT + r", hl.dsp.window.move({ workspace = -1 }))
+        hl.bind("SUPER + ALT + b", function() local w = hl.get_active_window(); if not w then return end; hl.dispatch(hl.dsp.window.resize({ x = math.floor(w.size.x * -10 / 100), y = 0, relative = true })) end)
+        hl.bind("SUPER + ALT + m", function() local w = hl.get_active_window(); if not w then return end; hl.dispatch(hl.dsp.window.resize({ x = math.floor(w.size.x * 10 / 100), y = 0, relative = true })) end)
+        hl.bind("SUPER + SHIFT + o", hl.dsp.window.move({ workspace = "special:obsidian, class:^(obsidian)$" }))
+        hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("${pkgs.brightnessctl} set +10%"), { locked = true, repeating = true })
+        hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("${pkgs.brightnessctl} set 10%-"), { locked = true, repeating = true })
+        hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("${pkgs.pamixer} -i 5"), { locked = true, repeating = true })
+        hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("${pkgs.pamixer} -d 5"), { locked = true, repeating = true })
+        hl.bind("XF86AudioMute", hl.dsp.exec_cmd("${pkgs.pamixer} -t"), { locked = true, repeating = true })
+        hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("${pkgs.playerctl} play-pause"), { locked = true, repeating = true })
+        hl.bind("XF86AudioPause", hl.dsp.exec_cmd("${pkgs.playerctl} play-pause"), { locked = true, repeating = true })
+        hl.bind("XF86AudioNext", hl.dsp.exec_cmd("${pkgs.playerctl} next"), { locked = true, repeating = true })
+        hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("${pkgs.playerctl} prev"), { locked = true, repeating = true })
+        hl.bind("SUPER + ALT + n", hl.dsp.exec_cmd("${pkgs.playerctl} next"), { locked = true, repeating = true })
+        hl.bind("SUPER + ALT + s", hl.dsp.exec_cmd("${pkgs.playerctl} play-pause"), { locked = true, repeating = true })
+        hl.bind("ALT + mouse:272", hl.dsp.window.drag())
+        hl.bind("ALT + mouse:273", hl.dsp.window.resize())
+        hl.gesture({
+          fingers = 3,
+          direction = "horizontal",
+          action = "workspace",
+        })
+        hl.monitor({
+          output = "DP-5",
+          mode = "1920x1080@144.00",
+          position = "auto-right",
+          scale = "1",
+        })
 
-      gesture = [
-        "3, horizontal, workspace"
-      ];
+        hl.monitor({
+          output = "",
+          mode = "preferred",
+          position = "auto-right",
+          scale = "1",
+        })
 
-      gestures = {
-        workspace_swipe_touch = true;
-        workspace_swipe_forever = true;
-      };
+        hl.window_rule({
+          match = {
+              class = "sioyek$",
+          },
+          float = false,
+        })
 
-      # https://wiki.hypr.land/Configuring/Animations
-      animations = {
-        enabled = true;
-        bezier = [
-          "pace, 0.46, 1, 0.29, 0.99"
-          "overshot, 0.13, 0.99, 0.29, 1.1"
-          "md3_decel, 0.05, 0.7, 0.1, 1"
-        ];
-        animation = [
-          # name, onoff, speed(ds), curve, style
-          "windows,1,1,pace,slide"
-          "fade,0,3,default"
-          "workspaces,1,3,default"
-          "specialWorkspace,1,1,default,fade"
-          "layers,0,1,default"
-        ];
-      };
+        hl.window_rule({
+          match = {
+              class = "cs2$",
+          },
+          immediate = true,
+          fullscreen = true,
+          workspace = "cs2",
+        })
 
-      debug = {
-        damage_tracking = 2;
-        disable_logs = false;
-      };
+        hl.window_rule({
+          match = {
+              class = "steam_app_813780",
+          },
+          immediate = true,
+          workspace = "aoe",
+        })
 
-      render.direct_scanout = 2;
+        hl.window_rule({
+          match = {
+              title = "Age of Empires",
+          },
+          immediate = true,
+          workspace = "aoe",
+        })
 
-      misc = {
-        vrr = 0;
-        mouse_move_enables_dpms = true;
-        key_press_enables_dpms = true;
-        animate_mouse_windowdragging = true;
-        animate_manual_resizes = true;
-        font_family = "JetBrainsMono Nerd Font";
-      };
+        hl.window_rule({
+          match = {
+              title = "Age of Empires*",
+          },
+          immediate = true,
+          workspace = "aoe",
+        })
 
-      exec-once = [
-        "${autostart}/bin/autostart"
-        "[workspace special obsidian silent] obsidian"
-        "[workspace special email silent] thunderbird"
-      ];
+        hl.window_rule({
+          match = {
+              class = "org.telegram.desktop|signal|discord",
+          },
+          workspace = "special:social",
+        })
 
-      workspace = [
-        "special:social,layout:scrolling"
-        "w[tv1], gapsout:0, gapsin:0"
-        "f[1], gapsout:0, gapsin:0"
-      ];
+        hl.window_rule({
+          match = {
+              title = "^(WhatsApp Web)$",
+          },
+          workspace = "special:social",
+        })
 
-      windowrule = [
-        "tile on, match:class sioyek$"
-        "immediate on, fullscreen on, workspace cs2, match:class cs2$"
-        "immediate on, workspace aoe, match:class steam_app_813780"
-        "immediate on, workspace aoe, match:title Age of Empires"
-        "immediate on, workspace aoe, match:title Age of Empires*"
-        "workspace special:social, match:class org.telegram.desktop|signal|discord"
-        "workspace special:social, match:title ^(WhatsApp Web)$"
-        "workspace special:social, match:title ^(Delta Chat)$"
-        "workspace special:obsidian, match:class ^(obsidian)$"
-        "workspace special:email, match:title ^(Mozilla Thunderbird)$"
-        "float on, pin on, size 800 400, move ((monitor_w/2)) ((monitor_h/2)), match:title ^(Calendar Reminders)$"
-        "float on, pin on, size 800 400, move ((monitor_w/2)) ((monitor_h/2)), match:title ^(jurts)$"
-      ];
+        hl.window_rule({
+          match = {
+              title = "^(Delta Chat)$",
+          },
+          workspace = "special:social",
+        })
 
-      bind = [
-        # Window controls
-        "SUPER,Q,killactive"
-        "SUPER SHIFT,Q,forcekillactive"
-        "SUPER ALT,g,togglegroup"
-        "SUPER,g,changegroupactive"
-        "SUPER,m,fullscreen"
-        "SUPER ALT,f,togglefloating"
-        "SUPER,p,pin"
-        "SUPER,s,togglespecialworkspace,social"
-        "SUPER,o,togglespecialworkspace,obsidian"
-        "SUPER,y,togglespecialworkspace,email"
-        "SUPER ALT,d,movewindow,mon:+1"
-        "SUPER ALT,y,exec, nu ${./toggle_dark.nu}"
+        hl.window_rule({
+          match = {
+              class = "^(obsidian)$",
+          },
+          workspace = "special:obsidian",
+        })
 
-        # Start programs
-        "SUPER,RETURN,exec,kitty /home/septias/coding"
-        "SUPER,ö     ,exec,kitty yazi /home/septias/coding"
-        "SUPER,i,exec,${screenshot}/bin/screenshot"
-        "SUPER,l,exec,hyprlock"
-        "SUPER,l,exec,${pkgs.playerctl}/bin/playerctl pause"
-        "SUPER ALT,p ,exec,${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"
-        "SUPER SHIFT ,s,exec, google-chrome-stable"
-        "SUPER,space ,exec,anyrun"
-        "SUPER,e,exec,nautilus"
-        "SUPER,c,exec,xdg-open https://chatgpt.com"
-        "SUPER,v,exec,xdg-open https://www.wetter.com/deutschland/freiburg-im-breisgau/DE0003016.html"
+        hl.window_rule({
+          match = {
+              title = "^(Mozilla Thunderbird)$",
+          },
+          workspace = "special:email",
+        })
 
-        # Focus windows
-        "SUPER, b, focuswindow, class:google-chrome"
+        hl.window_rule({
+          match = {
+              title = "^(Calendar Reminders)$",
+          },
+          float = true,
+          pin = true,
+          size = "800 400",
+          move = "((monitor_w/2)) ((monitor_h/2))",
+        })
 
-        # Move focus
-        "SUPER,r,workspace,-1"
-        "SUPER,t,workspace,+1"
-        "SUPER,n,cyclenext"
-        "SUPER,d,focusmonitor,+1"
-        "SUPER SHIFT,d,exec, nu ${./sort_workspaces.nu}"
-        "SUPER,z,focuscurrentorlast"
+        hl.window_rule({
+          match = {
+              title = "^(jurts)$",
+          },
+          float = true,
+          pin = true,
+          size = "800 400",
+          move = "((monitor_w/2)) ((monitor_h/2))",
+        })
 
-        # Move window
-        "SUPER ALT, t, movetoworkspace, +1"
-        "SUPER ALT, r, movetoworkspace, -1"
+        hl.workspace_rule({
+          workspace = "special:social",
+          layout = "scrolling",
+        })
 
-        # Resize
-        "SUPER ALT, b, resizeactive, -10% 0"
-        "SUPER ALT, m, resizeactive, 10% 0"
+        hl.workspace_rule({
+          workspace = "w[tv1]",
+          gaps_out = 0,
+          gaps_in = 0,
+        })
 
-        # Misc
-        "SUPER SHIFT, o, movetoworkspace, special:obsidian, class:^(obsidian)$"
-      ];
+        hl.workspace_rule({
+          workspace = "f[1]",
+          gaps_out = 0,
+          gaps_in = 0,
+        })
 
-      bindm = [
-        "ALT, mouse:272, movewindow"
-        "ALT, mouse:273, resizewindow"
-      ];
+        hl.config({
+          animations = {
+              enabled = true,
+          },
+          binds = {
+              hide_special_on_workspace_change = true,
+          },
+          debug = {
+              damage_tracking = 2,
+              disable_logs = false,
+          },
+          decoration = {
+              dim_inactive = true,
+              dim_strength = 0.200000,
+              rounding = 5,
+          },
+          general = {
+              allow_tearing = true,
+              border_size = 0,
+              gaps_in = 5,
+              gaps_out = 10,
+              layout = "dwindle",
+          },
+          gestures = {
+              workspace_swipe_forever = true,
+              workspace_swipe_touch = true,
+          },
+          group = {
+              groupbar = {
+                  col = {
+                      active = "rgb(51576d)",
+                      inactive = "rgb(626880)",
+                  },
+                  enabled = true,
+                  rounding = 5,
+              },
+              auto_group = true,
+          },
+          input = {
+              touchpad = {
+                  disable_while_typing = true,
+                  natural_scroll = 1,
+              },
+              accel_profile = "flat",
+              follow_mouse = 1,
+              kb_layout = "de,us",
+              kb_options = "terminate:ctrl_alt_bksp",
+              kb_variant = "neo,",
+              repeat_delay = 220,
+              repeat_rate = 45,
+              sensitivity = 1.300000,
+          },
+          misc = {
+              animate_manual_resizes = true,
+              animate_mouse_windowdragging = true,
+              font_family = "JetBrainsMono Nerd Font",
+              key_press_enables_dpms = true,
+              mouse_move_enables_dpms = true,
+              vrr = 0,
+          },
+          render = {
+              direct_scanout = 2,
+          },
+        })
 
-      binds.hide_special_on_workspace_change = true;
-
-      bindle = [
-        ",XF86MonBrightnessUp,  exec, ${pkgs.brightnessctl}/bin/brightnessctl set +10%"
-        ",XF86MonBrightnessDown,exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%-"
-        ",XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5"
-        ",XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5"
-        ",XF86AudioMute,        exec, ${pkgs.pamixer}/bin/pamixer -t"
-        ",XF86AudioPlay,        exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-        ",XF86AudioPause,       exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-        ",XF86AudioNext,        exec, ${pkgs.playerctl}/bin/playerctl next"
-        ",XF86AudioPrev,        exec, ${pkgs.playerctl}/bin/playerctl prev"
-        "SUPER ALT,n,           exec, ${pkgs.playerctl}/bin/playerctl next"
-        "SUPER ALT,s,           exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-      ];
-    };
+        hl.on("hyprland.start", function()
+          hl.exec_cmd("${autostart}")
+          hl.exec_cmd("obsidian", { workspace = "special obsidian silent" })
+          hl.exec_cmd("thunderbird", { workspace = "special email silent" })
+      end)
+    '';
   };
 }
