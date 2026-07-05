@@ -12,6 +12,7 @@
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '');
     autostart = pkgs.writeShellScriptBin "autostart" ''
+      hyprctl setcursor "Bibata-Original-Ice" 20
       ${pkgs.hyprdim}/bin/hyprdim
     '';
   in {
@@ -306,7 +307,7 @@
         })
 
         hl.on("hyprland.start", function()
-          hl.exec_cmd("${autostart}")
+          hl.exec_cmd("${autostart}/bin/autostart")
           hl.exec_cmd("obsidian", { workspace = "special obsidian silent" })
           hl.exec_cmd("thunderbird", { workspace = "special email silent" })
       end)
