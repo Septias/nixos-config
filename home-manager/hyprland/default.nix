@@ -12,7 +12,7 @@
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '');
     autostart = pkgs.writeShellScriptBin "autostart" ''
-      hyprctl setcursor "Bibata-Original-Ice" 20
+      # hyprctl setcursor "Bibata-Original-Ice" 20
       ${pkgs.hyprdim}/bin/hyprdim
     '';
   in {
@@ -22,7 +22,7 @@
     xwayland.enable = true;
     configType = "lua";
     extraConfig = ''
-        hl.env("HYPRCURSOR_THEME", "MyCursor")
+        hl.env("HYPRCURSOR_THEME", "Bibata-Original-Ice")
         hl.env("HYPRCURSOR_SIZE", "20")
 
 
