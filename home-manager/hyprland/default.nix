@@ -76,7 +76,7 @@
         hl.bind("SUPER + ALT + d", hl.dsp.window.move({ monitor = "+1" }))
         hl.bind("SUPER + ALT + y", hl.dsp.exec_cmd("nu ${./toggle_dark.nu}"))
         hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty /home/septias/coding"))
-        hl.bind("SUPER + i", hl.dsp.exec_cmd("${screenshot}"))
+        hl.bind("SUPER + i", hl.dsp.exec_cmd("${screenshot}/bin/screenshot"))
         hl.bind("SUPER + l", hl.dsp.exec_cmd("hyprlock"))
         hl.bind("SUPER + l", hl.dsp.exec_cmd("${pkgs.playerctl}/bin/playerctl pause"))
         hl.bind("SUPER + ALT + p", hl.dsp.exec_cmd("${pkgs.hyprpicker}/bin/hyprpicker | wl-copy"))
