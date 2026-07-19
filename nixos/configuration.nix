@@ -270,6 +270,7 @@
     nerd-fonts.symbols-only
     inter-nerdfont
     proggyfonts
+    google-fonts
   ];
   users = {
     users.septias = {
