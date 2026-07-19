@@ -12,7 +12,7 @@
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '');
     autostart = pkgs.writeShellScriptBin "autostart" ''
-      # hyprctl setcursor "Bibata-Original-Ice" 20
+      hyprctl setcursor "Bibata-Original-Ice" 20
       ${pkgs.hyprdim}/bin/hyprdim
     '';
   in {
@@ -22,10 +22,6 @@
     xwayland.enable = true;
     configType = "lua";
     extraConfig = ''
-        hl.env("HYPRCURSOR_THEME", "Bibata-Original-Ice")
-        hl.env("HYPRCURSOR_SIZE", "20")
-
-
         hl.curve("pace", { type = "bezier", points = { { 0.46, 1 }, { 0.29, 0.99 } } })
         hl.curve("overshot", { type = "bezier", points = { { 0.13, 0.99 }, { 0.29, 1.1 } } })
         hl.curve("md3_decel", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } })
@@ -65,8 +61,7 @@
         hl.bind("SUPER + Q", hl.dsp.window.close())
         hl.bind("SUPER + SHIFT + Q", hl.dsp.window.kill())
         hl.bind("SUPER + ALT + g", hl.dsp.group.toggle())
-        -- TODO: manual review on line 82 — changegroupactive: expected 'f', 'b', or an index (got "")
-        -- hl.bind("SUPER + g", hl.dsp.changegroupactive())
+        hl.bind("SUPER + g", hl.dsp.group.next())
         hl.bind("SUPER + m", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
         hl.bind("SUPER + ALT + f", hl.dsp.window.float({ action = "toggle" }))
         hl.bind("SUPER + p", hl.dsp.window.pin())
