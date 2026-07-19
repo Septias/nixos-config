@@ -101,9 +101,8 @@ in {
   home.packages = [
     pkgs.libsecret
   ];
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
-    package = pkgs.unstable.vscodium;
     profiles = {
       vue = {
         inherit keybindings;
