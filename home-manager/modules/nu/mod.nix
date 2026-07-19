@@ -40,6 +40,7 @@
       gd = "git pull";
       lg = "lazygit";
       o = "xdg-open";
+      h = "hx .";
       "log:helix" = "tail --follow ~/.cache/helix/helix.log";
       "log:hyprland" = ''
         do {
