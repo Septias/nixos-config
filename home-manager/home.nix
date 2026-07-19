@@ -59,6 +59,7 @@
     unstable.blender
     # mixxx
     audacity
+    signal-desktop
 
     ## Tooling
     # wev # input viewer
