@@ -4,6 +4,7 @@
     typescript-language-server
     rust-analyzer
     nil
+    elan
     marksman
     vscode-json-languageserver
     python313Packages.ruff
@@ -132,8 +133,8 @@
           yapf.enabled = false;
         };
         lean = {
-          command = "lean";
-          args = ["--server"];
+          command = "lake";
+          args = ["serve"];
         };
       };
 
@@ -166,6 +167,7 @@
         }
         {
           name = "lean";
+          roots = ["lakefile.lean" "lean-toolchain"];
           auto-format = true;
           language-servers = ["lean"];
           formatter = {
