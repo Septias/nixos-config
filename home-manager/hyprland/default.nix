@@ -110,8 +110,9 @@
           direction = "horizontal",
           action = "workspace",
         })
+
         hl.monitor({
-          output = "DP-5",
+          output = "DP-6",
           mode = "1920x1080@144.00",
           position = "auto-right",
           scale = "1",
