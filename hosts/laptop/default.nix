@@ -34,7 +34,7 @@
         CPU_MAX_PERF_ON_BAT = 20;
 
         START_CHARGE_THRESH_BAT0 = 40;
-        STOP_CHARGE_THRESH_BAT0 = 81;
+        STOP_CHARGE_THRESH_BAT0 = 80;
 
         USB_DENYLIST = "046d:c09d";
       };
