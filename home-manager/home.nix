@@ -143,13 +143,13 @@
         keybinding.universal = {
           openDiffTool = "<c-g>";
         };
-        git.pagers = [
+        git.diffRenderers = [
           {
-            pager = "${pkgs.ydiff}/bin/ydiff -p cat -s --wrap --width={{columnWidth}}";
+            command = "${pkgs.ydiff}/bin/ydiff -p cat -s --wrap --width={{columnWidth}}";
             colorArg = "never";
           }
           {
-            pager = "${pkgs.delta}/bin/delta --features drr --paging=never";
+            command = "${pkgs.delta}/bin/delta --features drr --paging=never";
           }
           # {
           #   externalDiffCommand = "${pkgs.difftastic}/bin/difft --color=always";
