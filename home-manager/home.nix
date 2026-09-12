@@ -37,6 +37,7 @@
     unstable.deltachat-desktop
     unstable.obsidian
     unstable.pnpm
+    unstable.claude-code
     google-chrome
 
     ## Office
@@ -74,12 +75,12 @@
     dig # DNS-lookup
     yazi # tui file explorer
     cachix # cache
-    claude-code
     qpdf
     qdirstat
     pavucontrol
     pandoc
     gnome-font-viewer
+    gh
 
     linuxKernel.packages.linux_zen.cpupower
 
