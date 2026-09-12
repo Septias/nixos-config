@@ -146,11 +146,11 @@
         };
         git.diffRenderers = [
           {
-            command = "${pkgs.ydiff}/bin/ydiff -p cat -s --wrap --width={{columnWidth}}";
-            colorArg = "never";
+            command = "${pkgs.delta}/bin/delta --features drr --paging=never";
           }
           {
-            command = "${pkgs.delta}/bin/delta --features drr --paging=never";
+            command = "${pkgs.ydiff}/bin/ydiff -p cat -s --wrap --width={{columnWidth}}";
+            colorArg = "never";
           }
           # {
           #   externalDiffCommand = "${pkgs.difftastic}/bin/difft --color=always";
