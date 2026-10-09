@@ -82,7 +82,7 @@
     gnome-font-viewer
     gh
 
-    linuxKernel.packages.linux_zen.cpupower
+    linuxPackages.cpupower
 
     ## langs
     # (agda.withPackages [agdaPacages.standard-library])
@@ -99,7 +99,7 @@
     enable = true;
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome];
       config.common = {
         default = ["hyprland" "gtk" "gnome"];
         "org.freedesktop.impl.portal.Settings" = "gnome";
@@ -164,17 +164,15 @@
       settings = {
         user.name = "Sebastian Klähn";
         user.email = "info@sebastian-klaehn.de";
-        extraConfig = {
-          pull.rebase = true;
-          push.default = "current";
-          init.defaultBranch = "main";
-          core.editor = "hx";
-          checkout.defaultRemote = "origin";
-          "delta \"drr\"" = {
-            syntax-theme = "Dracula";
-            plus-color = "#50fa7b";
-            minus-color = "#ff5555";
-          };
+        pull.rebase = true;
+        push.default = "current";
+        init.defaultBranch = "main";
+        core.editor = "hx";
+        checkout.defaultRemote = "origin";
+        "delta \"drr\"" = {
+          syntax-theme = "Dracula";
+          plus-color = "#50fa7b";
+          minus-color = "#ff5555";
         };
       };
     };
@@ -183,33 +181,6 @@
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
       enableNushellIntegration = true;
       enableBashIntegration = true;
-    };
-    zsh = {
-      enable = false;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      plugins = [
-        {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-        {
-          name = "powerlevel10k-config";
-          src = lib.cleanSource ./p10k-config;
-          file = "p10k.zsh";
-        }
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.7.0";
-            sha256 = "149zh2rm59blr2q458a5irkfh82y3dwdich60s9670kl3cl5h2m1";
-          };
-        }
-      ];
     };
     direnv = {
       enable = true;
@@ -227,20 +198,20 @@
     };
   };
 
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-      size = 25;
-    };
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Original-Ice";
+    size = 20;
+    gtk.enable = true;
+    hyprcursor.enable = true;
   };
+
+  gtk.enable = true;
 
   sops = {
     age.keyFile = "/home/septias/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets/secret.yaml;
     secrets.copilot = {};
-    secrets.weather = {};
     secrets.openai = {};
     secrets.cachix = {};
     secrets.openrouter = {};
@@ -273,20 +244,6 @@
   };
 
   home.file.".XCompose".source = ./Xcompose;
-  home.activation.installWritableRepo = let
-    repo = pkgs.fetchFromGitHub {
-      owner = "syl20bnr";
-      repo = "spacemacs";
-      rev = "6751dae7ab8785f90edea585160926bad5e3e2ff";
-      sha256 = "sha256-ajHgzeYcD1moI1Eir+GT0iZsOxMSlgkgB+Bh513TnxQ=";
-    };
-  in
-    lib.hm.dag.entryAfter ["writeBoundary"] ''
-      rm -rf "$HOME/.emacs.d"
-      mkdir -p "$HOME/.emacs.d"
-      cp -r ${repo}/. "$HOME/.emacs.d"
-      chmod -R u+w "$HOME/.emacs.d"
-    '';
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";

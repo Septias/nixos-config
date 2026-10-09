@@ -11,7 +11,7 @@
 - Editor:
    - helix
    - vscode (vscodium)
-- Bar: Hyprpanel
+- Bar: wayle
    - theme: catppuccin frappe
 - Window Manager: Hyprland
    - hypridle
@@ -33,7 +33,7 @@
 4. Follow install steps
 5. Reboot into first generation
 6. Add nix-sops
-   1. Generate age-key and add to `~/.config/sops/keys.txt`
+   1. Generate age-key and add to `~/.config/sops/age/keys.txt`
    2. Add age-key in `.sops.yaml`
    3. Rebuild sops file `sops updatekeys secrets/secret.yaml`
 7. Select Kitten themes

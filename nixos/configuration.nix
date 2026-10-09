@@ -24,12 +24,10 @@
       auto-optimise-store = true;
       builders-use-substitutes = true;
       substituters = [
-        "https://hyprland.cachix.org"
         "https://septias.cachix.org"
       ];
       trusted-public-keys = [
         "septias.cachix.org-1:49NwrE90/oHelsmAb1Ib7madbZtXoDzACAycBDWQ8Sw="
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       ];
     };
   };
@@ -62,15 +60,6 @@
   console.keyMap = "neo";
 
   services = {
-    pulseaudio = {
-      enable = false;
-      package = pkgs.pulsaudioFull;
-      configFile = pkgs.writeText "default.pa" ''
-        load-module module-bluetooth-policy
-        load-module module-bluetooth-discovery
-      '';
-    };
-
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -81,12 +70,6 @@
     };
 
     gnome.gnome-keyring.enable = true;
-
-    minecraft-server = {
-      enable = false;
-      eula = true;
-      openFirewall = true;
-    };
 
     xserver = {
       enable = true;
@@ -178,8 +161,6 @@
     };
     # dbus service for storage devices
     udisks2.enable = true;
-    # emacs daemon
-    emacs.enable = false;
     hardware.bolt.enable = true;
   };
 
@@ -244,8 +225,7 @@
       NIXOS_OZONE_WL = "1";
       EDITOR = "hx";
       RUST_LOG = "info";
-      XDG_RUNTIME_DIR = "/run/user/$UID";
-      SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
+      SSH_AUTH_SOCK = "/run/user/1000/gcr/ssh";
     };
 
     systemPackages = with pkgs; [
@@ -279,11 +259,6 @@
       extraGroups = ["media" "audio" "video" "networkmanager" "wheel"];
     };
     defaultUserShell = pkgs.nushell;
-  };
-
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -51,7 +51,6 @@
         }
       '';
       "log:hyprland_rolling" = ''hyprctl rollinglog -f'';
-      emacs = "emacs -nw";
       life = "cd /home/septias/life";
       read = "yazi /home/septias/life/Areas/Studium/Research";
       books = "yazi /home/septias/life/Ressources/books";

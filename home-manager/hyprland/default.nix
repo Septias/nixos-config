@@ -12,7 +12,6 @@
       ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | wl-copy
     '');
     autostart = pkgs.writeShellScriptBin "autostart" ''
-      hyprctl setcursor "Bibata-Original-Ice" 20
       ${pkgs.hyprdim}/bin/hyprdim
     '';
   in {
