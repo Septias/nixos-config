@@ -91,7 +91,7 @@
         hl.bind("SUPER + ALT + r", hl.dsp.window.move({ workspace = -1 }))
         hl.bind("SUPER + ALT + b", function() local w = hl.get_active_window(); if not w then return end; hl.dispatch(hl.dsp.window.resize({ x = math.floor(w.size.x * -10 / 100), y = 0, relative = true })) end)
         hl.bind("SUPER + ALT + m", function() local w = hl.get_active_window(); if not w then return end; hl.dispatch(hl.dsp.window.resize({ x = math.floor(w.size.x * 10 / 100), y = 0, relative = true })) end)
-        hl.bind("SUPER + SHIFT + o", hl.dsp.window.move({ workspace = "special:obsidian, class:^(obsidian)$" }))
+        hl.bind("SUPER + SHIFT + o", hl.dsp.window.move({ workspace = "special:obsidian" }))
         hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("${pkgs.brightnessctl}/bin/brightnessctl set +10%"), { locked = true, repeating = true })
         hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("${pkgs.brightnessctl}/bin/brightnessctl set 10%-"), { locked = true, repeating = true })
         hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("${pkgs.pamixer}/bin/pamixer -i 5"), { locked = true, repeating = true })
@@ -188,9 +188,16 @@
 
         hl.window_rule({
           match = {
-              class = "^(obsidian)$",
+              class = "^(obsidian|md\\.obsidian\\.Obsidian)$",
           },
           workspace = "special:obsidian",
+        })
+
+        hl.window_rule({
+          match = {
+              class = "^(kitty)$",
+          },
+          suppress_event = "maximize",
         })
 
         hl.window_rule({
@@ -221,8 +228,19 @@
         })
 
         hl.workspace_rule({
+          workspace = "special:obsidian",
+          on_created_empty = "obsidian",
+        })
+
+        hl.workspace_rule({
+          workspace = "special:email",
+          on_created_empty = "thunderbird",
+        })
+
+        hl.workspace_rule({
           workspace = "special:social",
           layout = "scrolling",
+          on_created_empty = "google-chrome-stable --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm",
         })
 
         hl.workspace_rule({
