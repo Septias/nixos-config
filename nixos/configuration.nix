@@ -230,7 +230,7 @@
   networking = {
     firewall.enable = true;
     networkmanager.enable = true;
-    resolvconf.useLocalResolver = true;
+    resolvconf.useLocalResolver = false;
   };
 
   security = {
