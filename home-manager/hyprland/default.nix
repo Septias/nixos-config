@@ -126,6 +126,14 @@
 
         hl.window_rule({
           match = {
+              class = "negative:(?i).*anki.*",
+              float = false,
+          },
+          workspace = "empty",
+        })
+
+        hl.window_rule({
+          match = {
               class = "sioyek$",
           },
           float = false,
